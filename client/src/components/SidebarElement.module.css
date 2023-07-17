@@ -1,0 +1,8 @@
+@import "../index.css";
+
+.sidebar_element_div{
+    width: fit-content;
+    min-width: 100px;
+    height: 50px;
+    background-color: red;
+}
