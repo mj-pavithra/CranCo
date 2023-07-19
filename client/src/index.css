@@ -2,6 +2,7 @@
 
 :root {
     --primary-blue: #2060AD;
+    --navbar_background: #1B1A38;
 }
 
 * {
@@ -13,4 +14,9 @@
 html,
 body {
     font-family: 'Inter', sans-serif;
+}
+
+/* text colours */
+.color-white {
+    color: #fff;
 }

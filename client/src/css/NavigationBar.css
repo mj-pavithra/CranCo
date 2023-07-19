@@ -1,0 +1,66 @@
+@import '../index.css';
+
+.navbar-main {
+    background-color: var(--navbar_background);
+    height: 75px;
+}
+
+.navbar-logo {
+    height: 60px;
+}
+
+.navbar_back {
+    background-color: var(--navbar_background);
+}
+
+.navbar-search {
+    height: 45px;
+    width: 260px;
+    margin-left: 16px;
+    border-radius: 8px;
+    padding: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    color: white;
+    background-color: transparent;
+}
+
+.navbar-icon {
+    font-size: 2rem;
+}
+
+.active {
+    color: var(--primary-blue);
+}
+
+.navbar-bell {
+    color: white;
+    font-size: 1.3rem;
+}
+
+.navbar-bell.active {
+    color: var(--primary-blue);
+    font-size: 1.3rem;
+}
+
+.navbar-icon-wrapper {
+    color: white;
+    width: 120px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    border-radius: 8px;
+
+    &:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+}
+
+.navbar-icon-wrapper.active {
+    color: var(--primary-blue);
+
+    &:hover {
+        background-color: transparent;
+    }
+}
