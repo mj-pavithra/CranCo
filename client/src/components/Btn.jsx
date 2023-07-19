@@ -1,10 +1,10 @@
 import React from 'react'
-import  ButtonCSS from "./Btn.module.css";
+import ButtonCSS from "./css/Btn.module,css";
 
-const Btn = ({buttonText}) => {
+const Btn = ({ buttonText }) => {
   return (
     <div>
-        <button className={ButtonCSS.btn}>{buttonText}</button>
+      <button className={ButtonCSS.btn}>{buttonText}</button>
     </div>
   )
 }
