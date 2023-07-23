@@ -1,9 +1,12 @@
-import React from 'react'
-import NavigationBar from '../components/NavigationBar'
-import Post from '../components/Post'
+import React from "react";
+import NavigationBar from "../Components/NavigationBar";
+import Post from '../Components/Post'
 
 const HomePage = () => {
-    return (
+  return (
+    <div>
+      <NavigationBar />
+      <body>
         <div>
             <NavigationBar />
             <body>
@@ -18,7 +21,9 @@ const HomePage = () => {
                 </div>
             </body>
         </div>
-    )
-}
+      </body>
+    </div>
+  );
+};
 
-export default HomePage
+export default HomePage;
