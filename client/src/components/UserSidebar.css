@@ -1,0 +1,56 @@
+:root {
+  --background-1: #000517;
+  --cage-background: #1b1a38;
+  --text-1: #ffffff;
+  --text-2: #a6abbd;
+  --button-background: #2060ad;
+  --stroke: #2060ad;
+}
+
+.side-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 300px;
+  background-color: var(--background-1);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 10px;
+}
+
+.link {
+  /* background-color: aliceblue; */
+  margin: 5px auto;
+  color: var(--text-2);
+  text-decoration: none;
+  width: 50%;
+  align-items: center;
+  gap: 25px;
+  display: flex;
+}
+
+FontAwesomeIcon {
+  color: var(--text-2);
+  font-size: 40px;
+}
+
+.user-cage {
+  margin: 10px auto;
+  color: var(--text-2);
+  text-decoration: none;
+  width: 100%;
+  align-items: center;
+  display: flex;
+  gap: 25px;
+}
+.user-cage p {
+  color: var(--text-2);
+}
+
+.user-cage img {
+  width: 50px;
+  border-radius: 50%;
+  border-style: none;
+}
