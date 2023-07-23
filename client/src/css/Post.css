@@ -1,0 +1,110 @@
+@import '../index.css';
+
+.post {
+    --post-max-width: 650px;
+
+    --post-padding-top: 20px;
+    --post-padding-lr: 0px;
+    --post-padding-bottom: 10px;
+
+    --inside-padding-tb: 0px;
+    --inside-padding-lr: 24px;
+
+    --user-image-size: 60px;
+
+    --heart-div-size: 20px;
+}
+
+.post {
+    margin: 0px auto;
+    max-width: var(--post-max-width);
+    height: fit-content;
+    color: white;
+
+    padding: var(--post-padding-top) var(--post-padding-lr) var(--post-padding-bottom) var(--post-padding-lr);
+    border-radius: 10px;
+    background-color: var(--navbar-background);
+}
+
+.post-back {
+    display: flex;
+    justify-content: space-between;
+    padding: 0px var(--inside-padding-lr);
+}
+
+.post-padding {
+    padding: 0px var(--inside-padding-lr);
+}
+
+
+.post-time {
+    font-size: 0.8rem;
+}
+
+.post-user-image {
+    width: var(--user-image-size);
+    height: var(--user-image-size);
+    border-radius: 50%;
+}
+
+.post-image {
+    width: 100%;
+}
+
+.post-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    height: fit-content;
+}
+
+.post-text {
+    width: 100%;
+    word-wrap: break-word;
+    line-height: 1.2;
+    font-size: 0.9rem;
+}
+
+.custom-icon {
+    color: red;
+}
+
+.post-heart-div {
+    width: var(--heart-div-size);
+    height: var(--heart-div-size);
+    border-radius: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: red;
+    font-size: 4px;
+}
+
+.post-heart-icon {
+    color: white;
+    font-size: 12px;
+}
+
+.post-action-div {
+    border-radius: 5px;
+    height: 2.4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:hover {
+        background-color: var(--transparent-white);
+        cursor: pointer;
+    }
+}
+
+.post-action-icon {
+    font-size: 1.2rem;
+}
+
+.post-action-icon.active {
+    font-size: 1.2rem;
+    color: red;
+}

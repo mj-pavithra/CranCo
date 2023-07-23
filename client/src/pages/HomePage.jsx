@@ -1,5 +1,6 @@
 import React from 'react'
 import NavigationBar from '../components/NavigationBar'
+import Post from '../components/Post'
 
 const HomePage = () => {
     return (
@@ -10,12 +11,7 @@ const HomePage = () => {
                     <div className='div-1'>
                         <div className='div-left'></div>
                         <div className='div-middle'>
-                            <div className='post-div-temp'></div>
-                            <div className='post-div-temp'></div>
-                            <div className='post-div-temp'></div>
-                            <div className='post-div-temp'></div>
-                            <div className='post-div-temp'></div>
-                            <div className='post-div-temp'></div>
+                            <Post />
                         </div>
                         <div className='div-right'></div>
                     </div>
