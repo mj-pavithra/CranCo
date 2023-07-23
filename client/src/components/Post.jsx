@@ -69,17 +69,18 @@ const Post = () => {
                 <div className='post-back pt-2'>
                     <div className='col-4 post-action-div gap-2' onClick={() => handleLike()}>
                         <FontAwesomeIcon className={`post-action-icon ${liked === true ? 'active' : ''}`} icon={liked === true ? faHeart : reg_heart} />
-                        Like
+                        <div className='text-medium'>Like</div>
+
                     </div>
 
                     <div className='col-4 post-action-div gap-2'>
                         <FontAwesomeIcon className='post-action-icon' icon={reg_comment} />
-                        Comment
+                        <div className='text-medium'>Comment</div>
                     </div>
 
                     <div className='col-4 post-action-div gap-2'>
                         <FontAwesomeIcon className='post-action-icon' icon={reg_share} />
-                        Share
+                        <div className='text-medium'>Share</div>
                     </div>
                 </div>
             </div>

@@ -3,6 +3,10 @@
     color: #fff;
 }
 
+.color-black {
+    color: #000;
+}
+
 /* font-weignts */
 .text-thin {
     font-weight: 100;
