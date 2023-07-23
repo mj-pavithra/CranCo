@@ -30,6 +30,7 @@
     display: flex;
     justify-content: space-between;
     padding: 0px var(--inside-padding-lr);
+    user-select: none;
 }
 
 .post-padding {

@@ -1,0 +1,7 @@
+@import '../index.css';
+
+.checkbox {
+    display: block;
+    color: var(--background-blue-light);
+    background-color: red;
+}

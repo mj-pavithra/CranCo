@@ -1,10 +1,10 @@
 import React from 'react'
-import ButtonCSS from "./css/Btn.module,css";
+import ButtonCSS from "../css/Btn.css";
 
-const Btn = ({ buttonText }) => {
+const Btn = ({ buttonText, width = '', type }) => {
   return (
     <div>
-      <button className={ButtonCSS.btn}>{buttonText}</button>
+      <button type={type} className={`custom-btn ${width}`}>{buttonText}</button>
     </div>
   )
 }
