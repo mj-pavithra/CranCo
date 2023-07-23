@@ -1,28 +1,28 @@
-import React from 'react'
-import NavigationBar from '../components/NavigationBar'
+import React from "react";
+import NavigationBar from "../Components/NavigationBar";
 
 const HomePage = () => {
-    return (
+  return (
+    <div>
+      <NavigationBar />
+      <body>
         <div>
-            <NavigationBar />
-            <body>
-                <div >
-                    <div className='div-1'>
-                        <div className='div-left'></div>
-                        <div className='div-middle'>
-                            <div className='post-div-temp'></div>
-                            <div className='post-div-temp'></div>
-                            <div className='post-div-temp'></div>
-                            <div className='post-div-temp'></div>
-                            <div className='post-div-temp'></div>
-                            <div className='post-div-temp'></div>
-                        </div>
-                        <div className='div-right'></div>
-                    </div>
-                </div>
-            </body>
+          <div className="div-1">
+            <div className="div-left"></div>
+            <div className="div-middle">
+              <div className="post-div-temp"></div>
+              <div className="post-div-temp"></div>
+              <div className="post-div-temp"></div>
+              <div className="post-div-temp"></div>
+              <div className="post-div-temp"></div>
+              <div className="post-div-temp"></div>
+            </div>
+            <div className="div-right"></div>
+          </div>
         </div>
-    )
-}
+      </body>
+    </div>
+  );
+};
 
-export default HomePage
+export default HomePage;
