@@ -2,7 +2,7 @@ import "./App.css";
 
 import LoginPage from './pages/LoginPage';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import HelloWorld from "./Components/HelloWorld";
+import HelloWorld from "./components/HelloWorld";
 import HomePage from "./pages/HomePage";
 
 function App() {

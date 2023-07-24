@@ -1,5 +1,5 @@
 import React from "react";
-import SidebarElementCss from "./Css/SidebarElement.module.css";
+import SidebarElementCss from "./css/SidebarElement.module.css";
 
 const SidebarElement = () => {
   return (
