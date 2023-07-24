@@ -1,0 +1,94 @@
+.topContainer{
+    background-color: black ;
+}
+.pageTitle{
+    color: #FFF;
+font-family: Inter;
+font-size: 26px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+    letter-spacing: 0.02em;
+    text-align: left;
+    color: #FFFFFF;
+}
+.fullContainer1{
+    width: 250px;
+    height: 300px;
+    border-radius: 18px;
+    background: #1B1A38;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0px;
+  }
+  .fullContainer{
+    
+    overflow-y: auto;
+  }
+  .fullContainer::-webkit-scrollbar {
+    width: 8px;
+    margin-left: 21px; 
+  }
+  
+  .fullContainer::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 4px;
+  }
+  
+  .fullContainer::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+  }
+  
+  .fullContainer::-webkit-scrollbar-thumb:active {
+    background-color: #444;
+  }
+  
+  .eachProfile {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 10px;
+    margin-bottom: 5px;
+  }
+  
+  .pageName {
+    color: #FFF;
+    width: 120px;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 163.418%;
+    margin-left: 10px;
+    /* 26.147px */
+  }
+  
+  .proPic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border-radius: 40px;
+    margin: 0px 20px;
+    background: url("https://scontent-sin6-1.xx.fbcdn.net/v/t39.30808-6/308581772_3365988040389612_5848867500392379717_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeEEweZgd3s_oeM1obcqQACJy1MVLSKNL8fLUxUtIo0vx9wXdxe0th-iX99QKF_8mbStgGJCMzhD0uGd_E0dboTs&_nc_ohc=RFqRpAgbGwgAX-y8WeT&_nc_ht=scontent-sin6-1.xx&oh=00_AfBkg3KoOK6anSRS7moUmMOkAQFt6pNn27o2zhZj5Osqsg&oe=64C3A876"), lightgray 50% / cover no-repeat, #D9D9D9;
+  }
+  
+  .addPagebtn {
+    display: flex;
+    width: 189px;
+    height: 49px;
+    margin-top: 10px;
+    justify-content: center;
+    align-items: center; /* Center the content vertically */
+    flex-shrink: 0;
+    color: #fff;
+    background: #2060ad;
+    text-align: center;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 163.418%; /* 26.147px */
+  }
+  

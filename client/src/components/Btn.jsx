@@ -1,12 +1,12 @@
-import React from "react";
-import '../css/Btn.css'
+import React from 'react'
+import ButtonCSS from "./css/Btn.module.css";
 
-const Btn = ({ buttonText, width = '', type }) => {
+const Btn = ({ buttonText }) => {
   return (
     <div>
-      <button type={type} className={`custom-btn ${width}`}>{buttonText}</button>
+      <button className={ButtonCSS.btn}>{buttonText}</button>
     </div>
-  );
-};
+  )
+}
 
-export default Btn;
+export default Btn
