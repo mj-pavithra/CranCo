@@ -3,7 +3,7 @@ import Friends from "../pages/Friends";
 import Home from "../pages/Home";
 import { Routes, Route, Link } from "react-router-dom";
 import Shops from "../pages/Shops";
-import "./UserSidebar.css";
+import "./css/UserSidebar.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faHouseChimney,
