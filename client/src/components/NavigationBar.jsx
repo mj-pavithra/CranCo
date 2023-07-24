@@ -57,17 +57,15 @@ function NavigationBar() {
           {/* middle div */}
           <div className="col-4 navbar-main d-flex align-items-center justify-content-center">
             <div
-              className={`navbar-icon-wrapper ${
-                activeIcon === "home" ? " active" : ""
-              }`}
+              className={`navbar-icon-wrapper ${activeIcon === "home" ? " active" : ""
+                }`}
               onClick={() => handleIconClick("home")}
             >
               <FontAwesomeIcon className="navbar-icon" icon={faHome} />
             </div>
             <div
-              className={`navbar-icon-wrapper ${
-                activeIcon === "marketplace" ? " active" : ""
-              }`}
+              className={`navbar-icon-wrapper ${activeIcon === "marketplace" ? " active" : ""
+                }`}
               onClick={() => handleIconClick("marketplace")}
             >
               <FontAwesomeIcon className="navbar-icon" icon={faShop} />
