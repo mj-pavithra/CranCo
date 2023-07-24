@@ -1,8 +1,7 @@
 import "./App.css";
 
-import LoginPage from './pages/LoginPage';
+import LoginPage from "./pages/LoginPage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import HelloWorld from "./components/HelloWorld";
 import HomePage from "./pages/HomePage";
 
 function App() {
@@ -11,9 +10,8 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/">
-            <Route index element={<HelloWorld />} />
-            <Route path='/homepage' element={<HomePage />} />
-            <Route path='/login' element={<LoginPage />} />
+            <Route path="/homepage" element={<HomePage />} />
+            <Route path="/login" element={<LoginPage />} />
           </Route>
         </Routes>
       </BrowserRouter>
