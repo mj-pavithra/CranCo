@@ -1,0 +1,60 @@
+/* font-weignts */
+.text-thin {
+    font-weight: 100;
+}
+
+.text-extraLight {
+    font-weight: 200;
+}
+
+.text-light {
+    font-weight: 300;
+}
+
+.text-regular {
+    font-weight: 400;
+}
+
+.text-medium {
+    font-weight: 500;
+}
+
+.text-semiBold {
+    font-weight: 600;
+}
+
+.text-bold {
+    font-weight: 700;
+}
+
+.text-extraBold {
+    font-weight: 800;
+}
+
+.text-black {
+    font-weight: 900;
+}
+
+.txt-07 {
+    font-size: 0.7rem;
+}
+
+.txt-08 {
+    font-size: 0.8rem;
+}
+
+.txt-09 {
+    font-size: 0.9rem;
+}
+
+.txt-11 {
+    font-size: 1.1rem;
+}
+
+.txt-12 {
+    font-size: 1.2rem;
+}
+
+.txt-13 {
+    font-size: 1.3rem;
+}
