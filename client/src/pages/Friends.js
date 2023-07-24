@@ -1,4 +1,4 @@
-const Friends = () => {
+1const Friends = () => {
   return (
     <div>
       <h1>Friends</h1>
