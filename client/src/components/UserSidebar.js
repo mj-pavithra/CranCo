@@ -1,8 +1,8 @@
-import Vehicles from "../Pages/Vehicles";
-import Friends from "../Pages/Friends";
-import Home from "../Pages/Home";
+import Vehicles from "../pages/Vehicles";
+import Friends from "../pages/Friends";
+import Home from "../pages/Home";
 import { Routes, Route, Link } from "react-router-dom";
-import Shops from "../Pages/Shops";
+import Shops from "../pages/Shops";
 import "./UserSidebar.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {

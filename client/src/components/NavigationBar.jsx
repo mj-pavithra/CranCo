@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import "../Css/NavigationBar.css";
+import "../css/NavigationBar.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome } from "@fortawesome/free-solid-svg-icons";
 import { faShop } from "@fortawesome/free-solid-svg-icons";
