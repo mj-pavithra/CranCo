@@ -1,9 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import './fonts.css';
 
 :root {
     /* colours */
     --primary-blue: #2060AD;
     --navbar-background: #1B1A38;
+    --transparent-white: rgba(255, 255, 255, 0.2);
+    --half-transparent-white: rgba(255, 255, 255, 0.5);
+    --background-blue: #000517;
+    --background-blue-light: #1B1A38;
 
 
     /* measures */
@@ -13,9 +18,26 @@
     --width-post: 600px;
 
     /* page body flex basis */
-    --left-partition-flex-basis: 28%;
+    --left-partition-flex-basis: 23%;
     --middle-partition-flex-basis: 44%;
-    --right-partition-flex-basis: 28%;
+    --right-partition-flex-basis: 33%;
+}
+
+/* font-colors */
+.color-white {
+    color: white;
+}
+
+.color-black {
+    color: black;
+}
+
+.color-primary {
+    color: var(--primary-blue);
+}
+
+.color-transparent-white {
+    color: var(--half-transparent-white);
 }
 
 * {
@@ -27,11 +49,6 @@
 html,
 body {
     font-family: 'Inter', sans-serif;
-}
-
-/* text colours */
-.color-white {
-    color: #fff;
 }
 
 .div-1 {
