@@ -7,3 +7,4 @@ const ShopsPage = () => {
 };
 
 export default ShopsPage;
+// this is comment
