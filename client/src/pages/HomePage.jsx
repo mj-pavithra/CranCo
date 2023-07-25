@@ -1,8 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import NavigationBar from "../components/NavigationBar";
 import Post from "../components/Post";
 import UserSidebar from "../components/UserSidebar";
-import { useEffect, useState } from "react";
 
 const HomePage = () => {
   const [userData, setUserData] = useState({
@@ -12,7 +11,7 @@ const HomePage = () => {
   const fetchUserData = () => {
     // backend to fetch user data
     setUserData({
-      image: "../public/girl.png",
+      image: "/girl.png",
       username: "Kaveesha Gunawardana",
     });
   };
