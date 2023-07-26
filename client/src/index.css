@@ -76,6 +76,16 @@ body {
     overflow-y: auto;
 }
 
+.div-max-middle {
+    padding: 20px;
+    gap: 20px;
+    background-color: green;
+    overflow-x: hidden;
+    overflow-y: auto;
+    flex: 1; /* This makes div-max-middle take up the remaining available width */
+  }
+  
+
 .div-middle::-webkit-scrollbar {
     width: 0px;
 }
