@@ -3,6 +3,7 @@ import NavigationBar from "../components/NavigationBar";
 import Post from "../components/Post";
 import UserSidebar from "../components/UserSidebar";
 import Pages from "../components/Pages";
+import NotificationContainer from "../components/NotificationContainer";
 
 const HomePage = () => {
   const [userData, setUserData] = useState({
@@ -35,6 +36,8 @@ const HomePage = () => {
           </div>
           <div className="div-right">
             <Pages />
+            <br />
+            <NotificationContainer />
           </div>
         </div>
       </body>

@@ -9,10 +9,11 @@
 
 .side-bar {
   position: fixed;
-  top: 0;
+  top: 10%;
   left: 0;
+  z-index: auto;
   height: 100%;
-  width: 300px;
+  width: 354px;
   background-color: var(--background-1);
   display: flex;
   flex-direction: column;
@@ -51,6 +52,7 @@ FontAwesomeIcon {
 
 .user-cage img {
   width: 50px;
+  height: 50px;
   border-radius: 50%;
   border-style: none;
 }

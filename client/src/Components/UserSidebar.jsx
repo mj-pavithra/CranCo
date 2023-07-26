@@ -23,7 +23,7 @@ function UserSidebar({ image, username }) {
         <FontAwesomeIcon icon={faUsersLine} />
         Friends
       </Link>
-      <Link className="link" to="/">
+      <Link className="link" to="/vehiclespage">
         <FontAwesomeIcon icon={faCar} />
         Vehicles
       </Link>
