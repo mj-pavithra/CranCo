@@ -15,22 +15,24 @@ function UserSidebar({ image, username }) {
         <img src={image} alt="User Avatar" />
         <p>{username}</p>
       </div>
-      <Link className="link" to="/homepage">
-        <FontAwesomeIcon icon={faHouseChimney} />
-        Home
-      </Link>
-      <Link className="link" to="/login">
-        <FontAwesomeIcon icon={faUsersLine} />
-        Friends
-      </Link>
-      <Link className="link" to="/vehiclespage">
-        <FontAwesomeIcon icon={faCar} />
-        Vehicles
-      </Link>
-      <Link className="link" to="/">
-        <FontAwesomeIcon icon={faShop} />
-        Shops
-      </Link>
+      <div className="sidebar-links">
+        <Link className="link" to="/homepage">
+          <FontAwesomeIcon className="sidebar-icon" icon={faHouseChimney} />
+          Home
+        </Link>
+        <Link className="link" to="/login">
+          <FontAwesomeIcon className="sidebar-icon" icon={faUsersLine} />
+          Friends
+        </Link>
+        <Link className="link" to="/">
+          <FontAwesomeIcon className="sidebar-icon" icon={faCar} />
+          Vehicles
+        </Link>
+        <Link className="link" to="/">
+          <FontAwesomeIcon className="sidebar-icon" icon={faShop} />
+          Shops
+        </Link>
+      </div>
     </div>
   );
 }

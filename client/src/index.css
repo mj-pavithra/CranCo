@@ -52,6 +52,7 @@ body {
 }
 
 .div-1 {
+    background-color: var(--background-blue);
     display: flex;
     width: 100%;
     height: var(--body-partition-heght);
@@ -60,7 +61,6 @@ body {
 }
 
 .div-left {
-    background-color: red;
     /* display: flex; */
     flex-basis: var(--left-partition-flex-basis);
     overflow-x: hidden;
@@ -70,7 +70,6 @@ body {
 .div-middle {
     padding: 20px;
     gap: 20px;
-    background-color: green;
     flex-basis: var(--middle-partition-flex-basis);
     overflow-x: hidden;
     overflow-y: auto;
@@ -89,7 +88,6 @@ div::-webkit-scrollbar-thumb {
 }
 
 .div-right {
-    background-color: blue;
     flex-basis: var(--right-partition-flex-basis);
     overflow-x: hidden;
     overflow-y: auto;
