@@ -1,0 +1,16 @@
+@import '../index.css';
+
+.input-div {
+    height: 48px;
+    width: 100%;
+    background-color: var(--background-blue-light);
+
+    border: none;
+    border-radius: 8px;
+    padding: 0px 15px 0px 15px;
+}
+
+.input-name {
+    color: white;
+    margin-bottom: 6px;
+}
