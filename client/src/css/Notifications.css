@@ -1,0 +1,115 @@
+.profile-image {
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+}
+
+.notification-text {
+  color: var(--text-1);
+  font-size: 14px;
+  padding: 0;
+}
+
+.notification {
+  margin: auto;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background-color: var(--cage-background);
+  width: 460px;
+  padding: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 5px;
+}
+
+.message-time {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5px;
+  padding: 0;
+}
+
+.time {
+  color: var(--text-2);
+  top: 0;
+  font-size: 12px;
+  padding: 0;
+}
+
+.notification-container {
+  margin: auto;
+  background-color: var(--cage-background);
+  width: 100%;
+  padding: 10px;
+}
+
+.heading-cage {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+  padding-bottom: 20px;
+}
+
+.mark-button {
+  font-size: 12px;
+  background: none;
+  border: none;
+  color: var(--text-1);
+}
+
+.mark-button:hover {
+  font-size: 12px;
+  background: none;
+  border: none;
+  text-decoration: underline;
+  cursor: pointer;
+  color: var(--text-1);
+}
+
+.link-btn {
+  width: 70px;
+  font-size: 12px;
+  padding: 5px;
+  background-color: var(--stroke);
+  border-radius: 25px;
+  border: none;
+  color: var(--text-1);
+}
+
+.link-btn:hover {
+  width: 70px;
+  font-size: 12px;
+  padding: 5px;
+  background-color: var(--stroke);
+  border-radius: 25px;
+  border: none;
+  color: var(--text-1);
+  cursor: pointer;
+}
+
+.link-btn:active {
+  width: 70px;
+  font-size: 12px;
+  padding: 5px;
+  background-color: #164885;
+  border-radius: 25px;
+  border: none;
+  color: var(--text-1);
+}
+
+.container-header {
+  padding: 10px;
+  padding-bottom: 25px;
+  background-color: var(--cage-background);
+}
+
+.link-btn-cage {
+  display: flex;
+  gap: 10px;
+}
+
+.container-header .heading-cage h2 {
+  color: var(--text-1);
+}
