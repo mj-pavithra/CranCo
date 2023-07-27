@@ -1,7 +1,12 @@
+import "../components/NavigationBar";
+import "../css/VehiclesPage.css";
+
 const VehiclesPage = () => {
   return (
     <div>
-      <h1>VehiclesPage</h1>
+      <div className="photobooth"></div>
+      <div className="vehicle-about">About</div>
+      <div className="Posts">Posts</div>
     </div>
   );
 };
