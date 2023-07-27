@@ -1,22 +1,18 @@
 import React from "react";
 import "../css/eachItem.css";
+import Btn from "./Btn";
 
-const EachItem = (props) => {
-    return (
-        <div className="each-item">
-        <div className="each-item-left">
-            <img src={props.image} alt="profile" />
-        </div>
-        <div className="each-item-middle">
-            <h3>{props.username}</h3>
-            <p>{props.description}</p>
-        </div>
-        <div className="each-item-right">
-            <button>Accept</button>
-            <button>Decline</button>
-        </div>
-        </div>
-    );
-    }
+const EachItem = ({itemName, dis}) => {
+  return (
+    <div className="each-item">
+      <img className="item-img" src="/girl.png" alt="profile" />
+      <div className="item-text">
+        <h3 className="item-name">{itemName}</h3>
+        <h4 className="item-dis">Colombo</h4>
+      </div>
+      <Btn buttonText="Confirm" />
+    </div>
+  );
+};
 
 export default EachItem;
