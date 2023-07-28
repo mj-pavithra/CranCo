@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import "../css/NavigationBar.css";
-import NotificationContainer from "../components/NotificationContainer";
+import NotificationContainer from "./NotificationContainer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome } from "@fortawesome/free-solid-svg-icons";
 import { faShop } from "@fortawesome/free-solid-svg-icons";
