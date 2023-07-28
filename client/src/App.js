@@ -1,38 +1,32 @@
 // App.js
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import MainContainer from "../src/containers/MainContainer";
+import { BrowserRouter as Outlet, Routes, Route, BrowserRouter } from "react-router-dom";
 import HomePage from "../src/pages/HomePage"; // Import other page components as needed
 import VehiclesPage from "./pages/VehiclesPage";
-import LoginPage from "./pages/LoginPage"; // Import the LoginPage component
+import FriendsPage from "../src/pages/FriendsPage";
+import LoginPage from "./pages/LoginPage";
+import UserRegistrationPage from "./pages/UserRegistrationPage";
+import MerchantRegistrationPage from "./pages/MerchantRegistrationPage";
+import Error404 from "./pages/Error404";
 
 const App = () => {
   return (
-    <Router>
+    <BrowserRouter>
       <Routes>
-        {/* Login page outside of MainContainer */}
-        <Route path="/login" element={<LoginPage />} />
+        <Route path="/">
+          <Route path="/homepage" element={<HomePage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/friends" element={<FriendsPage />} />
+          <Route path="*" element={<Error404 />} />
+        </Route>
 
-        {/* Protected routes inside MainContainer */}
-        <Route
-          path="/homepage"
-          element={
-            <MainContainer>
-              <HomePage />
-            </MainContainer>
-          }
-        />
-        <Route
-          path="/vehicles"
-          element={
-            <MainContainer>
-              <VehiclesPage />
-            </MainContainer>
-          }
-        />
-        {/* Add more protected routes here */}
+        <Route path="/registration">
+          <Route path="/registration/user" element={<UserRegistrationPage />} />
+          <Route path="/registration/merchant" element={<MerchantRegistrationPage />} />
+          <Route path="*" element={<Error404 />} />
+        </Route>
       </Routes>
-    </Router>
+    </BrowserRouter >
   );
 };
 
