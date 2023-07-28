@@ -1,16 +1,18 @@
-import "./App.css";
-
+// App.js
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import MainContainer from "../src/containers/MainContainer";
+import HomePage from "../src/pages/HomePage"; // Import other page components as needed
+import VehiclesPage from "./pages/VehiclesPage";
+import FriendsPage from "../src/pages/FriendsPage";
 import LoginPage from "./pages/LoginPage";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import HomePage from "./pages/HomePage";
 import UserRegistrationPage from "./pages/UserRegistrationPage";
 import MerchantRegistrationPage from "./pages/MerchantRegistrationPage";
-import FriendsPage from "./pages/FriendsPage";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <BrowserRouter>
+    <Router>
+      <MainContainer>
         <Routes>
           <Route path="/">
             <Route path="/homepage" element={<HomePage />} />
@@ -23,10 +25,9 @@ function App() {
             
           </Route>
         </Routes>
-      </BrowserRouter>
-    </div>
+      </MainContainer>
+    </Router>
   );
-}
+};
 
 export default App;
-// comment from kaveesha
