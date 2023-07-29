@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import LoginInput from '../components/LoginInput'
 import Checkbox from '../components/Checkbox'
 import Btn from '../components/Btn'
