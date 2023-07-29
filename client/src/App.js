@@ -17,6 +17,8 @@ import Error404 from "./pages/Error404";
 import LoginPageContainer from "./containers/LoginPageContainer";
 import ViewProductPage from "./pages/ViewProductPage";
 
+import UserProfile from "./pages/UserProfile";
+
 const App = () => {
   return (
     <BrowserRouter>
@@ -31,6 +33,7 @@ const App = () => {
           <Route path="/friends" element={<FriendsPage />} />
           <Route path="/marketplace" element={<Marketplace />} />
           <Route path="/product" element={<ViewProductPage />} />
+          <Route path="/user" element={<UserProfile />} />
           <Route path="*" element={<Error404 />} />
         </Route>
 
