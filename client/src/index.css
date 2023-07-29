@@ -12,8 +12,8 @@
 
 
   /* measures */
-  --navbar-height: 75px;
-  --body-partition-heght: calc(100vh - var(--navbar-height));
+  --navbar-height: 60px;
+  --body-partition-heght: calc(100vh - var(--navbar-height) - 1px);
 
   --width-post: 600px;
 
