@@ -4,19 +4,21 @@ import Checkbox from '../components/Checkbox'
 import Btn from '../components/Btn'
 import LoginPageContainer from '../containers/LoginPageContainer'
 
-const LoginPage = () => {
+const RegistrationPageUser = () => {
     return (
         <LoginPageContainer>
             <div className='layout-cont-4'>
                 <div className='layout-cont-3'>
                     <div className='section-1'>
-                        <img className='login_logo' src="/assets/logo.png" alt="" />
                         <div className='sec1-message'>Sign in to CranCo</div>
                     </div>
                     <div className='layout-cont-2'>
                         <form className='layout-cont-1' action="">
                             <div>
                                 <LoginInput name={'name'} placeholder={'Enter your user name'} type={'text'} />
+                            </div>
+                            <div>
+                                <LoginInput name={'birth_date'} placeholder={'Enter your birthday'} type={'date'} />
                             </div>
                             <div>
                                 <LoginInput name={'password'} placeholder={'Enter your password'} type={'password'} />
@@ -45,4 +47,4 @@ const LoginPage = () => {
     )
 }
 
-export default LoginPage
+export default RegistrationPageUser

@@ -4,13 +4,13 @@ import Checkbox from '../components/Checkbox'
 import Btn from '../components/Btn'
 import LoginPageContainer from '../containers/LoginPageContainer'
 
-const LoginPage = () => {
+
+const RegistrationPageMerchant = () => {
     return (
         <LoginPageContainer>
             <div className='layout-cont-4'>
                 <div className='layout-cont-3'>
                     <div className='section-1'>
-                        <img className='login_logo' src="/assets/logo.png" alt="" />
                         <div className='sec1-message'>Sign in to CranCo</div>
                     </div>
                     <div className='layout-cont-2'>
@@ -45,4 +45,4 @@ const LoginPage = () => {
     )
 }
 
-export default LoginPage
+export default RegistrationPageMerchant
