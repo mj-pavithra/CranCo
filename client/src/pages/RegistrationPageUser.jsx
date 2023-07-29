@@ -37,8 +37,7 @@ const RegistrationPageUser = () => {
                         </form>
 
                         <div className='color-white txt-09 d-flex flex-column align-items-center'>
-                            <div>Don't you have an account? create an account</div>
-                            <div>Are you a business? Get started here</div>
+                            <div>Already have an account? <Link className='link-main color-primary'>Log In</Link></div>
                         </div>
                     </div>
                 </div>
