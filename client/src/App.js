@@ -4,6 +4,7 @@ import { BrowserRouter as Outlet, Routes, Route, BrowserRouter } from "react-rou
 import HomePage from "../src/pages/HomePage"; // Import other page components as needed
 import VehiclesPage from "./pages/VehiclesPage";
 import FriendsPage from "../src/pages/FriendsPage";
+import Marketplace from "./pages/Marketplace";
 import LoginPage from "./pages/LoginPage";
 import UserRegistrationPage from "./pages/UserRegistrationPage";
 import MerchantRegistrationPage from "./pages/MerchantRegistrationPage";
@@ -17,6 +18,7 @@ const App = () => {
           <Route path="/homepage" element={<HomePage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/friends" element={<FriendsPage />} />
+          <Route path="/marketplace" element={<Marketplace />} />
           <Route path="*" element={<Error404 />} />
         </Route>
 
