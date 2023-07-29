@@ -1,5 +1,12 @@
 @import '../index.css';
 
+.login_logo {
+    width: 160px;
+}
+
+/* from loginpage.css */
+@import '../index.css';
+
 .side-div {
     --content-width: 350px;
 }
@@ -57,10 +64,6 @@
 
 .layout-cont-4 {
     width: var(--content-width);
-}
-
-.login_logo {
-    width: 80px;
 }
 
 .section-1 {
