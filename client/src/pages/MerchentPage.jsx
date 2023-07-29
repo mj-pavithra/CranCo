@@ -35,7 +35,7 @@ const Pages = () => {
         "Book Club",
       ],
       dis: ["Event Lover",],
-      image: ["image.png"],
+      image: ["girl.png"],
       action : ["accept"]
     },
     {
@@ -51,7 +51,7 @@ const Pages = () => {
         "Artistic Expressions",
       ],
       dis: ["Adventure Seeker"],
-      image: ["image.png"],
+      image: ["girl.png"],
       action : ["check"]
     },
     {
@@ -67,7 +67,7 @@ const Pages = () => {
         "Cooking Hacks",
       ],
       dis: ["Trend Watcher"],
-      image: ["image.png"],
+      image: ["girl.png"],
       action : ["check"]
     },
     
