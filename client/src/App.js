@@ -10,6 +10,7 @@ import HomePage from "../src/pages/HomePage"; // Import other page components as
 import VehiclesPage from "./pages/VehiclesPage";
 import FriendsPage from "../src/pages/FriendsPage";
 import Marketplace from "./pages/Marketplace";
+import Pages from "./pages/MerchentPage";
 import LoginPage from "./pages/LoginPage";
 import RegistrationPageUser from "./pages/RegistrationPageUser";
 import RegistrationPageMerchant from "./pages/RegistrationPageMerchant";
@@ -30,6 +31,7 @@ const App = () => {
           />
           <Route path="/friends" element={<FriendsPage />} />
           <Route path="/marketplace" element={<Marketplace />} />
+          <Route path="/pages" element={<Pages />} />
           <Route path="/product" element={<ViewProductPage />} />
           <Route path="*" element={<Error404 />} />
         </Route>
