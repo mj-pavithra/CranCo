@@ -1,5 +1,5 @@
 import {useState} from "react";
-import EachItem from "../components/EachItem";
+import EachItem from "../components/eachItem";
 import Btn from "../components/Btn";
 
 function MidMaxBlock({ rowTitle, items }) {
