@@ -5,13 +5,14 @@ import Btn from '../components/Btn'
 import LoginPageContainer from '../containers/LoginPageContainer'
 import { Link } from 'react-router-dom'
 
-const LoginPage = () => {
+
+const RegistrationPageMerchant = () => {
     return (
         <LoginPageContainer>
             <div className='layout-cont-4'>
                 <div className='layout-cont-3'>
                     <div className='section-1'>
-                        <div className='sec1-message'>Login to CranCo</div>
+                        <div className='sec1-message'>Sign in to CranCo</div>
                     </div>
                     <div className='layout-cont-2'>
                         <form className='layout-cont-1' action="">
@@ -26,7 +27,7 @@ const LoginPage = () => {
                                     <Checkbox name={'remember_password'} id={'12'} /> <span>Remember me</span>
                                 </div>
                                 <div className='color-primary'>
-                                    <Link className='main-link color-primary'>Reset password</Link>
+                                    Reset password
                                 </div>
                             </div>
                             <div className='pt-3'>
@@ -35,8 +36,7 @@ const LoginPage = () => {
                         </form>
 
                         <div className='color-white txt-09 d-flex flex-column align-items-center'>
-                            <div>Don't you have an account? <Link className='main-link color-primary' to="/registration/user"> create an account</Link></div>
-                            <div>Are you a business? <Link className='main-link color-primary' to="/registration/merchant">Get started here</Link></div>
+                            <div>Already have an account? <Link className='link-main color-primary'>Log In</Link></div>
                         </div>
                     </div>
                 </div>
@@ -45,4 +45,4 @@ const LoginPage = () => {
     )
 }
 
-export default LoginPage
+export default RegistrationPageMerchant
