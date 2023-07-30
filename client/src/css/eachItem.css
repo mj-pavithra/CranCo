@@ -1,21 +1,35 @@
 @import '../index.css';
 .each-item {
-    width: 233px;
+    /* width: 233px;
     height: 325px;
-    padding: 0px;
+    padding: 0px 0px 10px 0px;
     flex-shrink: 0;
     background: #1B1A38;
-    display: flex; /* Use display: flex; instead of display: inline-flex; */
+    display: flex; 
     flex-direction: column;
     justify-content: center;
     align-items: center;
     margin-right: 10px;
-  
+   */
     &:last-child {
       margin-right: 0;
     }
   }
+
+  .each-item {
+    width: 233px;
+    height: 325px;
+    padding: 0px 0px 10px 0px;
+    flex-shrink: 0;
+    background: #1B1A38;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
   
+  
+
 
 .each-item .item-img{
     width: 100%;

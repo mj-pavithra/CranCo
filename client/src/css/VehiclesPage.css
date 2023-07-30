@@ -3,3 +3,9 @@
   height: 400px;
   background-color: aliceblue;
 }
+
+.vehicle-about {
+  background-color: aliceblue;
+  display: flex;
+  flex-direction: column;
+}

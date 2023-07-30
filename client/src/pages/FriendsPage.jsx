@@ -14,17 +14,21 @@ const FriendsPage = () => {
     "Item 3",
   ];
 
+  const dis = "Colombo";
+
+  const image = "girl.png";
+const action = "Add Friend";
   return (
     <>
       <NavigationBar />
       <body>
         <div className="div-1">
-          <div className="div-left">
+           <div className="div-left">
             <UserSidebar />
           </div>
           <div className={`div-max-middle `}>
-          <MidMaxBlock rowTitle="Friends" items={items} />
-          <MidMaxBlock rowTitle="Requests" items={items} />
+          <MidMaxBlock rowTitle="Friends" items={items}  action={action} image={image} dis={dis} />
+          <MidMaxBlock rowTitle="Requests" items={items} action={action} image={image} dis={dis} />
           </div>
         </div>
         
