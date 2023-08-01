@@ -1,5 +1,5 @@
 import React from "react";
-import ViewProductSide from "../components/ViewProductSide";
+import ViewProductSide from "../components/ViewProductSideDetails";
 
 const ViewProduct = () => {
     return (
@@ -8,7 +8,7 @@ const ViewProduct = () => {
                 <img src="../assets/car_img_1.jpg" alt="product" />
             </div>
             <div>
-                <ViewProductSide />
+                <ViewProductSide/>
             </div>
             <div>
                 <h6>Product Name</h6>
