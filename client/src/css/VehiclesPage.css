@@ -1,6 +1,7 @@
 :root {
   --top-margin: 15px;
   --cage-border-radius: 10px;
+  --active-btn-background: #1f4f89;
 }
 
 .photobooth {
@@ -125,4 +126,37 @@
   height: 30px;
   color: var(--text-1);
   font-size: 14px;
+}
+
+.show-all-photos:hover {
+  border-style: none;
+  border-radius: 5px;
+  width: 130px;
+  height: 30px;
+  color: var(--text-1);
+  font-size: 14px;
+  background-color: (--active-btn-background);
+}
+
+.all-vehicle-photos {
+  display: flex;
+  padding: 5px;
+  gap: 15px;
+  width: 100%;
+  height: auto;
+  justify-content: space-between;
+}
+
+.all-photos-grid-container-left {
+  width: 50%;
+  height: auto;
+}
+
+.all-photos-grid-container-right {
+  width: 50%;
+  height: auto;
+}
+
+.all-vehicle-photos .all-photos-grid-container-left img {
+  max-height: 300px;
 }

@@ -5,6 +5,7 @@ import MainContainer from "../src/containers/MainContainer";
 import HomePage from "../src/pages/HomePage"; // Import other page components as needed
 import VehiclesPage from "./pages/VehiclesPage";
 import LoginPage from "./pages/LoginPage"; // Import the LoginPage component
+import AllVehiclePhotos from "./pages/AllVehiclePhotos";
 
 const App = () => {
   return (
@@ -27,10 +28,18 @@ const App = () => {
           element={
             <MainContainer>
               <VehiclesPage />
+              <AllVehiclePhotos />
             </MainContainer>
           }
         />
-        {/* Add more protected routes here */}
+        <Route
+          path="/allvehiclephotos"
+          element={
+            <MainContainer>
+              <AllVehiclePhotos />
+            </MainContainer>
+          }
+        />
       </Routes>
     </Router>
   );
