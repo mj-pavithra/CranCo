@@ -1,6 +1,7 @@
 @import '../index.css';
 
-.profileCard{
+.profileCard{ 
+    position: relative;
     margin: 0px auto;
     max-width:1241px ;
     width: 100%;
@@ -57,7 +58,7 @@
 }
 .profileCardbottom{
     position: absolute;
-    bottom: 50px;
+    bottom: 0px;
     left: 111px;
     width: 100%;
     max-width:1241px ;
