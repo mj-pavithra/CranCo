@@ -1,26 +1,37 @@
 import React from "react";
 import "../css/profileCard.css";
 
+const ProfileCard = ({ coverPhoto, profilePhoto, editDP, profileName, likedPage1, likedPage2, likedPage3, likedPageCount, RalionshipState, addFriend  }) => {
+    
 
+    const onError = (originalImg) => {
+        const altImg = "/assets/alt-image.jpeg";
+      if (originalImg === null || originalImg === "") {
+        return altImg;
+      }
+      return originalImg;
+    };
+    
   
     return (
    <div className="profileCard">
     <div className="profileCardtop">
-        <img className="coverPhoto" alt="/assets/alt-image.jpg">{coverPhoto}</img>
+        <img className="coverPhoto" alt="Error" src={onError(coverPhoto)}/
+        >
     </div>
     <div className="profileCardmiddle">
-        <img className="profilePhoto">{profilePhoto}</img>
-        <img className="editDP" alt="/assets/alt-image.jpg">{editDP}</img>
+        <img className="profilePhoto" src={onError(profilePhoto)}/>
+        <img className="editDP" alt="Error" src={onError(editDP)}/>
     </div>
     <div className="profileCardbottom">
-        <h1 className="profileName">{profileName}</h1>
+        <h1 className="profileName">{profileName} </h1>
         <div classname="pages">
-            <img className="likedPage1" alt="/assets/alt-image.jpg">{likedPage1}</img>
-            <img className="likedPage2" alt="/assets/alt-image.jpg">{likedPage2}</img>
-            <img className="likedPage3" alt="/assets/alt-image.jpg">{likedPage3}</img>
+            <img className="likedPage1" alt="Error" src={onError(likedPage1)}/>
+            <img className="likedPage2" alt="Error" src={onError(likedPage2)}/>
+            <img className="likedPage2" alt="Error" src={onError(likedPage3)}/>
             <h3 className="likedPageCount">{likedPageCount}</h3>
         </div>
-        <h3 className="RalionshipState"></h3>
+        <h3 className="RalionshipState">{RalionshipState}</h3>
         <button className="addFriend">{addFriend}</button>
     </div>
    </div>
