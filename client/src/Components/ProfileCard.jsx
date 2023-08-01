@@ -27,9 +27,9 @@ const ProfileCard = ({ coverPhoto, profilePhoto, editDP, profileName, likedPage1
         <h1 className="profileName">{profileName} </h1>
         <div classname="pages">
             <img className="likedPage1" alt="Error" src={onError(likedPage1)}/>
-            <img className="likedPage2" alt="Error" src={onError(likedPage2)}/>
-            <img className="likedPage2" alt="Error" src={onError(likedPage3)}/>
-            <h3 className="likedPageCount">{likedPageCount}</h3>
+            <img className="likedPage1 lp2" alt="Error" src={onError(likedPage2)}/>
+            <img className="likedPage1 lp3" alt="Error" src={onError(likedPage3)}/>
+            <h3 className="likedPageCount">{likedPageCount} Pages</h3>
         </div>
         <h3 className="RalionshipState">{RalionshipState}</h3>
         <button className="addFriend">{addFriend}</button>
