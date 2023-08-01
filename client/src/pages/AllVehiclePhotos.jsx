@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import AllVehiclePhotosGrid from "../components/AllVehiclePhotosGrid";
 import "../css/VehiclesPage.css";
+import MainContainer from "../containers/MainContainer";
 
 function AllVehiclePhotos() {
   const fetchVehiclePhotos = () => {
@@ -12,9 +13,9 @@ function AllVehiclePhotos() {
   });
 
   return (
-    <div>
+    <MainContainer>
       <AllVehiclePhotosGrid />
-    </div>
+    </MainContainer>
   );
 }
 

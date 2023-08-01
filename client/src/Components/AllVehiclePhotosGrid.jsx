@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import "../css/VehiclesPage.css";
 
 function AllVehiclePhotosGrid({
@@ -23,6 +24,8 @@ function AllVehiclePhotosGrid({
   const dummyImage9 = "/assets/audiA4_int_4.jpeg";
   const dummyImage10 = "/assets/audiA4_int5.jpeg";
 
+  const navigate = useNavigate();
+
   return (
     <div className="all-vehicle-photos">
       <div className="column">
@@ -31,6 +34,9 @@ function AllVehiclePhotosGrid({
         <img src={image3 || dummyImage3} alt="image3" />
         <img src={image4 || dummyImage4} alt="image4" />
         <img src={image5 || dummyImage5} alt="image5" />
+        <button className="back-btn" onClick={() => navigate("/vehicles")}>
+          Show less
+        </button>
       </div>
       <div className="column">
         <img src={image6 || dummyImage6} alt="image6" />
