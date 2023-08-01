@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import NavigationBar from "../components/NavigationBar";
 import UserSidebar from "../components/UserSidebar";
 import Pages from "../components/Pages";
+import '../css/MainContainer.css'
 
 const MainContainer = (props) => {
   const [userData, setUserData] = useState({
