@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import HomePage from "../src/pages/HomePage"; // Import other page components as needed
 import VehiclesPage from "./pages/VehiclesPage";
+import AllVehiclePhotos from "./pages/AllVehiclePhotos";
 import FriendsPage from "../src/pages/FriendsPage";
 import Marketplace from "./pages/Marketplace";
 import Pages from "./pages/MerchentPage";
