@@ -1,46 +1,54 @@
 // App.js
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import MainContainer from "../src/containers/MainContainer";
+import {
+  BrowserRouter as Outlet,
+  Routes,
+  Route,
+  BrowserRouter,
+} from "react-router-dom";
 import HomePage from "../src/pages/HomePage"; // Import other page components as needed
 import VehiclesPage from "./pages/VehiclesPage";
-import LoginPage from "./pages/LoginPage"; // Import the LoginPage component
 import AllVehiclePhotos from "./pages/AllVehiclePhotos";
+import FriendsPage from "../src/pages/FriendsPage";
+import Marketplace from "./pages/Marketplace";
+import Pages from "./pages/MerchentPage";
+import LoginPage from "./pages/LoginPage";
+import RegistrationPageUser from "./pages/RegistrationPageUser";
+import RegistrationPageMerchant from "./pages/RegistrationPageMerchant";
+import Error404 from "./pages/Error404";
+import LoginPageContainer from "./containers/LoginPageContainer";
+import ViewProductPage from "./pages/ViewProductPage";
+import MerchantOtherView from "./pages/MerchantOtherView";
 
 const App = () => {
   return (
-    <Router>
+    <BrowserRouter>
       <Routes>
-        {/* Login page outside of MainContainer */}
-        <Route path="/login" element={<LoginPage />} />
+        <Route path="/">
+          <Route path="/homepage" element={<HomePage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route
+            path="/login2"
+            element={<LoginPageContainer></LoginPageContainer>}
+          />
+          <Route path="/friends" element={<FriendsPage />} />
+          <Route path="/marketplace" element={<Marketplace />} />
+          <Route path="/pages" element={<Pages />} />
+          <Route path="/product" element={<ViewProductPage />} />
+          <Route path="*" element={<Error404 />} />
+        </Route>
 
-        {/* Protected routes inside MainContainer */}
-        <Route
-          path="/homepage"
-          element={
-            <MainContainer>
-              <HomePage />
-            </MainContainer>
-          }
-        />
-        <Route
-          path="/vehicles"
-          element={
-            <MainContainer>
-              <VehiclesPage />
-            </MainContainer>
-          }
-        />
-        <Route
-          path="/allvehiclephotos"
-          element={
-            <MainContainer>
-              <AllVehiclePhotos />
-            </MainContainer>
-          }
-        />
+        <Route path="/registration">
+          <Route path="/registration/user" element={<RegistrationPageUser />} />
+          <Route
+            path="/registration/merchant"
+            element={<RegistrationPageMerchant />}
+          />
+          <Route path="*" element={<Error404 />} />
+        </Route>
+        <Route path="/merchant" element={<MerchantOtherView />}></Route>
       </Routes>
-    </Router>
+    </BrowserRouter>
   );
 };
 
