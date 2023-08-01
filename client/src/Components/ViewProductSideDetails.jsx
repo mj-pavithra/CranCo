@@ -25,4 +25,6 @@ const ViewProductSideDetails = () => {
             </div> 
         </div>
     );
-}
+} 
+
+export default ViewProductSideDetails;
