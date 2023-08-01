@@ -19,20 +19,20 @@ function AllVehiclePhotosGrid({
   const dummyImage5 = "/assets/audiA4_front.jpeg";
   const dummyImage6 = "/assets/audiA4int_1.jpeg";
   const dummyImage7 = "/assets/audiA4_int_2.jpeg";
-  const dummyImage8 = "/assets/audiA4_int3.jpeg";
+  const dummyImage8 = "/assets/audiA4int_3.jpeg";
   const dummyImage9 = "/assets/audiA4_int_4.jpeg";
   const dummyImage10 = "/assets/audiA4_int5.jpeg";
 
   return (
     <div className="all-vehicle-photos">
-      <div className="all-photos-grid-container-left">
+      <div className="column">
         <img src={image1 || dummyImage1} alt="image1" />
         <img src={image2 || dummyImage2} alt="image2" />
         <img src={image3 || dummyImage3} alt="image3" />
         <img src={image4 || dummyImage4} alt="image4" />
         <img src={image5 || dummyImage5} alt="image5" />
       </div>
-      <div className="all-photos-grid-container-right">
+      <div className="column">
         <img src={image6 || dummyImage6} alt="image6" />
         <img src={image7 || dummyImage7} alt="image7" />
         <img src={image8 || dummyImage8} alt="image8" />

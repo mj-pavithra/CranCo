@@ -147,16 +147,13 @@
   justify-content: space-between;
 }
 
-.all-photos-grid-container-left {
-  width: 50%;
-  height: auto;
+.column {
+  max-width: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
-.all-photos-grid-container-right {
-  width: 50%;
-  height: auto;
-}
-
-.all-vehicle-photos .all-photos-grid-container-left img {
-  max-height: 300px;
+.column img {
+  max-width: 100%;
 }

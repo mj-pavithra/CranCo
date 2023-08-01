@@ -28,7 +28,6 @@ const App = () => {
           element={
             <MainContainer>
               <VehiclesPage />
-              <AllVehiclePhotos />
             </MainContainer>
           }
         />
