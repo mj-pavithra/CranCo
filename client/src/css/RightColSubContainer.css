@@ -1,18 +1,26 @@
 .topContainer{
-    background-color: black ;
+  padding: 10px;
+  background-color: black ;
 }
-.pageTitle{
+.containerTitle{
+    position: relative;
+    padding: 10px;
+    left: calc(50% - 125px); 
+    width: 100%;
+    margin: auto; 
     color: #FFF;
-font-family: Inter;
-font-size: 26px;
-font-style: normal;
-font-weight: 700;
-line-height: normal;
+    font-family: Inter;
+    font-size: 26px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
     letter-spacing: 0.02em;
     text-align: left;
     color: #FFFFFF;
 }
 .fullContainer1{
+    margin: auto;
+    position: relative;
     width: 250px;
     height: 300px;
     border-radius: 18px;
@@ -23,6 +31,7 @@ line-height: normal;
     padding: 20px 0px;
   }
   .fullContainer{
+    min-height: 201;
     
     overflow-y: auto;
   }
@@ -42,6 +51,14 @@ line-height: normal;
   
   .fullContainer::-webkit-scrollbar-thumb:active {
     background-color: #444;
+  }
+
+  .hr{
+    color: #2060AD;
+    width: 80%;
+    height: 5px;
+    margin: 0px auto;
+
   }
   
   .eachProfile {
@@ -75,6 +92,7 @@ line-height: normal;
   }
   
   .addPagebtn {
+    position: relative;
     display: flex;
     width: 189px;
     height: 49px;

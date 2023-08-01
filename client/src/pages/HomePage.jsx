@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import NavigationBar from "../components/NavigationBar";
 import Post from "../components/Post";
 import UserSidebar from "../components/UserSidebar";
-import Pages from "../components/Pages";
+import RightColSubContainer from "../components/rightColSubContainer";
 
 const HomePage = () => {
   const [userData, setUserData] = useState({
@@ -16,6 +16,17 @@ const HomePage = () => {
       username: "Kaveesha Gunawardana",
     });
   };
+
+ 
+    const pagesData = [
+      { name: 'Page 1', imgUrl: '/assets/audir8.jpeg' },
+      { name: 'Page 2', imgUrl: '/assets/audir8.jpeg' },
+      { name: 'Page 3', imgUrl: '/assets/audir8.jpeg' },
+      { name: 'Page 4', imgUrl: '/assets/audir8.jpeg' },
+      { name: 'Page 5', imgUrl: '/assets/audir8.jpeg' },
+      { name: 'Page 6', imgUrl: '/assets/audir8.jpeg' },
+      
+    ];
 
   // fetch user data when component mounts
   useEffect(() => {
@@ -34,7 +45,8 @@ const HomePage = () => {
             <Post />
           </div>
           <div className="div-right">
-            <Pages />
+          <RightColSubContainer containerTitle="Pages" Items={pagesData} btnTxt="Create Page" />
+            <RightColSubContainer containerTitle="Trending" Items={pagesData} btnTxt= ""  />
           </div>
         </div>
       </body>
