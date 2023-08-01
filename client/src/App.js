@@ -17,6 +17,7 @@ import RegistrationPageMerchant from "./pages/RegistrationPageMerchant";
 import Error404 from "./pages/Error404";
 import LoginPageContainer from "./containers/LoginPageContainer";
 import ViewProductPage from "./pages/ViewProductPage";
+import MerchantOtherView from "./pages/MerchantOtherView";
 
 const App = () => {
   return (
@@ -44,6 +45,7 @@ const App = () => {
           />
           <Route path="*" element={<Error404 />} />
         </Route>
+        <Route path="/merchant" element={<MerchantOtherView />}></Route>
       </Routes>
     </BrowserRouter>
   );
