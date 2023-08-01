@@ -1,11 +1,6 @@
 // App.js
 import React from "react";
-import {
-  BrowserRouter as Outlet,
-  Routes,
-  Route,
-  BrowserRouter,
-} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import HomePage from "../src/pages/HomePage"; // Import other page components as needed
 import VehiclesPage from "./pages/VehiclesPage";
 import AllVehiclePhotos from "./pages/AllVehiclePhotos";
@@ -27,26 +22,22 @@ const App = () => {
         <Route path="/">
           <Route path="/homepage" element={<HomePage />} />
           <Route path="/login" element={<LoginPage />} />
-          <Route
-            path="/login2"
-            element={<LoginPageContainer></LoginPageContainer>}
-          />
+          <Route path="/login2" element={<LoginPageContainer />} />
           <Route path="/friends" element={<FriendsPage />} />
           <Route path="/marketplace" element={<Marketplace />} />
           <Route path="/pages" element={<Pages />} />
           <Route path="/product" element={<ViewProductPage />} />
+          <Route path="/vehicles" element={<VehiclesPage />} />
+          <Route path="/allvehiclephotos" element={<AllVehiclePhotos />} />
+          <Route path="/merchant" element={<MerchantOtherView />}></Route>
           <Route path="*" element={<Error404 />} />
         </Route>
 
         <Route path="/registration">
           <Route path="/registration/user" element={<RegistrationPageUser />} />
-          <Route
-            path="/registration/merchant"
-            element={<RegistrationPageMerchant />}
-          />
+          <Route path="/registration/merchant" element={<RegistrationPageMerchant />} />
           <Route path="*" element={<Error404 />} />
         </Route>
-        <Route path="/merchant" element={<MerchantOtherView />}></Route>
       </Routes>
     </BrowserRouter>
   );

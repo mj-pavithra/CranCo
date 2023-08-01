@@ -157,3 +157,23 @@
 .column img {
   max-width: 100%;
 }
+
+.back-btn {
+  background-color: var(--stroke);
+  border-style: none;
+  border-radius: 5px;
+  width: 130px;
+  height: 30px;
+  color: var(--text-1);
+  font-size: 14px;
+}
+
+.back-btn:hover {
+  border-style: none;
+  border-radius: 5px;
+  width: 130px;
+  height: 30px;
+  color: var(--text-1);
+  font-size: 14px;
+  background-color: (--active-btn-background);
+}

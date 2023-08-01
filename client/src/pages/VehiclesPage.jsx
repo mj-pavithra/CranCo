@@ -4,6 +4,7 @@ import VehiclesAbout from "../components/VehicleAbout";
 import "../css/VehiclesPage.css";
 import Post from "../components/Post";
 import Photobooth from "../components/Photobooth";
+import MainContainer from "../containers/MainContainer";
 
 const VehiclesPage = () => {
   const fetchVehicleAbouts = () => {
@@ -23,7 +24,7 @@ const VehiclesPage = () => {
   });
 
   return (
-    <div>
+    <MainContainer>
       <div className="photobooth-renderer">
         <Photobooth />
       </div>
@@ -33,7 +34,7 @@ const VehiclesPage = () => {
       <div className="Posts">
         <Post />
       </div>
-    </div>
+    </MainContainer>
   );
 };
 
