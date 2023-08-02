@@ -1,42 +1,41 @@
-import React from 'react';
-import '../css/ProfileCard.css';
-import Btn from './Btn';
+import React from "react";
+import "../css/profileCard.css";
 
-const ProfileCard = ({coverImage, name, pages, status, btnText, btnWidth, btnType}) => {
+const ProfileCard = ({ coverPhoto, profilePhoto, editDP, profileName, likedPage1, likedPage2, likedPage3, likedPageCount, RalionshipState, addFriend  }) => {
+    
 
-      const pageCount = pages.length;
-
-    return ( 
-        <div className="profileCardContainer">
-            <div className="coverImageContainer">
-                <img src={coverImage} alt="" className="coverImage" />
-                <div className="profilePictureContainer">
-                    <img src="assets/profile.jpg" alt="" className="profilePicture" />
-                </div>
-            </div>
-            <div className="detailsContainer color-white">
-                <div className="detailContent">
-                    <p className='text-bold txt-14'>{name}</p>
-                    <div className="pagedetailsContainer">
-                        <ul className="pageContainer">
-                            {pages.slice(0, 5).map((page, pageID) => (
-                                <li key={pageID}>
-                                    <img src={`${page}`} alt="" className="pageDP" />
-                                </li>
-                            ))}
-                        </ul>
-                        <p className="txt-10">{pageCount} pages</p>
-                    </div>
-                    <div className="status txt-09">
-                        <p>{status}</p>
-                    </div>
-                </div>
-                <div className="btnContainer">
-                    <Btn buttonText={btnText} width={btnWidth} type={btnType}/>
-                </div>
-            </div>
+    const onError = (originalImg) => {
+        const altImg = "/assets/alt-image.jpeg";
+      if (originalImg === null || originalImg === "") {
+        return altImg;
+      }
+      return originalImg;
+    };
+    
+  
+    return (
+   <div className="profileCard">
+    <div className="profileCardtop">
+        <img className="coverPhoto" alt="Error" src={onError(coverPhoto)}/
+        >
+    </div>
+    <div className="profileCardmiddle">
+        <img className="profilePhoto" src={onError(profilePhoto)}/>
+        <img className="editDP" alt="Error" src={onError(editDP)}/>
+    </div>
+    <div className="profileCardbottom">
+        <h1 className="profileName">{profileName} </h1>
+        <div classname="pages">
+            <img className="likedPage1" alt="Error" src={onError(likedPage1)}/>
+            <img className="likedPage1 lp2" alt="Error" src={onError(likedPage2)}/>
+            <img className="likedPage1 lp3" alt="Error" src={onError(likedPage3)}/>
+            <h3 className="likedPageCount">{likedPageCount} Pages</h3>
         </div>
-     );
-}
- 
+        <h3 className="RalionshipState">{RalionshipState}</h3>
+        <button className="addFriend">{addFriend}</button>
+    </div>
+   </div>
+  );
+};
+
 export default ProfileCard;

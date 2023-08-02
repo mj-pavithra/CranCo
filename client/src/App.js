@@ -15,6 +15,8 @@ import LoginPageContainer from "./containers/LoginPageContainer";
 import ViewProductPage from "./pages/ViewProductPage";
 import MerchantOtherView from "./pages/MerchantOtherView";
 
+import UserProfile from "./pages/UserProfile";
+
 const App = () => {
   return (
     <BrowserRouter>
@@ -27,6 +29,7 @@ const App = () => {
           <Route path="/marketplace" element={<Marketplace />} />
           <Route path="/pages" element={<Pages />} />
           <Route path="/product" element={<ViewProductPage />} />
+          <Route path="/user" element={<UserProfile />} />
           <Route path="/vehicles" element={<VehiclesPage />} />
           <Route path="/allvehiclephotos" element={<AllVehiclePhotos />} />
           <Route path="/merchant" element={<MerchantOtherView />}></Route>
