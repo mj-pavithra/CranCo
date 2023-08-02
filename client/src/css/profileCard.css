@@ -1,11 +1,12 @@
 @import '../index.css';
+@import '../fonts.css';
 
 .profileCard{ 
     position: relative;
     margin: 0px auto;
     max-width:1241px ;
-    width: 100%;
-    height: 576px;
+    width: 80%;
+    height: 432px;
     background-color:#1B1A38 ;
     margin-top: 10px;
 }
@@ -15,7 +16,7 @@
     display: flex;
     align-items: center;
     width: 100%;
-    height: 349px;  
+    height: 261.75px;  
 }
 .fucking-dummy-class{
     
@@ -30,15 +31,15 @@
 }
 .profileCardmiddle{
     position: absolute;
-    top: 180px;
+    top: 110px;
     left: 119px;
-    width: 238px;
-    height: 231px;
+    width: 178.5px;
+    height: 173.25px;
     flex-shrink: 0;
 }
 .profilePhoto{
-    width: 238px;
-    height: 231px;
+    width: 178.5px;
+    height: 173.25px;
     border-radius: 50%;
     border: 5px solid #000;
     &:hover {
@@ -49,10 +50,10 @@
 }
 .editDP{
     position: absolute;
-    width: 40px;
-    height: 40px;
-    right: 13px;
-    top: 164px;
+    width: 30px;
+    height: 30px;
+    right: 3px;
+    top: 124px;
     margin: 15px;
     border-radius: 40%;
     fill: rgba(0, 5, 23, 0.50);
@@ -80,7 +81,7 @@
     justify-content: center;
     color: #FFF;
     font-family: Inter;
-    font-size: 32px;
+    font-size: 24px;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
@@ -122,7 +123,7 @@
     flex-shrink: 0;
     color: #FFF;
     font-family: Inter;
-    font-size: 19px;
+    font-size: 14.25px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
@@ -136,7 +137,7 @@
     justify-content: center;
     color: #FFF;
     font-family: Inter;
-    font-size: 20px;
+    font-size: 15px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
@@ -145,9 +146,9 @@
 .addFriend{
     position: absolute;
     right: 189px; 
-    top: 50px;
-    width: 218px;
-    height: 48px;
+    top: 60px;
+    width: 160px;
+    height: 36px;
     flex-shrink: 0;
     background-color: #2060AD;
     color: #FFFFFF;

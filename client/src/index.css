@@ -23,6 +23,10 @@
   --right-partition-flex-basis: 33%;
 }
 
+body {
+    background-color: #1B1A38;
+}
+
 /* font-colors */
 .color-white {
   color: white;
