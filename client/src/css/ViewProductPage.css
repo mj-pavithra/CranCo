@@ -1,0 +1,80 @@
+@import "../index.css";
+
+.product-page {
+  --left-div-flexbasis: 65%;
+  --right-div-flexbasis: calc(100% - 65%);
+
+  --vpp-profile-image-height: 50px;
+
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+
+  color: white;
+}
+
+.left-side-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-basis: var(--left-div-flexbasis);
+  background-color: black;
+
+  overflow: hidden;
+}
+
+.right-side-div {
+  flex-basis: var(--right-div-flexbasis);
+  background-color: var(--background-blue);
+
+  padding: 40px 40px 0px 40px;
+}
+
+.photos {
+  width: 100%;
+}
+
+.layout-section-1 {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.layout-section-2 {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.profile-info {
+  display: flex;
+  justify-content: space-between;
+}
+
+.vpp-profile-image {
+  width: var(--vpp-profile-image-height);
+  height: var(--vpp-profile-image-height);
+
+  border-radius: 50%;
+}
+
+.vpp-profile-link {
+  color: white;
+  text-decoration: none;
+  padding: 16px 24px;
+  border-radius: 8px;
+
+  display: flex;
+  align-items: center;
+  gap: 24px;
+
+  &:hover {
+    background-color: var(--transparent-white);
+  }
+}
+
+.vpp-close-icon {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+}

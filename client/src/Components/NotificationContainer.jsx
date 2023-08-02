@@ -44,7 +44,7 @@ function NotificationContainer() {
           />
         ))
       )}
-      {notifications.length === 0 ? (
+      {/* {notifications.length === 0 ? (
         <Notification />
       ) : (
         notifications.map((notification) => (
@@ -91,7 +91,7 @@ function NotificationContainer() {
             time={notification.time}
           />
         ))
-      )}
+      )} */}
     </div>
   );
 }

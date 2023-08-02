@@ -1,59 +1,47 @@
 import React from 'react'
-import '../css/LoginPage.css'
 import LoginInput from '../components/LoginInput'
 import Checkbox from '../components/Checkbox'
 import Btn from '../components/Btn'
+import LoginPageContainer from '../containers/LoginPageContainer'
+import { Link } from 'react-router-dom'
 
 const LoginPage = () => {
     return (
-        <>
-            <body>
-                <div className='d-flex'>
-                    <div className='side-div left-side color-white'>
-                        <div className='d-flex flex-column initial-message-holder gap-4'>
-                            <div className='main-title'>Join our<br />Community</div>
-                            <div>Lorem ipsum dolor sit amet consectetu sit amet consectetur .</div>
-                        </div>
+        <LoginPageContainer>
+            <div className='layout-cont-4'>
+                <div className='layout-cont-3'>
+                    <div className='section-1'>
+                        <div className='sec1-message'>Login to CranCo</div>
                     </div>
-                    <div className='side-div right-side'>
-                        <div className='layout-cont-4'>
-                            <div className='layout-cont-3'>
-                                <div className='section-1'>
-                                    <img className='login_logo' src="/assets/logo.png" alt="" />
-                                    <div className='sec1-message'>Sign in to CranCo</div>
+                    <div className='layout-cont-2'>
+                        <form className='layout-cont-1' action="">
+                            <div>
+                                <LoginInput name={'name'} placeholder={'Enter your user name'} type={'text'} />
+                            </div>
+                            <div>
+                                <LoginInput name={'password'} placeholder={'Enter your password'} type={'password'} />
+                            </div>
+                            <div className='d-flex justify-content-between'>
+                                <div className='d-flex flex-row gap-3 color-transparent-white'>
+                                    <Checkbox name={'remember_password'} id={'12'} /> <span>Remember me</span>
                                 </div>
-                                <div className='layout-cont-2'>
-                                    <form className='layout-cont-1' action="">
-                                        <div>
-                                            <LoginInput name={'name'} placeholder={'Enter your user name'} type={'text'} />
-                                        </div>
-                                        <div>
-                                            <LoginInput name={'password'} placeholder={'Enter your password'} type={'password'} />
-                                        </div>
-                                        <div className='d-flex justify-content-between'>
-                                            <div className='d-flex flex-row gap-3 color-transparent-white'>
-                                                <Checkbox name={'remember_password'} id={'12'} /> <span>Remember me</span>
-                                            </div>
-                                            <div className='color-primary'>
-                                                Reset password
-                                            </div>
-                                        </div>
-                                        <div className='pt-3'>
-                                            <Btn type={'submit'} buttonText={'login'} width='fluid' />
-                                        </div>
-                                    </form>
-
-                                    <div className='color-white txt-09 d-flex flex-column align-items-center'>
-                                        <div>Don't you have an account? create an account</div>
-                                        <div>Are you a business? Get started here</div>
-                                    </div>
+                                <div className='color-primary'>
+                                    <Link className='main-link color-primary'>Reset password</Link>
                                 </div>
                             </div>
+                            <div className='pt-3'>
+                                <Btn type={'submit'} buttonText={'login'} width='fluid' />
+                            </div>
+                        </form>
+
+                        <div className='color-white txt-09 d-flex flex-column align-items-center'>
+                            <div>Don't you have an account? <Link className='main-link color-primary' to="/registration/user"> create an account</Link></div>
+                            <div>Are you a business? <Link className='main-link color-primary' to="/registration/merchant">Get started here</Link></div>
                         </div>
                     </div>
                 </div>
-            </body>
-        </>
+            </div>
+        </LoginPageContainer>
     )
 }
 

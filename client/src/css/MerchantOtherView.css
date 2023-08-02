@@ -1,0 +1,38 @@
+.merchantOtherView{
+    background-color: var(--background-blue);
+}
+
+.tab{
+    width: 1241px;
+    overflow: hidden;
+    border-top: 3px solid var(--primary-blue);
+    border-bottom: 3px solid var(--primary-blue);
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    overflow: hidden;
+}
+
+.tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    font-size: 17px;
+    color: white;
+}
+
+.tab button:hover,
+.tab button.active {
+    font-size: 19px;
+    font-weight: 600;
+}
+
+.main{
+    width: 1241px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+}

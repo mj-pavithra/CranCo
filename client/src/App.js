@@ -1,34 +1,50 @@
-import "./App.css";
-
-import LoginPage from "./pages/LoginPage";
+// App.js
+import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import HomePage from "./pages/HomePage";
-import UserRegistrationPage from "./pages/UserRegistrationPage";
-import MerchantRegistrationPage from "./pages/MerchantRegistrationPage";
+import HomePage from "../src/pages/HomePage"; // Import other page components as needed
+import VehiclesPage from "./pages/VehiclesPage";
+import AllVehiclePhotos from "./pages/AllVehiclePhotos";
+import FriendsPage from "../src/pages/FriendsPage";
+import Marketplace from "./pages/Marketplace";
+import Pages from "./pages/MerchentPage";
+import LoginPage from "./pages/LoginPage";
 // import ViewVehicleDetails from "./components/ViewVehicleDetails";
 // import EditVehicleDetails from "./components/EditVehicleDetails";
+import RegistrationPageUser from "./pages/RegistrationPageUser";
+import RegistrationPageMerchant from "./pages/RegistrationPageMerchant";
+import Error404 from "./pages/Error404";
+import LoginPageContainer from "./containers/LoginPageContainer";
+import ViewProductPage from "./pages/ViewProductPage";
+import MerchantOtherView from "./pages/MerchantOtherView";
+import UserProfile from "./pages/UserProfile";
 
-
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <BrowserRouter>
-        <Routes>
-          <Route path="/">
-            <Route path="/homepage" element={<HomePage />} />
-            <Route path="/login" element={<LoginPage />} />
-            {/* <Route path="/viewvehciledetails" element={<ViewVehicleDetails />} /> */}
-            {/* <Route path="/editvehciledetails" element={<EditVehicleDetails />} /> */}
-          </Route>
-          <Route path="/registration">
-            <Route path="/registration/user" element={<UserRegistrationPage />} />
-            <Route path="/registration/merchant" element={<MerchantRegistrationPage />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/">
+          <Route path="/homepage" element={<HomePage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/login2" element={<LoginPageContainer />} />
+          <Route path="/friends" element={<FriendsPage />} />
+          <Route path="/marketplace" element={<Marketplace />} />
+          <Route path="/pages" element={<Pages />} />
+          <Route path="/product" element={<ViewProductPage />} />
+          <Route path="/user" element={<UserProfile />} />
+          <Route path="/vehicles" element={<VehiclesPage />} />
+          <Route path="/allvehiclephotos" element={<AllVehiclePhotos />} />
+          <Route path="/merchant" element={<MerchantOtherView />}></Route>
+          <Route path="*" element={<Error404 />} />
+        </Route>
+
+        <Route path="/registration">
+          <Route path="/registration/user" element={<RegistrationPageUser />} />
+          <Route path="/registration/merchant" element={<RegistrationPageMerchant />} />
+          <Route path="*" element={<Error404 />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
-}
+};
 
 export default App;
-// comment from kaveesha
