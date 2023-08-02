@@ -1,6 +1,6 @@
 // App.js
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HomePage from "../src/pages/HomePage"; // Import other page components as needed
 import VehiclesPage from "./pages/VehiclesPage";
 import AllVehiclePhotos from "./pages/AllVehiclePhotos";
@@ -8,13 +8,14 @@ import FriendsPage from "../src/pages/FriendsPage";
 import Marketplace from "./pages/Marketplace";
 import Pages from "./pages/MerchentPage";
 import LoginPage from "./pages/LoginPage";
+// import ViewVehicleDetails from "./components/ViewVehicleDetails";
+// import EditVehicleDetails from "./components/EditVehicleDetails";
 import RegistrationPageUser from "./pages/RegistrationPageUser";
 import RegistrationPageMerchant from "./pages/RegistrationPageMerchant";
 import Error404 from "./pages/Error404";
 import LoginPageContainer from "./containers/LoginPageContainer";
 import ViewProductPage from "./pages/ViewProductPage";
 import MerchantOtherView from "./pages/MerchantOtherView";
-
 import UserProfile from "./pages/UserProfile";
 
 const App = () => {
