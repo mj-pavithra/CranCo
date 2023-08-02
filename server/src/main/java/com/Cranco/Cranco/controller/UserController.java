@@ -1,4 +1,4 @@
 package com.Cranco.Cranco.controller;
-//
-//public class UserController {
-//}
+
+public class UserController {
+}
