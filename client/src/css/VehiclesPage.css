@@ -1,11 +1,179 @@
+:root {
+  --top-margin: 15px;
+  --cage-border-radius: 10px;
+  --active-btn-background: #1f4f89;
+}
+
 .photobooth {
   width: 100%;
   height: 400px;
-  background-color: aliceblue;
+  /* background-color: aliceblue; */
+  border-style: none;
+  border-radius: 10px;
 }
 
 .vehicle-about {
-  background-color: aliceblue;
+  background-color: var(--cage-background);
+  margin-top: var(--top-margin);
   display: flex;
   flex-direction: column;
+  border: none;
+  border-radius: var(--cage-border-radius);
+  padding-bottom: 10px;
+}
+
+.about-info-container {
+  margin-top: 5px;
+}
+
+.about-info {
+  margin: auto;
+  display: flex;
+  width: 95%;
+  justify-content: space-between;
+  color: var(--text-2);
+  font-size: 13.5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.vehicle-description {
+  margin: auto;
+  margin-top: 5px;
+  color: var(--text-2);
+  font-size: 13.5px;
+  width: 95%;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 0;
+  padding-bottom: 0;
+  /* background-color: blueviolet; */
+  margin: auto;
+}
+
+.vehicle-profile-name {
+  color: var(--text-1);
+  font-weight: 600;
+  font-size: 30px;
+  width: 95%;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 5px;
+  padding-bottom: 10px;
+  /* background-color: blueviolet; */
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.edit-btn {
+  font-size: 16px;
+  height: fit-content;
+  width: 70px;
+  border-style: none;
+  border-radius: 5px;
+  background-color: var(--stroke);
+  color: var(--text-1);
+}
+
+.Posts {
+  margin-top: var(--top-margin);
+}
+
+.photobooth {
+  display: grid;
+  grid-template-columns: auto auto;
+  width: 100%;
+  height: 100%;
+  background-color: var(--background-1);
+  gap: 15px;
+  border-style: none;
+  border-radius: var(--cage-border-radius);
+}
+
+.photobooth > div {
+  width: 100%;
+  height: 100%;
+  /* background-color: antiquewhite; */
+}
+
+/* .photo-1,
+.photo-2,
+.photo-3 {
+  width: fit-content;
+  height: fit-content;
+} */
+
+.photo-1 {
+  grid-row-start: 1;
+  grid-row-end: 3;
+}
+
+.vehicle-page-photo {
+  max-width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.show-all-photos {
+  background-color: var(--stroke);
+  border-style: none;
+  border-radius: 5px;
+  width: 130px;
+  height: 30px;
+  color: var(--text-1);
+  font-size: 14px;
+}
+
+.show-all-photos:hover {
+  border-style: none;
+  border-radius: 5px;
+  width: 130px;
+  height: 30px;
+  color: var(--text-1);
+  font-size: 14px;
+  background-color: (--active-btn-background);
+}
+
+.all-vehicle-photos {
+  display: flex;
+  padding: 5px;
+  gap: 15px;
+  width: 100%;
+  height: auto;
+  justify-content: space-between;
+}
+
+.column {
+  max-width: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.column img {
+  max-width: 100%;
+}
+
+.back-btn {
+  background-color: var(--stroke);
+  border-style: none;
+  border-radius: 5px;
+  width: 130px;
+  height: 30px;
+  color: var(--text-1);
+  font-size: 14px;
+}
+
+.back-btn:hover {
+  border-style: none;
+  border-radius: 5px;
+  width: 130px;
+  height: 30px;
+  color: var(--text-1);
+  font-size: 14px;
+  background-color: (--active-btn-background);
 }

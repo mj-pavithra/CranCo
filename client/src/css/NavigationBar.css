@@ -6,7 +6,7 @@
 }
 
 .navbar-logo {
-  height: 60px;
+  height: 50px;
 }
 
 .navbar_back {
@@ -14,7 +14,7 @@
 }
 
 .navbar-search {
-  height: 45px;
+  height: 40px;
   width: 260px;
   margin-left: 16px;
   border-radius: 8px;
@@ -22,10 +22,11 @@
   border: 1px solid rgba(255, 255, 255, 0.5);
   color: white;
   background-color: transparent;
+  font-size: 12px;
 }
 
 .navbar-icon {
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 
 .active {
@@ -34,7 +35,7 @@
 
 .navbar-bell {
   color: white;
-  font-size: 1.3rem;
+  font-size: 1.1rem;
 }
 
 .navbar-bell.active {
