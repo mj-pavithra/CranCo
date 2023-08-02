@@ -1,7 +1,6 @@
 import { useState } from "react";
-
-import EachItem from "../components/eachitem";
-// import Btn from "../components/Btn";
+import EachItem from "../components/Eachitem";
+import Btn from "../components/Btn";
 
 function MidMaxBlock({ rowTitle, items, image, action, dis }) {
   // Define showGrid state and setShowGrid state setter
