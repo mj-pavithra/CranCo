@@ -1,6 +1,6 @@
 // App.js
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HomePage from "../src/pages/HomePage"; // Import other page components as needed
 import VehiclesPage from "./pages/VehiclesPage";
 import AllVehiclePhotos from "./pages/AllVehiclePhotos";
@@ -35,7 +35,10 @@ const App = () => {
 
         <Route path="/registration">
           <Route path="/registration/user" element={<RegistrationPageUser />} />
-          <Route path="/registration/merchant" element={<RegistrationPageMerchant />} />
+          <Route
+            path="/registration/merchant"
+            element={<RegistrationPageMerchant />}
+          />
           <Route path="*" element={<Error404 />} />
         </Route>
       </Routes>

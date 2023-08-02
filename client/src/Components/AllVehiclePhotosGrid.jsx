@@ -13,6 +13,7 @@ function AllVehiclePhotosGrid({
   image9,
   image10,
 }) {
+  // dummy images for testing purposes
   const dummyImage1 = "/assets/audiA4.jpeg";
   const dummyImage2 = "/assets/audiA4_rear.jpg";
   const dummyImage3 = "/assets/audiA4_out.jpeg";
