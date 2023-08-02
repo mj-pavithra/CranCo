@@ -39,7 +39,10 @@ const App = () => {
 
         <Route path="/registration">
           <Route path="/registration/user" element={<RegistrationPageUser />} />
-          <Route path="/registration/merchant" element={<RegistrationPageMerchant />} />
+          <Route
+            path="/registration/merchant"
+            element={<RegistrationPageMerchant />}
+          />
           <Route path="*" element={<Error404 />} />
         </Route>
       </Routes>
