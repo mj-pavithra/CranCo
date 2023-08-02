@@ -1,82 +1,83 @@
-@import '../index.css';
+@import "../index.css";
 
 .navbar-main {
-    background-color: var(--navbar-background);
-    height: var(--navbar-height);
+  background-color: var(--navbar-background);
+  height: var(--navbar-height);
 }
 
 .navbar-logo {
-    height: 60px;
+  height: 50px;
 }
 
 .navbar_back {
-    background-color: var(--navbar-background);
+  background-color: var(--navbar-background);
 }
 
 .navbar-search {
-    height: 45px;
-    width: 260px;
-    margin-left: 16px;
-    border-radius: 8px;
-    padding: 8px;
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    color: white;
-    background-color: transparent;
+  height: 40px;
+  width: 260px;
+  margin-left: 16px;
+  border-radius: 8px;
+  padding: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  color: white;
+  background-color: transparent;
+  font-size: 12px;
 }
 
 .navbar-icon {
-    font-size: 2rem;
+  font-size: 1.5rem;
 }
 
 .active {
-    color: var(--primary-blue);
+  color: var(--primary-blue);
 }
 
 .navbar-bell {
-    color: white;
-    font-size: 1.3rem;
+  color: white;
+  font-size: 1.1rem;
 }
 
 .navbar-bell.active {
-    color: var(--primary-blue);
-    font-size: 1.3rem;
+  color: var(--primary-blue);
+  font-size: 1.3rem;
 }
 
 .navbar-icon-wrapper {
-    color: white;
-    width: 120px;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: none;
-    border-radius: 8px;
+  color: white;
+  width: 120px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  border-radius: 8px;
 
-    &:hover {
-        background-color: rgba(255, 255, 255, 0.2);
-    }
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
 }
 
 .navbar-icon-wrapper.active {
-    color: var(--primary-blue);
+  color: var(--primary-blue);
 
-    &:hover {
-        background-color: transparent;
-    }
+  &:hover {
+    background-color: transparent;
+  }
 }
 
 .notification-main {
-    position: relative;
+  position: relative;
 }
 
 .notification-div {
-    width: 300px;
-    height: 400px;
-    background-color: white;
-    z-index: 100;
-    border: 1px solid black;
-    border-radius: 8px;
-
-    position: absolute;
-    right: 0px;
+  width: 400px;
+  height: auto;
+  background-color: white;
+  z-index: 100;
+  border: 1px solid black;
+  border-radius: 8px;
+  text-decoration: none;
+  position: absolute;
+  right: 0px;
 }

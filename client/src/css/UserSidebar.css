@@ -1,3 +1,5 @@
+@import '../index.css';
+
 :root {
   --background-1: #000517;
   --cage-background: #1b1a38;
@@ -8,32 +10,39 @@
 }
 
 .side-bar {
-  position: fixed;
-  top: 0;
-  left: 0;
   height: 100%;
   width: 300px;
-  background-color: var(--background-1);
+  background-color: var(--background-blue);
+  padding: 20px;
   display: flex;
   flex-direction: column;
   gap: 20px;
-  padding: 10px;
+}
+
+.sidebar-links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .link {
-  /* background-color: aliceblue; */
-  margin: 5px auto;
   color: var(--text-2);
   text-decoration: none;
-  width: 50%;
+  width: fit-content;
   align-items: center;
+  padding: 15px 20px;
+  border-radius: 8px;
   gap: 25px;
   display: flex;
+
+  &:hover {
+    background-color: var(--transparent-white);
+  }
 }
 
-FontAwesomeIcon {
+.sidebar-icon {
   color: var(--text-2);
-  font-size: 40px;
+  font-size: 20px;
 }
 
 .user-cage {
@@ -45,12 +54,14 @@ FontAwesomeIcon {
   display: flex;
   gap: 25px;
 }
+
 .user-cage p {
   color: var(--text-2);
 }
 
 .user-cage img {
   width: 50px;
+  height: 50px;
   border-radius: 50%;
   border-style: none;
 }
