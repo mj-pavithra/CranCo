@@ -1,6 +1,6 @@
 import "../css/VehiclesPage.css";
 
-function VehicleAbout({
+function VehicleAboutOwnersView({
   brand,
   trim,
   condition,
@@ -31,7 +31,7 @@ function VehicleAbout({
     <div className="vehicle-about">
       <div className="vehicle-profile-name">
         <p>{vehiclProfileName || dummyVehicleProfileName}</p>
-        {/* <button className="edit-btn">Edit</button> */}
+        <button className="edit-btn">Edit</button>
       </div>
       <div className="about-info-container">
         <div className="about-info">
@@ -82,4 +82,4 @@ function VehicleAbout({
   );
 }
 
-export default VehicleAbout;
+export default VehicleAboutOwnersView;
