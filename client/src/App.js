@@ -17,6 +17,7 @@ import LoginPageContainer from "./containers/LoginPageContainer";
 import ViewProductPage from "./pages/ViewProductPage";
 import MerchantOtherView from "./pages/MerchantOtherView";
 import UserProfile from "./pages/UserProfile";
+import VehiclesPageOwnersView from "./pages/VehiclesPageOwnersView";
 
 const App = () => {
   return (
@@ -33,6 +34,10 @@ const App = () => {
           <Route path="/user" element={<UserProfile />} />
           <Route path="/vehicles" element={<VehiclesPage />} />
           <Route path="/allvehiclephotos" element={<AllVehiclePhotos />} />
+          <Route
+            path="/vehiclespageownersview"
+            element={<VehiclesPageOwnersView />}
+          />
           <Route path="/merchant" element={<MerchantOtherView />}></Route>
           <Route path="*" element={<Error404 />} />
         </Route>
