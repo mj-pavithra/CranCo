@@ -5,6 +5,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import UserRegistrationPage from "./pages/UserRegistrationPage";
 import MerchantRegistrationPage from "./pages/MerchantRegistrationPage";
+// import ViewVehicleDetails from "./components/ViewVehicleDetails";
+// import EditVehicleDetails from "./components/EditVehicleDetails";
+
 
 function App() {
   return (
@@ -14,6 +17,8 @@ function App() {
           <Route path="/">
             <Route path="/homepage" element={<HomePage />} />
             <Route path="/login" element={<LoginPage />} />
+            {/* <Route path="/viewvehciledetails" element={<ViewVehicleDetails />} /> */}
+            {/* <Route path="/editvehciledetails" element={<EditVehicleDetails />} /> */}
           </Route>
           <Route path="/registration">
             <Route path="/registration/user" element={<UserRegistrationPage />} />
