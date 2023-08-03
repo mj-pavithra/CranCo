@@ -1,155 +1,162 @@
-@import '../index.css';
-@import '../fonts.css';
+@import "../index.css";
+@import "../fonts.css";
 
-.profileCard{ 
-    position: relative;
-    margin: 0px auto;
-    max-width:1066px ;
-    width: 80%;
-    height: 432px;
-    background-color:#1B1A38 ;
-    margin-top: 10px;
-}
-
-.profileCardtop{
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    width: 100%;
-    height: 261.75px;  
-}
-.fucking-dummy-class{
-    
-}
-.coverPhoto{
-    width: 100%;
-
-    &:hover {
-        background-color: var(--transparent-white);
-        cursor: pointer;
-    }
-}
-.profileCardmiddle{
-    position: absolute;
-    top: 110px;
-    left: 80px;
-    width: 178.5px;
-    height: 173.25px;
-    flex-shrink: 0;
-}
-.profilePhoto{
-    width: 178.5px;
-    height: 173.25px;
-    border-radius: 50%;
-    border: 5px solid #000;
-    &:hover {
-        background-color: var(--transparent-white);
-        cursor: pointer;
-    }
-
-}
-.editDP{
-    position: absolute;
-    width: 30px;
-    height: 30px;
-    right: 3px;
-    top: 124px;
-    margin: 15px;
-    border-radius: 40%;
-    fill: rgba(0, 5, 23, 0.50);
-    &:hover {
-        background-color: var(--transparent-white);
-        cursor: pointer;
-    }
-
-}
-.profileCardbottom{
-    position: absolute;
-    bottom: 0px;
-    left: 100px;
-    width: 100%;
-    max-width:1241px ;
-    height: 127px;
-    flex-shrink: 0;
-}
-.profileName{
-    z-index: 100;
-    display: flex;
-    width: 530px;
-    height: 38px;
-    flex-direction: column;
-    justify-content: center;
-    color: #FFF;
-    font-family: Inter;
-    font-size: 24px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-}
-.pages{
-    position: relative;
-    background-color: #fff;
-    
-}
-.likedPage1{
-    width: 23px;
-    height: 23px;
-    flex-shrink: 0;
-    border-radius: 23px;
-    border: 1px solid #000;
-    background:  lightgray 50% / cover no-repeat, #D9D9D9;
-    &:hover {
-        background-color: var(--transparent-white);
-        cursor: pointer;
-    }
-}
-.lp2{
-    position: relative;
-    right: 5px;
-}
-.lp3{
-    position: relative;
-    right: 10px;
+.profileCard {
+  position: relative;
+  margin: 0px auto;
+  max-width: 1066px;
+  width: 80%;
+  height: 432px;
+  background-color: #1b1a38;
+  margin-top: 10px;
 }
 
-.likedPageCount{
-    position: relative;
-    display: inline;
-    width: 179px;
-    height: 35px;
-    right: 2px;
-    flex-direction: column;
-    justify-content: center;
-    flex-shrink: 0;
-    color: #FFF;
-    font-family: Inter;
-    font-size: 14.25px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-        
-}
-.RalionshipState{
-    display: flex;
-    width: 530px;
-    height: 38px;
-    flex-direction: column;
-    justify-content: center;
-    color: #FFF;
-    font-family: Inter;
-    font-size: 15px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
+.profileCardtop {
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 261.75px;
 }
 
-.addFriend{
-    position: absolute;
-    right: 189px; 
-    top: 60px;
-    width: 160px;
-    height: 36px;
-    flex-shrink: 0;
-    background-color: #2060AD;
-    color: #FFFFFF;
+.coverPhoto {
+  width: 100%;
+}
+
+.coverPhoto:hover {
+  background-color: var(--transparent-white);
+  cursor: pointer;
+}
+
+.profileCardmiddle {
+  position: absolute;
+  top: 110px;
+  left: 80px;
+  width: 178.5px;
+  height: 173.25px;
+  flex-shrink: 0;
+}
+
+.profilePhoto {
+  width: 178.5px;
+  height: 173.25px;
+  border-radius: 50%;
+  border: 5px solid #000;
+}
+
+.profilePhoto:hover {
+  background-color: var(--transparent-white);
+  cursor: pointer;
+}
+
+.editDP {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  right: 3px;
+  top: 124px;
+  margin: 15px;
+  border-radius: 40%;
+  fill: rgba(0, 5, 23, 0.5);
+}
+
+.editDP:hover {
+  background-color: var(--transparent-white);
+  cursor: pointer;
+}
+
+.profileCardbottom {
+  position: absolute;
+  bottom: 0px;
+  left: 100px;
+  width: 100%;
+  max-width: 1241px;
+  height: 127px;
+  flex-shrink: 0;
+}
+
+.profileName {
+  z-index: 100;
+  display: flex;
+  width: 530px;
+  height: 38px;
+  flex-direction: column;
+  justify-content: center;
+  color: #fff;
+  font-family: Inter;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.pages {
+  position: relative;
+  background-color: #fff;
+}
+
+.likedPage1 {
+  width: 23px;
+  height: 23px;
+  flex-shrink: 0;
+  border-radius: 23px;
+  border: 1px solid #000;
+  background: lightgray 50% / cover no-repeat, #d9d9d9;
+}
+
+.likedPage1:hover {
+  background-color: var(--transparent-white);
+  cursor: pointer;
+}
+
+.lp2 {
+  position: relative;
+  right: 5px;
+}
+
+.lp3 {
+  position: relative;
+  right: 10px;
+}
+
+.likedPageCount {
+  position: relative;
+  display: inline;
+  width: 179px;
+  height: 35px;
+  right: 2px;
+  flex-direction: column;
+  justify-content: center;
+  flex-shrink: 0;
+  color: #fff;
+  font-family: Inter;
+  font-size: 14.25px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.RalionshipState {
+  display: flex;
+  width: 530px;
+  height: 38px;
+  flex-direction: column;
+  justify-content: center;
+  color: #fff;
+  font-family: Inter;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.addFriend {
+  position: absolute;
+  right: 189px;
+  top: 60px;
+  width: 160px;
+  height: 36px;
+  flex-shrink: 0;
+  background-color: #2060ad;
+  color: #ffffff;
 }

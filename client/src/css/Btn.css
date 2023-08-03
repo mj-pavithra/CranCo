@@ -1,17 +1,17 @@
 @import "../index.css";
 
 .custom-btn {
-    color: white;
-    padding: 10px 20px;
-    background-color: var(--primary-blue);
-    border: none;
-    border-radius: 8px;
+  color: white;
+  padding: 10px 20px;
+  background-color: var(--primary-blue);
+  border: none;
+  border-radius: 8px;
+}
 
-    &:hover {
-        cursor: pointer;
-    }
+.custom-btn:hover {
+  cursor: pointer;
 }
 
 .fluid {
-    width: 100%;
+  width: 100%;
 }

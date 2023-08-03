@@ -94,11 +94,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
 
-    &:hover {
-        background-color: var(--transparent-white);
-        cursor: pointer;
-    }
+.post-action-div:hover {
+    background-color: var(--transparent-white);
+    cursor: pointer;
 }
 
 .post-action-icon {
