@@ -1,4 +1,4 @@
-@import '../index.css';
+@import "../index.css";
 
 :root {
   --background-1: #000517;
@@ -34,10 +34,10 @@
   border-radius: 8px;
   gap: 25px;
   display: flex;
+}
 
-  &:hover {
-    background-color: var(--transparent-white);
-  }
+link:hover {
+  background-color: var(--transparent-white);
 }
 
 .sidebar-icon {

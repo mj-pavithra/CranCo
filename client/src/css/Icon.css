@@ -1,16 +1,16 @@
-@import '../index.css';
+@import "../index.css";
 
 .icon-back-div {
-    width: 2rem;
-    height: 2rem;
+  width: 2rem;
+  height: 2rem;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
 
-    &:hover {
-        background-color: var(--transparent-white);
-        cursor: pointer;
-    }
+.icon-back-div:hover {
+  background-color: var(--transparent-white);
+  cursor: pointer;
 }

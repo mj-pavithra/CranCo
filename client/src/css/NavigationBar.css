@@ -52,18 +52,19 @@
   align-items: center;
   border: none;
   border-radius: 8px;
+}
 
-  &:hover {
-    background-color: rgba(255, 255, 255, 0.2);
-  }
+.navbar-icon-wrapper:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  cursor: pointer;
 }
 
 .navbar-icon-wrapper.active {
   color: var(--primary-blue);
+}
 
-  &:hover {
-    background-color: transparent;
-  }
+.navbar-icon-wrapper.active:hover {
+  background-color: transparent;
 }
 
 .notification-main {
