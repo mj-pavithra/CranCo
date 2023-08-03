@@ -1,0 +1,30 @@
+@import '../index.css';
+.wallcontainer {
+    position: relative;
+    margin: 10px auto;
+    width: 80%;
+    max-width: 1066px;
+
+  display: flex;
+  flex-direction: row;
+  background-color: #da4f4f;
+}
+
+.leftColumn{
+    position: relative;
+    top: 0px ;
+    width: 40%;
+    height: 500px;
+    background-color: aquamarine;
+    margin: 10px auto 10px auto;
+    border-radius: 10px;
+}
+
+.rightColumn{
+    overflow: hidden;
+    width: 50%;
+    background-color: #1B1A38;
+    margin: 10px auto 10px 0px;
+    border-radius: 10px;
+
+}
