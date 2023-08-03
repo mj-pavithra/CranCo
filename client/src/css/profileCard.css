@@ -4,7 +4,7 @@
 .profileCard{ 
     position: relative;
     margin: 0px auto;
-    max-width:1241px ;
+    max-width:1066px ;
     width: 80%;
     height: 432px;
     background-color:#1B1A38 ;
@@ -32,7 +32,7 @@
 .profileCardmiddle{
     position: absolute;
     top: 110px;
-    left: 119px;
+    left: 80px;
     width: 178.5px;
     height: 173.25px;
     flex-shrink: 0;
@@ -66,7 +66,7 @@
 .profileCardbottom{
     position: absolute;
     bottom: 0px;
-    left: 111px;
+    left: 100px;
     width: 100%;
     max-width:1241px ;
     height: 127px;

@@ -1,6 +1,7 @@
 import React from "react";
 import ProfileCard from "../components/ProfileCard";
 import NavigationBar from "../components/NavigationBar";
+import Post from "../components/Post";
 import '../css/UserProfileContainer.css'
 
 const data = {coverPhoto :"/assets/coverphoto.jpeg", 
@@ -25,6 +26,9 @@ const UserProfileContainer = () => {
 
             </div>
             <div className="rightColumn">
+            <Post/>
+            <Post/>
+            
             </div>
         </div>
         </>
