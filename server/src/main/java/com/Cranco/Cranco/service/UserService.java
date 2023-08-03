@@ -11,8 +11,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @Transactional
-public
-class UserService {
+public class UserService {
 
     @Autowired
     private UserRepo userRepo;
@@ -20,7 +19,7 @@ class UserService {
     @Autowired
     private ModelMapper modelMapper;
     public String SaveUser(UserDTO userDTO){
-        if (userRepo.exitById(UserDTO.getUserId()))
+        if (userRepo.exitById(UserDTO.getuserId()))
         {
             return VarList.Respond_DUPLICATED;
         }
@@ -31,6 +30,7 @@ class UserService {
         }
     }
 
-//    public String saveUser(UserDTO userDTO) {
-//    }
+    public String saveUser(UserDTO userDTO) {
+        return null;
+    }
 }
