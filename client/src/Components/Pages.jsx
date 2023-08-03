@@ -1,5 +1,5 @@
 import React from "react";
-import "../css/pages.css";
+// import "../css/pages.css";
 import { useNavigate } from "react-router-dom";
 
 const Pages = () => {
