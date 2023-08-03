@@ -1,4 +1,4 @@
-<<<<<<< HEAD:client/src/css/RightColSubContainer.css
+
 .topContainer{
   padding: 10px;
   background-color: black ;
@@ -110,8 +110,7 @@
     font-weight: 700;
     line-height: 163.418%; /* 26.147px */
   }
-  
-=======
+
 .topContainer {
   background-color: var(--background-1);
 }
@@ -205,4 +204,3 @@
   font-weight: 700;
   line-height: 163.418%; /* 26.147px */
 }
->>>>>>> b050524d184a12b80d3adf7ca35963e6adbdf326:client/src/css/pages.css
