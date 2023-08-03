@@ -1,5 +1,5 @@
 import React from "react";
-import "../css/profileCard.css";
+import "../css/ProfileCards.css";
 
 const ProfileCard = ({ coverPhoto, profilePhoto, editDP, profileName, likedPage1, likedPage2, likedPage3, likedPageCount, RalionshipState, addFriend  }) => {
     
