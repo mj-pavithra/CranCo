@@ -1,0 +1,62 @@
+.reviewContainer{
+    width: 100%;
+    display: inline-flex;
+    align-items: flex-start;
+    gap: 15px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.nameContainer{
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    width: 20%;
+}
+
+.nameContainer img{
+    width: 57px;
+    height: 57px;
+    border-radius: 50%;
+}
+
+.nameContainer p{
+    color: white;
+    font-size: 20px;
+}
+
+.reviewDetailsContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: -50px;
+    width: 80%;
+}
+
+.checked {
+    color: #FF9529;
+}
+
+.comment,
+.dutyDetails{
+    margin: 5px 0px;
+}
+
+.likeContainer{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.likeContainer .like{
+    background-color: transparent;
+    color: white;
+    border: 0px;
+}
+
+.likeContainer .likesCount{
+    display: flex;
+    align-items: baseline;
+    gap: 5px;
+}

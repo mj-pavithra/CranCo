@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import ProfileCard from "../components/ProfileCard";
 import NavigationBar from "../components/NavigationBar";
 import '../css/MerchantOtherView.css';
+import MechantReview from "./MechantReview";
 
 const MerchantOtherView = () => {
 
@@ -65,8 +66,7 @@ const MerchantOtherView = () => {
 
 
             <div id="review" class="main">
-                <h3>Review</h3>
-                <p>review</p>
+                <MechantReview/>
             </div>
 
 

@@ -1,9 +1,11 @@
 .merchantOtherView{
+    --widthOfContent: 1241px;
+
     background-color: var(--background-blue);
 }
 
 .tab{
-    width: 1241px;
+    width: var(--widthOfContent);
     overflow: hidden;
     border-top: 3px solid var(--primary-blue);
     border-bottom: 3px solid var(--primary-blue);
@@ -31,7 +33,8 @@
 }
 
 .main{
-    width: 1241px;
+    width: var(--widthOfContent);
+    height: auto;
     margin-left: auto;
     margin-right: auto;
     margin-top: 30px;
