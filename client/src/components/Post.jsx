@@ -7,6 +7,7 @@ import Icon from './Icon'
 import Carousel from './Carousel'
 import Hr from './Hr'
 
+
 const Post = () => {
     const images = ['/assets/car_img_1.jpg', '/assets/car_img_2.jpg', '/assets/car_img_3.jpg']
 
