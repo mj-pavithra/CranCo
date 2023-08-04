@@ -6,9 +6,9 @@ import '../index.css'
 const UserProfile = () => {
   return (
     <>
-    <body >
+    <div className="backgroundDiv" >
       <UserProfileContainer />
-      </body>
+    </div>
     </>
   );
 };

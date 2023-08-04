@@ -23,9 +23,22 @@
   --right-partition-flex-basis: 33%;
 }
 
-body {
-    background-color: #1B1A38;
+.backgroundDiv {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    overflow-y: auto;
+    background: var(--background-2, #000517);
+  }
+
+  .backgroundDiv::-webkit-scrollbar {
+    width: 0px;
 }
+
+div::-webkit-scrollbar-thumb {
+    background-color: transparent;
+}
+
 
 /* font-colors */
 .color-white {

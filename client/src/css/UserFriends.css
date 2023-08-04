@@ -1,40 +1,50 @@
 @import '../index.css';
-
-.topContainer{
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+.topContainer2{
+    width: 113.5px;
     display: inline-flex;
     flex-direction: column;
     align-items: flex-start;
     border: 1px solid #000;
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset, 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    /* box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset, 0px 4px 4px 0px rgba(0, 0, 0, 0.25); */
+    background-color: #1B1A38;
 }
 
 .proPicContainer{
     overflow: hidden;
     align-items: center;
+    height: 112.5px ;
     
 }
 
-.proPic{
+.proPic2{
     width: 112.5px;
 }
 
 .detailContainer{
+    position: relative;
     display: flex;
-    width: 112.5px;
+    width: 112.0px;
     height: 52.5px;
     padding: 0px 4.5px;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    gap: -2px;
     flex-shrink: 0;
+    background-color: #1B1A38;
 
 }
 
 .userName{
+    position: relative;
+    top: 15px;
     display: flex;
     width: 108px;
-    height: 26.25px;
     flex-direction: column;
     justify-content: center;
     flex-shrink: 0;
@@ -50,16 +60,20 @@
 .pageContainer{
     position: relative;
     display: flex;
-    width: 110px;
     align-items: center;
     gap: -5px;
 
 }
 
-.pageImg{
-    width: 12px;
-height: 12px;
-flex-shrink: 0;
+.pageImg{ 
+    position: relative;
+    top: -5px;
+    width: 15px;
+    height: 15px;
+    flex-shrink: 0;
+    border-radius: 23px;
+    border: 1px solid #000;
+    background: lightgray 50% / cover no-repeat, #d9d9d9;
 
 }
 
@@ -70,9 +84,9 @@ flex-shrink: 0;
 }
 
 .pageCount{
+    position: relative;
+    top: 3px;
     display: flex;
-    width: 90px;
-    height: 25px;
     flex-direction: column;
     justify-content: center;
     flex-shrink: 0;
