@@ -19,6 +19,9 @@ import MerchantOtherView from "./pages/MerchantOtherView";
 import UserProfile from "./pages/UserProfile";
 import VehiclesPageOwnersView from "./pages/VehiclesPageOwnersView";
 
+
+
+
 const App = () => {
   return (
     <BrowserRouter>
@@ -27,6 +30,7 @@ const App = () => {
           <Route path="/homepage" element={<HomePage />} />
           <Route path="/login" element={<LoginPage />} />
           {/* <Route path="/login2" element={<LoginPageContainer />} /> */}
+          
           <Route path="/friends" element={<FriendsPage />} />
           <Route path="/marketplace" element={<Marketplace />} />
           <Route path="/pages" element={<Pages />} />
