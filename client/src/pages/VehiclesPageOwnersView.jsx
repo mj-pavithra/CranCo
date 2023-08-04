@@ -5,6 +5,7 @@ import Post from "../components/Post";
 import Photobooth from "../components/Photobooth";
 import MainContainer from "../containers/MainContainer";
 import VehicleAboutOwnersView from "../components/VehicleAboutOwnersView";
+import AddNewUpdate from "../components/AddNewUpdate";
 
 const VehiclesPageOwnersView = () => {
   const fetchVehicleAbouts = () => {
@@ -30,6 +31,9 @@ const VehiclesPageOwnersView = () => {
       </div>
       <div className="vehicle-about">
         <VehicleAboutOwnersView />
+      </div>
+      <div className="add-new-update">
+        <AddNewUpdate />
       </div>
       <div className="Posts">
         <Post />
