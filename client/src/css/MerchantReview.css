@@ -1,0 +1,47 @@
+.summaryPart{
+    display: flex;
+    flex-direction: row;
+    align-self: center;
+    align-items: center;
+    gap: 200px;
+}
+
+.ratingsPrecentage .topic,
+.ratingsPrecentage .rateCount{
+    color: white;
+    font-size: 15px;
+    padding: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.progressBar{
+    width: 350px;
+    height: 10px;
+    background-color: white;
+    border-radius: 50px;
+}
+
+.progressInsideBar{
+    height: 100%;
+    background-color: #FF9529;
+    border-radius: 50px;
+}
+
+.averageRating{
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+}
+
+.averageRate{
+    color: #FF9529;
+    font-size: large;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.allReviews{
+    display: flex;
+    flex-direction: column;
+}
