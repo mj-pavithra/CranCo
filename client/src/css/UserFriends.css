@@ -1,0 +1,105 @@
+@import '../index.css';
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+.topContainer2{
+    width: 113.5px;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border: 1px solid #000;
+    /* box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset, 0px 4px 4px 0px rgba(0, 0, 0, 0.25); */
+    background-color: #1B1A38;
+}
+
+.proPicContainer{
+    overflow: hidden;
+    align-items: center;
+    height: 112.5px ;
+    
+}
+
+.proPic2{
+    width: 112.5px;
+}
+
+.detailContainer{
+    position: relative;
+    display: flex;
+    width: 112.0px;
+    height: 52.5px;
+    padding: 0px 4.5px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    flex-shrink: 0;
+    background-color: #1B1A38;
+
+}
+
+.userName{
+    position: relative;
+    top: 15px;
+    display: flex;
+    width: 108px;
+    flex-direction: column;
+    justify-content: center;
+    flex-shrink: 0;
+    color: #FFF;
+    font-family: Inter;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+
+}
+
+.pageContainer{
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: -5px;
+
+}
+
+.pageImg{ 
+    position: relative;
+    top: -5px;
+    width: 15px;
+    height: 15px;
+    flex-shrink: 0;
+    border-radius: 23px;
+    border: 1px solid #000;
+    background: lightgray 50% / cover no-repeat, #d9d9d9;
+
+}
+
+.secondImg{
+    position: relative;
+    right: 5px;
+
+}
+
+.pageCount{
+    position: relative;
+    top: 3px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-shrink: 0;
+    color: #FFF;
+    font-family: Inter;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+
+}
+
+
+
+
+
