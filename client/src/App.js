@@ -13,14 +13,11 @@ import LoginPage from "./pages/LoginPage";
 import RegistrationPageUser from "./pages/RegistrationPageUser";
 import RegistrationPageMerchant from "./pages/RegistrationPageMerchant";
 import Error404 from "./pages/Error404";
-import LoginPageContainer from "./containers/LoginPageContainer";
+// import LoginPageContainer from "./containers/LoginPageContainer";
 import ViewProductPage from "./pages/ViewProductPage";
 import MerchantOtherView from "./pages/MerchantOtherView";
 import UserProfile from "./pages/UserProfile";
 import VehiclesPageOwnersView from "./pages/VehiclesPageOwnersView";
-
-
-
 
 const App = () => {
   return (
@@ -30,7 +27,7 @@ const App = () => {
           <Route path="/homepage" element={<HomePage />} />
           <Route path="/login" element={<LoginPage />} />
           {/* <Route path="/login2" element={<LoginPageContainer />} /> */}
-          
+
           <Route path="/friends" element={<FriendsPage />} />
           <Route path="/marketplace" element={<Marketplace />} />
           <Route path="/pages" element={<Pages />} />
