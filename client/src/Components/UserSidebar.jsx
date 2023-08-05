@@ -16,10 +16,10 @@ function UserSidebar({ image, username }) {
         <p>{username}</p>
       </div>
       <div className="sidebar-links">
-        <Link className="link" to="/homepage">
+        {/* <Link className="link" to="/homepage">
           <FontAwesomeIcon className="sidebar-icon" icon={faHouseChimney} />
           Home
-        </Link>
+        </Link> */}
         <Link className="link" to="/login">
           <FontAwesomeIcon className="sidebar-icon" icon={faUsers} />
           Friends

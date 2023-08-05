@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import "../css/VehiclesPage.css";
 
 function VehicleAboutOwnersView({
@@ -14,6 +15,8 @@ function VehicleAboutOwnersView({
   vehicleDescription,
   vehiclProfileName,
 }) {
+  const navigate = useNavigate();
+
   const dummyVehicleProfileName = "Black Panther";
   const dummyBrand = "Audi";
   const dummyTrim = "A4 Titanium Premium 40 TFSI";
@@ -31,7 +34,12 @@ function VehicleAboutOwnersView({
     <div className="vehicle-about">
       <div className="vehicle-profile-name">
         <p>{vehiclProfileName || dummyVehicleProfileName}</p>
-        <button className="edit-btn">Edit</button>
+        <button
+          className="edit-btn"
+          onClick={() => navigate("/VehicleAboutEdit")}
+        >
+          Edit
+        </button>
       </div>
       <div className="about-info-container">
         <div className="about-info">

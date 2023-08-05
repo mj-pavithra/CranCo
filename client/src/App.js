@@ -18,6 +18,7 @@ import ViewProductPage from "./pages/ViewProductPage";
 import MerchantOtherView from "./pages/MerchantOtherView";
 import UserProfile from "./pages/UserProfile";
 import VehiclesPageOwnersView from "./pages/VehiclesPageOwnersView";
+import VehicleAboutEdit from "./pages/VehicleAboutEdit";
 
 const App = () => {
   return (
@@ -39,6 +40,7 @@ const App = () => {
             path="/vehiclespageownersview"
             element={<VehiclesPageOwnersView />}
           />
+          <Route path="/vehicleaboutedit" element={<VehicleAboutEdit />} />
           <Route path="/merchant" element={<MerchantOtherView />}></Route>
           <Route path="*" element={<Error404 />} />
         </Route>
