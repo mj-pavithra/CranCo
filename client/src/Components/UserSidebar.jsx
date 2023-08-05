@@ -3,7 +3,7 @@ import "../css/UserSidebar.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faHouseChimney,
-  faUsersLine,
+  faUsers,
   faCar,
   faShop,
 } from "@fortawesome/free-solid-svg-icons";
@@ -21,7 +21,7 @@ function UserSidebar({ image, username }) {
           Home
         </Link>
         <Link className="link" to="/login">
-          <FontAwesomeIcon className="sidebar-icon" icon={faUsersLine} />
+          <FontAwesomeIcon className="sidebar-icon" icon={faUsers} />
           Friends
         </Link>
         <Link className="link" to="/vehicles">
