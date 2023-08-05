@@ -26,7 +26,7 @@ public class UserController {
     public ResponseEntity saveUser(@RequestBody UserDTO userDTO){
         try{
             //return ResponseEntity.ok().body("Success");
-            String res = userService.saveUser(userDTO);
+            String res = userService.SaveUser(userDTO);
             if(res.equals("00")) {
                 responseDTO.setCode(VarList.Respond_SUCCESS);
                 responseDTO.setMessage("Success");
