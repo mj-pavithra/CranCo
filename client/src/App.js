@@ -16,6 +16,7 @@ import Error404 from "./pages/Error404";
 import LoginPageContainer from "./containers/LoginPageContainer";
 import ViewProductPage from "./pages/ViewProductPage";
 import MerchantOtherView from "./pages/MerchantOtherView";
+import MerchantOwnerView from "./pages/MerchantOwnerView";
 import UserProfile from "./pages/UserProfile";
 import VehiclesPageOwnersView from "./pages/VehiclesPageOwnersView";
 
@@ -43,6 +44,7 @@ const App = () => {
             element={<VehiclesPageOwnersView />}
           />
           <Route path="/merchant" element={<MerchantOtherView />}></Route>
+          <Route path="/merchantowner" element={<MerchantOwnerView />}></Route>
           <Route path="*" element={<Error404 />} />
         </Route>
 

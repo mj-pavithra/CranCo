@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import NavigationBar from "../components/NavigationBar";
 import UserSidebar from "../components/UserSidebar";
-import RightColSubContainer from "../components/RightColSubContainer";
+import RightColSubContainer from "../components/rightColSubContainer";
 import '../css/MainContainer.css'
 
 const MainContainer = (props) => {

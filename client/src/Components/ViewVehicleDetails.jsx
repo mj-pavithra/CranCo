@@ -1,37 +1,27 @@
-import React from "react";
-import "../css/ViewVehicleDetails.css";
+import "../css/ViewVehicleDetails.css"
 import Btn from "./Btn";
 
-const ViewVehicleDetails = (props) => {
-  return (
-    <>
-      <div className="main">
-        <div className="image">
-
-          <img src="/assets/car_img_4.jpg"/>
-
-        </div>
-
-        <div className="text">
-
-          <h4>Nissan GTR</h4>
-          <p>Owned by <b>Himashi Nethmi</b><br/><br/>
-          Lorem ipsum dolor sit amet consectetur. Conseqd sagittis nunc libero fames
-          
-          </p>
-          
-          <div className="btn">
-
-            <button className="vbtn">View Details</button>
-
-          </div>
-          
-
-        </div>
-
-      </div>
-    </>
-  );
-};
-
+const ViewVehicleDetails = ({image, vehicleName, ownerName, des}) => {
+    return ( 
+        <>
+            <div className="vehicleDetailsView">
+                <div className="imgContainer">
+                    <img src={image} alt="" />
+                </div>
+                <div className="detailsContainer color-white">
+                    <p className="txt-12 text-bold">{vehicleName}</p>
+                    <div className="owner txt-08">
+                        <p>Owned by</p>
+                        <p className="text-bold">{ownerName}</p>
+                    </div>
+                    <p className="txt-08">{des}</p>
+                </div>
+                <div className="btnContainer">
+                    <Btn buttonText="View Details"/>
+                </div>
+            </div>
+        </>
+     );
+}
+ 
 export default ViewVehicleDetails;
