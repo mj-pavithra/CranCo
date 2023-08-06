@@ -22,7 +22,7 @@
 
 .rightColumn{
     width: 50%;
-    background-color: #1B1A38;
+    background: var(--background-2, #000517);
     margin: 10px auto 10px 0px;
     border-radius: 10px;
     display: grid;
@@ -34,6 +34,7 @@
 .leftColumnSubContainer{
     background-color: #1B1A38;
     padding: 5px;
+    margin-bottom: 10px;
     flex-shrink: 0;
     border-radius: 12px;
 
@@ -77,9 +78,20 @@
 .leftColumnSubContainerBody{
     margin: auto;
     display: grid;
+    padding-bottom: 3px;
     justify-items: center;
     width: 100%;
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 10px ;
+    gap: 20px 10px;
 
+}
+
+.leftColumnSubContainerBody2{
+    margin: auto;
+    display: grid;
+    padding-bottom: 3px;
+    justify-items: center;
+    width: 100%;
+    grid-template-columns: 1fr 1fr ;
+    gap: 20px 10px;
 }

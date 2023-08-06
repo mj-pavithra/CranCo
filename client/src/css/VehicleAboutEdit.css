@@ -1,0 +1,11 @@
+.title-division {
+  width: 100%;
+  display: flex;
+  justify-content: left;
+}
+
+.page-title {
+  font-size: 25px;
+  color: var(--text-1);
+  /* font-weight: 700; */
+}

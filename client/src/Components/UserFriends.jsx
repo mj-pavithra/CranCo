@@ -2,9 +2,10 @@ import React from "react";
 import "../css/UserFriends.css";
 
 
+const altImg = "/assets/alt-image.jpeg";
+
 const UserFriends = ({ ProfilePicture, userName, pageImage1, pageImage2 , pageCount }) => {
     const onError = (originalImg) => {
-        const altImg = "/assets/alt-image.jpeg";
       if (originalImg === null || originalImg === "") {
         return altImg;
       }
