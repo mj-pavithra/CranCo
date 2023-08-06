@@ -18,6 +18,7 @@ import ViewProductPage from "./pages/ViewProductPage";
 import MerchantOtherView from "./pages/MerchantOtherView";
 import UserProfile from "./pages/UserProfile";
 import VehiclesPageOwnersView from "./pages/VehiclesPageOwnersView";
+import OwnersVehicleProfileAllPhotos from "./pages/OwnersVehicleProfileAllPhotos";
 
 
 
@@ -38,6 +39,10 @@ const App = () => {
           <Route path="/user" element={<UserProfile />} />
           <Route path="/vehicles" element={<VehiclesPage />} />
           <Route path="/allvehiclephotos" element={<AllVehiclePhotos />} />
+          <Route
+            path="/allphotos"
+            element={<OwnersVehicleProfileAllPhotos />}
+          />
           <Route
             path="/vehiclespageownersview"
             element={<VehiclesPageOwnersView />}

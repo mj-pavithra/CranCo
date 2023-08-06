@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import "../components/NavigationBar";
 import "../css/VehiclesPage.css";
 import Post from "../components/Post";
-import Photobooth from "../components/Photobooth";
+import PhotoboothVehicleOwner from "../components/PhotoboothVehicleOwner";
 import MainContainer from "../containers/MainContainer";
 import VehicleAboutOwnersView from "../components/VehicleAboutOwnersView";
 import AddNewUpdate from "../components/AddNewUpdate";
@@ -27,7 +27,7 @@ const VehiclesPageOwnersView = () => {
   return (
     <MainContainer>
       <div className="photobooth-renderer">
-        <Photobooth />
+        <PhotoboothVehicleOwner />
       </div>
       <div className="vehicle-about">
         <VehicleAboutOwnersView />
