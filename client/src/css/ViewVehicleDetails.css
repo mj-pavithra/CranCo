@@ -1,49 +1,54 @@
-@import '../index.css';
-
-.main{
-    background-color: var(--cage-background);
-    height: 455px;
+.vehicleDetailsView{
     width: 383px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 21px;
-    justify-content: space-between;
-}
-.image{
-    height: 239px;
-    width: 341px;
+    height: fit-content;
+    background-color: var(--background-blue-light);
+    padding: 20px;
+    border-radius: 15px;
+    margin-bottom: 20px;
 }
 
-.image img{
-    width: 100%;
-    height: 100%;
+.imgContainer img{
+    width: 341px;
+    height: 239px;
     border-radius: 15px;
 }
 
-.text{
-    color: #FFFFFF;
-    width: 341px;
-    height: 153px;
-
+.detailsContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
-.text p{
-    font-size: 10px;
+.detailsContainer .owner{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 5px;
 }
 
-.btn{
-    background-color: #FFFFFF;
-    justify-content: center;  
-    align-items: center;
-    margin: 0;
+.detailsContainer {
+    margin: 10px; /* Adjust the margin as needed */
+    padding: 10px; /* Adjust the padding as needed */
 }
 
-.vbtn{
-    background-color: var(--button-background);
-    width: 140px;
-    height: 36px;
-    border-radius: 10px;
-    color: #FFFFFF;
-   
+.detailsContainer .txt-12, 
+.detailsContainer .txt-08{
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.owner {
+    margin-top: 0px; /* Adjust the margin as needed */
+    margin-bottom: 0px; /* Adjust the margin as needed */
+}
+
+.btnContainer{
+    display: grid;
+    justify-content: center;
+}
+
+.editConatiner{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
 }

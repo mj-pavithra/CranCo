@@ -16,8 +16,7 @@ const ProfileCard = ({ coverPhoto, profilePhoto, editDP, profileName, likedPage1
     return (
    <div className="profileCard">
     <div className="profileCardtop">
-        <img className="coverPhoto" alt="Error" src={onError(coverPhoto)}/
-        >
+        <img className="coverPhoto" alt="Error" src={onError(coverPhoto)}/>
     </div>
     <div className="profileCardmiddle">
         <img className="profilePhoto" src={onError(profilePhoto)}/>

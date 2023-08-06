@@ -2,13 +2,14 @@ import React, { useEffect } from "react";
 import ProfileCard from "../components/ProfileCard";
 import NavigationBar from "../components/NavigationBar";
 import '../css/MerchantOtherView.css';
+import MerchantOwnVehicleSale from "./MerchantOwnVehicleSale";
+import MerchantOtherVehicleSale from "./MerchantOtherVehicleSale"; 
 import MechantReview from "./MechantReview";
-import MerchantOtherAbout from "./MerchantOtherAbout"; 
-import MerchantOtherVehicleSale from "./MerchantOtherVehicleSale";
+import MerchantOwnerAbout from "./MerchantOwnerAbout";
 
-const MerchantOtherView = () => {
+const MerchantOwnerView = () => {
 
-    const data = {coverPhoto :"assets/cover_image.png", 
+    const data = {coverPhoto :"assets/coverphoto.jpeg", 
             profilePhoto:"assets/profile.jpg", 
             editDP: "assets/camera-solid.png", 
             profileName : "Turbo Tyres", 
@@ -50,7 +51,7 @@ const MerchantOtherView = () => {
             </div>
 
             <div id="vehicleForSale" class="main">
-                <MerchantOtherVehicleSale/>
+                <MerchantOwnVehicleSale/>
             </div>
 
 
@@ -65,10 +66,10 @@ const MerchantOtherView = () => {
 
 
             <div id="about" class="main">
-                <MerchantOtherAbout/>
+                <MerchantOwnerAbout/>
             </div>
         </div>
     );
 }
 
-export default MerchantOtherView;
+export default MerchantOwnerView;
