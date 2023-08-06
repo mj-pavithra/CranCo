@@ -37,6 +37,10 @@ const App = () => {
           <Route path="/vehicles" element={<VehiclesPage />} />
           <Route path="/allvehiclephotos" element={<AllVehiclePhotos />} />
           <Route
+            path="/allphotos"
+            element={<OwnersVehicleProfileAllPhotos />}
+          />
+          <Route
             path="/vehiclespageownersview"
             element={<VehiclesPageOwnersView />}
           />
