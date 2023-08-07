@@ -18,6 +18,7 @@ import ViewProductPage from "./pages/ViewProductPage";
 import MerchantOtherView from "./pages/MerchantOtherView";
 import UserProfile from "./pages/UserProfile";
 import VehiclesPageOwnersView from "./pages/VehiclesPageOwnersView";
+import AdminDashboard from "./pages/AdminDashboard";
 
 
 
@@ -52,6 +53,11 @@ const App = () => {
             path="/registration/merchant"
             element={<RegistrationPageMerchant />}
           />
+          <Route path="*" element={<Error404 />} />
+        </Route>
+        <Route path="/admin">
+          <Route path="/admin/dashboard" element={<AdminDashboard />} />
+          
           <Route path="*" element={<Error404 />} />
         </Route>
       </Routes>
