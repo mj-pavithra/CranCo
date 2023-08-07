@@ -1,8 +1,6 @@
 package com.Cranco.Cranco.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,7 +18,7 @@ import java.util.Date;
 @Validated
 public class User {
     @Id
-    //@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // meke import krpu eka pddk blnna awlk thinwa.. neo4j eka watenna ona....
     private int userId;
 
     private String firstname;
