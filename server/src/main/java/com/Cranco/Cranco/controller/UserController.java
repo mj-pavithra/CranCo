@@ -25,7 +25,7 @@ public class UserController {
     public ResponseEntity saveUser(@RequestBody UserDTO userDTO){
         try{
             //return ResponseEntity.ok().body("Success");
-            String res = userService.SaveUser(userDTO);
+            String res= userService.SaveUser(userDTO);
             if(res.equals("00")) {
                 responseDTO.setCode(VarList.Respond_SUCCESS);
                 responseDTO.setMessage("Success");
@@ -54,7 +54,7 @@ public class UserController {
     public ResponseEntity updateUser(@RequestBody UserDTO userDTO){
         try{
             //return ResponseEntity.ok().body("Success");
-            String res = userService.SaveUser(userDTO);
+            String res = userService.updateUser(userDTO);
             if(res.equals("00")) {
                 responseDTO.setCode(VarList.Respond_SUCCESS);
                 responseDTO.setMessage("Success");
