@@ -8,9 +8,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 public class UserDTO {
-    private static int userId;
-    private String firstname;
-    private String lastname;
+    private int userId;
+    private String username;
     private String dob;
     private String email;
     private String phonenumber;
@@ -19,11 +18,9 @@ public class UserDTO {
     public static int getuserId() {
         return userId;
     }
-    public void setName(int userId) { this.userId = userId;}
-    public String getiFrstName() { return firstname;}
-    public void setFirstName(String firstname) { this.firstname = String.valueOf(firstname);}
-    public String getLastName() { return lastname;}
-    public void setLastName(String lastname) { this.lastname = String.valueOf(lastname);}
+    public void setuserId(int userId) { this.userId = userId;}
+    public String getUserName() { return username;}
+    public void setUserName(String firstname) { this.username = String.valueOf(username);}
     public String getDob() { return dob;}
     public void setDob(String dob) { this.dob = String.valueOf(dob);}
     public String getEmail() { return email;}

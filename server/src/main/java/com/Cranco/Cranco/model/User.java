@@ -1,30 +1,24 @@
 package com.Cranco.Cranco.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.validation.annotation.Validated;
+import org.springframework.data.neo4j.core.schema.GeneratedValue;
+import org.springframework.data.neo4j.core.schema.Id;
+import org.springframework.data.neo4j.core.schema.Node;
 
 import java.util.Date;
-//import javax.validation.constraints.Email;
-//import javax.validation.constraints.Pattern;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-@Table(name = "users")
-@Entity
-@Validated
+@Node("User") // Node label for the Neo4j node
 public class User {
     @Id
-    //@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue // Generates a unique identifier for the node
     private int userId;
 
-    private String firstname;
-    private String lastname;
+    private String username;
     private Date dob;
     //@Email(regexp = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6}$")
     private String email;
