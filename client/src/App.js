@@ -19,6 +19,7 @@ import MerchantOtherView from "./pages/MerchantOtherView";
 import MerchantOwnerView from "./pages/MerchantOwnerView";
 import UserProfile from "./pages/UserProfile";
 import VehiclesPageOwnersView from "./pages/VehiclesPageOwnersView";
+import AdminDashboard from "./pages/AdminDashboard";
 import VehicleAboutEdit from "./pages/VehicleAboutEdit";
 
 const App = () => {
@@ -57,6 +58,11 @@ const App = () => {
             path="/registration/merchant"
             element={<RegistrationPageMerchant />}
           />
+          <Route path="*" element={<Error404 />} />
+        </Route>
+        <Route path="/admin">
+          <Route path="/admin/dashboard" element={<AdminDashboard />} />
+          
           <Route path="*" element={<Error404 />} />
         </Route>
       </Routes>

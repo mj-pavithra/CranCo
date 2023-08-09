@@ -1,0 +1,23 @@
+.Frame135{
+    height: 100%;
+    width: 282.75px;
+    background: rgba(181, 175, 175, 0.70);
+}
+
+.TopFrame135{
+    height: 261.75px;
+    width: 100%;
+    background: rgba(181, 175, 175, 0.70);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+
+}
+
+.TopFrame135Logo{
+    height: 75px;
+    width: 75px;
+    margin: auto;
+}
