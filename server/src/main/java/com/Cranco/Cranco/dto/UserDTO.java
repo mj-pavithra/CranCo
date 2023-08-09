@@ -8,32 +8,29 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 public class UserDTO {
-    private static String userId;
+    private int userId;
     private String username;
+    private String dob;
+    private String email;
+    private String phonenumber;
     private String password;
 
-    public static String getuserId() {
+    public static int getuserId() {
         return userId;
     }
-
-    public void setName(String userId) {
-        this.userId = userId;
-    }
-
-    public String getusername() {
-        return username;
-    }
-
-    public void setusername(int username) {
-        this.username = String.valueOf(username);
-    }
-
-    public String getpassword() {
+    public void setuserId(int userId) { this.userId = userId;}
+    public String getUserName() { return username;}
+    public void setUserName(String firstname) { this.username = String.valueOf(username);}
+    public String getDob() { return dob;}
+    public void setDob(String dob) { this.dob = String.valueOf(dob);}
+    public String getEmail() { return email;}
+    public void setEmail(String email) { this.email = String.valueOf(email);}
+    public String getPhoneNumber() { return phonenumber;}
+    public void setPhoneNumber(String phonenumber) { this.phonenumber = String.valueOf(phonenumber);}
+    public String getPassword() {
         return password;
     }
-
-    public void setpassword(int password) {
+    public void setPassword(int password) {
         this.password = String.valueOf(password);
     }
-
 }

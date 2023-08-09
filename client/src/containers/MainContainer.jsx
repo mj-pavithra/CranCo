@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import NavigationBar from "../components/NavigationBar";
 import UserSidebar from "../components/UserSidebar";
-import RightColSubContainer from "../components/RightColSubContainer";
+import RightColSubContainer from "../components/rightColSubContainer";
 import '../css/MainContainer.css'
 
 const MainContainer = (props) => {
@@ -11,13 +11,12 @@ const MainContainer = (props) => {
     username: "",
   });
   const pagesData = [
-    { name: 'Page 1', imgUrl: '/assets/audir8.jpeg' },
-    { name: 'Page 2', imgUrl: '/assets/audir8.jpeg' },
-    { name: 'Page 3', imgUrl: '/assets/audir8.jpeg' },
-    { name: 'Page 4', imgUrl: '/assets/audir8.jpeg' },
-    { name: 'Page 5', imgUrl: '/assets/audir8.jpeg' },
-    { name: 'Page 6', imgUrl: '/assets/audir8.jpeg' },
-    
+    { name: "Page 1", imgUrl: "/assets/audir8.jpeg" },
+    { name: "Page 2", imgUrl: "/assets/audir8.jpeg" },
+    { name: "Page 3", imgUrl: "/assets/audir8.jpeg" },
+    { name: "Page 4", imgUrl: "/assets/audir8.jpeg" },
+    { name: "Page 5", imgUrl: "/assets/audir8.jpeg" },
+    { name: "Page 6", imgUrl: "/assets/audir8.jpeg" },
   ];
 
   const fetchUserData = () => {
@@ -47,8 +46,16 @@ const MainContainer = (props) => {
             {/* The div-middle content will be handled by React Router */}
           </div>
           <div className="div-right">
-          <RightColSubContainer containerTitle="Pages" Items={pagesData} btnTxt="Create Page" />
-          <RightColSubContainer containerTitle="Trending" Items={pagesData} btnTxt= ""  />
+            <RightColSubContainer
+              containerTitle="Pages"
+              Items={pagesData}
+              btnTxt="Create Page"
+            />
+            <RightColSubContainer
+              containerTitle="Trending"
+              Items={pagesData}
+              btnTxt=""
+            />
           </div>
         </div>
       </body>
