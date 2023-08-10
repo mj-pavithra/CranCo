@@ -82,3 +82,17 @@
   position: absolute;
   right: 0px;
 }
+
+.nav-search-icon {
+  visibility: hidden;
+}
+
+@media (max-width: 768px) {
+  .nav-search-icon {
+    visibility: visible;
+  }
+
+  .navbar-search {
+    display: none;
+  }
+}
