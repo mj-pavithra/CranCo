@@ -1,0 +1,80 @@
+.AdminDashboardHeader{
+    background-color: #1a1a1a;
+    color: white;
+    padding: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.AdminDashboardHeader:hover{
+    background-color: #333333;
+}
+
+.AdminDashboardHeader:active{
+    background-color: #4d4d4d;
+}
+
+.AdminDashboardHeader:focus{
+    outline: none;
+}
+
+.AdminDashboardHeader:disabled{
+    background-color: #1a1a1a;
+    color: white;
+}
+
+.AdminDashboardHeader:disabled:hover{
+    background-color: #1a1a1a;
+    color: white;
+}
+
+.LeftBlock{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 282.75px;
+    height: 100vh;
+    background: rgba(181, 175, 175, 0.70);
+}
+
+.Welcome{
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.RightBlock{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: calc(100vw - 282.75px);
+    height: 100vh;
+}
+
+.ProPic{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    overflow: hidden;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.ProPic img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.DisplayName{
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}

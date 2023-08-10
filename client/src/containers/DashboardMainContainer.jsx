@@ -1,5 +1,6 @@
 import React from "react";
 import Frame135 from "../components/Frame135";
+import AdminDashboardHeader from "../components/AdminDashboardHeader";
 import "../css/DashboardMainContainer.css";
 
 const optionList = [
@@ -19,6 +20,7 @@ const DashboardMainContainer = () => {
   return (
     <div className="DashboardMainContainer">
         <Frame135 img1={logo} optionList ={optionList} />
+        <AdminDashboardHeader FirstName="John" proPic="/assets/alt-image.jpeg" DisplayName="John Doe" Position="Admin" />
       
     </div>
   );
