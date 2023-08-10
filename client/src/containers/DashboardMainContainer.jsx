@@ -20,8 +20,9 @@ const DashboardMainContainer = () => {
   return (
     <div className="DashboardMainContainer">
         <Frame135 img1={logo} optionList ={optionList} />
-        <AdminDashboardHeader FirstName="John" proPic="/assets/alt-image.jpeg" DisplayName="John Doe" Position="Admin" />
-      
+        <div className="Dashboard">
+          <AdminDashboardHeader FirstName="John" proPic="/assets/propic6.jpeg" DisplayName="John Doe" Position="Administrator" />
+        </div>
     </div>
   );
 };
