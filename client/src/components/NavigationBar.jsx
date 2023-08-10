@@ -7,6 +7,7 @@ import { faHome } from "@fortawesome/free-solid-svg-icons";
 import { faShop } from "@fortawesome/free-solid-svg-icons";
 import { faBell, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import Icon from "./Icon";
+import PopupDivFull from "./PopupDivFull";
 
 function NavigationBar() {
   // navigation menu icons
@@ -80,9 +81,11 @@ function NavigationBar() {
 
             {/* last div */}
             <div className="col-4 navbar-main d-flex align-items-center justify-content-end gap-2">
-              <div className="color-transparent-white nav-search-icon">
-                <Icon icon={faMagnifyingGlass} size={"12px"} />
-              </div>
+              <PopupDivFull
+                icon={faMagnifyingGlass}
+                heading={"Search"}
+                iconClass={"color-transparent-white nav-search-icon"}
+              />
               <div ref={notificationRef} className="notification-main">
                 <FontAwesomeIcon
                   className={`navbar-bell ${bellState ? "active" : ""}`}
