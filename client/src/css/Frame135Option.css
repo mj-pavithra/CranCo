@@ -1,0 +1,35 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.Option{
+    position: relative;
+    width: 250px;
+    height: 27px;
+    margin: 20px 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.Icon{
+    width: 27px;
+    height: 27px;
+    display: flex;
+    align-items: left;
+    margin: 0px 0px 0px 50px;
+}
+
+.Text{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: left;
+    margin: 0px 20px;
+    top : 5px;
+    font-size: 14px;
+}
