@@ -1,0 +1,25 @@
+.grid-container {
+    position: relative;
+    top: 100px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px;
+    padding: 10px;
+  }
+  
+  .grid-item {
+    background-color: #ccc;
+    padding: 20px;
+    text-align: center;
+    font-size: 18px;
+    border-radius: 5px;
+  }
+  
+  .row2 {
+    grid-column: span 2;
+  }
+  
+  .row3 {
+    grid-column: span 4;
+  }
+  

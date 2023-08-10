@@ -1,7 +1,7 @@
 .WindowToProfile{
     position: fixed;
     left: calc(100vw - 302.75px);
-    top: 10px;
+    top: 30px;
     flex-direction: column;
     width: 282.75px;
     height: 230px;
