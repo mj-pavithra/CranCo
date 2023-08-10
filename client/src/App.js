@@ -21,7 +21,7 @@ import UserProfile from "./pages/UserProfile";
 import VehiclesPageOwnersView from "./pages/VehiclesPageOwnersView";
 import AdminDashboard from "./pages/AdminDashboard";
 import VehicleAboutEdit from "./pages/VehicleAboutEdit";
-import OwnersVehicleProfileAllPhotos from './pages//OwnersVehicleProfileAllPhotos'
+import OwnersVehicleProfileAllPhotos from "./pages/OwnersVehicleProfileAllPhotos";
 
 const App = () => {
   return (

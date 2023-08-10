@@ -4,7 +4,10 @@ import "../css/AdminDashboard.css";
 
 const AdminDashboard = () => {
     return (
+        <div  className="FullPage">
         <DashboardMainContainer/>
+        </div>
+        
     );
 };
 

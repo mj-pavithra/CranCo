@@ -1,0 +1,14 @@
+.DashboardMainContainer{
+    min-height: 100vh;
+    position: relative;
+    display: flex   ;
+}
+
+.Dashboard{
+    position: relative;
+    top: 0px;
+    display: flex;
+    flex-direction: column;
+    width: calc(100vw - 282.75px);
+    height: 100vh;
+}
