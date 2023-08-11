@@ -22,6 +22,7 @@ import VehiclesPageOwnersView from "./pages/VehiclesPageOwnersView";
 import AdminDashboard from "./pages/AdminDashboard";
 import VehicleAboutEdit from "./pages/VehicleAboutEdit";
 import OwnersVehicleProfileAllPhotos from "./pages/OwnersVehicleProfileAllPhotos";
+import UserManagement from "./pages/UserManagement";
 
 const App = () => {
   return (
@@ -63,6 +64,7 @@ const App = () => {
         </Route>
         <Route path="/admin">
           <Route path="/admin/dashboard" element={<AdminDashboard />} />
+          <Route path="/admin/usermanagement" element={<UserManagement />} />
           
           <Route path="*" element={<Error404 />} />
         </Route>
