@@ -2,6 +2,7 @@ import React from "react";
 import Frame135 from "../components/Frame135";
 import AdminDashboardHeader from "../components/AdminDashboardHeader";
 import "../css/DashboardMainContainer.css";
+import DashboardGrid from "../components/DashboardGrid";
 
 const optionList = [
   { img1: "/assets/home icon.png", text1: "Dashboard" },
@@ -22,7 +23,8 @@ const DashboardMainContainer = () => {
         <Frame135 img1={logo} optionList ={optionList} />
         <div className="Dashboard">
           <AdminDashboardHeader FirstName="John" proPic="/assets/propic6.jpeg" DisplayName="John Doe" Position="Administrator" />
-        </div>
+          <DashboardGrid />
+          </div>
     </div>
   );
 };

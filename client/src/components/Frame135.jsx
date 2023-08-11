@@ -28,7 +28,7 @@ const Frame135 = ({ img1, optionList }) => {
                     <Frame135Option key={index} OptionIcon={option.img1} OptionTxt={option.text1} />
                 ))}
             </div>
-        </div>
+          </div>
     );
 };
 
