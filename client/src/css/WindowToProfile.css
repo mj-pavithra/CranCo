@@ -1,13 +1,16 @@
 .WindowToProfile{
+    z-index: 100;
     position: fixed;
     left: calc(100vw - 302.75px);
-    top: 30px;
+    top: 10px;
     flex-direction: column;
     width: 282.75px;
     height: 230px;
     border-color: #000000;
     border-style: solid 1px #000000;
+    border-radius: 10px;
     padding: 10px;
+    background-color: aliceblue;
 }
 .RightBlock2{
     position: relative;

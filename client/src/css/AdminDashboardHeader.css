@@ -5,7 +5,7 @@
     width: calc(100vw - 282.75px);
     display: flex;
     position: relative;
-    top: 40px;
+    top: 20px;
 }
 
         .AdminDashboardHeader:hover{
