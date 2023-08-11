@@ -3,7 +3,8 @@ import React, { useEffect, useState } from "react";
 import NavigationBar from "../components/NavigationBar";
 import UserSidebar from "../components/UserSidebar";
 import RightColSubContainer from "../components/RightColSubContainer";
-import '../css/MainContainer.css'
+import "../css/MainContainer.css";
+import PopupDivFull from "../components/PopupDivFull";
 
 const MainContainer = (props) => {
   const [userData, setUserData] = useState({
