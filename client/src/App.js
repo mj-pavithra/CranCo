@@ -23,6 +23,7 @@ import AdminDashboard from "./pages/AdminDashboard";
 import VehicleAboutEdit from "./pages/VehicleAboutEdit";
 import OwnersVehicleProfileAllPhotos from "./pages/OwnersVehicleProfileAllPhotos";
 import UserManagement from "./pages/UserManagement";
+import PageManagement from "./pages/PageManagement";
 
 const App = () => {
   return (
@@ -65,6 +66,7 @@ const App = () => {
         <Route path="/admin">
           <Route path="/admin/dashboard" element={<AdminDashboard />} />
           <Route path="/admin/usermanagement" element={<UserManagement />} />
+          <Route path="/admin/pagemanagement" element={<PageManagement />} />
           <Route path="*" element={<Error404 />} />
         </Route>
       </Routes>

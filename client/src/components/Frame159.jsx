@@ -1,19 +1,19 @@
 import React from "react";
 import "../css/Frame159.css";
 
-const Frame159 = ({ userList } ) => {
+const Frame159 = ({ userList , tableHeader } ) => {
     return (
         <div className="Frame159">
-            <h2 className="tableTitle">User List</h2>
+            <h2 className="tableTitle">{tableHeader.tableTitle}</h2>
             <table className="userListTable">
             <thead>
                 <tr>
-                <th>Username</th>
-                <th>Active</th>
-                <th>Pin Status</th>
-                <th>Last Seen</th>
-                <th>Role</th>
-                <th>Action</th>
+                <th>{tableHeader.col1}</th>
+                <th>{tableHeader.col2}</th>
+                <th>{tableHeader.col3}</th>
+                <th>{tableHeader.col4}</th>
+                <th>{tableHeader.col5}</th>
+                <th>{tableHeader.col6}</th>
                 </tr>
             </thead>
             <tbody>
