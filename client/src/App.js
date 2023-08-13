@@ -65,7 +65,6 @@ const App = () => {
         <Route path="/admin">
           <Route path="/admin/dashboard" element={<AdminDashboard />} />
           <Route path="/admin/usermanagement" element={<UserManagement />} />
-          
           <Route path="*" element={<Error404 />} />
         </Route>
       </Routes>

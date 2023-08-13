@@ -1,11 +1,13 @@
 import React, { useEffect, useRef, useState } from "react";
 import "../css/NavigationBar.css";
 import NotificationContainer from "../components/NotificationContainer";
-import Hr from "../components/Hr.jsx"
+import Hr from "../components/Hr.jsx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome } from "@fortawesome/free-solid-svg-icons";
 import { faShop } from "@fortawesome/free-solid-svg-icons";
-import { faBell } from "@fortawesome/free-solid-svg-icons";
+import { faBell, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import Icon from "./Icon";
+import PopupDivFull from "./PopupDivFull";
 
 function NavigationBar() {
   // navigation menu icons
@@ -60,15 +62,17 @@ function NavigationBar() {
             {/* middle div */}
             <div className="col-4 navbar-main d-flex align-items-center justify-content-center">
               <div
-                className={`navbar-icon-wrapper ${activeIcon === "home" ? " active" : ""
-                  }`}
+                className={`navbar-icon-wrapper ${
+                  activeIcon === "home" ? " active" : ""
+                }`}
                 onClick={() => handleIconClick("home")}
               >
                 <FontAwesomeIcon className="navbar-icon" icon={faHome} />
               </div>
               <div
-                className={`navbar-icon-wrapper ${activeIcon === "marketplace" ? " active" : ""
-                  }`}
+                className={`navbar-icon-wrapper ${
+                  activeIcon === "marketplace" ? " active" : ""
+                }`}
                 onClick={() => handleIconClick("marketplace")}
               >
                 <FontAwesomeIcon className="navbar-icon" icon={faShop} />
@@ -76,7 +80,12 @@ function NavigationBar() {
             </div>
 
             {/* last div */}
-            <div className="col-4 navbar-main d-flex align-items-center justify-content-end">
+            <div className="col-4 navbar-main d-flex align-items-center justify-content-end gap-2">
+              <PopupDivFull
+                icon={faMagnifyingGlass}
+                heading={"Search"}
+                iconClass={"color-transparent-white nav-search-icon"}
+              />
               <div ref={notificationRef} className="notification-main">
                 <FontAwesomeIcon
                   className={`navbar-bell ${bellState ? "active" : ""}`}
