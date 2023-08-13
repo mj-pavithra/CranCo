@@ -1,9 +1,10 @@
 .summaryPart{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-self: center;
     align-items: center;
-    gap: 200px;
+    gap: 50px;
+    margin: 50px;
 }
 
 .ratingsPrecentage .topic,

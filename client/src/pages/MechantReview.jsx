@@ -19,12 +19,21 @@ const MechantReview = () => {
     const userComment = "Efficient and thorough car wash services provided by your team! Our vehicles have never looked so clean and shiny. Thank you for your attention to detail and dedication to keeping our fleet in top-notch condition. Your reliable car wash duty is truly appreciated!";
     const dateTime = "03 July 2023 12:04";
     
-    const avgRating = "4.8";
+    const avgRating = 1.8;
     const fontsize = "20px";
 
     return ( 
         <>
         <div className="summaryPart">
+        <div className="averageOfRating">
+                <StarRating rating={avgRating} fontsize={fontsize}/>
+                <div className="averageRating">
+                    <p className="color-white txt-12">Average Star Rating: </p>
+                    <p className="averageRate">4.8 out of 5</p>
+                    <p className="color-white txt-08">546 votes</p>
+                </div>
+            </div>
+
             <table className="ratingsPrecentage">
                 <tr>
                     <td className="topic">5 star</td>
@@ -72,15 +81,6 @@ const MechantReview = () => {
                     <td className="rateCount">52</td>
                 </tr>
             </table>
-
-            <div className="averageOfRating">
-                <StarRating rating={avgRating} fontsize={fontsize}/>
-                <div className="averageRating">
-                    <p className="color-white txt-12">Average Star Rating: </p>
-                    <p className="averageRate">4.8 out of 5</p>
-                    <p className="color-white txt-08">546 votes</p>
-                </div>
-            </div>
         </div>
 
         <div className="allReviews">

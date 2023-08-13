@@ -9,7 +9,7 @@ const MerchantAbout = ({showButton}) => {
                     <div className="topicConianer">
                         <p>Name</p>
                         <p>Address</p>
-                        <p>Contact Number</p>
+                        <p>Contact Us</p>
                         <p>Email</p>
                         <p>Bio</p>
                     </div>
