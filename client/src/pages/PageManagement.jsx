@@ -98,17 +98,17 @@ const userListData = [
       "action": "Edit"
     }
   ];
-  
-  
+
 const tableHeader = {
-    tableTitle: "User List",
-    col1: "Username",
+    tableTitle: "Page List",
+    col1: "Page Name",
     col2: "Active",
-    col3: "Pin Status",
+    col3: "Followers",
     col4: "Last Seen",
-    col5: "Role",
+    col5: "Type",
     col6: "Action"
 };
+  
 const logo = "/assets/logo.png";
 
 const DashboardMainContainer = () => {

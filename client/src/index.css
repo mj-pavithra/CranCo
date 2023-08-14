@@ -120,7 +120,7 @@ body {
   gap: 20px;
   display: flex;
   flex-direction: column;
-  background-color: green;
+  background-color: var(--background-blue);
   overflow-x: hidden;
   overflow-y: auto;
   flex: 1;
