@@ -8,7 +8,7 @@ const MerchantOtherVehicleSale = () => {
     const des = "Lorem ipsum dolor sit amet consectetur. Conseqd sagittis nunc libero fames.";
 
     const imageRows = [];
-    const numCols = 3;
+    const numCols = 2;
     const numRows = Math.ceil(images.length / numCols); // Calculate the number of rows needed
     let index = 0;
 

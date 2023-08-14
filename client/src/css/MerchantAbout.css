@@ -1,8 +1,8 @@
 .merchantAboutContainer{
     background-color: var(--background-blue-light);
-    width: 1180px;
+    width: 100%;
     height: fit-content;
-    padding: 45px;
+    padding: 20px;
 }
 
 .contentContainer{
@@ -12,7 +12,7 @@
 }
 
 .topicConianer{
-    width: 200px;
+    width: 240px;
 }
 
 .topicConianer, .detailsConatiner{
