@@ -26,12 +26,19 @@ function UserSidebar({ image, username }) {
         </Link>
         <Link className="link" to="/vehicles">
           <FontAwesomeIcon className="sidebar-icon" icon={faCar} />
-          Vehicles
+          Souls
         </Link>
         <Link className="link" to="/">
           <FontAwesomeIcon className="sidebar-icon" icon={faShop} />
-          Shops
+          GearMart
         </Link>
+        <br />
+        <br />
+        <br />
+        <br />
+        <button className="model-a-soul">
+          <b>Model a Soul</b>
+        </button>
       </div>
     </div>
   );
