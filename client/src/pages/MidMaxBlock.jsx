@@ -8,10 +8,9 @@ function MidMaxBlock({ rowTitle, items, image, action, dis, type }) {
   let linkto = ""; // Use 'let' instead of 'const' here
 
   if (type === "user") {
-     linkto = "/user";
-  } 
-  else if (type === "vehicle") {
-     linkto = "/vehicles";
+    linkto = "/user";
+  } else if (type === "vehicle") {
+    linkto = "/vehicles";
   }
 
   return (
@@ -19,8 +18,10 @@ function MidMaxBlock({ rowTitle, items, image, action, dis, type }) {
       <h1 className="row-title">{rowTitle}</h1>
       <div className={showGrid ? "grid-container" : "row-container"}>
         {items.map((item, index) => (
+
           <Link className="link-unstyled" to={linkto}>
             <EachItem 
+
               key={index}
               itemName={item}
               dis={dis}
