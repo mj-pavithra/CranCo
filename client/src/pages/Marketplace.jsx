@@ -22,7 +22,6 @@ const Marketplace = () => {
       <body>
         <div className="div-1">
           <div className="div-left">
-            <UserSidebar />
           </div>
           <div className={`div-max-middle `}>
             {data.map((blockData, index) => (
