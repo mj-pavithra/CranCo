@@ -17,8 +17,8 @@ const FriendsPage = () => {
   const dis = "Colombo";
 
   const image = "girl.png";
-const action = "Accept";
-const action2 = "View profile";
+  const action = "Accept";
+  const action2 = "View profile";
 
 const data = [
   { rowTitle: "Friends", action: "View profile", items: ["Kavishka Anjuna", "Chathuni Kavee", "Amaya Nethmini", "Mahinda Rajapaksha", "Chamara Ranawaka", "Heshanjalee", "Nirjanjalee", "Brus Lee",  ] , dis:[ "From Negombo",  "From Anjoda","From Pure", "From Madamulana", "From Kaluthara", "From Anjoda",], image: ["/assets/profile.jpg", "/assets/propic6.jpeg", "/assets/propic2.jpeg", "/assets/propic12.jpeg", "/assets/propic3.jpeg", "/assets/propic5.jpeg", "/assets/car_img_7.jpeg", "/assets/car_img_8.jpeg", "/assets/car_img_9.jpg",]},
@@ -43,6 +43,7 @@ const data = [
         
       </body>
     </>
+
   );
 };
 

@@ -5,6 +5,8 @@
     top: 0px;
     overflow-y: auto;
     overflow-x: hidden;
+    display: grid;
+    justify-content: center;
 }
 
 .adn-title{
@@ -19,6 +21,11 @@
     text-align: center;
     font-size: 27px;
     font-weight: 700;
+}
+
+.AddNewPageContainer .content{
+    display: grid;
+    justify-content: center;
 }
 
 .formOne, .formTwo, .formThree, .formFour, .formFive{
@@ -92,15 +99,15 @@
 }
 .btnHolder{
     display: flex;
-    gap: 600px;
+    gap: 700px;
 }
 
 .adn-next{
-    justify-self: end;
+    justify-self: start;
 }
 
 .adn-previous{
-    justify-content: start;
+    justify-self: end;
 }
 
 .adn-next, .adn-previous{
