@@ -16,7 +16,7 @@
 }
 
 .post {
-    margin: 0px auto;
+    margin: 10px auto;
     max-width: var(--post-max-width);
     height: fit-content;
     color: white;

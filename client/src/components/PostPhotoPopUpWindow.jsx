@@ -8,7 +8,7 @@ function PostPhotoPopUpWindow() {
   return (
     <div className="media-upload-popup">
       <label className="label-for-media-uploader">
-        <i></i>
+        <i>Upload image</i>
       </label>
       <input type="file" accept="image/*" onChange={handleImageUpload} />
     </div>

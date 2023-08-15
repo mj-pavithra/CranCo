@@ -12,20 +12,20 @@ const MainContainer = (props) => {
     username: "",
   });
   const pagesData = [
-    { name: "Page 1", imgUrl: "/assets/audir8.jpeg" },
-    { name: "Page 2", imgUrl: "/assets/audir8.jpeg" },
-    { name: "Page 3", imgUrl: "/assets/audir8.jpeg" },
-    { name: "Page 4", imgUrl: "/assets/audir8.jpeg" },
-    { name: "Page 5", imgUrl: "/assets/audir8.jpeg" },
-    { name: "Page 6", imgUrl: "/assets/audir8.jpeg" },
+    { name: "Page 1", imgUrl: "/assets/audir8.jpeg", linkto: "/vehiclespageownersview" },
+    { name: "Page 2", imgUrl: "/assets/audir8.jpeg", linkto: "/vehiclespageownersview" },
+    { name: "Page 3", imgUrl: "/assets/audir8.jpeg", linkto: "/vehiclespageownersview" },
+    { name: "Page 4", imgUrl: "/assets/audir8.jpeg", linkto: "/vehiclespageownersview" },
+    { name: "Page 5", imgUrl: "/assets/audir8.jpeg", linkto: "/vehiclespageownersview" },
+    { name: "Page 6", imgUrl: "/assets/audir8.jpeg", linkto: "/vehiclespageownersview" },
   ];
 
   const fetchUserData = () => {
     // Simulating the backend API call to fetch user data
     setTimeout(() => {
       setUserData({
-        image: "/girl.png",
-        username: "Kaveesha Gunawardana",
+        image: "/assets/propic6.jpeg",
+        username: "Manoj Pavithra",
       });
     }, 1000); // Delay of 1 second to simulate the API call
   };

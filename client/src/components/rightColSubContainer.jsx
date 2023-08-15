@@ -10,17 +10,17 @@ const RightColSubContainer = ({ containerTitle, Items, btnTxt }) => {
         <div className="fullContainer">
           {Items.map((item, index) => (
             <React.Fragment key={index}>
-              <div className="eachProfile">
-                <Link className="eachProfile" to="/vehiclespageownersview">
+              <Link className="link-unstyled" to={item.linkto}>
+                <div className="eachProfile">
                   <img className="proPic" src={item.imgUrl} alt="logo" />
                   <h1 className="pageName">{item.name}</h1>
-                </Link>
-              </div>
+                </div>
+              </Link>
               <hr className="hr" />
             </React.Fragment>
           ))}
         </div>
-        <Link to="/admin/AllPages">
+        <Link className="link-unstyled" to="/admin/AllPages">
           {btnTxt && <button className="addPagebtn">{btnTxt}</button>}
         </Link>
       </div>
