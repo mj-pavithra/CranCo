@@ -1,0 +1,112 @@
+.AddNewPageContainer{
+    background-color: var(--background-blue);
+    width: 100%;
+    height: 100vh;
+    top: 0px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.adn-title{
+    color: #FFF;
+    text-align: center;
+    font-size: 56px;
+    font-weight: 500;
+}
+
+.adn-subTitle{
+    color: var(--half-transparent-white);
+    text-align: center;
+    font-size: 27px;
+    font-weight: 700;
+}
+
+.formOne, .formTwo, .formThree, .formFour, .formFive{
+    display: flex;
+    flex-direction: row;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.formThree, .formFour{
+    gap: 120px;
+}
+
+.adn-topicList ul{
+    list-style: none;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 76px;
+    margin-top: 10px;
+}
+
+.adn-inputList ul{
+    list-style: none;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+}
+  
+.formFive .fileInput {
+    display: none;
+}
+  
+.formFive .fileLable {
+    width: 928px;
+    height: 254px;
+    padding: 15px;
+  
+    border: 2px dotted var(--primary-blue);
+    border-radius: 5px;
+  
+    color: var(--primary-blue);
+  
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  
+    cursor: pointer;
+}
+  
+.formFive label:hover {
+    background-color: var(--navbar-background);
+}
+  
+.formFive ion-icon {
+    font-size: 24px;
+}
+  
+.formFive span {
+    max-width: 100%;
+  
+    font-family: sans-serif;
+    font-size: 20px;
+    text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.btnHolder{
+    display: flex;
+    gap: 600px;
+}
+
+.adn-next{
+    justify-self: end;
+}
+
+.adn-previous{
+    justify-content: start;
+}
+
+.adn-next, .adn-previous{
+    width: 218px;
+    height: 48px;
+    background: var(--primary-blue);
+}
+  
+
