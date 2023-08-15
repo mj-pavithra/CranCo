@@ -8,6 +8,7 @@ import { faShop } from "@fortawesome/free-solid-svg-icons";
 import { faBell, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import Icon from "./Icon";
 import PopupDivFull from "./PopupDivFull";
+import { Link } from "react-router-dom";
 
 function NavigationBar() {
   // navigation menu icons
@@ -51,7 +52,9 @@ function NavigationBar() {
           <div className="row">
             {/* left div */}
             <div className="col-4 navbar-main d-flex align-items-center">
+            <Link to="/homepage">
               <img className="navbar-logo" src="/assets/logo.png" alt="logo" />
+            </Link>
               <input
                 type="text"
                 className="navbar-search"
@@ -61,22 +64,26 @@ function NavigationBar() {
 
             {/* middle div */}
             <div className="col-4 navbar-main d-flex align-items-center justify-content-center">
-              <div
-                className={`navbar-icon-wrapper ${
-                  activeIcon === "home" ? " active" : ""
-                }`}
-                onClick={() => handleIconClick("home")}
-              >
-                <FontAwesomeIcon className="navbar-icon" icon={faHome} />
-              </div>
-              <div
-                className={`navbar-icon-wrapper ${
-                  activeIcon === "marketplace" ? " active" : ""
-                }`}
-                onClick={() => handleIconClick("marketplace")}
-              >
-                <FontAwesomeIcon className="navbar-icon" icon={faShop} />
-              </div>
+              <Link to="/homepage">
+                <div
+                  className={`navbar-icon-wrapper ${
+                    activeIcon === "home" ? " active" : ""
+                  }`}
+                  onClick={() => handleIconClick("home")}
+                >
+                  <FontAwesomeIcon className="navbar-icon" icon={faHome} />
+                </div>
+              </Link>
+              <Link to="/marketplace">
+                <div
+                  className={`navbar-icon-wrapper ${
+                    activeIcon === "marketplace" ? " active" : ""
+                  }`}
+                  onClick={() => handleIconClick("marketplace")}
+                >
+                  <FontAwesomeIcon className="navbar-icon" icon={faShop} />
+                </div>
+              </Link>
             </div>
 
             {/* last div */}

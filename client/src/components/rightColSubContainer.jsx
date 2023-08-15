@@ -1,5 +1,6 @@
 import React from "react";
 import "../css/RightColSubContainer.css";
+import { Link } from "react-router-dom";
 
 const RightColSubContainer = ({ containerTitle, Items, btnTxt }) => {
   return (
@@ -17,7 +18,9 @@ const RightColSubContainer = ({ containerTitle, Items, btnTxt }) => {
             </React.Fragment>
           ))}
         </div>
-        {btnTxt && <button className="addPagebtn">{btnTxt}</button>}
+        <Link to="/admin/AllPages">
+          {btnTxt && <button  className="addPagebtn">{btnTxt}</button>}
+        </Link>
       </div>
     </div>
   );

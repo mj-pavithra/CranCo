@@ -2,3 +2,18 @@
     min-height: 100vh;
     
 }
+
+/* Add a class to your custom styles for the Link */
+.link-unstyled {
+    text-decoration: none; /* Remove underline */
+    color: inherit; /* Inherit text color */
+  }
+  
+  /* Optional: Apply styles for hover and focus */
+  .link-unstyled:hover,
+  .link-unstyled:focus {
+    text-decoration: none;
+    color: inherit;
+    /* Add any additional styles you want on hover or focus */
+  }
+  

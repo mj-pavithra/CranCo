@@ -27,8 +27,8 @@ const action = "Add Friend";
             <UserSidebar />
           </div>
           <div className={`div-max-middle `}>
-          <MidMaxBlock rowTitle="Friends" items={items}  action={action} image={image} dis={dis} />
-          <MidMaxBlock rowTitle="Requests" items={items} action={action} image={image} dis={dis} />
+          <MidMaxBlock rowTitle="Friends" items={items}  action={action} image={image} dis={dis}  type="user"/>
+          <MidMaxBlock rowTitle="Requests" items={items} action={action} image={image} dis={dis} type="user"/>
           </div>
         </div>
         
