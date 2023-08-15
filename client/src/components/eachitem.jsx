@@ -1,5 +1,5 @@
 import React from "react";
-import "../css/eachItem.css";
+import "../css/EachItem.css";
 import Btn from "./Btn";
 
 const EachItem = ({ itemName, dis, img , action}) => {
