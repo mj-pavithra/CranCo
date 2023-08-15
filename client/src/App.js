@@ -24,6 +24,7 @@ import VehicleAboutEdit from "./pages/VehicleAboutEdit";
 import OwnersVehicleProfileAllPhotos from "./pages/OwnersVehicleProfileAllPhotos";
 import UserManagement from "./pages/UserManagement";
 import PageManagement from "./pages/PageManagement";
+import AddNewPage from "./pages/AddNewPage";
 
 const App = () => {
   return (
@@ -52,6 +53,7 @@ const App = () => {
           <Route path="/vehicleaboutedit" element={<VehicleAboutEdit />} />
           <Route path="/merchant" element={<MerchantOtherView />}></Route>
           <Route path="/merchantowner" element={<MerchantOwnerView />}></Route>
+          <Route path="/newpage" element={<AddNewPage/>}></Route>
           <Route path="*" element={<Error404 />} />
         </Route>
 
