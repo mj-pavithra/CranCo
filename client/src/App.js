@@ -24,6 +24,7 @@ import VehicleAboutEdit from "./pages/VehicleAboutEdit";
 import OwnersVehicleProfileAllPhotos from "./pages/OwnersVehicleProfileAllPhotos";
 import UserManagement from "./pages/UserManagement";
 import PageManagement from "./pages/PageManagement";
+import OwneProfile from "./pages/OwneProfile";
 
 const App = () => {
   return (
@@ -39,6 +40,7 @@ const App = () => {
           <Route path="/pages" element={<Pages />} />
           <Route path="/product" element={<ViewProductPage />} />
           <Route path="/user" element={<UserProfile />} />
+          <Route path="/myprofile" element={<OwneProfile />} />
           <Route path="/vehicles" element={<VehiclesPage />} />
           <Route path="/allvehiclephotos" element={<AllVehiclePhotos />} />
           <Route

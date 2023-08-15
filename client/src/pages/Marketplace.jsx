@@ -26,7 +26,7 @@ const Marketplace = () => {
           </div>
           <div className={`div-max-middle `}>
             {data.map((blockData, index) => (
-              <MidMaxBlock key={index} rowTitle={blockData.rowTitle} items={blockData.items} dis={blockData.dis} image={blockData.image} action={action} />
+              <MidMaxBlock key={index} rowTitle={blockData.rowTitle} items={blockData.items} dis={blockData.dis} image={blockData.image} action={action}  type ="vehicle"/>
             ))}
           </div>
         </div>

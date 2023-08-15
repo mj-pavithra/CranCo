@@ -48,12 +48,12 @@ const MainContainer = (props) => {
           </div>
           <div className="div-right">
             <RightColSubContainer
-              containerTitle="Pages"
+              containerTitle="My Souls"
               Items={pagesData}
-              btnTxt="Create Page"
+              btnTxt="Add Soul"
             />
             <RightColSubContainer
-              containerTitle="Trending"
+              containerTitle=" Hot topics"
               Items={pagesData}
               btnTxt=""
             />
