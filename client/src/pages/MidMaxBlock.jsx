@@ -19,13 +19,14 @@ function MidMaxBlock({ rowTitle, items, image, action, dis, type }) {
       <h1 className="row-title">{rowTitle}</h1>
       <div className={showGrid ? "grid-container" : "row-container"}>
         {items.map((item, index) => (
-          <Link to={linkto}>
+          <Link className="link-unstyled" to={linkto}>
             <EachItem 
               key={index}
               itemName={item}
               dis={dis}
               img={image}
               action={action}
+              linkto={linkto}
             />
           </Link>
         ))}
