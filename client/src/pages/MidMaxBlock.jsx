@@ -16,7 +16,7 @@ function MidMaxBlock({ rowTitle, items, image, action, dis, type }) {
 
   return (
     <div className="mid-max-block">
-      <h1 className="row-title">{rowTitle}</h1>
+      <p className="row-title">{rowTitle}</p>
       <div className={showGrid ? "grid-container" : "row-container"}>
         {items.map((item, index) => (
           <Link className="link-unstyled" to={linkto} key={index}>
@@ -31,9 +31,7 @@ function MidMaxBlock({ rowTitle, items, image, action, dis, type }) {
         ))}
       
       </div>
-      <button className="see-more-btn" onClick={() => setShowGrid(!showGrid)}>
-        {showGrid ? "See Less" : "See More"}
-      </button>
+      
     </div>
   );
 }
