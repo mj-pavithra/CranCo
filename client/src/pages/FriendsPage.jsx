@@ -46,4 +46,4 @@ const data = [
   );
 };
 
-export default FriendsPage;
+export default FriendsPage;
