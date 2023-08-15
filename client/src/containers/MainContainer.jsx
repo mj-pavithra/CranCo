@@ -2,8 +2,9 @@
 import React, { useEffect, useState } from "react";
 import NavigationBar from "../components/NavigationBar";
 import UserSidebar from "../components/UserSidebar";
-import RightColSubContainer from "../components/rightColSubContainer";
-import '../css/MainContainer.css'
+import RightColSubContainer from "../components/RightColSubContainer";
+import "../css/MainContainer.css";
+import PopupDivFull from "../components/PopupDivFull";
 
 const MainContainer = (props) => {
   const [userData, setUserData] = useState({
@@ -47,12 +48,12 @@ const MainContainer = (props) => {
           </div>
           <div className="div-right">
             <RightColSubContainer
-              containerTitle="Pages"
+              containerTitle="My Souls"
               Items={pagesData}
-              btnTxt="Create Page"
+              btnTxt="Add Soul"
             />
             <RightColSubContainer
-              containerTitle="Trending"
+              containerTitle=" Hot topics"
               Items={pagesData}
               btnTxt=""
             />

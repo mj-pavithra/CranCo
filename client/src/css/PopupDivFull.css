@@ -1,0 +1,39 @@
+@import "../index.css";
+
+.pdf-holder {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  position: fixed;
+  z-index: 1000;
+
+  top: 0;
+  right: 0;
+
+  display: none;
+
+  overflow-x: auto;
+  overflow-y: auto;
+
+  color: white;
+}
+
+.pdf-holder.pdf-open {
+  display: block;
+}
+
+.pdf-holder-1 {
+  padding: 10px 20px;
+}
+
+.pdf-rotate-90 {
+  transform: rotate(180deg);
+}
+
+.pdf-holder-2 {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  gap: 10px;
+}

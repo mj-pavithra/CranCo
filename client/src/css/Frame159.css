@@ -1,0 +1,49 @@
+.Frame159 {
+    position: relative;
+    top: 100px;
+    margin: 0px 10px 0px 10px;
+    align-items: center;
+    border-radius: 10px;
+    background-color: #f0f0f0;
+    padding: 10px;
+  }
+  
+  .userListTableContainer {
+    margin: 20px;
+  }
+  
+  .tableTitle {
+    font-size: 24px;
+    margin: 0px 5px 0px 5px;
+  }
+  
+  .userListTable {
+    width: 100%;
+    border-collapse: collapse;
+    border: none; /* Remove border */
+  }
+  
+  .userListTable th,
+  .userListTable td {
+    border: none; /* Remove border */
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .userListTable th {
+    background-color: #f0f0f0;
+    font-weight: bold;
+  }
+  
+  .userListTable tr:nth-child(even) {
+    background-color: #f5f5f5;
+  }
+  
+  .userListTable tr:nth-child(odd) {
+    background-color: #e0e0e0; /* Different shade for odd rows */
+  }
+  
+  .userListTable tr:hover {
+    background-color: #e0e0e0;
+  }
+  

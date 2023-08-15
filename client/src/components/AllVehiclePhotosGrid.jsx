@@ -35,6 +35,9 @@ function AllVehiclePhotosGrid({
         <img src={image3 || dummyImage3} alt="image3" />
         <img src={image4 || dummyImage4} alt="image4" />
         <img src={image5 || dummyImage5} alt="image5" />
+        <br />
+        <br />
+        <br />
         <button className="back-btn" onClick={() => navigate("/vehicles")}>
           Show less
         </button>

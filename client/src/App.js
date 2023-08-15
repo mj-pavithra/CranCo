@@ -22,12 +22,16 @@ import VehiclesPageOwnersView from "./pages/VehiclesPageOwnersView";
 import AdminDashboard from "./pages/AdminDashboard";
 import VehicleAboutEdit from "./pages/VehicleAboutEdit";
 import ProgressBar from "./components/ProgressBar";
+import OwnersVehicleProfileAllPhotos from "./pages/OwnersVehicleProfileAllPhotos";
+import UserManagement from "./pages/UserManagement";
+import PageManagement from "./pages/PageManagement";
+import OwneProfile from "./pages/OwneProfile";
 
 const App = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/">
+        <Route path="/" >
           <Route path="/homepage" element={<HomePage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/progressbar" element={<ProgressBar />} />
@@ -38,6 +42,7 @@ const App = () => {
           <Route path="/pages" element={<Pages />} />
           <Route path="/product" element={<ViewProductPage />} />
           <Route path="/user" element={<UserProfile />} />
+          <Route path="/myprofile" element={<OwneProfile />} />
           <Route path="/vehicles" element={<VehiclesPage />} />
           <Route path="/allvehiclephotos" element={<AllVehiclePhotos />} />
           <Route
@@ -64,7 +69,8 @@ const App = () => {
         </Route>
         <Route path="/admin">
           <Route path="/admin/dashboard" element={<AdminDashboard />} />
-          
+          <Route path="/admin/usermanagement" element={<UserManagement />} />
+          <Route path="/admin/pagemanagement" element={<PageManagement />} />
           <Route path="*" element={<Error404 />} />
         </Route>
       </Routes>

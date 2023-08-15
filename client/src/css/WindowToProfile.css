@@ -1,0 +1,83 @@
+.WindowToProfile{
+    z-index: 100;
+    position: fixed;
+    left: calc(100vw - 302.75px);
+    top: 10px;
+    flex-direction: column;
+    width: 282.75px;
+    height: 230px;
+    border-color: #000000;
+    border-style: solid 1px #000000;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: aliceblue;
+}
+.RightBlock2{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.ProPic2{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    overflow: hidden;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.ProPic2 img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.NameBox2{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: center;
+    margin-left: 20px;
+    top: -10px;
+}
+.DisplayName2{
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0px;
+}
+
+.Position2{
+    font-size: 14px;
+    margin: 0px;
+
+}
+
+.ProfileBtn{
+    position: relative;
+    padding: 8px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 20px;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  
+  .ProfileBtn {
+    cursor: pointer;
+  }
+  
+  .ProfileBtn {
+  }
+  
+  .logout-img{
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    
+  }
