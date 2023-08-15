@@ -22,7 +22,7 @@ function UserSidebar({ image, username }) {
           <FontAwesomeIcon className="sidebar-icon" icon={faHouseChimney} />
           Home
         </Link> */}
-        <Link className="link" to="/login">
+        <Link className="link" to="/friends">
           <FontAwesomeIcon className="sidebar-icon" icon={faUsers} />
           Friends
         </Link>
