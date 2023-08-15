@@ -292,7 +292,7 @@
   height: 50px;
   font-size: 25px;
   color: var(--text-2);
-  align-items: right;
+  align-items: center;
   opacity: 100%;
 }
 
