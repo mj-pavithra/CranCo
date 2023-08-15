@@ -36,7 +36,7 @@ const App = () => {
         <Route path="/">
           <Route path="/homepage" element={<HomePage />} />
           <Route path="/login" element={<LoginPage />} />
-          <Route path="/progressbar" element={<ProgressBar />} />
+          {/* <Route path="/progressbar" element={<ProgressBar />} /> */}
           {/* <Route path="/login2" element={<LoginPageContainer />} /> */}
 
           <Route path="/friends" element={<FriendsPage />} />
@@ -58,7 +58,7 @@ const App = () => {
           <Route path="/vehicleaboutedit" element={<VehicleAboutEditPage />} />
           <Route path="/merchant" element={<MerchantOtherView />}></Route>
           <Route path="/merchantowner" element={<MerchantOwnerView />}></Route>
-          <Route path="/newpage" element={<AddNewPage/>}></Route>
+          <Route path="/newpage" element={<AddNewPage />}></Route>
           <Route path="*" element={<Error404 />} />
         </Route>
 
