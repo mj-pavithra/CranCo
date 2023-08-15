@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import NavigationBar from "../components/NavigationBar";
 import UserSidebar from "../components/UserSidebar";
 import MidMaxBlock from "./MidMaxBlock";
+import MainContainer from "../containers/MainContainer";
 
 const FriendsPage = () => {
   const items = [
@@ -27,11 +28,11 @@ const data = [
 ];  
 
   return (
-    <>
-      <NavigationBar />
-      <body>
-        <div className="div-1">
-           <div className="div-left">
+    <MainContainer>
+      {/* <NavigationBar /> */}
+      {/* <body> */}
+      {/* <div className="div-1"> */}
+      {/* <div className="div-left">
             <UserSidebar />
           </div>
           <div className={`div-max-middle `}>
@@ -43,6 +44,7 @@ const data = [
         
       </body>
     </>
+
   );
 };
 
