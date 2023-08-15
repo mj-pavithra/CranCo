@@ -26,11 +26,11 @@ function UserSidebar({ image, username }) {
           <FontAwesomeIcon className="sidebar-icon" icon={faUsers} />
           Friends
         </Link>
-        <Link className="link" to="/vehicles">
+        <Link className="link" to="/marketplace">
           <FontAwesomeIcon className="sidebar-icon" icon={faCar} />
           Souls
         </Link>
-        <Link className="link" to="/">
+        <Link className="link" to="/merchant">
           <FontAwesomeIcon className="sidebar-icon" icon={faShop} />
           GearMart
         </Link>

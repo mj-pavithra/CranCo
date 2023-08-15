@@ -49,7 +49,7 @@ const data = {coverPhoto :"/assets/coverphoto.jpeg",
         "pageCount": 1
         },
         {
-        "ProfilePicture": "/assets/propic6.jpeg",
+        "ProfilePicture": "/assets/propic3.jpeg",
         "userName": "Mary Jane",
         "pageImage1": "/assets/page3.jpeg",
         "pageImage2": "/assets/page1.jpeg",
