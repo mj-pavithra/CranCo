@@ -20,7 +20,6 @@ import MerchantOwnerView from "./pages/MerchantOwnerView";
 import UserProfile from "./pages/UserProfile";
 import VehiclesPageOwnersView from "./pages/VehiclesPageOwnersView";
 import AdminDashboard from "./pages/AdminDashboard";
-<<<<<<< HEAD
 import VehicleAboutEditPage from "./pages/VehicleAboutEditPage";
 
 import OwnersVehicleProfileAllPhotos from "./pages/OwnersVehicleProfileAllPhotos";
@@ -58,7 +57,7 @@ const App = () => {
           <Route path="/vehicleaboutedit" element={<VehicleAboutEditPage />} />
           <Route path="/merchant" element={<MerchantOtherView />}></Route>
           <Route path="/merchantowner" element={<MerchantOwnerView />}></Route>
-          <Route path="/newpage" element={<AddNewPage/>}></Route>
+          <Route path="/newpage" element={<AddNewPage />}></Route>
           <Route path="*" element={<Error404 />} />
         </Route>
 
