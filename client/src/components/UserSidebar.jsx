@@ -11,7 +11,7 @@ import {
 function UserSidebar({ image, username }) {
   return (
     <div className="side-bar">
-      <Link to="/myprofile">
+      <Link className="link-unstyled" to="/myprofile">
         <div className="user-cage">
           <img src={image} alt="User Avatar" />
           <p>{username}</p>

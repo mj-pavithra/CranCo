@@ -29,7 +29,7 @@ const ProfileCard = ({ coverPhoto, profilePhoto, editDP, profileName, likedPage1
         <div classname="pages">
             <img className="likedPage1" alt="Error" src={onError(likedPage1)}/>
             <img className="likedPage1 lp2" alt="Error" src={onError(likedPage2)}/>
-            <Link to="/vehicles">
+            <Link to="/vehicles" style={{ textDecoration: "none", color: "inherit" }}>
               <img className="likedPage1 lp3" alt="Error" src={onError(likedPage3)}/>
             </Link>
             <h3 className="likedPageCount">{likedPageCount} Souls following</h3>
