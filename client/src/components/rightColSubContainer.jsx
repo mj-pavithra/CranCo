@@ -20,7 +20,9 @@ const RightColSubContainer = ({ containerTitle, Items, btnTxt }) => {
             </React.Fragment>
           ))}
         </div>
-        {btnTxt && <button className="addPagebtn">{btnTxt}</button>}
+        <Link to="/admin/AllPages">
+          {btnTxt && <button  className="addPagebtn">{btnTxt}</button>}
+        </Link>
       </div>
     </div>
   );
