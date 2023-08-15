@@ -21,10 +21,12 @@ import UserProfile from "./pages/UserProfile";
 import VehiclesPageOwnersView from "./pages/VehiclesPageOwnersView";
 import AdminDashboard from "./pages/AdminDashboard";
 import VehicleAboutEdit from "./pages/VehicleAboutEdit";
+import ProgressBar from "./components/ProgressBar";
 import OwnersVehicleProfileAllPhotos from "./pages/OwnersVehicleProfileAllPhotos";
 import UserManagement from "./pages/UserManagement";
 import PageManagement from "./pages/PageManagement";
 import AddNewPage from "./pages/AddNewPage";
+import OwneProfile from "./pages/OwneProfile";
 
 const App = () => {
   return (
@@ -33,6 +35,7 @@ const App = () => {
         <Route path="/" >
           <Route path="/homepage" element={<HomePage />} />
           <Route path="/login" element={<LoginPage />} />
+          <Route path="/progressbar" element={<ProgressBar />} />
           {/* <Route path="/login2" element={<LoginPageContainer />} /> */}
 
           <Route path="/friends" element={<FriendsPage />} />
@@ -40,6 +43,7 @@ const App = () => {
           <Route path="/pages" element={<Pages />} />
           <Route path="/product" element={<ViewProductPage />} />
           <Route path="/user" element={<UserProfile />} />
+          <Route path="/myprofile" element={<OwneProfile />} />
           <Route path="/vehicles" element={<VehiclesPage />} />
           <Route path="/allvehiclephotos" element={<AllVehiclePhotos />} />
           <Route

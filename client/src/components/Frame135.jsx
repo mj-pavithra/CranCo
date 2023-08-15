@@ -2,6 +2,7 @@
 import React from "react";
 import "../css/Frame135.css";
 import Frame135Option from "../components/Frame135Option";
+import { Link } from "react-router-dom";
 
 const altImg = "/assets/alt-image.jpeg";
 
@@ -25,8 +26,11 @@ const Frame135 = ({ img1, optionList }) => {
             </div>
             <div className="BottomFrame135">
                 {optionList.map((option, index) => (
+                    <Link to={option.linkto}>
                     <Frame135Option key={index} OptionIcon={option.img1} OptionTxt={option.text1} />
+                </Link>
                 ))}
+                    
             </div>
           </div>
     );

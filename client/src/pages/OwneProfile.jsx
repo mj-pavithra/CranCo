@@ -3,14 +3,15 @@ import React from "react";
 import UserProfileContainer from "../containers/UserProfileContainer";
 import '../index.css'
 
-const UserProfile = () => {
+
+const OwneProfile = () => {
   return (
     <>
     <div className="backgroundDiv" >
-      <UserProfileContainer isOwner="no"/>
+      <UserProfileContainer isOwner=""/>
     </div>
     </>
   );
 };
 
-export default UserProfile;
+export default OwneProfile;
