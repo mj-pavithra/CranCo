@@ -1,5 +1,6 @@
 import React from "react";
 import "../css/RightColSubContainer.css";
+import { Link } from "react-router-dom";
 
 const RightColSubContainer = ({ containerTitle, Items, btnTxt }) => {
   return (
@@ -10,8 +11,10 @@ const RightColSubContainer = ({ containerTitle, Items, btnTxt }) => {
           {Items.map((item, index) => (
             <React.Fragment key={index}>
               <div className="eachProfile">
-                <img className="proPic" src={item.imgUrl} alt="logo" />
-                <h1 className="pageName">{item.name}</h1>
+                <Link className="eachProfile" to="/vehiclespageownersview">
+                  <img className="proPic" src={item.imgUrl} alt="logo" />
+                  <h1 className="pageName">{item.name}</h1>
+                </Link>
               </div>
               <hr className="hr" />
             </React.Fragment>
