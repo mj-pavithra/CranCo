@@ -173,6 +173,11 @@ div::-webkit-scrollbar-thumb {
   align-items: center;
 }
 
+.link-unstyled {
+  text-decoration: none;
+  color: "inherit"
+}
+
 .grid-container {
   width: calc(100% - 10px);
   display: grid;
@@ -188,9 +193,11 @@ div::-webkit-scrollbar-thumb {
 }
 
 .row-title {
+  padding: 0px;
+  margin: 0px;
+  height: 45px;
   color: #fff;
   width: 375px;
-  height: 62px;
   justify-content: center;
   align-items: center;
 }
@@ -232,13 +239,4 @@ div::-webkit-scrollbar-thumb {
   cursor: pointer;
 }
 
-.link-unstyled {
-  text-decoration: none; 
-  color: inherit; 
-}
 
-.link-unstyled:hover,
-.link-unstyled:focus {
-  text-decoration: none;
-  color: inherit;
-}

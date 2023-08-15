@@ -6,9 +6,10 @@ import UserFriends from "../components/UserFriends";
 import '../css/UserProfileContainer.css'
 import UserVehicles from "../components/UserVehicles";
 import { Link } from "react-router-dom";
+import LinkToProfile from "../functions/LinkToProfile";
 
 const data = {coverPhoto :"/assets/coverphoto.jpeg", 
-            profilePhoto:"/assets/profile.jpg", 
+            profilePhoto:"/assets/propic6.jpeg", 
             editDP: "/assets/camera-solid.png", 
             profileName : "MJ Pavithra", 
             likedPage1 : "/assets/page1.jpeg", 
@@ -121,7 +122,7 @@ const UserProfileContainer = ({isOwner}) => {
                     </div>
                     <div className="leftColumnSubContainerBody">
                         {userFriendsData.map((userData, index) => (
-                            <Link to="/user">
+                            <Link  to="/user">
                               <UserFriends
                               key={index}
                               ProfilePicture={userData.ProfilePicture}
@@ -157,16 +158,16 @@ const UserProfileContainer = ({isOwner}) => {
             <div className="rightColumn">
             
                 <div className="rightColumnSubContainer">
-                    <Post/>
+                    <Post isOwner="no"/>
                 </div>
                 <div className="rightColumnSubContainer">
                     <Post/>
                 </div>
                 <div className="rightColumnSubContainer">
-                    <Post/>
+                    <Post isOwner="no"/>
                 </div>
                 <div className="rightColumnSubContainer">
-                    <Post/>
+                    <Post isOwner="no"/>
                 </div>
             </div>
         </div>

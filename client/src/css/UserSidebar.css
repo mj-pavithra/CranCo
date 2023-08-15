@@ -25,10 +25,11 @@
   gap: 10px;
 }
 
+
+
 .link {
   color: var(--text-2);
   text-decoration: none;
-  width: fit-content;
   align-items: center;
   padding: 15px 20px;
   border-radius: 8px;

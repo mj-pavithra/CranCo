@@ -48,6 +48,11 @@
     width: 0;
   }
   
+.a {
+  text-decoration: none; 
+  color: inherit; 
+}
+  
   .fullContainer::-webkit-scrollbar-thumb {
     background-color: #888;
     border-radius: 4px;
@@ -89,7 +94,7 @@
     font-style: normal;
     font-weight: 400;
     line-height: 163.418%;
-    margin-left: 10px;
+    text-align: center;
     /* 26.147px */
   }
   
@@ -169,43 +174,4 @@
 }
 
 
-.pageName {
-  color: #fff;
-  width: 120px;
-  font-family: Inter;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 163.418%;
-  margin-left: 10px;
-  /* 26.147px */
-}
 
-.proPic {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  object-fit: cover;
-  border-radius: 40px;
-  margin: 0px 20px;
-  background: url("https://scontent-sin6-1.xx.fbcdn.net/v/t39.30808-6/308581772_3365988040389612_5848867500392379717_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeEEweZgd3s_oeM1obcqQACJy1MVLSKNL8fLUxUtIo0vx9wXdxe0th-iX99QKF_8mbStgGJCMzhD0uGd_E0dboTs&_nc_ohc=RFqRpAgbGwgAX-y8WeT&_nc_ht=scontent-sin6-1.xx&oh=00_AfBkg3KoOK6anSRS7moUmMOkAQFt6pNn27o2zhZj5Osqsg&oe=64C3A876"),
-    lightgray 50% / cover no-repeat, #d9d9d9;
-}
-
-.addPagebtn {
-  display: flex;
-  width: 189px;
-  height: 49px;
-  margin-top: 10px;
-  justify-content: center;
-  align-items: center; /* Center the content vertically */
-  flex-shrink: 0;
-  color: #fff;
-  background: #2060ad;
-  text-align: center;
-  font-family: Inter;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 163.418%; /* 26.147px */
-}
