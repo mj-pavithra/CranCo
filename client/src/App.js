@@ -20,18 +20,18 @@ import MerchantOwnerView from "./pages/MerchantOwnerView";
 import UserProfile from "./pages/UserProfile";
 import VehiclesPageOwnersView from "./pages/VehiclesPageOwnersView";
 import AdminDashboard from "./pages/AdminDashboard";
-import VehicleAboutEdit from "./pages/VehicleAboutEdit";
 import ProgressBar from "./components/ProgressBar";
 import OwnersVehicleProfileAllPhotos from "./pages/OwnersVehicleProfileAllPhotos";
 import UserManagement from "./pages/UserManagement";
 import PageManagement from "./pages/PageManagement";
 import OwneProfile from "./pages/OwneProfile";
+import VehicleAboutEditPage from "./pages/VehicleAboutEditPage";
 
 const App = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" >
+        <Route path="/">
           <Route path="/homepage" element={<HomePage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/progressbar" element={<ProgressBar />} />
@@ -53,7 +53,7 @@ const App = () => {
             path="/vehiclespageownersview"
             element={<VehiclesPageOwnersView />}
           />
-          <Route path="/vehicleaboutedit" element={<VehicleAboutEdit />} />
+          <Route path="/vehicleaboutedit" element={<VehicleAboutEditPage />} />
           <Route path="/merchant" element={<MerchantOtherView />}></Route>
           <Route path="/merchantowner" element={<MerchantOwnerView />}></Route>
           <Route path="*" element={<Error404 />} />
