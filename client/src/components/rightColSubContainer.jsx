@@ -21,7 +21,7 @@ const RightColSubContainer = ({ containerTitle, Items, btnTxt }) => {
           ))}
         </div>
         <Link to="/admin/AllPages">
-          {btnTxt && <button  className="addPagebtn">{btnTxt}</button>}
+          {btnTxt && <button className="addPagebtn">{btnTxt}</button>}
         </Link>
       </div>
     </div>
