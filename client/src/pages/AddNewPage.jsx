@@ -34,6 +34,7 @@ const AddNewPage = () => {
         <div className="AddNewPageContainer">
             <div className="adn-title">SIGN UP YOUR SOUL ACCOUNT</div>
             <p className="adn-subTitle">Fill all required fields to go to the next step</p>
+            <div className="content">
             {currentStep === 1 && (
                 <div className="formOne">
                     <form className="adn-inputList">
@@ -127,9 +128,10 @@ const AddNewPage = () => {
                     </form>
                 </div>
             )}
+            </div>
             <div className="btnHolder">
-                {currentStep < 5 && <button className="adn-next" onClick={handleNext}>Next</button>}
-                {currentStep > 1 && <button className="adn-previous" onClick={handlePrevious}>Previous</button>}
+                {currentStep > 1 ? (<button className="adn-previous" onClick={handlePrevious}>Previous</button>) : (<button className="adn-previous">Back</button>)}
+                {currentStep < 5 ? (<button className="adn-next" onClick={handleNext}>Next</button>) : (<button className="adn-next">Submit</button>)}
             </div>
         </div>
     );
