@@ -8,16 +8,6 @@ import UserVehicles from "../components/UserVehicles";
 import { Link } from "react-router-dom";
 import LinkToProfile from "../functions/LinkToProfile";
 
-const data = {coverPhoto :"/assets/coverphoto.jpeg", 
-            profilePhoto:"/assets/propic6.jpeg", 
-            editDP: "/assets/camera-solid.png", 
-            profileName : "MJ Pavithra", 
-            likedPage1 : "/assets/page1.jpeg", 
-            likedPage2 : "/assets/page2.jpeg", 
-            likedPage3 : "/assets/page3.jpeg", 
-            likedPageCount :"9", 
-            RalionshipState:"friend of friend", 
-            addFriend : "Add Friend"};
 
     const userFriendsData = [
         {
@@ -82,7 +72,7 @@ const data = {coverPhoto :"/assets/coverphoto.jpeg",
 
 
 
-const UserProfileContainer = ({isOwner}) => {
+const UserProfileContainer = ({data,isOwner}) => {
 
     const [isFixed, setIsFixed] = useState(false);
     const leftColumnRef = useRef(null);

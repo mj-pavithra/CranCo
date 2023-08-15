@@ -195,6 +195,7 @@ div::-webkit-scrollbar-thumb {
 .row-title {
   padding: 0px;
   margin: 0px;
+  font-size: 28px;
   height: 45px;
   color: #fff;
   width: 375px;

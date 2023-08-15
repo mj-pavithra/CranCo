@@ -28,7 +28,7 @@ function UserSidebar({ image, username }) {
         </Link>
         <Link className="link" to="/marketplace">
           <FontAwesomeIcon className="sidebar-icon" icon={faCar} />
-          Souls
+          Buy Souls
         </Link>
         <Link className="link" to="/merchant">
           <FontAwesomeIcon className="sidebar-icon" icon={faShop} />

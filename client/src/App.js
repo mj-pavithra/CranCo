@@ -20,20 +20,17 @@ import MerchantOwnerView from "./pages/MerchantOwnerView";
 import UserProfile from "./pages/UserProfile";
 import VehiclesPageOwnersView from "./pages/VehiclesPageOwnersView";
 import AdminDashboard from "./pages/AdminDashboard";
-
-import VehicleAboutEditPage from "./pages/VehicleAboutEditPage";
-
+import VehicleAboutEdit from "./pages/VehicleAboutEdit";
 import OwnersVehicleProfileAllPhotos from "./pages/OwnersVehicleProfileAllPhotos";
 import UserManagement from "./pages/UserManagement";
 import PageManagement from "./pages/PageManagement";
-import AddNewPage from "./pages/AddNewPage";
 import OwneProfile from "./pages/OwneProfile";
 
 const App = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/">
+        <Route path="/" >
           <Route path="/homepage" element={<HomePage />} />
           <Route path="/login" element={<LoginPage />} />
           {/* <Route path="/login2" element={<LoginPageContainer />} /> */}
@@ -54,10 +51,9 @@ const App = () => {
             path="/vehiclespageownersview"
             element={<VehiclesPageOwnersView />}
           />
-          <Route path="/vehicleaboutedit" element={<VehicleAboutEditPage />} />
+          <Route path="/vehicleaboutedit" element={<VehicleAboutEdit />} />
           <Route path="/merchant" element={<MerchantOtherView />}></Route>
           <Route path="/merchantowner" element={<MerchantOwnerView />}></Route>
-          <Route path="/newpage" element={<AddNewPage/>}></Route>
           <Route path="*" element={<Error404 />} />
         </Route>
 

@@ -41,7 +41,7 @@ const MerchantOtherView = () => {
     return (
         <MainContainer>
             <div className="merchantOtherView">
-                <ProfileCard coverPhoto ={data.coverPhoto} profilePhoto ={data.profilePhoto} editDP ={data.editDP} profileName ={data.profileName} likedPage1 ={data.likedPage1} likedPage2 ={data.likedPage2} likedPage3 ={data.likedPage3} likedPageCount ={data.likedPageCount} RalionshipState ={data.RalionshipState} addFriend ={data.addFriend}/>
+                <ProfileCard coverPhoto ={data.coverPhoto} profilePhoto ={data.profilePhoto} editDP ={data.editDP} profileName ={data.profileName} likedPage1 ={data.likedPage1} likedPage2 ={data.likedPage2} likedPage3 ={data.likedPage3} likedPageCount ={data.likedPageCount} RalionshipState ={data.RalionshipState} addFriend ={data.addFriend} isOwner='no'/>
                 <div className="tab">
                     <button className="tablinks" onClick={(evt) => openCity(evt, 'vehicleForSale')} id="defaultOpen">Vehicles for Sales</button>
                     <button className="tablinks" onClick={(evt) => openCity(evt, 'soldVehicle')}>Sold Vehicles</button>
