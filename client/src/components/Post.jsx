@@ -47,7 +47,7 @@ const Post = (isOwner) => {
                 </div>
 
                 {/* post cacpiton */}
-                <div className='post-text post-padding pt-2 fw-semiBold'> delete mode 100644 cranco/src/test/java/com/cranco/cranco/CrancoApplicationTests.java</div>
+                <div className='post-text post-padding pt-2 fw-semiBold'>   </div>
 
                 {/* image section */}
                 <div className='post-image pt-2'>
