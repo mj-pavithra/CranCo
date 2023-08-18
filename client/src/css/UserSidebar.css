@@ -25,10 +25,11 @@
   gap: 10px;
 }
 
+
+
 .link {
   color: var(--text-2);
   text-decoration: none;
-  width: fit-content;
   align-items: center;
   padding: 15px 20px;
   border-radius: 8px;
@@ -63,5 +64,31 @@ link:hover {
   width: 50px;
   height: 50px;
   border-radius: 50%;
+  border-style: none;
+}
+
+.model-a-soul {
+  margin: auto;
+  background-color: var(--button-background);
+  color: var(--text-1);
+  height: fit-content;
+  width: fit-content;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 35px;
+  padding-right: 35px;
+  border-style: none;
+}
+
+.model-a-soul:hover {
+  margin: auto;
+  background-color: var(--button-background); /* need to change color */
+  color: var(--text-1);
+  height: fit-content;
+  width: fit-content;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 35px;
+  padding-right: 35px;
   border-style: none;
 }

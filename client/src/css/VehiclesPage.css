@@ -139,23 +139,24 @@
 }
 
 .all-vehicle-photos {
+  /* background-color: aquamarine; */
   display: flex;
-  padding: 5px;
-  gap: 15px;
-  width: 100%;
   height: auto;
-  justify-content: space-between;
+  width: 100%;
+  gap: 150px;
+  flex-wrap: nowrap;
+  /* justify-content: space-between; */
 }
 
 .column {
-  max-width: 50%;
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  width: 50%;
 }
 
 .column img {
-  max-width: 100%;
+  width: 1;
+  height: auto;
 }
 
 .back-btn {

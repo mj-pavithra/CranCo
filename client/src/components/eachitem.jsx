@@ -1,8 +1,9 @@
 import React from "react";
 import "../css/EachItem.css";
 import Btn from "./Btn";
-
-const EachItem = ({ itemName, dis, img, action }) => {
+import { Link } from "react-router-dom";
+import LinkToProfile from "../functions/LinkToProfile";
+const EachItem = ({ itemName, dis, img, action, linkto }) => {
   return (
     <div className="each-item">
       <img className="item-img" src={img} alt="profile" />

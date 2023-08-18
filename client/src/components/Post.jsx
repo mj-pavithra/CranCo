@@ -6,9 +6,11 @@ import { faHeart as reg_heart, faComment as reg_comment, faShareSquare as reg_sh
 import Icon from './Icon'
 import Carousel from './Carousel'
 import Hr from './Hr'
+import { Link } from 'react-router-dom'
+import LinkToProfile from '../functions/LinkToProfile'
 
 
-const Post = () => {
+const Post = (isOwner) => {
     const images = ['/assets/car_img_1.jpg', '/assets/car_img_2.jpg', '/assets/car_img_3.jpg']
 
     const [liked, updateLiked] = useState(false)
@@ -23,10 +25,14 @@ const Post = () => {
                 {/* top section */}
                 <div className='post-back'>
                     <div className='post-header gap-3'>
+                    <Link className="link-unstyled" to={LinkToProfile(isOwner)}>
                         <img className='post-user-image' src="/assets/profile.jpg" alt="" />
+                    </Link>
                         <div className='d-flex flex-column'>
+                        <Link className="link-unstyled" to="/user">
                             <div className='fw-bold'>Sanduni Nimsara</div>
-                            <div className='post-time fw-light'>just now</div>
+                        </Link>
+                        <div className='post-time fw-light'>just now</div>
                         </div>
                     </div>
 
@@ -41,7 +47,7 @@ const Post = () => {
                 </div>
 
                 {/* post cacpiton */}
-                <div className='post-text post-padding pt-2 fw-semiBold'> delete mode 100644 cranco/src/test/java/com/cranco/cranco/CrancoApplicationTests.java</div>
+                <div className='post-text post-padding pt-2 fw-semiBold'>   </div>
 
                 {/* image section */}
                 <div className='post-image pt-2'>
@@ -85,6 +91,7 @@ const Post = () => {
                     </div>
                 </div>
             </div>
+            
         </>
     )
 }

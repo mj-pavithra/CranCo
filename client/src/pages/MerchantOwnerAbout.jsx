@@ -6,7 +6,7 @@ const MerchantOwnerAbout = () => {
     const images = ["assets/car_img_1.jpg", "assets/car_img_2.jpg", "assets/car_img_3.jpg", "assets/car_img_4.jpg", "assets/car_img_4.jpg", "assets/car_img_3.jpg", "assets/car_img_2.jpg"]; // Replace with your image URLs
 
     const imageRows = [];
-    const numCols = 4;
+    const numCols = 2;
     const numRows = Math.ceil(images.length / numCols); // Calculate the number of rows needed
     let index = 0;
 

@@ -1,0 +1,116 @@
+.AdminDashboardHeader{
+    padding: 10px;
+    border-radius: 10px;
+    height: 100px;
+    width: calc(100vw - 282.75px);
+    display: flex;
+    position: relative;
+    top: 20px;
+}
+
+        .AdminDashboardHeader:hover{
+            border-style: solid 1px #636060;
+        }
+
+        .AdminDashboardHeader:active{
+            
+            border-style: solid 1px #4d4d4d;
+        }
+
+        .AdminDashboardHeader:focus{
+            outline: none;
+        }
+
+        .AdminDashboardHeader:disabled{
+            background-color: #1a1a1a;
+            color: white;
+        }
+
+        .AdminDashboardHeader:disabled:hover{
+            background-color: #1a1a1a;
+            color: white;
+        }
+
+.Welcome{
+
+    font-size: 22px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.LeftBlock{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 282.75px;
+    margin:  30px 0px auto 0px;
+}
+
+.Welcome{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.RightBlock{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    left: calc(100vw - 811.375px);
+    margin-top: 25px;
+}
+
+.ProPic{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    overflow: hidden;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.ProPic img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.NameBox{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: center;
+    margin-left: 20px;
+    top: -10px;
+}
+.DisplayName{
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0px;
+}
+
+.Position{
+    font-size: 14px;
+    margin: 0px;
+
+}
+
+/* Add a class to your custom styles for the Link */
+.link-unstyled {
+    text-decoration: none; /* Remove underline */
+    color: inherit; /* Inherit text color */
+  }
+  
+  /* Optional: Apply styles for hover and focus */
+  .link-unstyled:hover,
+  .link-unstyled:focus {
+    text-decoration: none;
+    color: inherit;
+    /* Add any additional styles you want on hover or focus */
+  }
+  

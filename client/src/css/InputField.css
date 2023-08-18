@@ -1,0 +1,20 @@
+.inputFieldContainer{
+    display: flex;
+}
+
+.inputField{
+    height: 69px;
+    border-radius: 13px;
+    background-color: var(--navbar-background);
+    padding-left: 43px;
+}
+
+.inputFieldContainer .topic{
+    width: 215px;
+}
+
+.inputField::placeholder{
+    color: var(--half-transparent-white);
+    font-size: 15px;
+    font-weight: 400;
+}

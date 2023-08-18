@@ -5,17 +5,9 @@ import Post from "../components/Post";
 import UserFriends from "../components/UserFriends";
 import '../css/UserProfileContainer.css'
 import UserVehicles from "../components/UserVehicles";
+import { Link } from "react-router-dom";
+import LinkToProfile from "../functions/LinkToProfile";
 
-const data = {coverPhoto :"/assets/coverphoto.jpeg", 
-            profilePhoto:"/assets/profile.jpg", 
-            editDP: "/assets/camera-solid.png", 
-            profileName : "MJ Pavithra", 
-            likedPage1 : "/assets/page1.jpeg", 
-            likedPage2 : "/assets/page2.jpeg", 
-            likedPage3 : "/assets/page3.jpeg", 
-            likedPageCount :"9", 
-            RalionshipState:"friend of friend", 
-            addFriend : "Add Friend"};
 
     const userFriendsData = [
         {
@@ -47,7 +39,7 @@ const data = {coverPhoto :"/assets/coverphoto.jpeg",
         "pageCount": 1
         },
         {
-        "ProfilePicture": "/assets/propic6.jpeg",
+        "ProfilePicture": "/assets/propic3.jpeg",
         "userName": "Mary Jane",
         "pageImage1": "/assets/page3.jpeg",
         "pageImage2": "/assets/page1.jpeg",
@@ -80,7 +72,7 @@ const data = {coverPhoto :"/assets/coverphoto.jpeg",
 
 
 
-const UserProfileContainer = () => {
+const UserProfileContainer = ({data,isOwner}) => {
 
     const [isFixed, setIsFixed] = useState(false);
     const leftColumnRef = useRef(null);
@@ -109,7 +101,7 @@ const UserProfileContainer = () => {
     return (
         <>
         <NavigationBar />
-        <ProfileCard coverPhoto ={data.coverPhoto} profilePhoto ={data.profilePhoto} editDP ={data.editDP} profileName ={data.profileName} likedPage1 ={data.likedPage1} likedPage2 ={data.likedPage2} likedPage3 ={data.likedPage3} likedPageCount ={data.likedPageCount} RalionshipState ={data.RalionshipState} addFriend ={data.addFriend} />
+        <ProfileCard coverPhoto ={data.coverPhoto} profilePhoto ={data.profilePhoto} editDP ={data.editDP} profileName ={data.profileName} likedPage1 ={data.likedPage1} likedPage2 ={data.likedPage2} likedPage3 ={data.likedPage3} likedPageCount ={data.likedPageCount} RalionshipState ={data.RalionshipState} addFriend ={data.addFriend} isOwner ={isOwner} />
       
         <div className="wallcontainer">
             <div className="leftColumn">
@@ -120,14 +112,16 @@ const UserProfileContainer = () => {
                     </div>
                     <div className="leftColumnSubContainerBody">
                         {userFriendsData.map((userData, index) => (
-                            <UserFriends
-                            key={index}
-                            ProfilePicture={userData.ProfilePicture}
-                            userName={userData.userName}
-                            pageImage1={userData.pageImage1}
-                            pageImage2={userData.pageImage2}
-                            pageCount={userData.pageCount}
-                            />
+                            <Link  to="/user">
+                              <UserFriends
+                              key={index}
+                              ProfilePicture={userData.ProfilePicture}
+                              userName={userData.userName}
+                              pageImage1={userData.pageImage1}
+                              pageImage2={userData.pageImage2}
+                              pageCount={userData.pageCount}
+                              />
+                            </Link>
                         ))}
                     </div>
                 </div>
@@ -138,12 +132,14 @@ const UserProfileContainer = () => {
                     </div>
                     <div className="leftColumnSubContainerBody2">
                     {vehicleData.map((vehicle, index) => (
-                        <UserVehicles
-                          key={index}
-                          vehicleName={vehicle.vehicleName}
-                          vehicleImage={vehicle.vehicleImage}
-                          vehicleModel={vehicle.vehicleModel}
-                        />
+                        <Link to="/vehiclespageownersview">
+                          <UserVehicles
+                            key={index}
+                            vehicleName={vehicle.vehicleName}
+                            vehicleImage={vehicle.vehicleImage}
+                            vehicleModel={vehicle.vehicleModel}
+                          />
+                        </Link>
                       ))}
                     </div>
                 </div>
@@ -152,16 +148,16 @@ const UserProfileContainer = () => {
             <div className="rightColumn">
             
                 <div className="rightColumnSubContainer">
-                    <Post/>
+                    <Post isOwner="no"/>
                 </div>
                 <div className="rightColumnSubContainer">
                     <Post/>
                 </div>
                 <div className="rightColumnSubContainer">
-                    <Post/>
+                    <Post isOwner="no"/>
                 </div>
                 <div className="rightColumnSubContainer">
-                    <Post/>
+                    <Post isOwner="no"/>
                 </div>
             </div>
         </div>

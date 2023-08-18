@@ -2,27 +2,35 @@ import { useState } from "react";
 import EachItem from "../components/Eachitem.jsx";
 // import Btn from "../components/Btn";
 
-function MidMaxBlock({ rowTitle, items, image, action, dis }) {
+function MidMaxBlock({ rowTitle, items, image, action, dis, type }) {
   // Define showGrid state and setShowGrid state setter
   const [showGrid, setShowGrid] = useState(false);
+  let linkto = ""; // Use 'let' instead of 'const' here
+
+  if (type === "user") {
+     linkto = "/user";
+  } 
+  else if (type === "vehicle") {
+     linkto = "/vehicles";
+  }
 
   return (
     <div className="mid-max-block">
-      <h1 className="row-title">{rowTitle}</h1>
+      <p className="row-title">{rowTitle}</p>
       <div className={showGrid ? "grid-container" : "row-container"}>
         {items.map((item, index) => (
-          <EachItem
-            key={index}
-            itemName={item}
-            dis={dis}
-            img={image}
-            action={action}
-          />
+          <Link className="link-unstyled" to={linkto} key={index}>
+            <EachItem
+              itemName={item}
+              dis={dis[index]}
+              img={image[index]} // Use image[index] to get the corresponding image for the item
+              action={action}
+              linkto={linkto}
+            />
+          </Link>
         ))}
       </div>
-      <button className="see-more-btn" onClick={() => setShowGrid(!showGrid)}>
-        {showGrid ? "See Less" : "See More"}
-      </button>
+      
     </div>
   );
 }

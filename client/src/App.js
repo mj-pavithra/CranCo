@@ -20,7 +20,14 @@ import MerchantOwnerView from "./pages/MerchantOwnerView";
 import UserProfile from "./pages/UserProfile";
 import VehiclesPageOwnersView from "./pages/VehiclesPageOwnersView";
 import AdminDashboard from "./pages/AdminDashboard";
-import VehicleAboutEdit from "./pages/VehicleAboutEdit";
+
+import ProgressBar from "./components/ProgressBar";
+
+import OwnersVehicleProfileAllPhotos from "./pages/OwnersVehicleProfileAllPhotos";
+import UserManagement from "./pages/UserManagement";
+import PageManagement from "./pages/PageManagement";
+import OwneProfile from "./pages/OwneProfile";
+import VehicleAboutEditPage from "./pages/VehicleAboutEditPage";
 
 const App = () => {
   return (
@@ -36,6 +43,7 @@ const App = () => {
           <Route path="/pages" element={<Pages />} />
           <Route path="/product" element={<ViewProductPage />} />
           <Route path="/user" element={<UserProfile />} />
+          <Route path="/myprofile" element={<OwneProfile />} />
           <Route path="/vehicles" element={<VehiclesPage />} />
           <Route path="/allvehiclephotos" element={<AllVehiclePhotos />} />
           <Route
@@ -46,7 +54,7 @@ const App = () => {
             path="/vehiclespageownersview"
             element={<VehiclesPageOwnersView />}
           />
-          <Route path="/vehicleaboutedit" element={<VehicleAboutEdit />} />
+          <Route path="/vehicleaboutedit" element={<VehicleAboutEditPage />} />
           <Route path="/merchant" element={<MerchantOtherView />}></Route>
           <Route path="/merchantowner" element={<MerchantOwnerView />}></Route>
           <Route path="*" element={<Error404 />} />
@@ -62,7 +70,8 @@ const App = () => {
         </Route>
         <Route path="/admin">
           <Route path="/admin/dashboard" element={<AdminDashboard />} />
-          
+          <Route path="/admin/usermanagement" element={<UserManagement />} />
+          <Route path="/admin/pagemanagement" element={<PageManagement />} />
           <Route path="*" element={<Error404 />} />
         </Route>
       </Routes>

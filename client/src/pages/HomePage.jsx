@@ -6,7 +6,10 @@ const HomePage = () => {
   return (
     <>
       <MainContainer>
-        <Post />
+        <Post isOwner="no" />
+        <Post isOwner="no" />
+        <Post isOwner="no" />
+        <Post isOwner="no" />
       </MainContainer>
     </>
   );

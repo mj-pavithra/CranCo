@@ -1,0 +1,38 @@
+@import "../index.css";
+.grid-container {
+    position: relative;
+    top: 100px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px;
+    padding: 10px;
+  }
+  
+  .grid-item {
+    background-color: #ccc;
+    padding: 20px;
+    text-align: center;
+    font-size: 18px;
+    border-radius: 5px;
+  }
+  
+  .row2 {
+    grid-column: span 2;
+  }
+  
+  .row3 {
+    grid-column: span 4;
+  }
+  /* Add a class to your custom styles for the Link */
+.link-unstyled {
+  text-decoration: none; /* Remove underline */
+  color: inherit; /* Inherit text color */
+}
+
+/* Optional: Apply styles for hover and focus */
+.link-unstyled:hover,
+.link-unstyled:focus {
+  text-decoration: none;
+  color: inherit;
+  /* Add any additional styles you want on hover or focus */
+}

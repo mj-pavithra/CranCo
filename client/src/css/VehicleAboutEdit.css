@@ -1,11 +1,68 @@
 .title-division {
-  width: 100%;
+  width: fit-content;
   display: flex;
   justify-content: left;
+  /* padding-left: 20px;
+  padding-top: 15px; */
+  margin: auto;
+  padding-top: 15px;
 }
 
 .page-title {
   font-size: 25px;
   color: var(--text-1);
   /* font-weight: 700; */
+}
+
+.vehicle-about-edit-div {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--cage-background);
+  padding: 20px;
+  height: auto;
+  border-radius: 10px;
+}
+
+.vehicle-about-edit-form {
+  border-radius: 10px;
+  border-style: none;
+  /* background-color: antiquewhite; */
+  width: 100%;
+  margin: auto;
+  display: flex;
+  height: auto;
+}
+
+.vehicle-about-edit-input {
+  padding: 5px;
+  border-style: none;
+  border-radius: 5px;
+  background-color: var(--background-1);
+  opacity: 20%;
+  color: var(--text-2);
+}
+
+.vehicle-about-edit-label {
+  margin-top: 20px;
+  color: var(--text-2);
+}
+
+.edit-vehicle-about {
+  margin-top: 30px;
+  color: var(--text-1);
+  background-color: var(--stroke);
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-style: none;
+}
+
+.vehicle-about-edit-container {
+  background-color: var(--cage-background);
+  border-style: none;
+  border-radius: 10px;
+  width: 100%;
+  height: auto;
 }

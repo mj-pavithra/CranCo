@@ -1,15 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
-@import './fonts.css';
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import "./fonts.css";
 
 :root {
   /* colours */
-  --primary-blue: #2060AD;
-  --navbar-background: #1B1A38;
+  --primary-blue: #2060ad;
+  --navbar-background: #1b1a38;
   --transparent-white: rgba(255, 255, 255, 0.2);
   --half-transparent-white: rgba(255, 255, 255, 0.5);
   --background-blue: #000517;
-  --background-blue-light: #1B1A38;
-
+  --background-blue-light: #1b1a38;
 
   /* measures */
   --navbar-height: 60px;
@@ -21,24 +20,38 @@
   --left-partition-flex-basis: 23%;
   --middle-partition-flex-basis: 44%;
   --right-partition-flex-basis: 33%;
+
+  /* breakpoints */
+  /* Breakpoint	Class infix	Dimensions
+    Extra small	None	<576px
+    Small	sm	≥576px
+    Medium	md	≥768px
+    Large	lg	≥992px
+    Extra large	xl	≥1200px
+    Extra extra large	xxl	≥1400px */
+
+  --break-sm: 576px;
+  --break-md: 768px;
+  --break-lg: 992px;
+  --break-xl: 1200px;
+  --break-xxl: 1400px;
 }
 
 .backgroundDiv {
-    height: 100%;
-    width: 100%;
-    position: fixed;
-    overflow-y: auto;
-    background: var(--background-2, #000517);
-  }
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  overflow-y: auto;
+  background: var(--background-2, #000517);
+}
 
-  .backgroundDiv::-webkit-scrollbar {
-    width: 0px;
+.backgroundDiv::-webkit-scrollbar {
+  width: 0px;
 }
 
 div::-webkit-scrollbar-thumb {
-    background-color: transparent;
+  background-color: transparent;
 }
-
 
 /* font-colors */
 .color-white {
@@ -65,7 +78,7 @@ div::-webkit-scrollbar-thumb {
 
 html,
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
 }
 
 /* link styles */
@@ -107,7 +120,7 @@ body {
   gap: 20px;
   display: flex;
   flex-direction: column;
-  background-color: green;
+  background-color: var(--background-blue);
   overflow-x: hidden;
   overflow-y: auto;
   flex: 1;
@@ -117,7 +130,6 @@ body {
 .div-max-middle::-webkit-scrollbar {
   width: 0px;
 }
-
 
 .div-middle::-webkit-scrollbar {
   width: 0px;
@@ -144,7 +156,6 @@ div::-webkit-scrollbar-thumb {
   margin: 0px auto 20px auto;
 }
 
-
 .row-container {
   /* height: 380px;
   overflow-x: auto;
@@ -162,6 +173,10 @@ div::-webkit-scrollbar-thumb {
   align-items: center;
 }
 
+.link-unstyled {
+  text-decoration: none;
+  color: "inherit"
+}
 
 .grid-container {
   width: calc(100% - 10px);
@@ -178,9 +193,12 @@ div::-webkit-scrollbar-thumb {
 }
 
 .row-title {
+  padding: 0px;
+  margin: 0px;
+  font-size: 28px;
+  height: 45px;
   color: #fff;
   width: 375px;
-  height: 62px;
   justify-content: center;
   align-items: center;
 }
@@ -208,12 +226,12 @@ div::-webkit-scrollbar-thumb {
   height: 41px;
   flex-shrink: 0;
   margin: 10px 0px 0px 0px;
-  background: #2060AD;
+  background: #2060ad;
   border-radius: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #FFF;
+  color: #fff;
   font-family: Inter;
   font-size: 19px;
   font-style: normal;
@@ -221,3 +239,5 @@ div::-webkit-scrollbar-thumb {
   line-height: normal;
   cursor: pointer;
 }
+
+
