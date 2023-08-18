@@ -1,5 +1,5 @@
 import { useState } from "react";
-import EachItem from "../components/EachItem";
+import EachItem from "../components/Eachitem";
 import { Link } from "react-router-dom";
 
 function MidMaxBlock({ rowTitle, items, image, action, dis, type }) {
@@ -8,10 +8,9 @@ function MidMaxBlock({ rowTitle, items, image, action, dis, type }) {
   let linkto = ""; // Use 'let' instead of 'const' here
 
   if (type === "user") {
-     linkto = "/user";
-  } 
-  else if (type === "vehicle") {
-     linkto = "/vehicles";
+    linkto = "/user";
+  } else if (type === "vehicle") {
+    linkto = "/vehicles";
   }
 
   return (
@@ -20,18 +19,16 @@ function MidMaxBlock({ rowTitle, items, image, action, dis, type }) {
       <div className={showGrid ? "grid-container" : "row-container"}>
         {items.map((item, index) => (
           <Link className="link-unstyled" to={linkto} key={index}>
-            <EachItem 
+            <EachItem
               itemName={item}
               dis={dis[index]}
-              img={image[index]}  // Use image[index] to get the corresponding image for the item
+              img={image[index]} // Use image[index] to get the corresponding image for the item
               action={action}
               linkto={linkto}
             />
           </Link>
         ))}
-      
       </div>
-      
     </div>
   );
 }

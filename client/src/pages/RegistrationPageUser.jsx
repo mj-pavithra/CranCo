@@ -53,7 +53,9 @@ const RegistrationPageUser = () => {
             <div className="color-white txt-09 d-flex flex-column align-items-center">
               <div>
                 Already have an account?{" "}
-                <Link className="link-main color-primary">Login</Link>
+                <Link className="link-main color-primary" to={"/login"}>
+                  Login
+                </Link>
               </div>
             </div>
           </div>

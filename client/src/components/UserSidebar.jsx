@@ -38,9 +38,9 @@ function UserSidebar({ image, username }) {
         <br />
         <br />
         <br />
-        <button className="model-a-soul">
+        {/* <button className="model-a-soul">
           <b>Model a Soul</b>
-        </button>
+        </button> */}
       </div>
     </div>
   );

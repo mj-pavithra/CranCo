@@ -4,6 +4,7 @@ import Checkbox from "../components/Checkbox";
 import Btn from "../components/Btn";
 import LoginPageContainer from "../containers/LoginPageContainer";
 import { Link } from "react-router-dom";
+import HomePage from "./HomePage";
 
 const LoginPage = () => {
   return (
@@ -44,9 +45,11 @@ const LoginPage = () => {
                   </Link>
                 </div>
               </div>
-              <div className="pt-3">
-                <Btn type={"submit"} buttonText={"Login"} width="fluid" />
-              </div>
+              <Link to={"/homepage"}>
+                <div className="pt-3">
+                  <Btn type={"submit"} buttonText={"Login"} width="fluid" />
+                </div>
+              </Link>
             </form>
 
             <div className="color-white txt-09 d-flex flex-column align-items-center">
