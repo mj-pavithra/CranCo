@@ -1,5 +1,7 @@
 import React from "react";
-import "../css/eachItem.css";
+
+import "../css/Eachitem.css";
+
 import Btn from "./Btn";
 import { Link } from "react-router-dom";
 import LinkToProfile from "../functions/LinkToProfile";
