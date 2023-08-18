@@ -11,32 +11,29 @@ const RegistrationPageUser = () => {
       <div className="layout-cont-4">
         <div className="layout-cont-3">
           <div className="section-1">
-            <div className="sec1-message">Sign in to CranCo</div>
+            <div className="sec1-message" style={{ color: "30px" }}>
+              <b>Sign in to CranCo</b>
+            </div>
           </div>
           <div className="layout-cont-2">
-            <form
-              className="layout-cont-1"
-              method="POST"
-              action="http://localhost:8081/api/users"
-              id="registration-form"
-            >
+            <form className="layout-cont-1" action="">
               <div>
                 <LoginInput
-                  name={"name"}
-                  placeholder={"Enter your user name"}
+                  name={"Username"}
+                  placeholder={"Enter your username"}
                   type={"text"}
                 />
               </div>
               <div>
                 <LoginInput
-                  name={"birth_date"}
+                  name={"Birthday"}
                   placeholder={"Enter your birthday"}
                   type={"date"}
                 />
               </div>
               <div>
                 <LoginInput
-                  name={"password"}
+                  name={"Password"}
                   placeholder={"Enter your password"}
                   type={"password"}
                 />
@@ -56,7 +53,7 @@ const RegistrationPageUser = () => {
             <div className="color-white txt-09 d-flex flex-column align-items-center">
               <div>
                 Already have an account?{" "}
-                <Link className="link-main color-primary">Log In</Link>
+                <Link className="link-main color-primary">Login</Link>
               </div>
             </div>
           </div>

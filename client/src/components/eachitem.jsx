@@ -1,6 +1,6 @@
 import React from "react";
 
-import "../css/eachItem.css";
+import "../css/Eachitem.css";
 
 import Btn from "./Btn";
 import { Link } from "react-router-dom";
@@ -14,7 +14,6 @@ const EachItem = ({ itemName, dis, img, action, linkto }) => {
         <h3 className="item-name">{itemName}</h3>
         <h4 className="item-dis">{dis}</h4>
       </div>
-
       <Link className="link-unstyled" to={linkto}>
         <Btn buttonText={action} />
       </Link>

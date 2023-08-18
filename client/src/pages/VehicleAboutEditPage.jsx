@@ -1,10 +1,13 @@
-import VehicleAbout from "../components/VehicleAbout";
 import MainContainer from "../containers/MainContainer";
+import VehicleAboutContainer from "../components/VehicleAboutContainer";
+import VehicleAboutEdit from "../components/VehicleAboutEdit";
 import "../css/VehicleAboutEdit.css";
 
-function VehicleAboutEdit() {
+function VehicleAboutEditPage() {
   return (
     <MainContainer>
+      {/* <VehicleAboutEdit />
+      <br /> */}
       <div className="vehicle-about-edit-container">
         <div className="title-division">
           <p className="page-title">
@@ -53,9 +56,9 @@ function VehicleAboutEdit() {
           </div>
         </form>
       </div>
-      <VehicleAbout />
+      <VehicleAboutContainer />
     </MainContainer>
   );
 }
 
-export default VehicleAboutEdit;
+export default VehicleAboutEditPage;
