@@ -3,13 +3,11 @@ import Post from "../components/Post"; // Import any other specific components f
 import MainContainer from "../containers/MainContainer.jsx";
 
 const HomePage = () => {
-
   return (
     <>
       <MainContainer>
         <Post />
       </MainContainer>
-
     </>
   );
 };

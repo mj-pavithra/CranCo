@@ -40,7 +40,7 @@ const App = () => {
           <Route path="/allvehiclephotos" element={<AllVehiclePhotos />} />
           <Route
             path="/allphotos"
-            element={<OwnersVehicleProfileAllPhotos />}
+            // element={<OwnersVehicleProfileAllPhotos />}
           />
           <Route
             path="/vehiclespageownersview"
