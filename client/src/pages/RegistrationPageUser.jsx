@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import LoginInput from "../components/LoginInput";
 import Checkbox from "../components/Checkbox";
@@ -6,42 +6,6 @@ import Btn from "../components/Btn";
 import LoginPageContainer from "../containers/LoginPageContainer";
 
 const RegistrationPageUser = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    birth_date: "",
-    password: "",
-  });
-
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-
-    fetch("/api/users/create", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formData),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        // Handle the response data as needed
-        console.log(data);
-      })
-      .catch((error) => {
-        // Handle errors
-        console.error("Error:", error);
-      });
-  };
-
   return (
     <LoginPageContainer>
       <div className="layout-cont-4">
@@ -52,43 +16,49 @@ const RegistrationPageUser = () => {
           <div className="layout-cont-2">
             <form
               className="layout-cont-1"
+              method="POST"
+              action="http://localhost:8081/api/users"
               id="registration-form"
-              onSubmit={handleSubmit}
             >
               <div>
                 <LoginInput
-                  name="name"
-                  placeholder="Enter your user name"
-                  type="text"
-                  value={formData.name}
-                  onChange={handleInputChange}
+                  name={"name"}
+                  placeholder={"Enter your user name"}
+                  type={"text"}
                 />
               </div>
               <div>
                 <LoginInput
-                  name="birth_date"
-                  placeholder="Enter your birthday"
-                  type="date"
-                  value={formData.birth_date}
-                  onChange={handleInputChange}
+                  name={"birth_date"}
+                  placeholder={"Enter your birthday"}
+                  type={"date"}
                 />
               </div>
               <div>
                 <LoginInput
-                  name="password"
-                  placeholder="Enter your password"
-                  type="password"
-                  value={formData.password}
-                  onChange={handleInputChange}
+                  name={"password"}
+                  placeholder={"Enter your password"}
+                  type={"password"}
                 />
               </div>
-              {/* Rest of the form */}
+              <div className="d-flex justify-content-between">
+                <div className="d-flex flex-row gap-3 color-transparent-white">
+                  <Checkbox name={"remember_password"} id={"12"} />{" "}
+                  <span>Remember me</span>
+                </div>
+                <div className="color-primary">Reset password</div>
+              </div>
               <div className="pt-3">
-                <Btn type="submit" buttonText="login" width="fluid" />
+                <Btn type={"submit"} buttonText={"login"} width="fluid" />
               </div>
             </form>
 
-            {/* Rest of the component */}
+            <div className="color-white txt-09 d-flex flex-column align-items-center">
+              <div>
+                Already have an account?{" "}
+                <Link className="link-main color-primary">Log In</Link>
+              </div>
+            </div>
           </div>
         </div>
       </div>

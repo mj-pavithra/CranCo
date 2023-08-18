@@ -18,7 +18,7 @@ public class UserService {
     public UserDto createUser(CreateUserRequest request){
         //check for existing email
         Optional<User> userByEmail =  userRepository.findByEmail(request.getEmail());
-        if(userByEmail.isPresent()){
+        if(!userByEmail.isEmpty()){
             throw new IllegalStateException(("email taken"));
         }
 
