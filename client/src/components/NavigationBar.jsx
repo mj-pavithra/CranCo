@@ -38,6 +38,7 @@ function NavigationBar() {
       }
     };
 
+    
     document.addEventListener("click", handleOutsideClick);
 
     return () => {
@@ -62,6 +63,7 @@ function NavigationBar() {
                 placeholder="Search here"
               />
             </div>
+
 
             {/* middle div */}
             <div className="col-4 navbar-main d-flex align-items-center justify-content-center">

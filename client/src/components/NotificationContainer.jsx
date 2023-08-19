@@ -17,6 +17,7 @@ function NotificationContainer() {
     // clean up the interval when the component unmounts
     return () => clearInterval(intervalId);
   }, []);
+  
 
   return (
     <div className="notification-container">
