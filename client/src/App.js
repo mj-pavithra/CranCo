@@ -50,7 +50,7 @@ const App = () => {
           <Route path="/addnewpage" element={<AddNewPage />} />
           <Route
             path="/allphotos"
-            element={<OwnersVehicleProfileAllPhotos />}
+            // element={<OwnersVehicleProfileAllPhotos />}
           />
           <Route
             path="/vehiclespageownersview"
