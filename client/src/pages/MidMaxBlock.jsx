@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import EachItem from "../components/Eachitem.jsx";
 // import Btn from "../components/Btn";
 
@@ -8,10 +9,9 @@ function MidMaxBlock({ rowTitle, items, image, action, dis, type }) {
   let linkto = ""; // Use 'let' instead of 'const' here
 
   if (type === "user") {
-     linkto = "/user";
-  } 
-  else if (type === "vehicle") {
-     linkto = "/vehicles";
+    linkto = "/user";
+  } else if (type === "vehicle") {
+    linkto = "/vehicles";
   }
 
   return (
@@ -30,7 +30,6 @@ function MidMaxBlock({ rowTitle, items, image, action, dis, type }) {
           </Link>
         ))}
       </div>
-      
     </div>
   );
 }

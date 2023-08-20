@@ -10,6 +10,7 @@ import Icon from "./Icon";
 import PopupDivFull from "./PopupDivFull";
 import ToggleButton from "../components/ToggleButton";
 import { Link } from "react-router-dom";
+import ToggleButton from "./ToggleButton";
 
 function NavigationBar() {
   // navigation menu icons
@@ -54,9 +55,13 @@ function NavigationBar() {
           <div className="row">
             {/* left div */}
             <div className="col-4 navbar-main d-flex align-items-center">
-            <Link to="/homepage">
-              <img className="navbar-logo" src="/assets/logo.png" alt="logo" />
-            </Link>
+              <Link to="/login">
+                <img
+                  className="navbar-logo"
+                  src="/assets/logo.png"
+                  alt="logo"
+                />
+              </Link>
               <input
                 type="text"
                 className="navbar-search"
@@ -93,7 +98,7 @@ function NavigationBar() {
             </div>
 
             {/* last div */}
-            <div className="col-4 navbar-main d-flex align-items-center justify-content-end gap-2">
+            <div className="col-4 navbar-main d-flex align-items-center justify-content-end gap-5">
               <PopupDivFull
                 icon={faMagnifyingGlass}
                 heading={"Search"}
@@ -111,6 +116,7 @@ function NavigationBar() {
                   </div>
                 )}
               </div>
+              <ToggleButton />
             </div>
           </div>
         </div>
