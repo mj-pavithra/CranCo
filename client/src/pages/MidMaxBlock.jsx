@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import EachItem from "../components/Eachitem.jsx";
+import EachItem from "../components/EachItem.jsx";
 // import Btn from "../components/Btn";
 
 function MidMaxBlock({ rowTitle, items, image, action, dis, type }) {
