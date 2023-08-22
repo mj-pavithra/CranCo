@@ -7,5 +7,5 @@ import java.util.Optional;
 
 @Repository
 public interface PostRepository extends Neo4jRepository<Post,Long> {
-    Optional<Post> findByPostId(String postID);
+    Optional<Post> findByPostId(String postId);
 }
