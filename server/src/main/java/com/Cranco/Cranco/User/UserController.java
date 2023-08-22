@@ -16,9 +16,7 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<UserDto> createUser(@RequestParam("username") String username,
-                                              @RequestParam("password") String password,
-                                              @RequestParam("email") String email){
+    public ResponseEntity<UserDto> createUser(@RequestParam("username") String username, @RequestParam("password") String password, @RequestParam("email") String email) {
 
         CreateUserRequest request = new CreateUserRequest();
         request.setUsername(username);

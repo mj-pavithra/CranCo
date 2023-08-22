@@ -15,10 +15,10 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public UserDto createUser(CreateUserRequest request){
+    public UserDto createUser(CreateUserRequest request) {
         //check for existing email
-        Optional<User> userByEmail =  userRepository.findByEmail(request.getEmail());
-        if(!userByEmail.isEmpty()){
+        Optional<User> userByEmail = userRepository.findByEmail(request.getEmail());
+        if (!userByEmail.isEmpty()) {
             throw new IllegalStateException(("email taken"));
         }
 
@@ -31,7 +31,7 @@ public class UserService {
         return mapToDto(savedUser);
     }
 
-    public UserDto mapToDto(User user){
+    public UserDto mapToDto(User user) {
         UserDto dto = new UserDto();
         dto.setId(user.getId());
         dto.setEmail(user.getEmail());
