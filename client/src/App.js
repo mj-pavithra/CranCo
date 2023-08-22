@@ -35,6 +35,7 @@ const App = () => {
     <BrowserRouter>
       <Routes>
         <Route path="/">
+          <Route path="/" element={<HomePage />} />
           <Route path="/homepage" element={<HomePage />} />
           <Route path="/login" element={<LoginPage />} />
           {/* <Route path="/login2" element={<LoginPageContainer />} /> */}
@@ -50,7 +51,7 @@ const App = () => {
           <Route path="/addnewpage" element={<AddNewPage />} />
           <Route
             path="/allphotos"
-            // element={<OwnersVehicleProfileAllPhotos />}
+          // element={<OwnersVehicleProfileAllPhotos />}
           />
           <Route
             path="/vehiclespageownersview"

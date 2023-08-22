@@ -10,7 +10,6 @@ import Icon from "./Icon";
 import PopupDivFull from "./PopupDivFull";
 import ToggleButton from "../components/ToggleButton";
 import { Link } from "react-router-dom";
-import ToggleButton from "./ToggleButton";
 
 function NavigationBar() {
   // navigation menu icons
@@ -39,7 +38,7 @@ function NavigationBar() {
       }
     };
 
-    
+
     document.addEventListener("click", handleOutsideClick);
 
     return () => {
@@ -74,9 +73,8 @@ function NavigationBar() {
             <div className="col-4 navbar-main d-flex align-items-center justify-content-center">
               <Link to="/homepage">
                 <div
-                  className={`navbar-icon-wrapper ${
-                    activeIcon === "home" ? " active" : ""
-                  }`}
+                  className={`navbar-icon-wrapper ${activeIcon === "home" ? " active" : ""
+                    }`}
                   onClick={() => handleIconClick("home")}
                 >
                   <FontAwesomeIcon className="navbar-icon" icon={faHome} />
@@ -84,9 +82,8 @@ function NavigationBar() {
               </Link>
               <Link to="/marketplace">
                 <div
-                  className={`navbar-icon-wrapper ${
-                    activeIcon === "marketplace" ? " active" : ""
-                  }`}
+                  className={`navbar-icon-wrapper ${activeIcon === "marketplace" ? " active" : ""
+                    }`}
                   onClick={() => handleIconClick("marketplace")}
                 >
                   <FontAwesomeIcon className="navbar-icon" icon={faShop} />
