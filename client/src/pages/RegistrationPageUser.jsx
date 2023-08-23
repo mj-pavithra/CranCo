@@ -1,11 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import LoginInput from "../components/LoginInput";
 import Checkbox from "../components/Checkbox";
 import Btn from "../components/Btn";
 import LoginPageContainer from "../containers/LoginPageContainer";
+import axios from "axios";
 
 const RegistrationPageUser = () => {
+  const registerHandle = async () => {
+    try {
+      const response = await axios.post("http://localhost:8081/api/users", {
+        username: username,
+        email: email,
+        password: password,
+      });
+      window.location.href = "http://localhost:3000/login";
+    } catch (error) {
+      if (error.response && error.response.data) {
+        setErrMessege(error.response.data);
+        console.log(errMessege.message);
+      } else {
+        setErrMessege("An error occurred.");
+      }
+    }
+  };
+
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [errMessege, setErrMessege] = useState("");
+
   return (
     <LoginPageContainer>
       <div className="layout-cont-4">
@@ -16,19 +40,34 @@ const RegistrationPageUser = () => {
             </div>
           </div>
           <div className="layout-cont-2">
-            <form className="layout-cont-1" action="">
+            <div className="layout-cont-1">
+              {errMessege == "" ? (
+                ""
+              ) : (
+                <div class="alert alert-danger" role="alert">
+                  {errMessege.message}
+                </div>
+              )}
               <div>
                 <LoginInput
                   name={"Username"}
                   placeholder={"Enter your username"}
                   type={"text"}
+                  value={username}
+                  onChange={(e) => {
+                    setUsername(e.target.value);
+                  }}
                 />
               </div>
               <div>
                 <LoginInput
-                  name={"Birthday"}
-                  placeholder={"Enter your birthday"}
-                  type={"date"}
+                  name={"Email"}
+                  placeholder={"Enter your E-mail"}
+                  type={"email"}
+                  value={email}
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                  }}
                 />
               </div>
               <div>
@@ -36,6 +75,10 @@ const RegistrationPageUser = () => {
                   name={"Password"}
                   placeholder={"Enter your password"}
                   type={"password"}
+                  value={password}
+                  onChange={(e) => {
+                    setPassword(e.target.value);
+                  }}
                 />
               </div>
               <div className="d-flex justify-content-between">
@@ -46,9 +89,13 @@ const RegistrationPageUser = () => {
                 <div className="color-primary">Reset password</div>
               </div>
               <div className="pt-3">
-                <Btn type={"submit"} buttonText={"login"} width="fluid" />
+                <Btn
+                  buttonText={"Register"}
+                  onClick={registerHandle}
+                  width="fluid"
+                />
               </div>
-            </form>
+            </div>
 
             <div className="color-white txt-09 d-flex flex-column align-items-center">
               <div>

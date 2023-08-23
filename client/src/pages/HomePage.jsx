@@ -3,6 +3,9 @@ import Post from "../components/Post"; // Import any other specific components f
 import MainContainer from "../containers/MainContainer.jsx";
 
 const HomePage = () => {
+  if (sessionStorage.getItem("username") == "") {
+    window.location.href = "http://localhost:3000/login";
+  }
   return (
     <>
       <MainContainer>
