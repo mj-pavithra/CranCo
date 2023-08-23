@@ -1,7 +1,14 @@
 import "../css/LoginInput.css";
 import React from "react";
 
-const LoginInput = ({ name, placeholder, type, style }) => {
+const LoginInput = ({
+  name,
+  placeholder,
+  type,
+  style,
+  onChange = "",
+  value = "",
+}) => {
   return (
     <>
       <div className="input-name">{name}</div>
@@ -11,6 +18,8 @@ const LoginInput = ({ name, placeholder, type, style }) => {
         placeholder={placeholder}
         name={name}
         style={{ style }}
+        onChange={onChange}
+        value={value}
       />
     </>
   );
