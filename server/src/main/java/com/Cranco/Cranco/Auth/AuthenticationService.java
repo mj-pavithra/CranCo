@@ -1,4 +1,4 @@
-package com.Cranco.Cranco.auth;
+package com.Cranco.Cranco.Auth;
 
 
 import com.Cranco.Cranco.User.Role;

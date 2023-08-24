@@ -1,4 +1,4 @@
-package com.Cranco.Cranco.config;
+package com.Cranco.Cranco.Config;
 
 import jakarta.servlet.Filter;
 import lombok.RequiredArgsConstructor;

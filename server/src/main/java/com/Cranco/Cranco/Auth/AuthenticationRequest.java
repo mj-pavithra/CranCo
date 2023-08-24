@@ -1,4 +1,4 @@
-package com.Cranco.Cranco.auth;
+package com.Cranco.Cranco.Auth;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
