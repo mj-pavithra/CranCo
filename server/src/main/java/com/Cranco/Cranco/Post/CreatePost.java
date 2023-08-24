@@ -3,12 +3,12 @@ package com.Cranco.Cranco.Post;
 import java.util.List;
 
 public class CreatePost {
-    private String postId;
+    private Long postId;
     private String userId;
     private List<Image> images;
     private String caption;
 
-    public String getPostId() {
+    public Long getPostId() {
         return postId;
     }
 

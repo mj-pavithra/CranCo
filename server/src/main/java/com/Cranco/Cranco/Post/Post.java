@@ -5,11 +5,13 @@ import org.springframework.data.neo4j.core.schema.Id;
 import org.springframework.data.neo4j.core.schema.Node;
 import org.springframework.data.neo4j.core.schema.Property;
 
+import java.util.List;
+
 @Node("POST")
 public class Post {
     @Id
     @GeneratedValue
-    private Long id;
+    private Long postId;
     @Property("username")
     private String username;
 
@@ -19,8 +21,8 @@ public class Post {
     @Property("location")
     private String location;
 
-    public Long getId() {
-        return id;
+    public Long getpostId() {
+        return postId;
     }
 
     public String getUsername() {
@@ -45,5 +47,8 @@ public class Post {
 
     public void setLocation(String location) {
         this.location = location;
+    }
+
+    public void setImageLocations(List<String> imageLocations) {
     }
 }

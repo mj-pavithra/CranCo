@@ -25,20 +25,17 @@ public class PostService {
         newPost.setUsername(request.getUserId());
         newPost.setCaption(request.getCaption());
 
-        String uniquePostId = generateUniquePostId();
         List<String> imageLocations = new ArrayList<>();
-
         List<Image> images = request.getImages();
         if (images != null && !images.isEmpty()) {
             for (int i = 0; i < images.size(); i++) {
                 Image image = images.get(i);
-                String imageFileName = uniquePostId + i + "." + image.getExtension();
+                String imageFileName = generateUniquePostId() + i + "." + image.getExtension();
                 saveImage(imageFileName, image.getData());
                 imageLocations.add("resources/" + imageFileName);
             }
         }
-
-        newPost.setLocation(imageLocations.toString());
+        newPost.setImageLocations(imageLocations); // Set image locations in the Post entity
 
         Post savePost = postRepository.save(newPost);
         PostDto postDto = mapToDto(savePost);
@@ -46,14 +43,15 @@ public class PostService {
         return postDto;
     }
 
-    public PostDto mapToDto(Post post){
+    private PostDto mapToDto(Post savePost) {
         PostDto dto = new PostDto();
-        dto.setId(post.getId());
-        dto.setCaption(post.getCaption());
-        dto.setLocation(post.getLocation());
-        dto.setUsername(post.getUsername());
+        dto.setPostId(savePost.getpostId());
+        dto.setCaption(savePost.getCaption());
+        dto.setLocation(savePost.getLocation());
+        dto.setUsername(savePost.getUsername());
         return dto;
     }
+
 
     private String generateUniquePostId() {
         return UUID.randomUUID().toString();

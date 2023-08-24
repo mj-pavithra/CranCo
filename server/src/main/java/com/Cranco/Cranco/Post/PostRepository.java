@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface PostRepository extends Neo4jRepository<Post,Long> {
-    Optional<Post> findByPostId(String postId);
+public interface PostRepository extends Neo4jRepository<Post, Long> {
+    Optional<Post> findByLocation(String location);
 }
