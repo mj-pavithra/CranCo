@@ -5,8 +5,39 @@ import CreatePostPopUpWindow from "./CreatePostPopUpWindow";
 import PostPhotoPopUpWindow from "./PostPhotoPopUpWindow";
 import PostVideoPopUpWindow from "./PostVideoPopUpWindow";
 import { useState } from "react";
+import axios from "axios";
 
 function AddNewUpdate() {
+
+  const [buttonColor, setButtonColor] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [contentChanged, setContentChanged] = useState(false);
+  const handleDataSubmit = (data) => {
+    setIsLoading(true);
+
+    axios.post("http://localhost:8081/api/post", data)
+      .then((response) => {
+        console.log("Data sent successfully:", response.data);
+        setButtonColor("green");
+        setIsLoading(false);
+
+        // Reset button color after 3 seconds
+        setTimeout(() => {
+          setButtonColor("");
+        }, 3000);
+      })
+      .catch((error) => {
+        console.error("Error sending data:", error);
+        setButtonColor("red");
+        setIsLoading(false);
+      });
+  };
+
+  const handleContentChange = () => {
+    setContentChanged(true);
+    setButtonColor("");
+  };;
+
   // write post
   const [writePost, setWritePost] = useState(false);
   const handlePlusClick = () => {
@@ -61,18 +92,30 @@ function AddNewUpdate() {
           </button>
         </div>
         {writePost && (
-          <div className="post-popup">
-            <CreatePostPopUpWindow />
-          </div>
-        )}
-        {uploadImage && (
-          <div className="post-popup">
-            <PostPhotoPopUpWindow />
-          </div>
-        )}
+        <div className="post-popup">
+          <CreatePostPopUpWindow
+            onSubmit={handleDataSubmit}
+            onContentChange={handleContentChange}
+            buttonColor={buttonColor}
+            isLoading={isLoading}
+            contentChanged={contentChanged}
+          />
+        </div>
+      )}
+      {uploadImage && (
+        <div className="post-popup">
+          <PostPhotoPopUpWindow
+            onSubmit={handleDataSubmit}
+            onContentChange={handleContentChange}
+            buttonColor={buttonColor}
+            isLoading={isLoading}
+            contentChanged={contentChanged}
+          />
+        </div>
+      )}
         {uploadVideo && (
           <div className="post-popup">
-            <PostVideoPopUpWindow />
+            <PostVideoPopUpWindow onSubmit={handleDataSubmit} />
           </div>
         )}
       </div>
