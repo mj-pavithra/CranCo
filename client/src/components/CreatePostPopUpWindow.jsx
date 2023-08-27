@@ -3,16 +3,28 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 import "../css/VehiclesPage.css";
 
-function CreatePostPopUpWindow() {
+function CreatePostPopUpWindow({
+  onSubmit,
+  onContentChange,
+  buttonColor,
+  isLoading,
+  contentChanged,
+}) {
   const [postText, setPostText] = useState("");
 
   const handlePostTextChange = (event) => {
     setPostText(event.target.value);
+    onContentChange(); // Notify parent of content change
   };
 
   const handlePostButtonClick = () => {
-    // Backend to save the post
-    console.log("Post saved: ", postText);
+    // Prepare the data to send
+    const postData = {
+      type: "text",
+      content: postText,
+    };
+
+    onSubmit(postData);
   };
 
   return (
@@ -29,7 +41,8 @@ function CreatePostPopUpWindow() {
       <div className="popup-save-btn-division">
         <button
           onClick={handlePostButtonClick}
-          className="create-post-btn-in-popup"
+          className={`create-post-btn-in-popup ${buttonColor}`}
+          disabled={isLoading || !contentChanged}
         >
           <FontAwesomeIcon icon={faPaperPlane} title="Post" />
         </button>
