@@ -1,6 +1,9 @@
 import "../css/VehicleAboutEdit.css";
 
 function VehicleAboutEdit() {
+  const validationMsg =
+    '<label className="vehicle-about-edit-vali">This field cannot be empty</label>';
+
   <div className="vehicle-about-edit-container">
     <div className="title-division">
       <p className="page-title">
