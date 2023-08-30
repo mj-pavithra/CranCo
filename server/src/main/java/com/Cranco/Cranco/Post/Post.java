@@ -9,7 +9,7 @@ import org.springframework.data.neo4j.core.schema.Property;
 public class Post {
     @Id
     @GeneratedValue
-    private Long id;
+    private Long postId;
     @Property("username")
     private String username;
 
@@ -20,7 +20,7 @@ public class Post {
     private String location;
 
     public Long getId() {
-        return id;
+        return postId;
     }
 
     public String getUsername() {
@@ -34,7 +34,9 @@ public class Post {
     public String getLocation() {
         return location;
     }
-
+    public void setId(Long postId) {
+        this.postId = postId;
+    }
     public void setUsername(String username) {
         this.username = username;
     }

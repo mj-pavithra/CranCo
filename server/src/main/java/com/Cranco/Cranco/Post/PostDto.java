@@ -3,14 +3,14 @@ package com.Cranco.Cranco.Post;
 import java.util.List;
 
 public class PostDto {
-    private long id;
+    private long postId;
     private String username;
     private String caption;
     private String location;
     private List<String> imageLocations; // Add this field for image locations
 
     public long getId() {
-        return id;
+        return postId;
     }
 
     public String getUsername() {
@@ -29,8 +29,8 @@ public class PostDto {
         return imageLocations; // Add this getter method for image locations
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setId(Long postId) {
+        this.postId = postId;
     }
 
     public void setUsername(String username) {
