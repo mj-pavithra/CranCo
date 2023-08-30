@@ -15,7 +15,6 @@ public class ComplaintService {
 
     public Complaint createComplaint(ComplaintDTO complaintDTO) {
         Complaint complaint = new Complaint();
-        complaint.setid(complaintDTO.getid());
         complaint.settitle(complaintDTO.gettitle());
         complaint.setdescription(complaintDTO.getdescription());
         complaint.setIsClosed(true);
