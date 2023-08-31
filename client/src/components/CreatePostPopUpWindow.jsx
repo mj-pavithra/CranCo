@@ -9,6 +9,7 @@ function CreatePostPopUpWindow({
   buttonColor,
   isLoading,
   contentChanged,
+  username,
 }) {
   const [postText, setPostText] = useState("");
 

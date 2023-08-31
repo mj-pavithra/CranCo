@@ -1,0 +1,87 @@
+/* VehiclesPage.css */
+.add-new-update-cage {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .cage-title {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  
+  hr {
+    border: none;
+    border-top: 1px solid var(--stroke);
+    margin: 10px 0;
+  }
+  
+  .cage-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .buttons {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .create-post-btn {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .create-post-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  .label-for-media-uploader {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .cage-textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: vertical;
+  }
+  
+  .create-post-btn-in-popup {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .create-post-btn-in-popup[disabled] {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  .create-post-btn-in-popup.green {
+    background-color: #28a745;
+  }
+  
+  .create-post-btn-in-popup.red {
+    background-color: #dc3545;
+  }
+  
+  .create-post-btn-in-popup:hover {
+    background-color: #0056b3;
+  }
+  
+  .media-upload-popup {
+    margin-top: 10px;
+  }
+  
