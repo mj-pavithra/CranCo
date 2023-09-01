@@ -33,7 +33,7 @@ public class BusinessProfile {
         this.ownerVisibility = false;
     }
 
-// getters and setters
+    // getters and setters
     public void setId(Long id) {
         this.id = id;
     }
