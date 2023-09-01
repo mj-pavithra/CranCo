@@ -26,7 +26,7 @@ public class ComplaintController {
         }
     }
 
-    @PostMapping("/{id}")
+    @PutMapping("/complaint/{id}")
     public ResponseEntity<Complaint> updateComplaint(@PathVariable long id, @RequestBody ComplaintDTO complaintDTO) {
         try{
                 Complaint complaint = complaintService.updateComplaint(id, complaintDTO);
@@ -39,7 +39,7 @@ public class ComplaintController {
         }
     }
 
-    @PostMapping("/{id}/review")
+    @PostMapping("/complaint/{id}/review")
     public ResponseEntity<Complaint> reviewComplaint(@PathVariable long id) {
         try {
             complaintService.reviewComplaint(id);
@@ -49,7 +49,7 @@ public class ComplaintController {
         }
     }
 
-    @PostMapping("/{id}/close")
+    @PostMapping("/complaint/{id}/close")
     public ResponseEntity<Complaint> closeComplaint(@PathVariable long id) {
         try {
             complaintService.closeComplaint(id);
@@ -59,7 +59,7 @@ public class ComplaintController {
         }
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/complaint/{id}")
     public ResponseEntity<Complaint> deleteComplaint(@PathVariable long id) {
         try {
             complaintService.deleteComplaint(id);
