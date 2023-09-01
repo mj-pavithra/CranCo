@@ -1,4 +1,4 @@
-package com.Cranco.Cranco.User;
+package com.Cranco.Cranco.VehiclProfile;
 
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
