@@ -38,7 +38,12 @@ public class Post {
         this.postId = postId;
     }
     public void setUsername(String username) {
-        this.username = username;
+        if(username==null){
+            this.username ="uberlage achchi";
+        }
+        else {
+            this.username = username;
+        }
     }
 
     public void setCaption(String caption) {

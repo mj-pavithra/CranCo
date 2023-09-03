@@ -2,6 +2,8 @@ package com.Cranco.Cranco.Post;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -20,7 +22,7 @@ public class PostService {
         this.postRepository = postRepository;
     }
 
-    public PostDto createPost(CreatePost request){
+    public PostDto createPost(CreatePost request, List<MultipartFile> images) {
         Post newPost = new Post();
         newPost.setUsername(request.getUserId());
         newPost.setCaption(request.getCaption());
@@ -28,13 +30,12 @@ public class PostService {
         Long uniquePostId = generateUniquePostId();
         List<String> imageLocations = new ArrayList<>();
 
-        List<Image> images = request.getImages();
         if (images != null && !images.isEmpty()) {
             for (int i = 0; i < images.size(); i++) {
-                Image image = images.get(i);
-                String imageFileName = uniquePostId + i + "." + image.getExtension();
-                saveImage(imageFileName, image.getData());
-                imageLocations.add("resources/" + imageFileName);
+                MultipartFile image = images.get(i);
+                String imageFileName = uniquePostId + i + "." + getExtensionFromFileName(image.getOriginalFilename());
+                saveImage(imageFileName, image);
+                imageLocations.add("D:\\read-system\\CranCo\\server\\src\\main\\resources\\PostImages\\" + imageFileName);
             }
         }
 
@@ -45,6 +46,31 @@ public class PostService {
         postDto.setImageLocations(imageLocations);
         return postDto;
     }
+
+    private String getExtensionFromFileName(String fileName) {
+        int dotIndex = fileName.lastIndexOf(".");
+        if (dotIndex > 0) {
+            return fileName.substring(dotIndex + 1);
+        }
+        return "";
+    }
+
+    private void saveImage(String fileName, MultipartFile image) {
+        try {
+            // Define the directory where you want to save the images
+            String uploadDirectory = "D:\\read-system\\CranCo\\server\\src\\main\\resources\\PostImages\\";
+
+            File file = new File(uploadDirectory + fileName);
+
+            // Create the directory if it doesn't exist
+            file.getParentFile().mkdirs();
+
+            image.transferTo(file);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     public PostDto mapToDto(Post post){
         PostDto dto = new PostDto();
