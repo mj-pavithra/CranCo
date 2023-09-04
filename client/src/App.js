@@ -29,6 +29,7 @@ import PageManagement from "./pages/PageManagement";
 import OwneProfile from "./pages/OwneProfile";
 import VehicleAboutEditPage from "./pages/VehicleAboutEditPage";
 import AddNewPage from "./pages/AddNewPage";
+import Post from "./components/Post";
 
 const App = () => {
   return (
@@ -60,6 +61,7 @@ const App = () => {
           <Route path="/vehicleaboutedit" element={<VehicleAboutEditPage />} />
           <Route path="/merchant" element={<MerchantOtherView />}></Route>
           <Route path="/merchantowner" element={<MerchantOwnerView />}></Route>
+          <Route path="/text" element={<Post/>}></Route>
           <Route path="*" element={<Error404 />} />
         </Route>
 

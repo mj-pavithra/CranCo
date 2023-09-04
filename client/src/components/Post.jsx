@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "../css/Post.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEllipsis, faX, faHeart } from "@fortawesome/free-solid-svg-icons";
@@ -12,6 +12,7 @@ import Carousel from "./Carousel";
 import Hr from "./Hr";
 import { Link } from "react-router-dom";
 import LinkToProfile from "../functions/LinkToProfile";
+import PostPopup from "./PostPopup";
 
 const Post = (isOwner) => {
   const images = [
@@ -25,6 +26,31 @@ const Post = (isOwner) => {
   const handleLike = () => {
     updateLiked(!liked);
   };
+
+  const [popUp, setPopup] = useState(false);
+
+  const handleBellClick = () => {
+    setPopup((popUp) => !popUp);
+  };
+
+  const popupRef = useRef();
+
+  useEffect(() => {
+    const handleOutClick = (event) => {
+      if (
+        popupRef.current &&
+        !popupRef.current.contains(event.target)
+      ) {
+        setPopup(false);
+      }
+    };
+
+    document.addEventListener("click", handleOutClick);
+
+    return () => {
+      document.addEventListener("click", handleOutClick);
+    };
+  }, []);
 
   return (
     <>
@@ -52,8 +78,19 @@ const Post = (isOwner) => {
           </div>
 
           <div className="post-header gap-1">
-            <div className="">
-              <Icon icon={faEllipsis} size={"12px"} />
+            <div className="popUp-main">
+              <div ref={popupRef} className='icon-back-div'>
+                <FontAwesomeIcon
+                  className={`moreIcon ${popUp ? "active" : ""}`}
+                  icon={faEllipsis}
+                  onClick={() => handleBellClick()}
+                />
+                {popUp && (
+                  <div className="popUp-div">
+                    <PostPopup />
+                  </div>
+                )}
+              </div>
             </div>
             <div className="">
               <Icon icon={faX} size={"12px"} />
