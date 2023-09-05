@@ -1,5 +1,8 @@
 package com.Cranco.Cranco.User;
 
+import com.Cranco.Cranco.Notification.Notification;
+import jakarta.transaction.Transactional;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -7,10 +10,12 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@Transactional
 public class UserService {
+    @Autowired
     private UserRepository userRepository;
 
-    @Autowired
+
     public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
@@ -38,4 +43,26 @@ public class UserService {
         dto.setUsername(user.getUsername());
         return dto;
     }
+
+
+    public User findUserByUsername(String username) {
+        return userRepository.findByUsername(username);
+    }
+
+    public void saveUser(User user) {
+        userRepository.save(user);
+    }
+
+    public void addNotificationToSender(User sender, Notification notification) {
+        sender.getSentNotifications().add(notification);
+    }
+
+    public void addNotificationToReceiver(User receiver, Notification notification) {
+        receiver.getReceivedNotifications().add(notification);
+    }
+
+    public User findUserById(Long userId) {
+        return userRepository.findById(userId).orElse(null);
+    }
+
 }
