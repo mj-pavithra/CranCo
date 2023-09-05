@@ -1,4 +1,4 @@
-package com.Cranco.Cranco.User;
+package com.Cranco.Cranco.VehiclProfile;
 
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -25,18 +25,15 @@ public class VehicleProfile {
     private String vehicleBrand;
     @Property("vehicle_model")
     private String vehicleModel;
-    @column(columnDefinition = "boolean default false")
-    @property("visibility")
+    @Property("visibility")
     private boolean visibility;
-    @column(columnDefinition = "boolean default false")
-    @property("ownership")
+    @Property("ownership")
     private boolean ownership;
-    @column(columnDefinition = "boolean default false")
-    @property("on_marketplace")
+    @Property("on_marketplace")
     private boolean onMarketplace;
 
     public VehicleProfile() {
-        this.visiblity = false;
+        this.visibility = false;
         this.ownership = false;
         this.onMarketplace = false;
     }

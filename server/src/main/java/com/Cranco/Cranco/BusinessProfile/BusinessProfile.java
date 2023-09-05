@@ -1,4 +1,4 @@
-package com.Cranco.Cranco.User;
+package com.Cranco.Cranco.BusinessProfile;
 
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -23,16 +23,14 @@ public class BusinessProfile {
     private String businessEmail;
     @Property("phone_number")
     private String phoneNumber;
-    @column(columnDefinition = "boolean default false")
-    @property("verification")
+    @Property("verification")
     private boolean verification;
-    @column(columnDefinition = "boolean default false")
-    @property("owner_visibility")
+    @Property("owner_visibility")
     private boolean ownerVisibility;
 
     public BusinessProfile() {
         this.verification = false;
-        this.owner_visibility = false;
+        this.ownerVisibility = false;
     }
 
 // getters and setters
