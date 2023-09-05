@@ -6,7 +6,7 @@ const ReportReasonPopup = () => {
     return ( 
         <>
             <div className="popUpBackground">
-                <div className="popUpContainer color-white">
+                <div className="reasonPopUpContainer color-white">
                     <div className="closeContainer">
                         <FontAwesomeIcon icon={faX}/>
                     </div>
