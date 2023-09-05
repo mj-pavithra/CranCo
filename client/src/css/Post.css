@@ -109,3 +109,22 @@
     font-size: 1.2rem;
     color: red;
 }
+
+.commentContentBackground{
+    width: 100%;
+    height: 100%;
+    background-color: aqua;
+    left: 0px;
+    top: 0px;
+    position: absolute;
+
+}
+
+.commentContent{
+    width: 650px;
+    height: 500px;
+    display: block;
+    position: absolute;
+    left: 100px;
+    top: 100px;
+}
