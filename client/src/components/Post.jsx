@@ -13,7 +13,8 @@ import Hr from "./Hr";
 import { Link } from "react-router-dom";
 import LinkToProfile from "../functions/LinkToProfile";
 
-const Post = (isOwner) => {
+const Post = (isOwner, username, caption, imageLocations
+  ) => {
   const images = [
     "/assets/car_img_1.jpg",
     "/assets/car_img_2.jpg",
