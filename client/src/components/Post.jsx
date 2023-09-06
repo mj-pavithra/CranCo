@@ -31,7 +31,8 @@ const Post = ({
     // Use the map() function to process each element in the array
     const newArray = arr.map((element) => {
       // Remove square brackets from the file name using a regular expression
-      const fileNameWithoutBrackets = element.replace(/\[|\]/g, '');
+      const fileNameWithoutBrackets = element.replace(/[\[\] ]/g, '');
+
   
       // Append the base URL to the modified file name
       const baseUrl = 'http://localhost:8081/static/PostImages/';
