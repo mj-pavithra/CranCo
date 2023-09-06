@@ -19,12 +19,31 @@ const Post = ({
   caption,
   imageLocations,
   date,
+  images,
   time,
 }) => {
   const postUsername = username || "Default Username";
   const captionText = caption || "Default caption text";
   const postDate = date || "January 1, 2023";
   const postTime = time || "12:00 AM";
+
+  function appendToLocalhost(arr) {
+    // Use the map() function to process each element in the array
+    const newArray = arr.map((element) => {
+      // Remove square brackets from the file name using a regular expression
+      const fileNameWithoutBrackets = element.replace(/\[|\]/g, '');
+  
+      // Append the base URL to the modified file name
+      const baseUrl = 'http://localhost:8081/static/PostImages/';
+      return `${baseUrl}${fileNameWithoutBrackets}`;
+    });
+  
+    return newArray;
+  }
+  
+
+  imageLocations = appendToLocalhost(imageLocations);
+  console.log(imageLocations);
 
   const fallbackImages = [
     "/assets/car_img_1.jpg",
@@ -71,7 +90,8 @@ const Post = ({
 
         {/* image section */}
         <div className="post-image pt-2">
-          <Carousel images={postImages} />
+         <Carousel images={postImages} />
+          
         </div>
 
         <div className="post-back pt-2">

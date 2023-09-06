@@ -41,6 +41,7 @@ const HomePage = () => {
             username={post.username}
             caption={post.caption}
             imageLocations={post.imageLocations}
+            images = {post.images}
             date={post.date}
             time={post.time}
           />
