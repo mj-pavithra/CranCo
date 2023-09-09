@@ -1,6 +1,6 @@
 package com.Cranco.Cranco.BusinessUser;
 
-public class CreateBusinessRequest {
+public class CreateBusinessUserRequest {
 
     private String businessname;
     private String ownername;

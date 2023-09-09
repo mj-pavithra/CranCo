@@ -1,11 +1,10 @@
 package com.Cranco.Cranco.BusinessUser;
 
-import com.Cranco.Cranco.User.CreateUserRequest;
-import com.Cranco.Cranco.User.UserDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class BusinessUserService {
@@ -16,7 +15,7 @@ public class BusinessUserService {
         this.businessUserRepository = businessUserRepository;
     }
 
-    public BusinessUserDto createBusinessUser(CreateBusinessRequest request){
+    public BusinessUserDto createBusinessUser(CreateBusinessUserRequest request){
 
         List<BusinessUser> bUserByEmail = businessUserRepository.findByEmail(request.getEmail());
         if(!bUserByEmail.isEmpty()) {
@@ -42,5 +41,36 @@ public class BusinessUserService {
         dto.setEmail(businessUser.getEmail());
 
         return dto;
+    }
+
+    public List<BusinessUserDto> allBusinessUsers(){
+        List<BusinessUser> businessUserList = businessUserRepository.findAll();
+        return businessUserList.stream().map(this::mapToDto).toList();
+    }
+
+    public BusinessUserDto updateBusinessUser(CreateBusinessUserRequest request, Long id){
+        Optional<BusinessUser> optionalBusinessUser = businessUserRepository.findById(id);
+        if(optionalBusinessUser.isEmpty()){
+            throw new IllegalStateException("ID not found");
+        }
+
+        BusinessUser existingBusinessUser = optionalBusinessUser.get();
+        existingBusinessUser.setBusinessname(request.getBusinessname());
+        existingBusinessUser.setOwnername(request.getOwnername());
+        existingBusinessUser.setMobilenumber(request.getMobilenumber());
+        existingBusinessUser.setEmail(request.getEmail());
+
+        BusinessUser updateBusinessUser = businessUserRepository.save(existingBusinessUser);
+        return mapToDto(updateBusinessUser);
+    }
+
+    public boolean deleteBusinessUser(Long id){
+        Optional<BusinessUser> optionalBusinessUser = businessUserRepository.findById(id);
+        if(optionalBusinessUser.isEmpty()){
+            throw new IllegalStateException("ID not found");
+        }
+
+        businessUserRepository.deleteById(id);
+        return true;
     }
 }
