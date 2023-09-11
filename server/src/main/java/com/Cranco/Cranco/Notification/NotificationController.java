@@ -64,7 +64,7 @@ public class NotificationController {
     public ResponseEntity<Void> markNotificationAsSeen(
             @RequestParam Long notificationId
     ) {
-        Notification notification = notificationService.findNotificationById(notificationId);
+        Notification notification = notificationService.findNotificationById(Math.toIntExact(notificationId));
         if (notification != null) {
             notificationService.markNotificationAsSeen(notification);
             return new ResponseEntity<>(HttpStatus.OK);
@@ -77,7 +77,7 @@ public class NotificationController {
     public ResponseEntity<Void> markNotificationAsClicked(
             @RequestParam Long notificationId
     ) {
-        Notification notification = notificationService.findNotificationById(notificationId);
+        Notification notification = notificationService.findNotificationById(Math.toIntExact(notificationId));
         if (notification != null) {
             notificationService.markNotificationAsClicked(notification);
             return new ResponseEntity<>(HttpStatus.OK);
