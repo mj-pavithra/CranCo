@@ -1,7 +1,16 @@
 import "../css/MerchantAbout.css";
 import Btn from "../components/Btn";
+import EditMerchantDetails from "./EditMerchantDetails";
+import React, { useState } from "react";
 
 const MerchantAbout = ({showButton}) => {
+
+    const [popUp, setPopup] = useState(false);
+
+    const handleMoreClick = () => {
+        setPopup((popUp) => !popUp);
+    };
+
     return ( 
         <>
             <div className="merchantAboutContainer">
@@ -23,7 +32,12 @@ const MerchantAbout = ({showButton}) => {
                 </div>
                 {showButton &&
                     <div className="btnConainter">
-                        <Btn buttonText="Edit" type="edit"/>
+                        <Btn buttonText="Edit" type="edit" onClick={() => handleMoreClick()}/>
+                        {popUp && (
+                        <div className="popUp-div">
+                            <EditMerchantDetails/>
+                        </div>
+                        )}
                     </div>
                 }
             </div>
