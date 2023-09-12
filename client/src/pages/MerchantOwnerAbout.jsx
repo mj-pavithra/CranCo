@@ -39,6 +39,14 @@ const MerchantOwnerAbout = () => {
                 <div className="imgConatiner">
                     {imageRows}
                 </div>
+                <div className="uploadContainer">
+                    <form action="">
+                        <label for="images" class="drop-container" id="dropcontainer">
+                            <input type="file" id="images" accept="image/*" required></input>
+                        </label>
+                        <button className="uploadBtn">Upload</button>
+                    </form>
+                </div>
             </div>
         </>
     );
