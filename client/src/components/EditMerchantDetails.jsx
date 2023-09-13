@@ -3,6 +3,7 @@ import { faAngleRight, faX } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import Btn from "./Btn";
 
 const EditMerchantDetails = () => {
     const [isopen, setIsOpen] = useState(true);
@@ -44,6 +45,7 @@ const EditMerchantDetails = () => {
             .then((response) => {
                 console.log(formData);
                 handleClose();
+                window.location.href="http://localhost:3000/merchantowner";
             })
             .catch((error) => {
                 console.error("Error updating data:", error);
@@ -135,7 +137,7 @@ const EditMerchantDetails = () => {
                                 </tr>
                                 <tr>
                                     <td>
-                                        <button type="submit" onClick={handleSubmit}>Update</button>
+                                        <Btn onClick={handleSubmit} buttonText={"Update"}/>
                                     </td>
                                 </tr>
                             </table>

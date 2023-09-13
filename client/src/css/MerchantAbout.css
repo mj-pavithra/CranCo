@@ -11,15 +11,37 @@
     gap: 50px;
 }
 
-.topicConianer{
-    width: 240px;
+.contentContainer table tr{
+    margin-bottom: 10px;
 }
 
-.topicConianer, .detailsConatiner{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+.contentContainer table td{
+    padding: 5px;
+}
+
+.contentContainer table label{
+    width: 150px;
     color: white;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.contentContainer table input{
+    width: 390px;
+    background-color: var(--background-blue-light);
+    border: 0px;
+    color: white;
+    font-size: 15px;
+}
+
+.contentContainer table textarea{
+    width: 100%;
+    height: fit-content;
+    resize: none;
+    background-color: var(--background-blue-light);
+    border: 0px;
+    color: white;
+    font-size: 15px;
 }
 
 .btnConainter{
