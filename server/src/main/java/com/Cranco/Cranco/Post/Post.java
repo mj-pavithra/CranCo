@@ -1,9 +1,10 @@
 package com.Cranco.Cranco.Post;
 
-import org.springframework.data.neo4j.core.schema.GeneratedValue;
-import org.springframework.data.neo4j.core.schema.Id;
-import org.springframework.data.neo4j.core.schema.Node;
-import org.springframework.data.neo4j.core.schema.Property;
+import com.Cranco.Cranco.User.User;
+import org.springframework.data.neo4j.core.schema.*;
+
+import java.time.LocalDateTime;
+
 
 @Node("POST")
 public class Post {
@@ -16,8 +17,13 @@ public class Post {
     @Property("caption")
     private String caption;
 
+    @Property("date")
+    private LocalDateTime date;
+
     @Property("location")
     private String location;
+    @Relationship(type = "POSTED_BY", direction = Relationship.Direction.OUTGOING)
+    private User USER; // Define a relationship to User
 
     public Long getId() {
         return postId;
@@ -33,6 +39,9 @@ public class Post {
 
     public String getLocation() {
         return location;
+    }
+    public LocalDateTime getDate() {
+        return date;
     }
     public void setId(Long postId) {
         this.postId = postId;
@@ -52,5 +61,10 @@ public class Post {
 
     public void setLocation(String location) {
         this.location = location;
+    }
+
+
+    public void setDate(LocalDateTime date) {
+        this.date = date;
     }
 }

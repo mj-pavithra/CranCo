@@ -1,15 +1,20 @@
 package com.Cranco.Cranco.Post;
 
 import java.util.List;
+import java.time.LocalDateTime;
 
 public class PostDto {
     private long postId;
     private String username;
     private String caption;
     private String location;
-    private List<String> imageLocations; // Add this field for image locations
+    private List<String> imageLocations;// Add this field for image locations
+    private List<byte[]> images;
+    private Long userID;
 
-    public long getId() {
+    private LocalDateTime date;
+
+    public Long getId() {
         return postId;
     }
 
@@ -27,6 +32,17 @@ public class PostDto {
 
     public List<String> getImageLocations() {
         return imageLocations; // Add this getter method for image locations
+    }
+    public List<byte[]> getImages() { // Modify this getter method for images
+        return images;
+    }
+
+    public LocalDateTime getDate() {
+        return date;
+    }
+
+    public Long getUserID() {
+        return userID;
     }
 
     public void setId(Long postId) {
@@ -48,4 +64,22 @@ public class PostDto {
     public void setImageLocations(List<String> imageLocations) {
         this.imageLocations = imageLocations; // Add this setter method for image locations
     }
+
+    public void setImages(List<byte[]> images) { // Modify this setter method for images
+        this.images = images;
+    }
+
+    public void setUserID(Long userID) {
+        this.userID = userID;
+    }
+
+    public void setDate(LocalDateTime date) {
+        this.date = date;
+    }
 }
+
+
+
+
+
+

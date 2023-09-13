@@ -1,11 +1,14 @@
 package com.Cranco.Cranco.User;
 
+import com.Cranco.Cranco.Post.Post;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
-import org.springframework.data.neo4j.core.schema.GeneratedValue;
-import org.springframework.data.neo4j.core.schema.Id;
-import org.springframework.data.neo4j.core.schema.Node;
-import org.springframework.data.neo4j.core.schema.Property;
+import org.springframework.data.neo4j.core.schema.*;
+import org.springframework.data.neo4j.repository.query.Query;
+import org.springframework.data.repository.query.Param;
+
+import java.util.HashSet;
+import java.util.Set;
 
 import java.time.LocalDate;
 import java.util.Set;
@@ -21,6 +24,17 @@ public class User {
     private String password;
     @Property("email")
     private String email;
+
+    @Relationship(type = "LIKED", direction = Relationship.Direction.OUTGOING)
+    private Set<Post> likedPosts = new HashSet<>();
+
+    @Query("MATCH (u:User {id: $userId})-[r:LIKED]->(p:Post {id: $postId}) DELETE r")
+    public void unlikes(@Param("userId") Long userId, @Param("postId") Long postId) {
+
+        String cypherQuery = "MATCH (u:User {id: $userId})-[r:LIKED]->(p:Post {id: $postId}) DELETE r";
+        neo4jOperations.query(cypherQuery, Map.of("userId", userId, "postId", postId));
+    }
+
 //    @Property("mobile_number")
 //    private String mobileNumber;
 //    @Property("user_verification")
