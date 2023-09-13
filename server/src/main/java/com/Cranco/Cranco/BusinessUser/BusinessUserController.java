@@ -29,6 +29,17 @@ public class BusinessUserController {
         return businessUserService.allBusinessUsers();
     }
 
+    @GetMapping("/viewbuser/{id}")
+    public ResponseEntity<BusinessUserDto> getBusinessUserDetails(@PathVariable Long id){
+        BusinessUserDto businessUser = businessUserService.businessUserDetails(id);
+
+        if(businessUser != null){
+            return ResponseEntity.ok(businessUser);
+        }else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
     @PutMapping("/updatebuser/{id}")
     public ResponseEntity<BusinessUserDto> updateBusinessUser(@RequestBody CreateBusinessUserRequest request, @PathVariable Long id){
         BusinessUserDto updateBusinessUser = businessUserService.updateBusinessUser(request, id);
