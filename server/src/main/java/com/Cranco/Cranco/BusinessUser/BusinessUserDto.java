@@ -7,6 +7,8 @@ public class BusinessUserDto {
     private String ownername;
     private String mobilenumber;
     private String email;
+    private String address;
+    private String bio;
 
     public Long getId(){
         return id;
@@ -27,6 +29,14 @@ public class BusinessUserDto {
         return email;
     }
 
+    public String getAddress(){
+        return address;
+    }
+
+    public String getBio(){
+        return bio;
+    }
+
     public void setId(Long id){
         this.id = id;
     }
@@ -44,5 +54,13 @@ public class BusinessUserDto {
 
     public void setEmail(String email){
         this.email = email;
+    }
+
+    public void setAddress(String address){
+        this.address = address;
+    }
+
+    public void setBio(String bio) {
+        this.bio = bio;
     }
 }

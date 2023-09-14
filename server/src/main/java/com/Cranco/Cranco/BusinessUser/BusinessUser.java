@@ -13,8 +13,8 @@ public class BusinessUser {
     @Property("owner_name") private String ownername;
     @Property("mobile_number") private String mobilenumber;
     @Property("email") private String email;
-//    @Property("verification") private boolean verification;
-//    @Property("admin_approve") private boolean adminApprove;
+    @Property("address") private String address;
+    @Property("bio") private String bio;
 
 
     public Long getId(){
@@ -36,6 +36,14 @@ public class BusinessUser {
         return email;
     }
 
+    public String getAddress(){
+        return address;
+    }
+
+    public String getBio(){
+        return bio;
+    }
+
 
     public void setBusinessname(String businessname){
         this.businessname = businessname;
@@ -51,5 +59,13 @@ public class BusinessUser {
 
     public void setEmail(String email){
         this.email = email;
+    }
+
+    public void setAddress(String address){
+        this.address = address;
+    }
+
+    public void setBio(String bio) {
+        this.bio = bio;
     }
 }

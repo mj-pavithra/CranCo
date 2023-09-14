@@ -1,6 +1,5 @@
 package com.Cranco.Cranco.BusinessUser;
 
-import com.Cranco.Cranco.User.User;
 import org.springframework.data.neo4j.repository.Neo4jRepository;
 import org.springframework.stereotype.Repository;
 
