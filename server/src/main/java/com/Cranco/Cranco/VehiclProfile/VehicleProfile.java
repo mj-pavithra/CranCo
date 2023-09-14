@@ -1,20 +1,17 @@
 package com.Cranco.Cranco.VehiclProfile;
 
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.neo4j.core.schema.GeneratedValue;
 import org.springframework.data.neo4j.core.schema.Id;
 import org.springframework.data.neo4j.core.schema.Node;
 import org.springframework.data.neo4j.core.schema.Property;
-
-import java.time.LocalDate;
-import java.util.Set;
 
 @Node("VEHICLEPROFILE")
 public class VehicleProfile {
     @Id
     @GeneratedValue
     private Long id;
+    @Property("vehicle_profile_name")
+    private String vehicleProfileName;
     @Property("vehicle_name")
     private String vehicleName;
     @Property("prev_owners")
@@ -49,6 +46,10 @@ public class VehicleProfile {
         return prevOwners;
     }
 
+    public String getVehicleProfileName() {
+        return vehicleProfileName;
+    }
+
     public boolean isOnMarketplace() {
         return onMarketplace;
     }
@@ -79,6 +80,10 @@ public class VehicleProfile {
 
     public void setGovRegNo(String govRegNo) {
         this.govRegNo = govRegNo;
+    }
+
+    public void setVehicleProfileName(String vehicleProfileName) {
+        this.vehicleProfileName = vehicleProfileName;
     }
 
     public void setOnMarketplace(boolean onMarketplace) {
