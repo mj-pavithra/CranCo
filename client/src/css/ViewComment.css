@@ -1,0 +1,34 @@
+.addCommentSection{
+    display: flex;
+    flex-direction: row;
+    justify-items: baseline;
+    gap: 25px;
+    margin-left: 30px;
+    margin-top: 20px;
+}
+
+.addCommentSection img{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+}
+
+.addCommentSection .commentField{
+    width: 500px;
+    height: 40px;
+    border-radius: 50px;
+    background-color: var(--background-blue-light);
+    border: 0px;
+    margin-top: 15px;
+    padding-left: 20px;
+    color: white;
+}
+
+.viewCommentSection{
+    margin-top: 30px;
+    margin-left: 30px;
+}
+
+.viewReplyCommentSection{
+    margin-left: 60px;
+}

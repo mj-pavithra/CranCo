@@ -1,12 +1,41 @@
-import React from "react";
+import React, { useState } from "react";
 import LoginInput from "../components/LoginInput";
 import Checkbox from "../components/Checkbox";
 import Btn from "../components/Btn";
 import LoginPageContainer from "../containers/LoginPageContainer";
 import { Link } from "react-router-dom";
+import axios from "axios";
 import HomePage from "./HomePage";
 
 const LoginPage = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [errMessege, setErrMessege] = useState("");
+
+  const loginHandle = async () => {
+    try {
+      const response = await axios.post(
+        "http://localhost:8081/api/v1/auth/auth",
+        {
+          email: email,
+          password: password,
+        }
+      );
+      setErrMessege("");
+      console.log(response.data);
+      sessionStorage.setItem("username", response.data);
+      window.location.href = "http://localhost:3000/homepage";
+    } catch (error) {
+      console.log(sessionStorage.getItem("username"));
+      if (error.response && error.response.data) {
+        setErrMessege(error.response.data);
+        console.log(errMessege.message);
+      } else {
+        setErrMessege("An error occurred.");
+      }
+    }
+  };
+
   return (
     <LoginPageContainer>
       <div className="layout-cont-4">
@@ -17,21 +46,38 @@ const LoginPage = () => {
             </div>
           </div>
           <div className="layout-cont-2">
-            <form className="layout-cont-1" action="">
+            <div className="layout-cont-1">
+              {errMessege == "" ? (
+                ""
+              ) : (
+                <div class="alert alert-danger" role="alert">
+                  {errMessege.message}
+                </div>
+              )}
+
               <div>
                 <LoginInput
-                  name={"Username"}
+                  name={"email"}
                   placeholder={"Enter your username"}
                   type={"text"}
                   style={{ color: "#FFFFFF" }}
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                    console.log("called");
+                  }}
+                  value={email}
                 />
               </div>
               <div>
                 <LoginInput
-                  name={"Password"}
+                  name={"password"}
                   placeholder={"Enter your password"}
                   type={"password"}
                   style={{ color: "#FFFFFF" }}
+                  onChange={(e) => {
+                    setPassword(e.target.value);
+                  }}
+                  value={password}
                 />
               </div>
               <div className="d-flex justify-content-between">
@@ -45,12 +91,15 @@ const LoginPage = () => {
                   </Link>
                 </div>
               </div>
-              <Link to={"/homepage"}>
-                <div className="pt-3">
-                  <Btn type={"submit"} buttonText={"Login"} width="fluid" />
-                </div>
-              </Link>
-            </form>
+              <div className="pt-3">
+                <Btn
+                  type={"submit"}
+                  buttonText={"Login"}
+                  width="fluid"
+                  onClick={loginHandle}
+                />
+              </div>
+            </div>
 
             <div className="color-white txt-09 d-flex flex-column align-items-center">
               <div>

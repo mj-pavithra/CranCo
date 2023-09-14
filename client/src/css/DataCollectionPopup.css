@@ -1,0 +1,65 @@
+.body {
+  background-color: black;
+}
+
+.data-collection-popup {
+  margin: 0 auto;
+  margin-top: 10%;
+  width: 40%;
+  height: auto;
+  background-color: var(--cage-background);
+  padding: 20px 90px 30px 90px;
+  border-style: none;
+  border-radius: 15px;
+  box-shadow: 2px 10px 15px var(--text-color-2);
+}
+
+.data-collection-popup-head {
+  width: 100%;
+  height: auto;
+  align-items: center;
+}
+
+.data-collection-popup-head h1 {
+  font-weight: 700;
+  text-align: center;
+  color: var(--text-1);
+}
+
+.data-collection-popup-head p {
+  text-align: center;
+  color: var(--text-color-2);
+}
+
+.data-collection-popup-fill {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.data-collection-popup-form {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  height: auto;
+}
+
+.data-collection-popup-label {
+  display: flex;
+  gap: 20px;
+  padding: 20px 0px 0px;
+  color: var(--text-color-2);
+}
+
+.data-collection-popup-btn {
+  width: 50%;
+  align-self: center;
+  margin-top: 40px;
+  border-style: none;
+  border-radius: 10px;
+  background-color: var(--stroke);
+  padding-top: 10px;
+  padding-bottom: 10px;
+  color: var(--text-1);
+}
