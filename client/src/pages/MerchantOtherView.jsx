@@ -67,6 +67,10 @@ const MerchantOtherView = () => {
                     <button className="tablinks" onClick={(evt) => openCity(evt, 'review')}>Reviews</button>
                 </div>
 
+                <div id="about" className="main">
+                    <MerchantOtherAbout/>
+                </div>
+
                 <div id="vehicleForSale" class="main">
                     <MerchantOtherVehicleSale/>
                 </div>
@@ -81,10 +85,6 @@ const MerchantOtherView = () => {
                     <MechantReview/>
                 </div>
 
-
-                <div id="about" class="main">
-                    <MerchantOtherAbout/>
-                </div>
             </div>
         </MainContainer>
     );
