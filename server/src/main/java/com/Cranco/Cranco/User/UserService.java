@@ -46,14 +46,6 @@ public class UserService {
         return dto;
     }
 
-    public void createOrUpdateLikedRelationship(Long userID, Long postID) {
-        User user = userRepository.findById(userID)
-                .orElseThrow(() -> new EntityNotFoundException("User not found with ID: " + userID));
-        Post post = postRepository.findById(postID)
-                .orElseThrow(() -> new EntityNotFoundException("Post not found with ID: " + postID));
 
-        user.likePost(post); // Add the "LIKED" relationship
-        userRepository.save(user);
-    }
 
 }

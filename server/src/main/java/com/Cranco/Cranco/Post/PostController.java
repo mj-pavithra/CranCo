@@ -1,5 +1,6 @@
     package com.Cranco.Cranco.Post;
 
+    import lombok.AllArgsConstructor;
     import org.springframework.beans.factory.annotation.Autowired;
     import org.springframework.http.HttpStatus;
     import org.springframework.http.ResponseEntity;
@@ -17,13 +18,14 @@
     @RestController
     @CrossOrigin(origins = "http://localhost:3000")
     @RequestMapping("/api/posts")
+    @AllArgsConstructor
     public class PostController {
         private final PostService postService;
 
-        @Autowired
-        public PostController(PostService postService) {
-            this.postService = postService;
-        }
+//        @Autowired
+//        public PostController(PostService postService) {
+//            this.postService = postService;
+//        }
 
         @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
         public ResponseEntity<PostDto> createPost(
@@ -40,6 +42,7 @@
             }
             CreatePost newPost = new CreatePost();
             newPost.setCaption(caption);
+
             PostDto createPost = postService.createPost(newPost, images);
             return ResponseEntity.ok(createPost);
         }

@@ -2,6 +2,7 @@ package com.Cranco.Cranco.Post;
 
 import com.Cranco.Cranco.User.User;
 import org.springframework.data.neo4j.core.schema.*;
+import org.springframework.data.neo4j.repository.query.Query;
 
 import java.time.LocalDateTime;
 
@@ -22,8 +23,7 @@ public class Post {
 
     @Property("location")
     private String location;
-    @Relationship(type = "POSTED_BY", direction = Relationship.Direction.OUTGOING)
-    private User USER; // Define a relationship to User
+
 
     public Long getId() {
         return postId;

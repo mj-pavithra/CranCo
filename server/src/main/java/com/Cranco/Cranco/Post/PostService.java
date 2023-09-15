@@ -4,35 +4,30 @@ import com.Cranco.Cranco.User.User;
 import javax.persistence.EntityNotFoundException;
 
 import com.Cranco.Cranco.User.UserRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.neo4j.core.Neo4jOperations;
-import org.springframework.data.neo4j.repository.query.Query;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 //import org.springframework.data.neo4j.core.
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.util.*;
 import java.util.stream.Collectors;
-import javax.persistence.EntityNotFoundException;
-import com.Cranco.Cranco.User.User;
 
 
 @Service
+@AllArgsConstructor
 public class PostService {
-    private PostRepository postRepository;
-    private UserRepository userRepository;
+    private final PostRepository postRepository;
+    private final UserRepository userRepository;
 
-    @Autowired
-    public PostService(PostRepository postRepository){
-        this.userRepository = userRepository;
-        this.postRepository = postRepository;
-    }
+//    @Autowired
+//    public PostService(PostRepository postRepository, UserRepository userRepository){
+//        this.postRepository = postRepository;
+//        this.userRepository = userRepository;
+//    }
 
 
     public PostDto createPost(CreatePost request, List<MultipartFile> images) {
@@ -40,7 +35,7 @@ public class PostService {
         newPost.setUsername(request.getUserId());
         newPost.setCaption(request.getCaption());
 
-        Long uniquePostId = generateUniquePostId();
+        long uniquePostId = generateUniquePostId();
         List<String> imageLocations = new ArrayList<>();
         LocalDateTime currentDateTime = LocalDateTime.now();
         newPost.setDate(currentDateTime);
@@ -49,7 +44,7 @@ public class PostService {
         if (images != null && !images.isEmpty()) {
             for (int i = 0; i < images.size(); i++) {
                 MultipartFile image = images.get(i);
-                String imageFileName = uniquePostId + i + "." + getExtensionFromFileName(image.getOriginalFilename());
+                String imageFileName = uniquePostId + i + "." + getExtensionFromFileName(Objects.requireNonNull(image.getOriginalFilename()));
                 saveImage(imageFileName, image);
                 imageLocations.add( imageFileName);
             }
@@ -110,24 +105,14 @@ public class PostService {
     }
     
 
-    private void saveImage(String fileName, byte[] data) {
-        try {
-            String resourcesPath = "./resources/PostImages/";
-            File file = Paths.get(resourcesPath, fileName).toFile();
-            FileOutputStream fos = new FileOutputStream(file);
-            fos.write(data);
-            fos.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+
 
     public List<PostDto> getAllPosts() {
         List<Post> posts = postRepository.findAll();
 
         Collections.shuffle(posts);
 
-        List<Post> randomPosts = posts.stream().limit(5).collect(Collectors.toList());
+        List<Post> randomPosts = posts.stream().limit(5).toList();
 
         return randomPosts.stream().map(this::mapToDtoWithImages).collect(Collectors.toList());
     }
@@ -161,17 +146,16 @@ public class PostService {
         return new ReactDto(react.getUserID(), react.getLiked(), react.getPostID());
     }
 
-    private void createOrUpdateLikedRelationship(Long userID, Long postID) {
+    public void createOrUpdateLikedRelationship(Long userID, Long postID) {
+        User user = userRepository.findById(userID)
+                .orElseThrow(() -> new EntityNotFoundException("User not found with ID: " + userID));
+        user.likesPost(userID, postID);
+        userRepository.save(user);
     }
-
-
     private void removeLikedRelationship(Long userID, Long postID) {
         User user = userRepository.findById(userID)
                 .orElseThrow(() -> new EntityNotFoundException("User not found with ID: " + userID));
-        Post post = postRepository.findById(postID)
-                .orElseThrow(() -> new EntityNotFoundException("Post not found with ID: " + postID));
-
-        user.unlikes(post); // Assuming you have a method 'unlikes' in your User entity
+        user.unlikes(userID, postID);
         userRepository.save(user);
     }
 

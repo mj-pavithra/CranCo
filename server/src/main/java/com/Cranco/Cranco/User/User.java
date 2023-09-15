@@ -1,20 +1,20 @@
 package com.Cranco.Cranco.User;
 
 import com.Cranco.Cranco.Post.Post;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
+import io.micrometer.core.instrument.binder.db.MetricsDSLContext;
 import org.springframework.data.neo4j.core.schema.*;
 import org.springframework.data.neo4j.repository.query.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
-import java.time.LocalDate;
-import java.util.Set;
+
 
 @Node("USER")
 public class User {
+
     @Id
     @GeneratedValue
     private Long id;
@@ -25,15 +25,21 @@ public class User {
     @Property("email")
     private String email;
 
-    @Relationship(type = "LIKED", direction = Relationship.Direction.OUTGOING)
-    private Set<Post> likedPosts = new HashSet<>();
-
+    @Query("MATCH (u:USER {id: userId}), (p:Post {id: $postId}) CREATE (u)-[:LIKED]->(p)")
+    public void likesPost(@Param("userId") Long userId, @Param("postId") Long postId) {
+        String cypherQuery = "MATCH (u:USER {id: $userId}), (p:POST {id: $postId}) CREATE (u)-[:LIKED]->(p)";
+        MetricsDSLContext neo4jTemplate = null;
+        neo4jTemplate.query(cypherQuery, Map.of("userId", userId, "postId", postId));
+    }
     @Query("MATCH (u:User {id: $userId})-[r:LIKED]->(p:Post {id: $postId}) DELETE r")
     public void unlikes(@Param("userId") Long userId, @Param("postId") Long postId) {
 
-        String cypherQuery = "MATCH (u:User {id: $userId})-[r:LIKED]->(p:Post {id: $postId}) DELETE r";
-        neo4jOperations.query(cypherQuery, Map.of("userId", userId, "postId", postId));
+        String cypherQuery = "MATCH (u:USER {id: $userId})-[r:LIKED]->(p:POST {id: $postId}) DELETE r";
+
+        MetricsDSLContext neo4jTemplate = null;
+        neo4jTemplate.query(cypherQuery, Map.of("userId", userId, "postId", postId));
     }
+
 
 //    @Property("mobile_number")
 //    private String mobileNumber;
@@ -95,6 +101,9 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public void likePost(Long userID, Long postID) {
     }
 
 //    public void setMobileNumber(String mobileNumber) {
