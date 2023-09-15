@@ -22,7 +22,7 @@ public class UserService {
 
     public UserDto createUser(CreateUserRequest request){
         //check for existing email
-        Optional<User> userByEmail =  userRepository.findByEmail(request.getEmail());
+        List<User> userByEmail =  userRepository.findByEmail(request.getEmail());
         if(!userByEmail.isEmpty()){
             throw new IllegalStateException(("email taken"));
         }

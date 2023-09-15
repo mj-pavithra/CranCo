@@ -11,15 +11,37 @@
     gap: 50px;
 }
 
-.topicConianer{
-    width: 240px;
+.contentContainer table tr{
+    margin-bottom: 10px;
 }
 
-.topicConianer, .detailsConatiner{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+.contentContainer table td{
+    padding: 5px;
+}
+
+.contentContainer table label{
+    width: 150px;
     color: white;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.contentContainer table input{
+    width: 390px;
+    background-color: var(--background-blue-light);
+    border: 0px;
+    color: white;
+    font-size: 15px;
+}
+
+.contentContainer table textarea{
+    width: 100%;
+    height: fit-content;
+    resize: none;
+    background-color: var(--background-blue-light);
+    border: 0px;
+    color: white;
+    font-size: 15px;
 }
 
 .btnConainter{
@@ -58,4 +80,51 @@
     border-radius: 15px;
     width: 300px;
     height: 200px;
+}
+
+.drop-container {
+    position: relative;
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    padding: 20px;
+    border-radius: 10px;
+    border: 2px dashed #555;
+    color: #444;
+    cursor: pointer;
+    transition: background .2s ease-in-out, border .2s ease-in-out;
+    margin: 20px 0px;
+  }
+  
+  .drop-container:hover {
+    background: var(--background-blue-light);
+    border-color: #111;
+  }
+  
+  .drop-container:hover {
+    color:white;
+  }
+
+  input[type=file]::file-selector-button {
+    margin-right: 20px;
+    border: none;
+    background: var(--primary-blue);
+    padding: 10px 20px;
+    border-radius: 10px;
+    color: #fff;
+    cursor: pointer;
+    transition: background .2s ease-in-out;
+  }
+
+.uploadBtn{
+    border: none;
+    background: var(--primary-blue);
+    padding: 5px 20px;
+    border-radius: 10px;
+    color: #fff;
+    cursor: pointer;
+    float: right;
 }
