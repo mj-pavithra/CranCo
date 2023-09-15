@@ -76,7 +76,7 @@ public class NotificationService {
         notificationRepository.save(notification);
     }
 
-    public Notification findNotificationById(Integer notificationId) {
+    public Notification findNotificationById(Long notificationId) {
         return notificationRepository.findById(notificationId).orElse(null);
     }
 

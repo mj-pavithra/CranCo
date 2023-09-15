@@ -18,7 +18,7 @@ public class Notification {
     @Id
     @GeneratedValue
     @Property("id")
-    private Integer id;
+    private Long id;
 
     @Property("date")
     private Date date;
@@ -32,7 +32,7 @@ public class Notification {
     @Property("clicked")
     private Boolean clicked;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
     public Date getDate() {
@@ -48,7 +48,7 @@ public class Notification {
         return clicked;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
