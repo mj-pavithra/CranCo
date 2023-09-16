@@ -14,7 +14,11 @@ function UserSidebar({ image, username }) {
       <Link className="link-unstyled" to="/myprofile">
         <div className="user-cage">
           <img src={image} alt="User Avatar" />
-          <p>{username}</p>
+          <p>
+            {sessionStorage.getItem("username")
+              ? sessionStorage.getItem("username")
+              : username}
+          </p>
         </div>
       </Link>
       <div className="sidebar-links">

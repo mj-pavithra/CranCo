@@ -1,0 +1,47 @@
+.commentContainer{
+    height: fit-content;
+    background-color: transparent;
+    display: flex;
+    flex-direction: row;
+    justify-items: baseline;
+    gap: 35px;
+}
+
+.imgContainer img{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+}
+
+.textConatiner .name{
+    font-size: 15px;
+    font-weight: 700;
+    padding: 0px;
+    margin-bottom: -12px;
+}
+
+.textConatiner .comment,
+.textConatiner .likeContainer{
+    font-size: 13px;
+    font-weight: 100;
+    padding: 0px;
+    margin-top: -12px;
+}
+
+.textConatiner .likeContainer{
+    width: fit-content;
+    display: grid;
+    grid-auto-flow: column;
+    justify-items: baseline;
+}
+
+.textConatiner .likeContainer p{
+    cursor: pointer;
+}
+
+.textConatiner .likeContainer .likeIcon{
+    color: red;
+    padding-top: 5px;
+    padding-left: 15px;
+}
+

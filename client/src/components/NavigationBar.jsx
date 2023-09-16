@@ -19,6 +19,11 @@ function NavigationBar() {
     setActiveIcon(iconName === activeIcon ? activeIcon : iconName);
   };
 
+  const logoutHandle = () => {
+    sessionStorage.setItem("username", "");
+    window.location.href = "http://localhost:3000/homepage";
+  };
+
   // notification bell
   const [bellState, setBellState] = useState(false);
 
@@ -37,7 +42,6 @@ function NavigationBar() {
         setBellState(false);
       }
     };
-
 
     document.addEventListener("click", handleOutsideClick);
 
@@ -68,13 +72,13 @@ function NavigationBar() {
               />
             </div>
 
-
             {/* middle div */}
             <div className="col-4 navbar-main d-flex align-items-center justify-content-center">
               <Link to="/homepage">
                 <div
-                  className={`navbar-icon-wrapper ${activeIcon === "home" ? " active" : ""
-                    }`}
+                  className={`navbar-icon-wrapper ${
+                    activeIcon === "home" ? " active" : ""
+                  }`}
                   onClick={() => handleIconClick("home")}
                 >
                   <FontAwesomeIcon className="navbar-icon" icon={faHome} />
@@ -82,8 +86,9 @@ function NavigationBar() {
               </Link>
               <Link to="/marketplace">
                 <div
-                  className={`navbar-icon-wrapper ${activeIcon === "marketplace" ? " active" : ""
-                    }`}
+                  className={`navbar-icon-wrapper ${
+                    activeIcon === "marketplace" ? " active" : ""
+                  }`}
                   onClick={() => handleIconClick("marketplace")}
                 >
                   <FontAwesomeIcon className="navbar-icon" icon={faShop} />
@@ -114,6 +119,9 @@ function NavigationBar() {
                 )}
               </div>
               <ToggleButton />
+              <div className="color-white" onClick={logoutHandle}>
+                Log out
+              </div>
             </div>
           </div>
         </div>

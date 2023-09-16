@@ -1,5 +1,6 @@
 import "../css/ViewVehicleDetails.css"
 import Btn from "./Btn";
+import { Link } from 'react-router-dom';
 
 const EditVehicleDetails = ({image, vehicleName, ownerName, des}) => {
 
@@ -19,8 +20,8 @@ const EditVehicleDetails = ({image, vehicleName, ownerName, des}) => {
                 </div>
                 <div className="btnContainer">
                     <div className="editConatiner">
-                        <Btn buttonText="View Details" />
-                        <Btn buttonText="Edit Details" />
+                        <Link to="/vehicles"><Btn buttonText="View Details" /></Link>
+                        <Link to="/vehicleaboutedit"><Btn buttonText="Edit Details" /></Link>
                     </div>
                 </div>
             </div>

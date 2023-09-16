@@ -19,7 +19,14 @@ import org.springframework.security.core.userdetails.UserDetails;
 //import java.time.LocalDate;
 import java.util.Collection;
 import java.util.List;
-//import java.util.Set;
+import java.util.Set;
+import com.Cranco.Cranco.Notification.Notification;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.neo4j.core.schema.*;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
 
 @Data
 @Builder
@@ -121,19 +128,26 @@ public class User implements UserDetails {
         this.email = email;
     }
 
-//    public void setMobileNumber(String mobileNumber) {
-//        this.mobileNumber = mobileNumber;
-//    }
-//
-//    public void setUserVerification(boolean userVerification) {
-//        this.userVerification = userVerification;
-//    }
-//
-//    public void setInterest_keywords(Set<String> interest_keywords) {
-//        this.interest_keywords = interest_keywords;
-//    }
-//
-//    public void setRegisteredDate(LocalDate registeredDate) {
-//        this.registeredDate = registeredDate;
-//    }
+    @Relationship(type = "SENT_NOTIFICATION")
+    private List<Notification> sentNotifications = new ArrayList<>();
+
+    @Relationship(type = "RECEIVED_NOTIFICATION")
+    private List<Notification> receivedNotifications = new ArrayList<>();
+
+    public List<Notification> getSentNotifications() {
+        return sentNotifications;
+    }
+
+    public void setSentNotifications(List<Notification> sentNotifications) {
+        this.sentNotifications = sentNotifications;
+    }
+
+    public List<Notification> getReceivedNotifications() {
+        return receivedNotifications;
+    }
+
+    public void setReceivedNotifications(List<Notification> receivedNotifications) {
+        this.receivedNotifications = receivedNotifications;
+    }
+
 }
