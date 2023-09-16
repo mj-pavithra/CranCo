@@ -86,6 +86,9 @@ public class User implements UserDetails {
         return password;
     }
 
+    @Override
+    public String getUsername() {return email;}
+
 //    public String getMobileNumber() {
 //        return mobileNumber;
 //    }

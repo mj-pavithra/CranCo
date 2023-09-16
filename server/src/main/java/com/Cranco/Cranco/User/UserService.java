@@ -25,7 +25,6 @@ public class UserService {
         User newUser = new User();
         newUser.setUsername(request.getUsername());
         newUser.setPassword(request.getPassword());
-        newUser.setEmail(request.getEmail());
 
         User savedUser = userRepository.save(newUser);
         return mapToDto(savedUser);

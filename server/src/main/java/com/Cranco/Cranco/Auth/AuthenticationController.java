@@ -1,9 +1,7 @@
 package com.Cranco.Cranco.Auth;
 
-import com.Cranco.Cranco.User.CreateUserRequest;
-import com.Cranco.Cranco.User.UserDto;
-import com.Cranco.Cranco.User.UserRepository;
 import com.Cranco.Cranco.User.UserService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,17 +18,12 @@ public class AuthenticationController {
     private final UserService userService;
 
     @PostMapping("/register")
-    public ResponseEntity<UserDto> register(
+    public ResponseEntity<AuthenticationResponse> register(
             @RequestBody RegisterRequest request
     ) {
-//        return ResponseEntity.ok(service.register(request));
-        CreateUserRequest createUserRequest = new CreateUserRequest();
-        createUserRequest.setUsername(request.getUsername());
-        createUserRequest.setEmail(request.getEmail());
-        createUserRequest.setPassword(request.getPassword());
-
-
-        return ResponseEntity.ok(userService.createUser(createUserRequest));
+        System.out.println("authenticationcontroller called");
+//        todo : VALIDATE USER INPUTS
+        return ResponseEntity.ok(service.register(request));
     }
 
     @PostMapping("/authenticate")
