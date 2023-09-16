@@ -53,11 +53,11 @@ public class NotificationService {
         return notification;
     }
 
-
-    public List<Notification> getUnreadNotifications(User user) {
-        // Fetch and return all unread notifications for the user
-        return notificationRepository.findByReceiverAndSeen(user, false);
-    }
+// todo : whole function commented. you can find the reason in notification repository
+//    public List<Notification> getUnreadNotifications(User user) {
+//        // Fetch and return all unread notifications for the user
+//        return notificationRepository.findByReceiverAndSeen(user, false);
+//    }
 
     public void markNotificationAsSeen(Notification notification) {
         // Mark a notification as seen
@@ -71,7 +71,7 @@ public class NotificationService {
         notificationRepository.save(notification);
     }
 
-    public Notification findNotificationById(Integer notificationId) {
+    public Notification findNotificationById(Long notificationId) {
         return notificationRepository.findById(notificationId).orElse(null);
     }
 
