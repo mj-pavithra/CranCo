@@ -17,7 +17,6 @@ public class Notification {
 
     @Id
     @GeneratedValue
-    @Property("id")
     private Integer id;
 
     @Property("date")
