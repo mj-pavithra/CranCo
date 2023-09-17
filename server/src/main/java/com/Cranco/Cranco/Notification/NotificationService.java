@@ -2,11 +2,8 @@ package com.Cranco.Cranco.Notification;
 
 
 import com.Cranco.Cranco.User.User;
-import com.Cranco.Cranco.User.UserRepository;
 import com.Cranco.Cranco.User.UserService;
 import jakarta.transaction.Transactional;
-import org.modelmapper.ModelMapper;
-import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,8 +21,6 @@ public class NotificationService {
     @Autowired
     private NotificationRepository notificationRepository;
 
-    @Autowired
-    private ModelMapper modelMapper;
 
     @Autowired
     public NotificationService(
@@ -58,11 +53,11 @@ public class NotificationService {
         return notification;
     }
 
-
-    public List<Notification> getUnreadNotifications(User user) {
-        // Fetch and return all unread notifications for the user
-        return notificationRepository.findByReceiverAndSeen(user, false);
-    }
+// todo : whole function commented. you can find the reason in notification repository
+//    public List<Notification> getUnreadNotifications(User user) {
+//        // Fetch and return all unread notifications for the user
+//        return notificationRepository.findByReceiverAndSeen(user, false);
+//    }
 
     public void markNotificationAsSeen(Notification notification) {
         // Mark a notification as seen
@@ -76,7 +71,7 @@ public class NotificationService {
         notificationRepository.save(notification);
     }
 
-    public Notification findNotificationById(Integer notificationId) {
+    public Notification findNotificationById(Long notificationId) {
         return notificationRepository.findById(notificationId).orElse(null);
     }
 

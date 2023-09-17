@@ -1,5 +1,25 @@
 package com.Cranco.Cranco.User;
 
+//import com.fasterxml.jackson.databind.annotation.EnumNaming;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+//import org.springframework.data.annotation.CreatedDate;
+//import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.neo4j.core.schema.GeneratedValue;
+import org.springframework.data.neo4j.core.schema.Id;
+import org.springframework.data.neo4j.core.schema.Node;
+import org.springframework.data.neo4j.core.schema.Property;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+//import java.time.LocalDate;
+import java.util.Collection;
+import java.util.List;
+import java.util.Set;
 import com.Cranco.Cranco.Notification.Notification;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -7,11 +27,13 @@ import org.springframework.data.neo4j.core.schema.*;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
 
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Node("USER")
-public class User {
+public class User implements UserDetails {
     @Id
     @GeneratedValue
     private Long id;
@@ -21,6 +43,10 @@ public class User {
     private String password;
     @Property("email")
     private String email;
+
+    @Property("role")
+
+    private Role role;
 //    @Property("mobile_number")
 //    private String mobileNumber;
 //    @Property("user_verification")
@@ -35,21 +61,40 @@ public class User {
 //    @Property("last_modified_date")
 //    @LastModifiedDate
 //    private LocalDate lastModifieddate;
-    public Long getId() {
-        return id;
+
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
     }
 
-    public String getUsername() {
-        return username;
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
     }
 
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return List.of(new SimpleGrantedAuthority(role.name()));
+    }
+
+    @Override
     public String getPassword() {
         return password;
     }
 
-    public String getEmail() {
-        return email;
-    }
+    @Override
+    public String getUsername() {return email;}
 
 //    public String getMobileNumber() {
 //        return mobileNumber;

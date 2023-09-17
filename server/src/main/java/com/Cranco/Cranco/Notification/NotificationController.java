@@ -47,24 +47,25 @@ public class NotificationController {
         }
     }
 
-    @GetMapping("/unread")
-    public ResponseEntity<List<Notification>> getUnreadNotifications(
-            @RequestParam Long userId
-    ) {
-        User user = userService.findUserById(userId);
-        if (user != null) {
-            List<Notification> unreadNotifications = notificationService.getUnreadNotifications(user);
-            return ResponseEntity.ok(unreadNotifications);
-        } else {
-            return ResponseEntity.notFound().build();
-        }
-    }
+//    todo: (commented whole function because of an error.) check in notification repository
+//    @GetMapping("/unread")
+//    public ResponseEntity<List<Notification>> getUnreadNotifications(
+//            @RequestParam Long userId
+//    ) {
+//        User user = userService.findUserById(userId);
+//        if (user != null) {
+////            List<Notification> unreadNotifications = notificationService.getUnreadNotifications(user);
+//            return ResponseEntity.ok(unreadNotifications);
+//        } else {
+//            return ResponseEntity.notFound().build();
+//        }
+//    }
 
     @PutMapping("/markAsSeen")
     public ResponseEntity<Void> markNotificationAsSeen(
             @RequestParam Long notificationId
     ) {
-        Notification notification = notificationService.findNotificationById(Math.toIntExact(notificationId));
+        Notification notification = notificationService.findNotificationById(notificationId);
         if (notification != null) {
             notificationService.markNotificationAsSeen(notification);
             return new ResponseEntity<>(HttpStatus.OK);
@@ -77,7 +78,7 @@ public class NotificationController {
     public ResponseEntity<Void> markNotificationAsClicked(
             @RequestParam Long notificationId
     ) {
-        Notification notification = notificationService.findNotificationById(Math.toIntExact(notificationId));
+        Notification notification = notificationService.findNotificationById(notificationId);
         if (notification != null) {
             notificationService.markNotificationAsClicked(notification);
             return new ResponseEntity<>(HttpStatus.OK);
