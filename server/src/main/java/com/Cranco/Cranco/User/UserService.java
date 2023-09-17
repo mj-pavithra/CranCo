@@ -5,9 +5,6 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Optional;
-
 @Service
 @Transactional
 public class UserService {
@@ -21,10 +18,11 @@ public class UserService {
 
     public UserDto createUser(CreateUserRequest request) {
         //check for existing email
-        Optional<User> userByEmail = userRepository.findByEmail(request.getEmail());
-        if (!userByEmail.isEmpty()) {
-            throw new IllegalStateException(("email taken"));
-        }
+        // commented till 25
+//        List<User> userByEmail =  userRepository.findByEmail(request.getEmail());
+//        if(!userByEmail.isEmpty()){
+//            throw new IllegalStateException(("email taken"));
+//        }
 
         User newUser = new User();
         newUser.setUsername(request.getUsername());
