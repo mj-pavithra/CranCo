@@ -3,9 +3,11 @@ package VehicleProfile;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @CrossOrigin
-@RequestMapping("/api/vehicle-profiles")
+@RequestMapping("/api/v1/auth/vehicle-profiles")
 public class VehicleProfileController {
     private final VehicleProfileService vehicleProfileService;
 
@@ -27,5 +29,29 @@ public class VehicleProfileController {
         } else {
             return ResponseEntity.notFound().build();
         }
+    }
+    @GetMapping()
+    public ResponseEntity<List<VehicleProfile>> getAllVehicleProfiles() {
+        List<VehicleProfile> vehicleProfiles = this.vehicleProfileService.getAllVehicleProfiles();
+        return ResponseEntity.ok(vehicleProfiles);
+    }
+
+    @PutMapping("/{vehicleProfileId}")
+    public ResponseEntity<VehicleProfile> updateVehicleProfile(
+            @PathVariable Long vehicleProfileId,
+            @RequestBody VehicleProfile updatedVehicleProfile) {
+        updatedVehicleProfile.setVehicleProfileId(vehicleProfileId); // Set the ID from the URL path
+        VehicleProfile updatedProfile = this.vehicleProfileService.updateVehicleProfile(updatedVehicleProfile);
+        if (updatedProfile != null) {
+            return ResponseEntity.ok(updatedProfile);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @DeleteMapping("/{vehicleProfileId}")
+    public ResponseEntity<Void> deleteVehicleProfile(@PathVariable Long vehicleProfileId) {
+        this.vehicleProfileService.deleteVehicleProfile(vehicleProfileId);
+        return ResponseEntity.noContent().build();
     }
 }
