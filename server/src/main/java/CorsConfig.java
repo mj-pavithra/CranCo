@@ -16,9 +16,10 @@ public class CorsConfig {
             public void addCorsMappings(CorsRegistry registry) {
                 // Allow requests from your frontend origin
                 registry.addMapping("/api/**")
+                        .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                         .allowedOrigins("http://localhost:3000")
-                        .allowedMethods("GET", "POST", "PUT", "DELETE")
-                        .allowedHeaders("*");
+                        .allowedHeaders("*")
+                        .allowCredentials(true);
             }
         };
     }

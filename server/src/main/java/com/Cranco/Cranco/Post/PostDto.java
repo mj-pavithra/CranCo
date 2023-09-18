@@ -11,7 +11,6 @@ public class PostDto {
     private List<String> imageLocations;// Add this field for image locations
     private List<byte[]> images;
     private Long userID;
-
     private LocalDateTime date;
 
     public Long getId() {

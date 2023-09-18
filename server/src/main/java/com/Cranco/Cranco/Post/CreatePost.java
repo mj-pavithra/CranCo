@@ -3,16 +3,20 @@ package com.Cranco.Cranco.Post;
 import java.util.List;
 public class CreatePost {
     private String postId;
-    private String userId;
+    private Long userId;
     private List<Image> images;
     private String caption;
+    private String username;
     private List<String> imageURL ;
 
     public String getPostId() {
         return postId;
     }
+    public String getUsername(){
+        return username;
+    }
 
-    public String getUserId() {
+    public Long getUserId() {
         return userId;
     }
 
@@ -36,8 +40,12 @@ public class CreatePost {
         this.caption = caption;
     }
 
-    public void setUserId(String userId) {
+    public void setUserId(Long userId) {
         this.userId = userId;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public void setImageURL(List<String> imageURL) {

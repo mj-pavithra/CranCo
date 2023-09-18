@@ -25,17 +25,21 @@ public class User {
     @Property("email")
     private String email;
 
-    @Query("MATCH (u:USER {id: userId}), (p:Post {id: $postId}) CREATE (u)-[:LIKED]->(p)")
+    @Query("match (u:USER) where id(u)=$userId match (p:POST)where id(p) = $postId create (u)-[r:LIKED]->(p) return r")
     public void likesPost(@Param("userId") Long userId, @Param("postId") Long postId) {
-        String cypherQuery = "MATCH (u:USER {id: $userId}), (p:POST {id: $postId}) CREATE (u)-[:LIKED]->(p)";
+
+        String cypherQuery = "match (u:USER) where id(u)=$userId match (p:POST {id: $postId}) create (u)-[r:LIKED]->(p) return r";
+        System.out.println("like karana part eka nm wada malli");
+//        String cypherQuery = "MATCH (u:USER {id: $userId}), (p:POST {id: $postId}) CREATE (u)-[:LIKED]->(p)";
         MetricsDSLContext neo4jTemplate = null;
         neo4jTemplate.query(cypherQuery, Map.of("userId", userId, "postId", postId));
     }
-    @Query("MATCH (u:User {id: $userId})-[r:LIKED]->(p:Post {id: $postId}) DELETE r")
+    @Query("match (u:USER) where id(u)=$userId match (p:POST)where id(p) = $postId match (u)-[r:LIKED]->(p) delete r")
     public void unlikes(@Param("userId") Long userId, @Param("postId") Long postId) {
 
-        String cypherQuery = "MATCH (u:USER {id: $userId})-[r:LIKED]->(p:POST {id: $postId}) DELETE r";
-
+        String cypherQuery = "match (u:USER) where id(u)=$userId match (p:POST)where id(p) = $postId match (u)-[r:LIKED]->(p) delete r";
+//        String cypherQuery = "MERGE (u:USER {id: $userId})-[r:LIKED]->(p:POST {id: $postId}) DELETE r";
+        System.out.println("dislike ekath wada malli");
         MetricsDSLContext neo4jTemplate = null;
         neo4jTemplate.query(cypherQuery, Map.of("userId", userId, "postId", postId));
     }

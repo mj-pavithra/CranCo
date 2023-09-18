@@ -30,6 +30,8 @@
         @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
         public ResponseEntity<PostDto> createPost(
                 @RequestParam("caption") String caption,
+                @RequestParam("userId") Long userId,
+                @RequestParam("username") String username,
 
                 @RequestParam(value = "images", required = false) List<MultipartFile> images) {
             if (images != null) {
@@ -42,6 +44,8 @@
             }
             CreatePost newPost = new CreatePost();
             newPost.setCaption(caption);
+            newPost.setUserId(userId);
+            newPost.setUsername(username);
 
             PostDto createPost = postService.createPost(newPost, images);
             return ResponseEntity.ok(createPost);
@@ -80,8 +84,6 @@
             ReactDto react = postService.recordReactOnPost(newReact);
             return ResponseEntity.ok(react);
         }
-
-
 
 
     }

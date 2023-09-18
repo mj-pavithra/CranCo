@@ -1,8 +1,6 @@
 package com.Cranco.Cranco.Post;
 
-import com.Cranco.Cranco.User.User;
 import org.springframework.data.neo4j.core.schema.*;
-import org.springframework.data.neo4j.repository.query.Query;
 
 import java.time.LocalDateTime;
 
@@ -10,7 +8,7 @@ import java.time.LocalDateTime;
 @Node("POST")
 public class Post {
     @Id
-    @GeneratedValue
+    @Property
     private Long postId;
     @Property("username")
     private String username;

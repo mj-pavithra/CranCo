@@ -32,13 +32,14 @@ public class PostService {
 
     public PostDto createPost(CreatePost request, List<MultipartFile> images) {
         Post newPost = new Post();
-        newPost.setUsername(request.getUserId());
+        newPost.setUsername(request.getUsername());
         newPost.setCaption(request.getCaption());
 
         long uniquePostId = generateUniquePostId();
         List<String> imageLocations = new ArrayList<>();
         LocalDateTime currentDateTime = LocalDateTime.now();
         newPost.setDate(currentDateTime);
+        newPost.setId(uniquePostId);
 
 
         if (images != null && !images.isEmpty()) {
@@ -149,12 +150,14 @@ public class PostService {
     public void createOrUpdateLikedRelationship(Long userID, Long postID) {
         User user = userRepository.findById(userID)
                 .orElseThrow(() -> new EntityNotFoundException("User not found with ID: " + userID));
+        System.out.println("like in post service wada");
         user.likesPost(userID, postID);
         userRepository.save(user);
     }
     private void removeLikedRelationship(Long userID, Long postID) {
         User user = userRepository.findById(userID)
                 .orElseThrow(() -> new EntityNotFoundException("User not found with ID: " + userID));
+        System.out.println("dislike in post service wada");
         user.unlikes(userID, postID);
         userRepository.save(user);
     }
