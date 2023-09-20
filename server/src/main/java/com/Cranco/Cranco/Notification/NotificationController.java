@@ -4,10 +4,6 @@ import com.Cranco.Cranco.User.User;
 import com.Cranco.Cranco.User.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,7 +11,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin
-@RequestMapping(value = "/api/notifications")
+@RequestMapping(value = "/api/v1/users/notifications")
 
 public class NotificationController {
 
@@ -30,11 +26,16 @@ public class NotificationController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<Void> createNotification(
-            @RequestBody NotificationDTO notificationDTO,
+    public ResponseEntity<Long> createNotification(
+            @RequestParam Long id,
+            @RequestParam Date date,
+            @RequestParam String details,
+            @RequestParam Boolean seen,
+            @RequestParam Boolean clicked,
             @RequestParam Long senderId,
             @RequestParam Long receiverId
     ) {
+
         // Find sender and receiver based on their IDs
         User sender = userService.findUserById(senderId);
         User receiver = userService.findUserById(receiverId);
@@ -44,22 +45,26 @@ public class NotificationController {
             return new ResponseEntity<>(HttpStatus.CREATED);
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+
         }
+
     }
 
-//    todo: (commented whole function because of an error.) check in notification repository
-//    @GetMapping("/unread")
-//    public ResponseEntity<List<Notification>> getUnreadNotifications(
-//            @RequestParam Long userId
-//    ) {
-//        User user = userService.findUserById(userId);
-//        if (user != null) {
-////            List<Notification> unreadNotifications = notificationService.getUnreadNotifications(user);
-//            return ResponseEntity.ok(unreadNotifications);
-//        } else {
-//            return ResponseEntity.notFound().build();
-//        }
-//    }
+    @GetMapping("/unread")
+    public ResponseEntity<List<Notification>> getUnreadNotifications(
+            @RequestParam Long userId
+    ) {
+        User user = userService.findUserById(userId);
+        if (user != null) {
+            List<Notification> unreadNotifications = notificationService.getUnreadNotifications(user);
+            return ResponseEntity.ok(unreadNotifications);
+//            return ResponseEntity.ok("Okay");
+        } else {
+            return ResponseEntity.notFound().build();
+//            return ResponseEntity.ok("Not Okay");
+
+        }
+    }
 
     @PutMapping("/markAsSeen")
     public ResponseEntity<Void> markNotificationAsSeen(
@@ -86,6 +91,4 @@ public class NotificationController {
             return ResponseEntity.notFound().build();
         }
     }
-
-
 }

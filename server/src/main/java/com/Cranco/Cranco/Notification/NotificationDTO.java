@@ -8,7 +8,7 @@ import java.util.Date;
 
 public class NotificationDTO {
 
-    private Integer id;
+    private Long id;
 
     private Date date;
 
@@ -17,7 +17,7 @@ public class NotificationDTO {
     private Boolean seen;
     private Boolean clicked;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
     public Date getDate() {
@@ -33,7 +33,7 @@ public class NotificationDTO {
         return clicked;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

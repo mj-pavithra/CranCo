@@ -54,10 +54,10 @@ public class NotificationService {
     }
 
 // todo : whole function commented. you can find the reason in notification repository
-//    public List<Notification> getUnreadNotifications(User user) {
-//        // Fetch and return all unread notifications for the user
-//        return notificationRepository.findByReceiverAndSeen(user, false);
-//    }
+    public List<Notification> getUnreadNotifications(User user) {
+        // Fetch and return all unread notifications for the user
+        return notificationRepository.findByReceiverAndSeen(user.getId(), false);
+    }
 
     public void markNotificationAsSeen(Notification notification) {
         // Mark a notification as seen
