@@ -30,6 +30,7 @@ import OwneProfile from "./pages/OwneProfile";
 import VehicleAboutEditPage from "./pages/VehicleAboutEditPage";
 import AddNewPage from "./pages/AddNewPage";
 import DataCollection from "./pages/DataCollection";
+import VehicleProfileSettings from "./pages/VehicleProfileSettings";
 
 const App = () => {
   return (
@@ -58,6 +59,10 @@ const App = () => {
           <Route
             path="/vehiclespageownersview"
             element={<VehiclesPageOwnersView />}
+          />
+          <Route
+            path="/vehiclespageownersview/settings"
+            element={<VehicleProfileSettings />}
           />
           <Route path="/vehicleaboutedit" element={<VehicleAboutEditPage />} />
           <Route path="/merchant" element={<MerchantOtherView />}></Route>

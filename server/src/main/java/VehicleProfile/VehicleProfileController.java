@@ -16,8 +16,9 @@ public class VehicleProfileController {
     }
 
 
-    @PostMapping()
+    @PostMapping("/create")
     public ResponseEntity<VehicleProfile> createVehicleProfile(@RequestBody VehicleProfileDto vehicleProfileDto) {
+
         return ResponseEntity.status(201).body(this.vehicleProfileService.createVehicleProfile(vehicleProfileDto));
     }
 
@@ -32,6 +33,7 @@ public class VehicleProfileController {
     }
     @GetMapping()
     public ResponseEntity<List<VehicleProfile>> getAllVehicleProfiles() {
+        System.out.println("in getAllVehicleProfiles");
         List<VehicleProfile> vehicleProfiles = this.vehicleProfileService.getAllVehicleProfiles();
         return ResponseEntity.ok(vehicleProfiles);
     }
