@@ -5,8 +5,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
+
 @RestController
-@RequestMapping("/api/Complaints")
+@CrossOrigin
+@RequestMapping("/api/v1/complaints")
 public class ComplaintController {
 
     private final ComplaintService complaintService;
@@ -16,66 +20,50 @@ public class ComplaintController {
         this.complaintService = complaintService;
     }
 
-    @PostMapping("/complaint")
-    public ResponseEntity<Complaint> createComplaint(@RequestBody ComplaintDTO complaintDTO) {
-        try {
-                Complaint complaint = complaintService.createComplaint(complaintDTO);
-                return ResponseEntity.ok(complaint);
-        } catch (Exception ex) {
-                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-        }
-    }
-
-    @PutMapping("/complaint/{id}")
-    public ResponseEntity<Complaint> updateComplaint(@PathVariable long id, @RequestBody ComplaintDTO complaintDTO) {
-        try{
-                Complaint complaint = complaintService.updateComplaint(id, complaintDTO);
-                if (complaint != null) {
-                    return ResponseEntity.ok(complaint);
-                }
-                return ResponseEntity.notFound().build();
-        } catch (Exception ex) {
-                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-        }
-    }
-
-    @PostMapping("/complaint/{id}/review")
-    public ResponseEntity<Complaint> reviewComplaint(@PathVariable long id) {
-        try {
-            complaintService.reviewComplaint(id);
-            return ResponseEntity.ok().build();
-        } catch (Exception ex) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-        }
-    }
-
-    @PostMapping("/complaint/{id}/close")
-    public ResponseEntity<Complaint> closeComplaint(@PathVariable long id) {
-        try {
-            complaintService.closeComplaint(id);
-            return ResponseEntity.ok().build();
-        } catch (Exception ex) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-        }
-    }
-
-    @DeleteMapping("/complaint/{id}")
-    public ResponseEntity<Complaint> deleteComplaint(@PathVariable long id) {
-        try {
-            complaintService.deleteComplaint(id);
-            return ResponseEntity.ok().build();
-        } catch (Exception ex) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-        }
-    }
-
-//    @GetMapping("/all")
-//    public ResponseEntity<List<Complaint>> getAllComplaints() {
-//        try {
-//            List<Complaint> complaintList = complaintService.getAllComplaints();
-//            return ResponseEntity.ok(complaintList);
-//        } catch (Exception ex) {
-//            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-//        }
+    // GET test endpoint
+//    @GetMapping("/test")
+//    public ResponseEntity<String> test() {
+//        return ResponseEntity.ok("Test successful");
 //    }
+
+    @PostMapping("/")
+    public ResponseEntity<Complaint> complaintPost(@RequestBody ComplaintDTO complaintDTO) {
+        try {
+            Complaint complaint = complaintService.complaintPost(complaintDTO);
+            return ResponseEntity.ok(complaint);
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
+    @GetMapping("/{postId}")
+    public ResponseEntity<List<Complaint>> getAllReportsForPost(@PathVariable long postId) {
+        try {
+            List<Complaint> complaintList = complaintService.getAllReportsForPost(postId);
+            return ResponseEntity.ok(complaintList);
+        } catch (Exception ex) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
+    @GetMapping("/all")
+    public ResponseEntity<List<Complaint>> getAllComplaintsSortedByPostId() {
+        try {
+            List<Complaint> complaintList = complaintService.getAllComplaintsSortedByPostId();
+            return ResponseEntity.ok(complaintList);
+        } catch (Exception ex) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
+    @DeleteMapping("/{reportId}")
+    public ResponseEntity<Complaint> deleteComplaint(@PathVariable long reportId) {
+        try {
+            complaintService.deleteComplaint(reportId);
+            return ResponseEntity.ok().build();
+        } catch (Exception ex) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
 }
