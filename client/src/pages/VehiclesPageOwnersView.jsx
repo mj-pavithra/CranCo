@@ -6,6 +6,7 @@ import PhotoboothVehicleOwner from "../components/PhotoboothVehicleOwner";
 import MainContainer from "../containers/MainContainer";
 import VehicleAboutOwnersView from "../components/VehicleAboutOwnersView";
 import AddNewUpdate from "../components/AddNewUpdate";
+import VehiclePageNavbar from "../components/VehiclePageNavbar";
 
 const VehiclesPageOwnersView = () => {
   const fetchVehicleAbouts = () => {
@@ -26,6 +27,9 @@ const VehiclesPageOwnersView = () => {
 
   return (
     <MainContainer>
+      <div className="vehiclepage-navbar">
+        <VehiclePageNavbar />
+      </div>
       <div className="photobooth-renderer">
         <PhotoboothVehicleOwner />
       </div>

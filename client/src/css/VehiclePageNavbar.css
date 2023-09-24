@@ -1,0 +1,32 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.vp-navbar {
+  display: flex;
+  justify-content: right;
+}
+
+li a {
+  display: flex;
+  gap: 0.5em;
+  text-decoration: none !important;
+  padding: 5px;
+}
+
+li a:hover {
+  display: flex;
+  gap: 0.5em;
+  text-decoration: none !important;
+  background-color: var(--transparent-white);
+  border-radius: 5px;
+  border-style: none;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.vpnavbar-logo,
+.vpnavbar-label {
+  color: var(--text-color-white);
+}

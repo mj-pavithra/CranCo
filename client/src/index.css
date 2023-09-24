@@ -9,6 +9,7 @@
   --half-transparent-white: rgba(255, 255, 255, 0.5);
   --background-blue: #000517;
   --background-blue-light: #1b1a38;
+  --text-color-white: #ffffff;
 
   /* measures */
   --navbar-height: 60px;
@@ -179,7 +180,7 @@ div::-webkit-scrollbar-thumb {
 
 .link-unstyled {
   text-decoration: none;
-  color: "inherit"
+  color: "inherit";
 }
 
 .grid-container {
@@ -243,5 +244,3 @@ div::-webkit-scrollbar-thumb {
   line-height: normal;
   cursor: pointer;
 }
-
-
