@@ -199,8 +199,10 @@ const EditMerchantDetails = () => {
                                 </tr>
                                 <tr>
                                     <td>
-                                        <Btn onClick={handleSubmit} buttonText={"Update"}/>
-                                        <Btn onClick={handleClose} buttonText={"Cancle"}/>
+                                        <button className="uploadBtn" onClick={handleSubmit}>Update</button>
+                                    </td>
+                                    <td className="canclebutton">
+                                        <button className="uploadBtn" onClick={handleClose}>Cancel</button>
                                     </td>
                                 </tr>
                             </table>
