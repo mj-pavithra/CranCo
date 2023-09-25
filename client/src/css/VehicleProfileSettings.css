@@ -1,0 +1,69 @@
+:root {
+  --margin-top: 20px;
+}
+
+.vp-settings-submit {
+  background-color: var(--cage-background);
+  border-style: none;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.vpsettings-update-field {
+  margin-top: var(--margin-top);
+  display: flex;
+  gap: 10px;
+}
+
+.vpsettings-label {
+  color: var(--half-transparent-white);
+}
+
+.vpsettings-input {
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 0;
+  padding-bottom: 0;
+  width: 100%;
+  border-style: solid;
+  border-width: 2px;
+  border-color: var(--half-transparent-white);
+  border-radius: 5px;
+  background-color: var(--background-blue);
+  color: var(--text-color-white);
+}
+
+.vpsettings-button-cage {
+  width: 100%;
+  margin-top: var(--margin-top);
+  display: flex;
+  justify-content: space-between;
+}
+
+.delete-cage {
+  height: 35px;
+  padding-left: 5px;
+  padding-right: 5px;
+  width: 100%;
+  border-radius: 5px;
+  color: var(--cage-background);
+}
+
+.vp-setting-title {
+  color: var(--text-color-white);
+  font-weight: 700;
+}
+
+.vp-setting-delete-statement {
+  color: var(--text-color-white);
+}
+
+.delete-it {
+  display: flex;
+  gap: 20px;
+}
+
+.vp-settings-back-btn {
+  margin-top: var(--margin-top);
+  width: 100%;
+}

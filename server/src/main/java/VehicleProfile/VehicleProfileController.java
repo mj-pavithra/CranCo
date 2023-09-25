@@ -7,7 +7,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/api/v1/auth/vehicle-profiles")
+@RequestMapping("/api/v1/vehicle-profiles")
 public class VehicleProfileController {
     private final VehicleProfileService vehicleProfileService;
 

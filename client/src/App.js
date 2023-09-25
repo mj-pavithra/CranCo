@@ -64,6 +64,11 @@ const App = () => {
             path="/vehiclespageownersview/settings"
             element={<VehicleProfileSettings />}
           />
+          <Route
+            path="/vehicle-profile/{:vehicleProfileId}"
+            component={VehicleProfileSettings}
+          />
+
           <Route path="/vehicleaboutedit" element={<VehicleAboutEditPage />} />
           <Route path="/merchant" element={<MerchantOtherView />}></Route>
           <Route path="/merchantowner" element={<MerchantOwnerView />}></Route>
