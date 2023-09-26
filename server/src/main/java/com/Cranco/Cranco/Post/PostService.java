@@ -117,10 +117,9 @@ public class PostService {
         for (Post post : randomPosts) {
             int likedCount = postRepository.getLikedCount(post.getId());
             post.setLikedCount(likedCount);
-            System.out.println(likedCount);
-            System.out.println("ME thama post eka thule thiyana euwa"+ post.getUsername());
+            System.out.println(post.getLikedCount());
+            System.out.println("ME thama post eka thule thiyana euwa"+ post.getCaption());
         }
-        System.out.println(randomPosts);
 
         return randomPosts.stream().map(this::mapToDtoWithImages).collect(Collectors.toList());
     }

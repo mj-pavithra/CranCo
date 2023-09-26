@@ -55,7 +55,6 @@
         public ResponseEntity<List<PostDto>> getAllPosts() {
             try {
                 List<PostDto> allPosts = postService.getAllPosts();
-                System.out.println(allPosts);
                 return ResponseEntity.ok(allPosts);
             } catch (Exception e) {
                 // Log the exception for debugging purposes.
@@ -84,6 +83,19 @@
             ReactDto react = postService.recordReactOnPost(newReact);
             return ResponseEntity.ok(react);
         }
+        @GetMapping("/writeComment")
+        public ResponseEntity<CommnetDto>WriteComment(
+                @RequestParam("userId") Long userID,
+                @RequestParam("comment") String comment,
+                @RequestParam("postID") Long postID
+        )
+        {
+            WriteCommnet commnet = new WriteCommnet();
+            commnet.setCommnetText(comment);
+            commnet.setPostID(postID);
+            commnet.setUserID(userID);
 
+            return null;
+        }
 
     }

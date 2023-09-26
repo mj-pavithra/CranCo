@@ -7,6 +7,7 @@ import java.time.LocalDateTime;
 
 @Node("POST")
 public class Post {
+
     @Id
     @Property
     private Long postId;
@@ -21,6 +22,7 @@ public class Post {
 
     @Property("location")
     private String location;
+    public int likedCount;
 
 
     public Long getId() {
@@ -42,6 +44,9 @@ public class Post {
         return date;
     }
 
+    public int getLikedCount() {
+        return likedCount;
+    }
 
     public void setId(Long postId) {
         this.postId = postId;

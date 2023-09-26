@@ -8,6 +8,7 @@ public class CreatePost {
     private String caption;
     private String username;
     private List<String> imageURL ;
+    public int likedCount;
 
     public String getPostId() {
         return postId;
@@ -46,6 +47,10 @@ public class CreatePost {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public void setLikedCount(int likedCount) {
+        this.likedCount = likedCount;
     }
 
     public void setImageURL(List<String> imageURL) {
@@ -112,5 +117,36 @@ class React{
 
     public void setPostID(Long postID) {
         this.postID = postID;
+    }
+}
+
+class WriteCommnet{
+    private Long postID;
+    private String commnetText;
+    private Long userID;
+    private Long commnetID;
+
+    public Long getPostID() {
+        return postID;
+    }
+
+    public String getCommnetText(String comment) {
+        return commnetText;
+    }
+
+    public Long getUserID() {
+        return userID;
+    }
+
+    public void setPostID(Long postID) {
+        this.postID = postID;
+    }
+
+    public void setCommnetText(String commnetText) {
+        this.commnetText = commnetText;
+    }
+
+    public void setUserID(Long userID) {
+        this.userID = userID;
     }
 }
