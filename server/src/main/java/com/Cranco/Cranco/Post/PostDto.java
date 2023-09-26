@@ -9,9 +9,14 @@ public class PostDto {
     private String caption;
     private String location;
     private List<String> imageLocations;// Add this field for image locations
-    private List<byte[]> images;
+//    private List<byte[]> images;
     private Long userID;
     private LocalDateTime date;
+    private int likeCount;
+
+    public int getLikeCount() {
+        return likeCount;
+    }
 
     public Long getId() {
         return postId;
@@ -32,9 +37,9 @@ public class PostDto {
     public List<String> getImageLocations() {
         return imageLocations; // Add this getter method for image locations
     }
-    public List<byte[]> getImages() { // Modify this getter method for images
-        return images;
-    }
+//    public List<byte[]> getImages() { // Modify this getter method for images
+//        return images;
+//    }
 
     public LocalDateTime getDate() {
         return date;
@@ -64,9 +69,9 @@ public class PostDto {
         this.imageLocations = imageLocations; // Add this setter method for image locations
     }
 
-    public void setImages(List<byte[]> images) { // Modify this setter method for images
-        this.images = images;
-    }
+//    public void setImages(List<byte[]> images) { // Modify this setter method for images
+//        this.images = images;
+//    }
 
     public void setUserID(Long userID) {
         this.userID = userID;
@@ -74,6 +79,10 @@ public class PostDto {
 
     public void setDate(LocalDateTime date) {
         this.date = date;
+    }
+
+    public void setLikedCount(int likeCount) {
+        this.likeCount = likeCount;
     }
 }
 

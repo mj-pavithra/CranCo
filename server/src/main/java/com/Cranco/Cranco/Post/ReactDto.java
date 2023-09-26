@@ -1,9 +1,9 @@
 package com.Cranco.Cranco.Post;
-
 public class ReactDto{
     private Long userID;
     private String liked;
     private Long postID;
+    private int likesCount;
     public ReactDto(Long userID, String liked, Long postID) {
         this.userID = userID;
         this.liked = liked;
@@ -21,6 +21,10 @@ public class ReactDto{
         return postID;
     }
 
+    public int getLikesCount() {
+        return likesCount;
+    }
+
     public void setUserID(Long userID) {
         this.userID = userID;
     }
@@ -31,5 +35,9 @@ public class ReactDto{
 
     public void setPostID(Long postID) {
         this.postID = postID;
+    }
+
+    public void setLikesCount(int likesCount) {
+        this.likesCount = likesCount;
     }
 }

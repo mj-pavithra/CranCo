@@ -41,6 +41,8 @@ public class Post {
     public LocalDateTime getDate() {
         return date;
     }
+
+
     public void setId(Long postId) {
         this.postId = postId;
     }
@@ -64,5 +66,8 @@ public class Post {
 
     public void setDate(LocalDateTime date) {
         this.date = date;
+    }
+
+    public void setLikedCount(int likedCount) {
     }
 }
