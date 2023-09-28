@@ -1,12 +1,23 @@
 package com.Cranco.Cranco.BusinessProfile;
 
-import org.springframework.data.neo4j.core.schema.Property;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 
 public class CreateBusinessProfileRequest {
+    @NotEmpty
     private String businessName;
+    @NotEmpty
     private String businessType;
+    @NotEmpty
+    @Email(message = "Enter a valid email")
     private String businessEmail;
+
+    @NotEmpty
+    @Size(max = 10, min = 10)
     private String phoneNumber;
+
+    @NotEmpty
     private boolean verification;
     private boolean ownerVisibility;
 
