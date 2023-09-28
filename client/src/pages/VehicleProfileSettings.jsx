@@ -110,7 +110,9 @@ function VehicleProfileSettings() {
           </label>
           <div className="delete-it">
             <input className="delete-cage"></input>
-            <button type="submit">Delete</button>
+            <button type="submit" onSubmit={handleSubmit}>
+              Delete
+            </button>
           </div>
         </div>
       </div>
