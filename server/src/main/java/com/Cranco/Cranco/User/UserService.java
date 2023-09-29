@@ -22,8 +22,6 @@ public class UserService {
     private UserRepository userRepository;
 
 
-    @Autowired
-    private UserRepository userRepository;
 
 
     public UserService(UserRepository userRepository) {
