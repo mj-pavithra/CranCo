@@ -1,10 +1,8 @@
-<<<<<<< HEAD
-=======
+
 import React, { useRef, useEffect, useState } from "react";
 import "../css/Post.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEllipsis, faX, faHeart } from "@fortawesome/free-solid-svg-icons";
->>>>>>> 9bd68013fa6221786f30556c61148765c53d380f
 import {
   faPaperPlane,
   faComment as reg_comment,
