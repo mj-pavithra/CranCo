@@ -1,0 +1,59 @@
+.uploadPhotoContainer{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 100;
+    top: 0px;
+    left: 0px;
+    background-color: rgba(0,0,0,0.6);
+}
+
+.uploadPhotoContent{
+    width: 600px;
+    background-color: var(--background-blue-light);
+    border-radius: 15px;
+    padding: 20px;
+    margin: 150px auto;
+}
+
+.imgPreview{
+    width: 550px;
+    height: 250px;
+    background-color: #2060ad;
+    margin-bottom: 20px;
+}
+
+.imgContent{
+    width: 100%;
+    height: 100%;
+}
+
+.buttonContainer{
+    width: 100%;
+    display: grid;
+    justify-content: center;
+}
+
+input[type="file"]{
+    color: white;
+}
+
+.oneButton{
+    display: flex;
+    margin: auto;
+}
+
+.twoButtons{
+    display: flex;
+    gap: 370px;
+}
+
+.cancleBtn{
+    border-radius: 8px;
+    float: right;
+    color: white;
+    padding: 10px 20px;
+    background-color: var(--primary-blue);
+    border: none;
+    margin-top: 20px;
+}

@@ -1,5 +1,6 @@
 import "../css/ViewVehicleDetails.css"
 import Btn from "./Btn";
+import { Link } from 'react-router-dom';
 
 const ViewVehicleDetails = ({image, vehicleName, ownerName, des}) => {
     return ( 
@@ -17,7 +18,7 @@ const ViewVehicleDetails = ({image, vehicleName, ownerName, des}) => {
                     <p className="txt-08">{des}</p>
                 </div>
                 <div className="btnContainer">
-                    <Btn buttonText="View Details"/>
+                    <Link to="/vehicles"><Btn buttonText="View Details" /></Link>
                 </div>
             </div>
         </>

@@ -7,6 +7,7 @@ import MainContainer from "../containers/MainContainer";
 import VehicleAboutOwnersView from "../components/VehicleAboutOwnersView";
 import AddNewUpdate from "../components/AddNewUpdate";
 import axios from "axios";
+import VehiclePageNavbar from "../components/VehiclePageNavbar";
 
 const VehiclesPageOwnersView = () => {
   const [postData, setPostData] = useState([]); // Define a state variable to hold the data
@@ -43,6 +44,9 @@ const VehiclesPageOwnersView = () => {
 
   return (
     <MainContainer>
+      <div className="vehiclepage-navbar">
+        <VehiclePageNavbar />
+      </div>
       <div className="photobooth-renderer">
         <PhotoboothVehicleOwner />
       </div>

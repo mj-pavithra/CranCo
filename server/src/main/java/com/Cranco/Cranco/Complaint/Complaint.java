@@ -5,66 +5,37 @@ import org.springframework.data.neo4j.core.schema.Id;
 import org.springframework.data.neo4j.core.schema.Node;
 import org.springframework.data.neo4j.core.schema.Property;
 
-@Node("complaint")
+@Node("Report")
 public class Complaint {
     @Id
     @GeneratedValue
+    private long reportId;
+    @Property("postId")
+    private long postId;
+    @Property("reason")
+    private String reason;
 
-    private Long id;
-    private String title;
-    private String description;
-    private boolean isClosed;
-    private boolean isReviewed;
-
-    public Long getid() {
-        return id;
+    public long getReportId() {
+        return reportId;
     }
 
-    public void setid(Long id) {
-        this.id = id;
+    public void setReportId(long reportId) {
+        this.reportId = reportId;
     }
 
-    public String gettitle() {
-        return title;
+    public long getPostId() {
+        return postId;
     }
 
-    public void settitle(String title) {
-        this.title = title;
+    public void setPostId(long postId) {
+        this.postId = postId;
     }
 
-    public String getdescription() {
-        return description;
+    public String getReason() {
+        return reason;
     }
 
-    public void setdescription(String description) {
-        this.description = description;
-    }
-
-    public boolean isClosed() {
-        return isClosed;
-    }
-
-    public void setClosed(boolean closed) {
-        isClosed = closed;
-    }
-
-    public boolean isReviewed() {
-        return isReviewed;
-    }
-
-    public void setReviewed(boolean reviewed) {
-        isReviewed = reviewed;
-    }
-
-    public void setIsReviewed(boolean reviewed) {
-        isReviewed = reviewed;
-    }
-
-    public void setIsClosed(boolean closed) {
-        isClosed = closed;
-    }
-
-    public void id(long id) {
-        this.id=id;
+    public void setReason(String reason) {
+        this.reason = reason;
     }
 }
