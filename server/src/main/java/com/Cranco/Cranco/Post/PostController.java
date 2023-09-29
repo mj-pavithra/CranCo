@@ -71,7 +71,7 @@
             return ResponseEntity.ok("Post deleted successfully");
         }
 
-        @GetMapping("/liked")
+        @PutMapping ("/liked")
         public ResponseEntity<ReactDto> RecordLike(
                 @RequestParam ("userID") Long userID,
                 @RequestParam ("liked") String liked,
