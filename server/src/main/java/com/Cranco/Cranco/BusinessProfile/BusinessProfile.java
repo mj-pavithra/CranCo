@@ -1,16 +1,19 @@
 package com.Cranco.Cranco.BusinessProfile;
 
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.neo4j.core.schema.GeneratedValue;
-import org.springframework.data.neo4j.core.schema.Id;
 import org.springframework.data.neo4j.core.schema.Node;
 import org.springframework.data.neo4j.core.schema.Property;
 
-import java.time.LocalDate;
-import java.util.Set;
 
 @Node("BUSINESSPROFILE")
+@Getter
+@Setter
+//@NoArgsConstructor
+@AllArgsConstructor
 public class BusinessProfile {
     @Id
     @GeneratedValue

@@ -1,26 +1,19 @@
 package com.Cranco.Cranco.User;
 
-import com.Cranco.Cranco.Post.Post;
 import com.Cranco.Cranco.Post.PostRepository;
-import javax.persistence.EntityNotFoundException;
-import java.util.List;
-import java.util.Optional;
 import com.Cranco.Cranco.Notification.Notification;
 import jakarta.transaction.Transactional;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 @Transactional
 public class UserService {
+    private final PostRepository postRepository;
+    private final UserRepository userRepository;
 
-    @Autowired
-    private PostRepository postRepository;
-    @Autowired
-    private UserRepository userRepository;
-
-    public UserService(UserRepository userRepository) {
+    public UserService(UserRepository userRepository, PostRepository postRepository) {
         this.userRepository = userRepository;
+        this.postRepository = postRepository;
     }
 
     public UserDto createUser(CreateUserRequest request) {

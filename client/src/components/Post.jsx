@@ -149,6 +149,31 @@ const Post = ({
     };
   }, []);
 
+  const [popUp, setPopup] = useState(false);
+
+  const handleMoreClick = () => {
+    setPopup((popUp) => !popUp);
+  };
+
+  const popupRef = useRef();
+
+  useEffect(() => {
+    const handleOutClick = (event) => {
+      if (
+        popupRef.current &&
+        !popupRef.current.contains(event.target)
+      ) {
+        setPopup(false);
+      }
+    };
+
+    document.addEventListener("click", handleOutClick);
+
+    return () => {
+      document.addEventListener("click", handleOutClick);
+    };
+  }, []);
+
   return (
     <>
       <div className="post">

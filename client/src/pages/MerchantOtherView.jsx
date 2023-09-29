@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ProfileCard from "../components/ProfileCard";
 import '../css/MerchantOtherView.css';
-import MechantReview from "./MechantReview";
+import MerchantReview from "./MerchantReview";
 import MerchantOtherAbout from "./MerchantOtherAbout"; 
 import MerchantOtherVehicleSale from "./MerchantOtherVehicleSale";
 import MainContainer from "../containers/MainContainer"
@@ -82,7 +82,7 @@ const MerchantOtherView = () => {
 
 
                 <div id="review" class="main">
-                    <MechantReview/>
+                    <MerchantReview showReview={true}/>
                 </div>
 
             </div>

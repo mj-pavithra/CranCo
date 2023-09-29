@@ -1,9 +1,14 @@
+.addReviewPart{
+    padding-top: 20px;
+    padding-bottom: 125px;
+}
+
 .summaryPart{
     display: flex;
     flex-direction: column;
     align-self: center;
     align-items: center;
-    gap: 50px;
+    gap: 10px;
     margin: 50px;
 }
 

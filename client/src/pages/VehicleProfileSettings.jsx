@@ -1,30 +1,65 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "../css/VehicleProfileSettings.css";
+import "../../src/index.css";
+import MainContainer from "../containers/MainContainer.jsx";
+import axios from "axios";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
 
 function VehicleProfileSettings() {
+  // const vehicleProfileId = "37";
+  const { vehicleProfileId } = useParams();
   const [profileImage, setProfileImage] = useState("");
   const [profileName, setProfileName] = useState("");
 
-  // Function to handle form submission
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Implement your logic to save the updated details here
-    // You can access the new values in `profileImage` and `profileName` state variables
+  const navigate = useNavigate();
 
-    console.log("Updated Profile Image:", profileImage);
-    console.log("Updated Profile Name:", profileName);
+  useEffect(() => {
+    // Debugging: Check if vehicleProfileId is correctly extracted from the URL
+    console.log("vehicleProfileId:", vehicleProfileId);
+  }, [vehicleProfileId]);
+
+  // Function to handle form submission
+  const handleSubmit = async () => {
+    // object requestData with the data to be sent
+    const requestData = {
+      profileImage: profileImage,
+      profileName: profileName,
+    };
+
+    console.log(requestData);
+    try {
+      const response = await axios.put(
+        `http://localhost:8081/api/v1/auth/vehicle-profiles/${vehicleProfileId}`,
+        requestData
+      );
+      console.log("hari wada.:", response.data);
+    } catch (err) {
+      console.error(err);
+      console.log("wada karan na.");
+    }
+  };
+
+  const handleProfileImage = (requestData) => {
+    setProfileImage(requestData.target.value);
+  };
+
+  const handleProfileName = (requestData) => {
+    setProfileName(requestData.target.value);
   };
 
   const handleCancel = () => {
-    // You can reset the input fields or perform any other necessary action
-    // For example, you can clear the input fields
     setProfileImage("");
-    setProfileName("");
+    setProfileName({ profileName });
+  };
+
+  const handleBackClick = () => {
+    navigate("/vehiclespageownersview");
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
+    <MainContainer>
+      <div className="vp-settings-submit" onSubmit={handleSubmit}>
+        <h5 className="vp-setting-title">General Settings</h5>
         <div className="vpsettings-update-field">
           <label className="vpsettings-label">Change Soul Profile Image</label>
           <input
@@ -32,7 +67,7 @@ function VehicleProfileSettings() {
             className="vpsettings-input"
             placeholder={profileImage}
             value={profileImage}
-            onChange={(e) => setProfileImage(e.target.value)}
+            onChange={handleProfileImage}
           />
         </div>
         <div className="vpsettings-update-field">
@@ -42,19 +77,49 @@ function VehicleProfileSettings() {
             className="vpsettings-input"
             placeholder={profileName}
             value={profileName}
-            onChange={(e) => setProfileName(e.target.value)}
+            onChange={handleProfileName}
           />
         </div>
         <div className="vpsettings-button-cage">
-          <button type="button" className="vpsettings-submit-btn">
+          <button
+            type="submit"
+            className="vpsettings-submit-btn"
+            onChange={handleCancel}
+          >
             Cancel
           </button>
-          <button type="submit" className="vpsettings-submit-btn">
+          <button
+            onClick={handleSubmit}
+            type="submit"
+            className="vpsettings-submit-btn"
+          >
             Save
           </button>
         </div>
-      </form>
-    </div>
+      </div>
+      <br />
+      <div className="vp-settings-submit">
+        <h5 className="vp-setting-title">Delete Soul Profile</h5>
+        <p className="vp-setting-delete-statement">
+          Deleting your soul profile will remove all your soul information from
+          our database. This cannot be undone.
+        </p>
+        <div className="vpsettings-delete-field">
+          <label className="vpsettings-label">
+            To confirm this, type "DELETE"
+          </label>
+          <div className="delete-it">
+            <input className="delete-cage"></input>
+            <button type="submit" onSubmit={handleSubmit}>
+              Delete
+            </button>
+          </div>
+        </div>
+      </div>
+      <button className="vp-settings-back-btn" onClick={handleBackClick}>
+        Back
+      </button>
+    </MainContainer>
   );
 }
 

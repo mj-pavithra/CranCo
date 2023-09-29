@@ -101,6 +101,18 @@ public class PostService {
         return dto;
     }
 
+    public List<Post> getAllPostsSortedByPostId() {
+        return postRepository.findAllByOrderByPostIdASC();
+    }
+
+    public void updatePostdetails(long postId){
+        Post post = postRepository.findById(postId).orElseThrow(() -> new IllegalStateException("Post with id " + postId + " does not exist"));
+        post.setCaption(post.getCaption());
+        postRepository.save(post);
+    }
+    public void deletePost(Long postId) {
+        postRepository.deleteById(postId);
+    }
     private Long generateUniquePostId() {
         return UUID.randomUUID().getMostSignificantBits() & Long.MAX_VALUE;
     }
