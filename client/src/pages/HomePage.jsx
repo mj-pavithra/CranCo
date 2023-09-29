@@ -1,17 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Post from "../components/Post";
 import MainContainer from "../containers/MainContainer.jsx";
 import axios from "axios";
+import debounce from "lodash/debounce";
+import AddNewUpdate from "../components/AddNewUpdate";
 
 const HomePage = () => {
-  const [postData, setPostData] = useState([]); // Define a state variable to hold the data
+  const [postData, setPostData] = useState([]);
+  const mainContainerRef = useRef(null);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const loadFeed = async () => {
       try {
         const response = await axios.get('http://localhost:8081/api/posts/feed');
         console.log("Data received:", response.data);
-        setPostData(response.data); // Set the received data in the state
+        setPostData(response.data);
       } catch (error) {
         console.error("Error receiving data:", error);
       }
@@ -20,11 +24,38 @@ const HomePage = () => {
     loadFeed();
   }, []);
 
-  const imagelist = [
-    "/assets/car_img_1.jpg",
-    "/assets/car_img_2.jpg",
-    "/assets/car_img_3.jpg",
-  ];
+  const loadMoreFeed = async () => {
+    if (loading) return; // Prevent multiple requests
+
+    try {
+      setLoading(true);
+      const response = await axios.get('http://localhost:8081/api/posts/feed');
+      console.log("Additional data received:", response.data);
+      setPostData((prevData) => [...prevData, ...response.data]);
+    } catch (error) {
+      console.error("Error loading more feed:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    if (mainContainerRef.current) {
+      const handleScroll = debounce(() => {
+        const container = mainContainerRef.current;
+        if (container.scrollTop + container.clientHeight >= container.scrollHeight) {
+          loadMoreFeed();
+        }
+      }, 2000); // Adjust the debounce delay as needed
+
+      const container = mainContainerRef.current;
+      container.addEventListener("scroll", handleScroll);
+
+      return () => {
+        container.removeEventListener("scroll", handleScroll);
+      };
+    }
+  }, [loadMoreFeed]);
 
   if (sessionStorage.getItem("username") === "") {
     window.location.href = "http://localhost:3000/login";
@@ -32,20 +63,25 @@ const HomePage = () => {
 
   return (
     <>
-      <MainContainer>
-        {/* Render Post components based on the data */}
+      <MainContainer ref={mainContainerRef}>
+      <div className="add-new-update">
+      <AddNewUpdate />
+    </div>
         {postData.map((post, index) => (
           <Post
             key={index}
             isOwner="no"
+            postId={post.postId}
             username={post.username}
             caption={post.caption}
             imageLocations={post.imageLocations}
-            images = {post.images}
+            images={post.images}
             date={post.date}
             time={post.time}
+            id={post.id}
           />
         ))}
+        {loading && <div>Loading more...</div>}
       </MainContainer>
     </>
   );

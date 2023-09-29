@@ -109,3 +109,28 @@
     font-size: 1.2rem;
     color: red;
 }
+
+.comment-section{
+    width: 95%;
+    margin: 0px auto;
+}
+
+.commentText{
+    width: 100%;
+    height: 2rem;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    padding: 0px 10px;
+    font-size: 0.9rem;
+    background-color: var(--transparent-white);
+}
+
+.commentTime{
+    font-size: 0.8rem;
+    color: var(--transparent-white);
+}
+
+.commentUsename{
+    font-size: 0.9rem;
+}

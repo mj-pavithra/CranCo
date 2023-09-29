@@ -1,4 +1,4 @@
-// import "../css/AddNewUpdate.css";
+
 import {
   faCamera,
   faPaperPlane,
@@ -19,17 +19,20 @@ function AddNewUpdate() {
   const [uploadVideo, setUploadVideo] = useState(false);
   const [caption, setPostText] = useState("");
   const [images, setImages] = useState([]);
+  const userId = 123;
 
   const handleDataSubmit = async () => {
     setIsLoading(true);
 
     const postData = new FormData();
     postData.append("caption", caption);
+    postData.append("userId", userId); 
+    postData.append("username", "Uberlage Achchi..");
 
     if (Array.isArray(images) && images.length > 0) {
       images.forEach((image, index) => {
         if (image instanceof File) {
-          postData.append("images", image); // Append images without []
+          postData.append("images", image);
         } else {
           console.error("Invalid image file at index", index);
         }
@@ -38,21 +41,30 @@ function AddNewUpdate() {
       try {
         const response = await axios.post("http://localhost:8081/api/posts", postData, {
           headers: {
-            "Content-Type": "multipart/form-data" // Set the Content-Type header correctly
+            "Content-Type": "multipart/form-data"
           },
         });
 
         console.log("Data sent successfully:", response.data);
-        setButtonColor("green");
-        setIsLoading(false);
 
+        // Change the button color to green on success
+        setButtonColor("green");
+        console.log("Button color changed to green");
+
+        // Clear user inputs after 3 seconds
         setTimeout(() => {
           setButtonColor("");
           setIsLoading(false);
+          setPostText(""); // Clear the text area
+          setImages([]);   // Clear the images
+          setWritePost(false); // Hide the text area and show image area
         }, 3000);
       } catch (error) {
         console.error("Error sending data:", error);
+
+        // Change the button color to red on failure
         setButtonColor("red");
+        console.log("Button color changed to red");
         setIsLoading(false);
       }
     } else {
@@ -60,9 +72,14 @@ function AddNewUpdate() {
       setButtonColor("red");
       setIsLoading(false);
     }
-};
+  };
 
-  
+  // const afterSubmit = () => {
+    
+  //   setWritePost(true); 
+  //   setUploadImage((uploadImage) => uploadImage);
+  //   setUploadVideo((uploadVideo) => uploadVideo);
+  // }
   
 
   const handleContentChange = () => {
@@ -150,6 +167,7 @@ function AddNewUpdate() {
                 placeholder="Any updates Kaveesha?" // name should be passed.
                 value={caption}
                 onChange={handlePostTextChange}
+                style={{ backgroundColor: {setButtonColor} }}
               />
               <div className="popup-save-btn-division">
                 <button
