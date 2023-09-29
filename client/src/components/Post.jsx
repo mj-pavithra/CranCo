@@ -1,8 +1,6 @@
 
 import React, { useRef, useEffect, useState } from "react";
 import "../css/Post.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEllipsis, faX, faHeart } from "@fortawesome/free-solid-svg-icons";
 import {
   faPaperPlane,
   faComment as reg_comment,
@@ -12,15 +10,12 @@ import {
 import { faEllipsis, faHeart, faX } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios"; // Import Axios
-import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "../css/Post.css";
 import LinkToProfile from "../functions/LinkToProfile";
 import Carousel from "./Carousel";
 import Hr from "./Hr";
 import Icon from "./Icon";
-import { Link } from "react-router-dom";
-import LinkToProfile from "../functions/LinkToProfile";
 import PostMore from "./PostMore";
 
 const Post = ({
