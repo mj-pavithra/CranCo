@@ -3,7 +3,7 @@ import ProfileCard from "../components/ProfileCard";
 import '../css/MerchantOtherView.css';
 import MerchantOwnVehicleSale from "./MerchantOwnVehicleSale";
 import MerchantOtherVehicleSale from "./MerchantOtherVehicleSale"; 
-import MechantReview from "./MechantReview";
+import MechantReview from "./MerchantReview";
 import MerchantOwnerAbout from "./MerchantOwnerAbout";
 import MainContainer from "../containers/MainContainer";
 import axios from "axios";
@@ -83,7 +83,7 @@ const MerchantOwnerView = () => {
 
 
                 <div id="review" class="main">
-                    <MechantReview/>
+                    <MechantReview showReview={false}/>
                 </div>
 
             </div>
