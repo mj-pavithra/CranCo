@@ -29,6 +29,8 @@ import PageManagement from "./pages/PageManagement";
 import OwneProfile from "./pages/OwneProfile";
 import VehicleAboutEditPage from "./pages/VehicleAboutEditPage";
 import AddNewPage from "./pages/AddNewPage";
+import DataCollection from "./pages/DataCollection";
+import VehicleProfileSettings from "./pages/VehicleProfileSettings";
 
 const App = () => {
   return (
@@ -38,6 +40,7 @@ const App = () => {
           <Route path="/" element={<HomePage />} />
           <Route path="/homepage" element={<HomePage />} />
           <Route path="/login" element={<LoginPage />} />
+          <Route path="/datacollection" element={<DataCollection />} />
           {/* <Route path="/login2" element={<LoginPageContainer />} /> */}
 
           <Route path="/friends" element={<FriendsPage />} />
@@ -51,12 +54,21 @@ const App = () => {
           <Route path="/addnewpage" element={<AddNewPage />} />
           <Route
             path="/allphotos"
-          // element={<OwnersVehicleProfileAllPhotos />}
+            // element={<OwnersVehicleProfileAllPhotos />}
           />
           <Route
             path="/vehiclespageownersview"
             element={<VehiclesPageOwnersView />}
           />
+          <Route
+            path="/vehiclespageownersview/settings"
+            element={<VehicleProfileSettings />}
+          />
+          <Route
+            path="/vehicle-profile/{:vehicleProfileId}"
+            component={VehicleProfileSettings}
+          />
+
           <Route path="/vehicleaboutedit" element={<VehicleAboutEditPage />} />
           <Route path="/merchant" element={<MerchantOtherView />}></Route>
           <Route path="/merchantowner" element={<MerchantOwnerView />}></Route>

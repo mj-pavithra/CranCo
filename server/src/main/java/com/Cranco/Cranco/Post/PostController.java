@@ -15,6 +15,7 @@
     import java.util.Map;
 
 
+
     @RestController
     @CrossOrigin(origins = "http://localhost:3000")
     @RequestMapping("/api/posts")
@@ -99,3 +100,35 @@
         }
 
     }
+
+
+    @GetMapping("/all")
+    public ResponseEntity<List<Post>> getAllPostsSortedByPostId() {
+        try {
+            List<Post> postList = postService.getAllPostsSortedByPostId();
+            return ResponseEntity.ok(postList);
+        } catch (Exception ex) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
+//    @PutMapping("/{postId}")
+//    public ResponseEntity<Post> updatePostDetails(@PathVariable Long postId, @RequestBody PostDto postDto) {
+//        try {
+//            Post Post = postService.updatePostdetails(postId, postDto);
+//            return ResponseEntity.ok(post);
+//        } catch (Exception ex) {
+//            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+//        }
+//    }
+
+    @DeleteMapping("{postId}")
+    public ResponseEntity<Post> deletePost(@PathVariable Long postId) {
+        try {
+            postService.deletePost(postId);
+            return ResponseEntity.ok().build();
+        } catch (Exception ex) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+}

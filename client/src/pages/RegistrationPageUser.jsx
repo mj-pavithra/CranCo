@@ -5,8 +5,15 @@ import Checkbox from "../components/Checkbox";
 import Btn from "../components/Btn";
 import LoginPageContainer from "../containers/LoginPageContainer";
 import axios from "axios";
+import DataCollectionPopup from "../components/DataCollectionPopup";
 
 const RegistrationPageUser = () => {
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [errMessage, setErrMessage] = useState("");
+  const [showPopup, setShowPopup] = useState(false); // Manage popup visibility
+
   const registerHandle = async () => {
     try {
       const response = await axios.post("http://localhost:8081/api/users", {
@@ -14,21 +21,16 @@ const RegistrationPageUser = () => {
         email: email,
         password: password,
       });
-      window.location.href = "http://localhost:3000/login";
+      // Show the popup after successful registration
+      setShowPopup(true);
     } catch (error) {
       if (error.response && error.response.data) {
-        setErrMessege(error.response.data);
-        console.log(errMessege.message);
+        setErrMessage(error.response.data.message);
       } else {
-        setErrMessege("An error occurred.");
+        setErrMessage("An error occurred.");
       }
     }
   };
-
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [errMessege, setErrMessege] = useState("");
 
   return (
     <LoginPageContainer>
@@ -41,11 +43,11 @@ const RegistrationPageUser = () => {
           </div>
           <div className="layout-cont-2">
             <div className="layout-cont-1">
-              {errMessege == "" ? (
+              {errMessage === "" ? (
                 ""
               ) : (
-                <div class="alert alert-danger" role="alert">
-                  {errMessege.message}
+                <div className="alert alert-danger" role="alert">
+                  {errMessage}
                 </div>
               )}
               <div>
@@ -54,9 +56,7 @@ const RegistrationPageUser = () => {
                   placeholder={"Enter your username"}
                   type={"text"}
                   value={username}
-                  onChange={(e) => {
-                    setUsername(e.target.value);
-                  }}
+                  onChange={(e) => setUsername(e.target.value)}
                 />
               </div>
               <div>
@@ -65,9 +65,7 @@ const RegistrationPageUser = () => {
                   placeholder={"Enter your E-mail"}
                   type={"email"}
                   value={email}
-                  onChange={(e) => {
-                    setEmail(e.target.value);
-                  }}
+                  onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
               <div>
@@ -76,9 +74,7 @@ const RegistrationPageUser = () => {
                   placeholder={"Enter your password"}
                   type={"password"}
                   value={password}
-                  onChange={(e) => {
-                    setPassword(e.target.value);
-                  }}
+                  onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
               <div className="d-flex justify-content-between">
@@ -108,6 +104,9 @@ const RegistrationPageUser = () => {
           </div>
         </div>
       </div>
+
+      {/* Conditionally render the popup */}
+      {showPopup && <DataCollectionPopup />}
     </LoginPageContainer>
   );
 };

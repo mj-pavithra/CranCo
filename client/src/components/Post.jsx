@@ -1,3 +1,10 @@
+<<<<<<< HEAD
+=======
+import React, { useRef, useEffect, useState } from "react";
+import "../css/Post.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEllipsis, faX, faHeart } from "@fortawesome/free-solid-svg-icons";
+>>>>>>> 9bd68013fa6221786f30556c61148765c53d380f
 import {
   faPaperPlane,
   faComment as reg_comment,
@@ -14,6 +21,9 @@ import LinkToProfile from "../functions/LinkToProfile";
 import Carousel from "./Carousel";
 import Hr from "./Hr";
 import Icon from "./Icon";
+import { Link } from "react-router-dom";
+import LinkToProfile from "../functions/LinkToProfile";
+import PostMore from "./PostMore";
 
 const Post = ({
   isOwner,
@@ -121,6 +131,31 @@ const Post = ({
     setContentChanged(true);
   };
 
+  const [popUp, setPopup] = useState(false);
+
+  const handleMoreClick = () => {
+    setPopup((popUp) => !popUp);
+  };
+
+  const popupRef = useRef();
+
+  useEffect(() => {
+    const handleOutClick = (event) => {
+      if (
+        popupRef.current &&
+        !popupRef.current.contains(event.target)
+      ) {
+        setPopup(false);
+      }
+    };
+
+    document.addEventListener("click", handleOutClick);
+
+    return () => {
+      document.addEventListener("click", handleOutClick);
+    };
+  }, []);
+
   return (
     <>
       <div className="post">
@@ -146,8 +181,19 @@ const Post = ({
           </div>
 
           <div className="post-header gap-1">
-            <div className="">
-              <Icon icon={faEllipsis} size={"12px"} />
+            <div className="popUp-main">
+              <div ref={popupRef} className='icon-back-div'>
+                <FontAwesomeIcon
+                  className={`moreIcon ${popUp ? "active" : ""}`}
+                  icon={faEllipsis}
+                  onClick={() => handleMoreClick()}
+                />
+                {popUp && (
+                  <div className="popUp-div">
+                    <PostMore />
+                  </div>
+                )}
+              </div>
             </div>
             <div className="">
               <Icon icon={faX} size={"12px"} />
