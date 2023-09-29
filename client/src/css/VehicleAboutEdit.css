@@ -40,7 +40,7 @@
   border-radius: 5px;
   background-color: var(--background-1);
   opacity: 20%;
-  color: var(--text-2);
+  color: white;
 }
 
 .vehicle-about-edit-label {
@@ -72,4 +72,14 @@
   padding: 5px;
   color: var(--error-color);
   font-size: 12px;
+}
+
+.button-cage {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.vehicle-about-edit-vali {
+  color: brown;
 }

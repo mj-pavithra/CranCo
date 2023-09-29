@@ -3,13 +3,15 @@ import "../css/VehicleProfileSettings.css";
 import "../../src/index.css";
 import MainContainer from "../containers/MainContainer.jsx";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
 
 function VehicleProfileSettings() {
   // const vehicleProfileId = "37";
   const { vehicleProfileId } = useParams();
   const [profileImage, setProfileImage] = useState("");
   const [profileName, setProfileName] = useState("");
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     // Debugging: Check if vehicleProfileId is correctly extracted from the URL
@@ -48,6 +50,10 @@ function VehicleProfileSettings() {
   const handleCancel = () => {
     setProfileImage("");
     setProfileName({ profileName });
+  };
+
+  const handleBackClick = () => {
+    navigate("/vehiclespageownersview");
   };
 
   return (
@@ -104,11 +110,15 @@ function VehicleProfileSettings() {
           </label>
           <div className="delete-it">
             <input className="delete-cage"></input>
-            <button type="submit">Delete</button>
+            <button type="submit" onSubmit={handleSubmit}>
+              Delete
+            </button>
           </div>
         </div>
       </div>
-      <button className="vp-settings-back-btn">Back</button>
+      <button className="vp-settings-back-btn" onClick={handleBackClick}>
+        Back
+      </button>
     </MainContainer>
   );
 }
