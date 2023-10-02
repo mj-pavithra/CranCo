@@ -20,8 +20,8 @@ const EditVehicleDetails = ({image, vehicleName, ownerName, des}) => {
                 </div>
                 <div className="btnContainer">
                     <div className="editConatiner">
-                        <Link to="/vehicles"><Btn buttonText="View Details" /></Link>
-                        <Link to="/vehicleaboutedit"><Btn buttonText="Edit Details" /></Link>
+                        <Link to="/vehicles"><button className="viewDetails">View Details</button></Link>
+                        <Link to="/vehicleaboutedit"><button className="editDetails">Edit Details</button></Link>
                     </div>
                 </div>
             </div>

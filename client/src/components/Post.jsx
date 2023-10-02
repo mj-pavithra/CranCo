@@ -14,8 +14,6 @@ import LinkToProfile from "../functions/LinkToProfile";
 import Carousel from "./Carousel";
 import Hr from "./Hr";
 import Icon from "./Icon";
-import { Link } from "react-router-dom";
-import LinkToProfile from "../functions/LinkToProfile";
 import PostMore from "./PostMore";
 
 const Post = ({
@@ -149,21 +147,21 @@ const Post = ({
     };
   }, []);
 
-  const [popUp, setPopup] = useState(false);
+  const [more, setMore] = useState(false);
 
-  const handleMoreClick = () => {
-    setPopup((popUp) => !popUp);
+  const handleDotsClick = () => {
+    setMore((more) => !more);
   };
 
-  const popupRef = useRef();
+  const moreRef = useRef();
 
   useEffect(() => {
     const handleOutClick = (event) => {
       if (
-        popupRef.current &&
-        !popupRef.current.contains(event.target)
+        moreRef.current &&
+        !moreRef.current.contains(event.target)
       ) {
-        setPopup(false);
+        setMore(false);
       }
     };
 
@@ -200,13 +198,13 @@ const Post = ({
 
           <div className="post-header gap-1">
             <div className="popUp-main">
-              <div ref={popupRef} className='icon-back-div'>
+              <div ref={moreRef} className='icon-back-div'>
                 <FontAwesomeIcon
                   className={`moreIcon ${popUp ? "active" : ""}`}
                   icon={faEllipsis}
-                  onClick={() => handleMoreClick()}
+                  onClick={() => handleDotsClick()}
                 />
-                {popUp && (
+                {more && (
                   <div className="popUp-div">
                     <PostMore />
                   </div>
