@@ -1,4 +1,4 @@
-package VehicleProfile;
+package com.Cranco.Cranco.VehicleProfile;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

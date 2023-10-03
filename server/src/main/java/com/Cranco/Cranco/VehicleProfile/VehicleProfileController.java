@@ -1,12 +1,12 @@
-package VehicleProfile;
+package com.Cranco.Cranco.VehicleProfile;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
 @CrossOrigin
+@RestController
 @RequestMapping("/api/v1/vehicle-profiles")
 public class VehicleProfileController {
     private final VehicleProfileService vehicleProfileService;
