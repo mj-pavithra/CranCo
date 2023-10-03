@@ -26,6 +26,8 @@ import AdminDashboard from "./pages/AdminDashboard";
 import OwnersVehicleProfileAllPhotos from "./pages/OwnersVehicleProfileAllPhotos";
 import UserManagement from "./pages/UserManagement";
 import PageManagement from "./pages/PageManagement";
+import PostManagement from "./pages/PostManagement";
+import ComplaintManagement from "./pages/ComplaintManagement";
 import OwneProfile from "./pages/OwneProfile";
 import VehicleAboutEditPage from "./pages/VehicleAboutEditPage";
 import AddNewPage from "./pages/AddNewPage";
@@ -86,6 +88,8 @@ const App = () => {
           <Route path="/admin/dashboard" element={<AdminDashboard />} />
           <Route path="/admin/usermanagement" element={<UserManagement />} />
           <Route path="/admin/pagemanagement" element={<PageManagement />} />
+          <Route path="/admin/postmanagement" element={<PostManagement />} />
+          <Route path="/admin/complaintmanagement" element={<ComplaintManagement />} />
           <Route path="*" element={<Error404 />} />
         </Route>
       </Routes>
