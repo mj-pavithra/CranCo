@@ -55,6 +55,9 @@
         public ResponseEntity<List<PostDto>> getAllPosts() {
             try {
                 List<PostDto> allPosts = postService.getAllPosts();
+//                for(PostDto posts : allPosts){
+//                    System.out.println(posts.getId());
+//                }
                 return ResponseEntity.ok(allPosts);
             } catch (Exception e) {
                 // Log the exception for debugging purposes.
@@ -71,17 +74,22 @@
             return ResponseEntity.ok("Post deleted successfully");
         }
 
-        @PutMapping ("/liked")
-        public ResponseEntity<ReactDto> RecordLike(
-                @RequestParam ("userID") Long userID,
-                @RequestParam ("liked") String liked,
-                @RequestParam("postID") Long postID){
-            React newReact = new React();
-            newReact.setLiked(liked);
-            newReact.setUserID(userID);
-            newReact.setPostID(postID);
-            ReactDto react = postService.recordReactOnPost(newReact);
-            return ResponseEntity.ok(react);
+//        @PostMapping ("/liked")
+//        public ResponseEntity<ReactDto> RecordLike(
+//                @RequestParam ("userID") Long userID,
+////              @RequestParam ("liked") String liked,
+//                @RequestParam("postID") Long postID){
+//            React newReact = new React();
+////            newReact.setLiked(liked);
+//            newReact.setUserID(userID);
+//            newReact.setPostID(postID);
+//            ReactDto react = postService.recordReactOnPost(newReact);
+//            return ResponseEntity.ok(react);
+//        }
+        @PostMapping("/liked")
+        public ResponseEntity<ReactDto> RecordLike(@RequestBody React react) {
+            ReactDto result = postService.recordReactOnPost(react);
+            return ResponseEntity.ok(result);
         }
         @GetMapping("/writeComment")
         public ResponseEntity<CommnetDto>WriteComment(

@@ -12,10 +12,10 @@ public class PostDto {
 //    private List<byte[]> images;
     private Long userID;
     private LocalDateTime date;
-    private int likeCount;
+    private int likedCount;
 
     public int getLikeCount() {
-        return likeCount;
+        return likedCount;
     }
 
     public Long getId() {
@@ -82,7 +82,7 @@ public class PostDto {
     }
 
     public void setLikedCount(int likeCount) {
-        this.likeCount = likeCount;
+        this.likedCount = likeCount;
     }
 }
 

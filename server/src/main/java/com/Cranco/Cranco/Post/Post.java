@@ -8,8 +8,7 @@ import java.time.LocalDateTime;
 @Node("POST")
 public class Post {
 
-    @Id
-    @Property
+    @Property("postId")
     private Long postId;
     @Property("username")
     private String username;
@@ -74,5 +73,6 @@ public class Post {
     }
 
     public void setLikedCount(int likedCount) {
+        this.likedCount=likedCount;
     }
 }

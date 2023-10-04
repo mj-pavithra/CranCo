@@ -98,6 +98,7 @@ public class PostService {
         dto.setLocation(post.getLocation());
         dto.setUsername(post.getUsername());
         dto.setDate(post.getDate());
+        dto.setLikedCount(post.getLikedCount());
         return dto;
     }
 
@@ -117,8 +118,10 @@ public class PostService {
         for (Post post : randomPosts) {
             int likedCount = postRepository.getLikedCount(post.getId());
             post.setLikedCount(likedCount);
+            System.out.println(likedCount);
             System.out.println(post.getLikedCount());
-            System.out.println("ME thama post eka thule thiyana euwa"+ post.getCaption());
+            System.out.println(post.getId());
+            System.out.println("ME thama post eka thule thiyana euwa:- "+ post.getCaption());
         }
 
         return randomPosts.stream().map(this::mapToDtoWithImages).collect(Collectors.toList());
@@ -126,7 +129,6 @@ public class PostService {
 
     public PostDto mapToDtoWithImages(Post post) {
         PostDto dto = mapToDto(post);
-        System.out.println(post);
         // Retrieve image locations for the post and set them in the DTO
         List<String> imageLocations = Arrays.asList(post.getLocation().split(","));
         dto.setImageLocations(imageLocations);
@@ -144,14 +146,14 @@ public class PostService {
 
 
     public ReactDto recordReactOnPost(React react) {
-        if ("liked".equals(react.getLiked())) {
-            createOrUpdateLikedRelationship(react.getUserID(), react.getPostID());
-        } else if ("disliked".equals(react.getLiked())) {
-            removeLikedRelationship(react.getUserID(), react.getPostID());
-        }
+        postRepository.likePost(react.getUserID(), react.getPostID());
+        System.out.println(postRepository.likePost(react.getUserID(), react.getPostID()));
 
         return new ReactDto(react.getUserID(), react.getLiked(), react.getPostID());
     }
+
+
+
 
     public void createOrUpdateLikedRelationship(Long userID, Long postID) {
         User user = userRepository.findById(userID)
