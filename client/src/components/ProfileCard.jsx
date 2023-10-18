@@ -1,6 +1,8 @@
-import React from "react";
+import React, {useState} from "react";
 import "../css/ProfileCards.css";
 import { Link } from "react-router-dom";
+import UpdateCoverPhoto from "./UpdateCoverPhoto";
+
 
 const ProfileCard = ({ coverPhoto, profilePhoto, editDP, profileName, likedPage1, likedPage2, likedPage3, likedPageCount, RalionshipState, addFriend , isOwner }) => {
     
@@ -12,14 +14,29 @@ const ProfileCard = ({ coverPhoto, profilePhoto, editDP, profileName, likedPage1
       }
       return originalImg;
     };
+
+    const [coverPhotoUploaderVisible, setCoverPhotoUploaderVisible] = useState(false);
+
+    const handleCoverPhotoUploader = () => {
+        setCoverPhotoUploaderVisible(!coverPhotoUploaderVisible);
+    }
     
   
     return (
    <div className="profileCard">
-    <div className="profileCardtop">
-        <img className="coverPhoto" alt="Error" src={onError(coverPhoto)}/>
-        {isOwner ||  <button className="editcp">Update coverphoto</button>}
-    </div>
+       <div className="profileCardtop">
+           <img className="coverPhoto" alt="Error" src={onError(coverPhoto)} />
+           {isOwner || (
+               <div>
+                   <button onClick={handleCoverPhotoUploader} className="editcp">Update cover photo</button>
+                   {coverPhotoUploaderVisible && (
+                       <div className="updateCoverPhoto">
+                           <UpdateCoverPhoto />
+                       </div>
+                   )}
+               </div>
+           )}
+       </div>
     <div className="profileCardmiddle">
         <img className="profilePhoto" src={onError(profilePhoto)}/>
         {isOwner || <img className="editDP" alt="Error" src={onError(editDP)}/>}

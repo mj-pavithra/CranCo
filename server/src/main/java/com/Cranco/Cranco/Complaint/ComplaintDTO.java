@@ -1,62 +1,25 @@
 package com.Cranco.Cranco.Complaint;
 
 public class ComplaintDTO {
-    private Long id;
-    private String title;
-    private String description;
-    private boolean isClosed;
-    private boolean isReviewed;
+    private long reportId;
+    private long postId;
+    private String reason;
 
-    public ComplaintDTO() {
+    public ComplaintDTO(long reportId, long postId, String reason) {
+        this.reportId = reportId;
+        this.postId = postId;
+        this.reason = reason;
     }
-
-    public ComplaintDTO(Long id, String title, String description, boolean isClosed, boolean isReviewed) {
-        this.id = id;
-        this.title = title;
-        this.description = description;
-        this.isClosed = isClosed;
-        this.isReviewed = isReviewed;
+    public long getReportId() { return reportId;}
+    public void setReportId(long reportId) {
+        this.reportId = reportId;
     }
-
-    public String gettitle() {
-        return title;
+    public long getPostId() { return postId;}
+    public void setPostId(long postId) {
+        this.postId = postId;
     }
-
-    public String getdescription() {
-        return description;
-    }
-
-    public long getid() { return id;}
-
-    public void setid(Long id) {
-        this.id = id;
-    }
-
-    public void settitle(String title) {
-        this.title = title;
-    }
-
-    public void setdescription(String description) {
-        this.description = description;
-    }
-
-    public boolean isClosed() {
-        return isClosed;
-    }
-
-    public void setIsClosed(boolean closed) {
-        isClosed = closed;
-    }
-
-    public void setIsReviewed(boolean reviewed)
-    {
-        isReviewed = reviewed;
-    }
-    public boolean isReviewed() {
-        return isReviewed;
-    }
-
-    public void setReviewed(boolean reviewed) {
-        isReviewed = reviewed;
+    public String getReason() { return reason;}
+    public void setReason(String reason) {
+        this.reason = reason;
     }
 }

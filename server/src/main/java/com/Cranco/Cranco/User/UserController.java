@@ -16,9 +16,25 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<UserDto> createUser(@RequestBody CreateUserRequest request){
+    public ResponseEntity<UserDto> createUser(@RequestParam("username") String username, @RequestParam("password") String password, @RequestParam("email") String email) {
+
+        CreateUserRequest request = new CreateUserRequest();
+        request.setUsername(username);
+        request.setEmail(email);
+        request.setPassword(password);
+
         UserDto createdUser = userService.createUser(request);
         return ResponseEntity.ok(createdUser);
+    }
+
+    @GetMapping("/{username}")
+    public ResponseEntity<User> getUserByUsername(@PathVariable String username) {
+        User user = userService.findUserByUsername(username);
+        if (user != null) {
+            return ResponseEntity.ok(user);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
 }

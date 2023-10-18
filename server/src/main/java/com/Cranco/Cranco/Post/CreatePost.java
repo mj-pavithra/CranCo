@@ -33,7 +33,6 @@ public class CreatePost {
     }
 }
 
-@SuppressWarnings("unused")
 class Image {
     private String filename;
     private byte[] data;

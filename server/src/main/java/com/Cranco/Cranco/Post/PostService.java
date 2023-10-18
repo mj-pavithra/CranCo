@@ -25,7 +25,7 @@ public class PostService {
         newPost.setUsername(request.getUserId());
         newPost.setCaption(request.getCaption());
 
-        String uniquePostId = generateUniquePostId();
+        Long uniquePostId = generateUniquePostId();
         List<String> imageLocations = new ArrayList<>();
 
         List<Image> images = request.getImages();
@@ -39,7 +39,7 @@ public class PostService {
         }
 
         newPost.setLocation(imageLocations.toString());
-
+        newPost.setId(uniquePostId);
         Post savePost = postRepository.save(newPost);
         PostDto postDto = mapToDto(savePost);
         postDto.setImageLocations(imageLocations);
@@ -55,9 +55,22 @@ public class PostService {
         return dto;
     }
 
-    private String generateUniquePostId() {
-        return UUID.randomUUID().toString();
+    public List<Post> getAllPostsSortedByPostId() {
+        return postRepository.findAllByOrderByPostIdASC();
     }
+
+    public void updatePostdetails(long postId){
+        Post post = postRepository.findById(postId).orElseThrow(() -> new IllegalStateException("Post with id " + postId + " does not exist"));
+        post.setCaption(post.getCaption());
+        postRepository.save(post);
+    }
+    public void deletePost(Long postId) {
+        postRepository.deleteById(postId);
+    }
+    private Long generateUniquePostId() {
+        return UUID.randomUUID().getMostSignificantBits() & Long.MAX_VALUE;
+    }
+    
 
     private void saveImage(String fileName, byte[] data) {
         try {
