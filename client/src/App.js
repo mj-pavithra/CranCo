@@ -31,6 +31,7 @@ import VehicleAboutEditPage from "./pages/VehicleAboutEditPage";
 import AddNewPage from "./pages/AddNewPage";
 import DataCollection from "./pages/DataCollection";
 import VehicleProfileSettings from "./pages/VehicleProfileSettings";
+import TestingAxios from "./pages/TestingAxios";
 
 const App = () => {
   return (
@@ -41,6 +42,7 @@ const App = () => {
           <Route path="/homepage" element={<HomePage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/datacollection" element={<DataCollection />} />
+          <Route path="/testrequest" element={<TestingAxios />} />
           {/* <Route path="/login2" element={<LoginPageContainer />} /> */}
 
           <Route path="/friends" element={<FriendsPage />} />
@@ -54,7 +56,7 @@ const App = () => {
           <Route path="/addnewpage" element={<AddNewPage />} />
           <Route
             path="/allphotos"
-            // element={<OwnersVehicleProfileAllPhotos />}
+          // element={<OwnersVehicleProfileAllPhotos />}
           />
           <Route
             path="/vehiclespageownersview"
