@@ -1,6 +1,8 @@
 import axios from 'axios';
 import Cookies from 'js-cookie';
 
+const hostUrl = 'http://localhost:8081';
+
 const instance = axios.create({
     baseURL: 'http://localhost:8081',
     headers: {
@@ -13,6 +15,8 @@ instance.interceptors.request.use(
         const token = Cookies.get("jwtToken");
         if (token) {
             config.headers.Authorization = `Bearer ${token}`;
+        } else {
+            window.location.href = "http://localhost:3000/login";
         }
         return config;
     },
@@ -20,5 +24,18 @@ instance.interceptors.request.use(
         return Promise.reject(error);
     }
 );
+
+function validateToken(token) {
+    axios.post(hostUrl + "/api/v1/auth/validate-token", {
+        token: "this is token"
+    }).then((response) => {
+        if (response.status == 200) {
+            return true;
+        }
+        return false;
+    }).catch((error) => {
+        return false;
+    })
+}
 
 export default instance;
