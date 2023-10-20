@@ -26,6 +26,7 @@ const Post = ({
   images,
   time,
   id,
+  likeCount,
 }) => {
   const [writeComment, setWriteComment] = useState(false);
   const postUsername = username || "Default Username";
@@ -235,7 +236,7 @@ const Post = ({
               <FontAwesomeIcon className="post-heart-icon" icon={faHeart} />
             </div>
             <span className="fw-light txt-09">{`${liked === true ? "You and " : ""
-              } 13 ${liked === true ? " others" : ""}`}</span>
+              } ${likeCount} ${liked === true ? " others" : ""}`}</span>
           </div>
 
           <div className="post-header txt-09 gap-2">

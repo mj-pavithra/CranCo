@@ -80,6 +80,7 @@ const HomePage = () => {
             date={post.date}
             time={post.time}
             id={post.id}
+            likeCount={post.likeCount}
           />
         ))}
         {loading && <div>Loading more...</div>}

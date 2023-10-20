@@ -74,5 +74,6 @@ public class Post {
     }
 
     public void setLikedCount(int likedCount) {
+        this.likedCount = likedCount;
     }
 }
