@@ -1,4 +1,4 @@
-package VehicleProfile;
+package com.Cranco.Cranco.VehicleProfile;
 
 import org.springframework.stereotype.Component;
 
