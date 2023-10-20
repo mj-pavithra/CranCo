@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
+@SuppressWarnings("deprecation")
 public class CrancoApplication {
 
     public static void main(String[] args) {
