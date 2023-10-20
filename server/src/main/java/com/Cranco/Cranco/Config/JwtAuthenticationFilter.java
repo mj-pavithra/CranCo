@@ -31,21 +31,15 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             @NonNull HttpServletResponse response,
             @NonNull FilterChain filterChain
     ) throws ServletException, IOException {
-        System.out.println("jwtfilter called");
         final String authHeader = request.getHeader("Authorization");
         final String jwt;
         final String userEmail;
-        if (request.getServletPath().contains("/api/v1/auth")) {
-            filterChain.doFilter(request, response);
-            return;
-        }
+
         if(authHeader==null){
-            System.out.println("authHeader is null");
             filterChain.doFilter(request, response);
             return;
         }
         if (!authHeader.startsWith("Bearer ")) {
-            System.out.println("error with token");
             filterChain.doFilter(request, response);
             return;
         }
