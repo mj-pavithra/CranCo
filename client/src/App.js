@@ -26,11 +26,14 @@ import AdminDashboard from "./pages/AdminDashboard";
 import OwnersVehicleProfileAllPhotos from "./pages/OwnersVehicleProfileAllPhotos";
 import UserManagement from "./pages/UserManagement";
 import PageManagement from "./pages/PageManagement";
+import PostManagement from "./pages/PostManagement";
+import ComplaintManagement from "./pages/ComplaintManagement";
 import OwneProfile from "./pages/OwneProfile";
 import VehicleAboutEditPage from "./pages/VehicleAboutEditPage";
 import AddNewPage from "./pages/AddNewPage";
 import DataCollection from "./pages/DataCollection";
 import VehicleProfileSettings from "./pages/VehicleProfileSettings";
+import TestingAxios from "./pages/TestingAxios";
 
 const App = () => {
   return (
@@ -41,6 +44,7 @@ const App = () => {
           <Route path="/homepage" element={<HomePage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/datacollection" element={<DataCollection />} />
+          <Route path="/testrequest" element={<TestingAxios />} />
           {/* <Route path="/login2" element={<LoginPageContainer />} /> */}
 
           <Route path="/friends" element={<FriendsPage />} />
@@ -54,7 +58,7 @@ const App = () => {
           <Route path="/addnewpage" element={<AddNewPage />} />
           <Route
             path="/allphotos"
-            // element={<OwnersVehicleProfileAllPhotos />}
+          // element={<OwnersVehicleProfileAllPhotos />}
           />
           <Route
             path="/vehiclespageownersview"
@@ -68,7 +72,6 @@ const App = () => {
             path="/vehicle-profile/{:vehicleProfileId}"
             component={VehicleProfileSettings}
           />
-
           <Route path="/vehicleaboutedit" element={<VehicleAboutEditPage />} />
           <Route path="/merchant" element={<MerchantOtherView />}></Route>
           <Route path="/merchantowner" element={<MerchantOwnerView />}></Route>
@@ -87,6 +90,8 @@ const App = () => {
           <Route path="/admin/dashboard" element={<AdminDashboard />} />
           <Route path="/admin/usermanagement" element={<UserManagement />} />
           <Route path="/admin/pagemanagement" element={<PageManagement />} />
+          <Route path="/admin/postmanagement" element={<PostManagement />} />
+          <Route path="/admin/complaintmanagement" element={<ComplaintManagement />} />
           <Route path="*" element={<Error404 />} />
         </Route>
       </Routes>

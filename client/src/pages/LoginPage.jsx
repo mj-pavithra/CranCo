@@ -6,6 +6,7 @@ import LoginPageContainer from "../containers/LoginPageContainer";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import HomePage from "./HomePage";
+import Cookies from "js-cookie";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -15,16 +16,19 @@ const LoginPage = () => {
   const loginHandle = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:8081/api/v1/auth/auth",
+        "http://localhost:8081/api/v1/auth/authenticate",
         {
-          email: email,
+          username: email,
           password: password,
         }
       );
       setErrMessege("");
       console.log(response.data);
+
       sessionStorage.setItem("username", response.data);
-      window.location.href = "http://localhost:3000/homepage";
+      Cookies.set("jwtToken", response.data.token);
+      console.log(Cookies.get("jwtToken"));
+      // window.location.href = "http://localhost:3000/homepage";
     } catch (error) {
       console.log(sessionStorage.getItem("username"));
       if (error.response && error.response.data) {

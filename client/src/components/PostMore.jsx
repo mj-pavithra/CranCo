@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { faBookmark, faSquareMinus } from "@fortawesome/free-regular-svg-icons";
+import {faBookmark, faSquareMinus, faTrashCan} from "@fortawesome/free-regular-svg-icons";
 import "../css/PostMore.css";
 import Icon from "./Icon";
 import { faBan } from "@fortawesome/free-solid-svg-icons";
@@ -34,6 +34,10 @@ const PostMore = () => {
       <div className="savePost color-white">
         <Icon icon={faSquareMinus}/>
         <p>Hide post</p>
+      </div>
+      <div className="savePost color-red">
+        <Icon icon={faTrashCan}/>
+        <p>Delete post</p>
       </div>
     </div>
     </>

@@ -13,17 +13,21 @@
     margin-right: auto;
     margin-top: 10px;
     overflow: hidden;
+    display: grid;
+    grid-auto-flow: column;
 }
 
 .tab button {
     background-color: inherit;
+    width: fit-content;
     float: left;
     border: none;
     outline: none;
     cursor: pointer;
-    padding: 14px 16px;
+    padding: 14px 10px;
     font-size: 17px;
     color: white;
+    margin: 0px;
 }
 
 .tab button:hover,

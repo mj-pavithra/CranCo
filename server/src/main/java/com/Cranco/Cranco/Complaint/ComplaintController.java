@@ -10,7 +10,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/api/v1/auth/complaints")
+@RequestMapping("/api/v1/complaints")
 public class ComplaintController {
 
     private final ComplaintService complaintService;
