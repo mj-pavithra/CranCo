@@ -1,14 +1,15 @@
 package com.Cranco.Cranco.Post;
 
-import org.springframework.data.neo4j.core.schema.GeneratedValue;
-import org.springframework.data.neo4j.core.schema.Id;
-import org.springframework.data.neo4j.core.schema.Node;
-import org.springframework.data.neo4j.core.schema.Property;
+import org.springframework.data.neo4j.core.schema.*;
+
+import java.time.LocalDateTime;
+
 
 @Node("POST")
 public class Post {
+
     @Id
-    @GeneratedValue
+    @Property
     private Long postId;
     @Property("username")
     private String username;
@@ -16,8 +17,13 @@ public class Post {
     @Property("caption")
     private String caption;
 
+    @Property("date")
+    private LocalDateTime date;
+
     @Property("location")
     private String location;
+    public int likedCount;
+
 
     public Long getId() {
         return postId;
@@ -34,11 +40,24 @@ public class Post {
     public String getLocation() {
         return location;
     }
+    public LocalDateTime getDate() {
+        return date;
+    }
+
+    public int getLikedCount() {
+        return likedCount;
+    }
+
     public void setId(Long postId) {
         this.postId = postId;
     }
     public void setUsername(String username) {
-        this.username = username;
+        if(username==null){
+            this.username ="uberlage achchi";
+        }
+        else {
+            this.username = username;
+        }
     }
 
     public void setCaption(String caption) {
@@ -47,5 +66,13 @@ public class Post {
 
     public void setLocation(String location) {
         this.location = location;
+    }
+
+
+    public void setDate(LocalDateTime date) {
+        this.date = date;
+    }
+
+    public void setLikedCount(int likedCount) {
     }
 }

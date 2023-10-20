@@ -139,13 +139,11 @@
 // }
 
 // export default VehicleAboutEdit;
-
 import { useState } from "react";
 import "../css/VehicleAboutEdit.css";
 
 function VehicleAboutEdit() {
   const [error, setError] = useState(false);
-
   const [vehicleColor, setVehicleColor] = useState("");
   const [vehicleBodyStyle, setVehicleBodyStyle] = useState("");
   const [vehicleIntMaterial, setVehicleIntMaterial] = useState("");

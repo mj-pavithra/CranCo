@@ -1,60 +1,125 @@
+
+import {
+  faCamera,
+  faPaperPlane,
+  faPlus,
+  faVideo,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus, faVideo, faCamera } from "@fortawesome/free-solid-svg-icons";
-import "../css/VehiclesPage.css";
-import CreatePostPopUpWindow from "./CreatePostPopUpWindow";
-import PostPhotoPopUpWindow from "./PostPhotoPopUpWindow";
-import PostVideoPopUpWindow from "./PostVideoPopUpWindow";
-import { useState } from "react";
 import axios from "axios";
+import React, { useState } from "react";
+import PostVideoPopUpWindow from "./PostVideoPopUpWindow";
 
 function AddNewUpdate() {
-
   const [buttonColor, setButtonColor] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [contentChanged, setContentChanged] = useState(false);
-  const handleDataSubmit = (data) => {
+  const [writePost, setWritePost] = useState(false);
+  const [uploadImage, setUploadImage] = useState(false);
+  const [uploadVideo, setUploadVideo] = useState(false);
+  const [caption, setPostText] = useState("");
+  const [images, setImages] = useState([]);
+  const userId = 123;
+
+  const handleDataSubmit = async () => {
     setIsLoading(true);
 
-    axios.post("http://localhost:8081/api/post", data)
-      .then((response) => {
-        console.log("Data sent successfully:", response.data);
-        setButtonColor("green");
-        setIsLoading(false);
+    const postData = new FormData();
+    postData.append("caption", caption);
+    postData.append("userId", userId); 
+    postData.append("username", "Uberlage Achchi..");
 
-        // Reset button color after 3 seconds
+    if (Array.isArray(images) && images.length > 0) {
+      images.forEach((image, index) => {
+        if (image instanceof File) {
+          postData.append("images", image);
+        } else {
+          console.error("Invalid image file at index", index);
+        }
+      });
+
+      try {
+        const response = await axios.post("http://localhost:8081/api/posts", postData, {
+          headers: {
+            "Content-Type": "multipart/form-data"
+          },
+        });
+
+        console.log("Data sent successfully:", response.data);
+
+        // Change the button color to green on success
+        setButtonColor("green");
+        console.log("Button color changed to green");
+
+        // Clear user inputs after 3 seconds
         setTimeout(() => {
           setButtonColor("");
+          setIsLoading(false);
+          setPostText(""); // Clear the text area
+          setImages([]);   // Clear the images
+          setWritePost(false); // Hide the text area and show image area
         }, 3000);
-      })
-      .catch((error) => {
+      } catch (error) {
         console.error("Error sending data:", error);
+
+        // Change the button color to red on failure
         setButtonColor("red");
+        console.log("Button color changed to red");
         setIsLoading(false);
-      });
+      }
+    } else {
+      console.error("Invalid images array");
+      setButtonColor("red");
+      setIsLoading(false);
+    }
   };
+
+  // const afterSubmit = () => {
+    
+  //   setWritePost(true); 
+  //   setUploadImage((uploadImage) => uploadImage);
+  //   setUploadVideo((uploadVideo) => uploadVideo);
+  // }
+  
 
   const handleContentChange = () => {
     setContentChanged(true);
     setButtonColor("");
-  };;
+  };
 
-  // write post
-  const [writePost, setWritePost] = useState(false);
   const handlePlusClick = () => {
     setWritePost((writePost) => !writePost);
   };
 
-  // upload image
-  const [uploadImage, setUploadImage] = useState(false);
   const handleCameraClick = () => {
     setUploadImage((uploadImage) => !uploadImage);
   };
 
-  // upload video
-  const [uploadVideo, setUploadVideo] = useState(false);
   const handleVideoClick = () => {
     setUploadVideo((uploadVideo) => !uploadVideo);
   };
+
+  const handlePostTextChange = (event) => {
+    setPostText(event.target.value);
+    handleContentChange();
+  };
+
+  const handlePostButtonClick = () => {
+    handleDataSubmit(); // Remove textData here
+  };
+
+  const handleImageUpload = (event) => {
+    const selectedImages = Array.from(event.target.files);
+
+    console.log(
+      "Selected images:",
+      selectedImages.map((image) => image.name)
+    );
+
+    setImages(selectedImages);
+    handleContentChange();
+  };
+
   return (
     <div className="add-new-update-cage">
       <div className="cage-title">
@@ -92,27 +157,48 @@ function AddNewUpdate() {
           </button>
         </div>
         {writePost && (
-        <div className="post-popup">
-          <CreatePostPopUpWindow
-            onSubmit={handleDataSubmit}
-            onContentChange={handleContentChange}
-            buttonColor={buttonColor}
-            isLoading={isLoading}
-            contentChanged={contentChanged}
-          />
-        </div>
-      )}
-      {uploadImage && (
-        <div className="post-popup">
-          <PostPhotoPopUpWindow
-            onSubmit={handleDataSubmit}
-            onContentChange={handleContentChange}
-            buttonColor={buttonColor}
-            isLoading={isLoading}
-            contentChanged={contentChanged}
-          />
-        </div>
-      )}
+          <div className="post-popup">
+            <div>
+              <div className="cage-title">
+                <b>Create a Post</b>
+              </div>
+              <textarea
+                className="cage-textarea"
+                placeholder="Any updates Kaveesha?" // name should be passed.
+                value={caption}
+                onChange={handlePostTextChange}
+                style={{ backgroundColor: {setButtonColor} }}
+              />
+              <div className="popup-save-btn-division">
+                <button
+                  onClick={handlePostButtonClick}
+                  className={`create-post-btn-in-popup ${buttonColor}`}
+                  disabled={isLoading || !contentChanged}
+                >
+                  <FontAwesomeIcon icon={faPaperPlane} title="Post" />
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+        {uploadImage && (
+          <div className="post-popup">
+            <div className="media-upload-popup">
+              <label className="label-for-media-uploader">Upload images</label>
+              <input
+                type="file"
+                name="file"
+                accept="image/*"
+                multiple
+                onChange={handleImageUpload}
+              />
+              {/* Display selected image filenames */}
+              {images.map((image, index) => (
+                <div key={index}>{image.name}</div>
+              ))}
+            </div>
+          </div>
+        )}
         {uploadVideo && (
           <div className="post-popup">
             <PostVideoPopUpWindow onSubmit={handleDataSubmit} />

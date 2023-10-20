@@ -52,3 +52,18 @@
     flex-direction: row;
     gap: 10px;
 }
+
+.viewDetails,
+.editDetails{
+    width: fit-content;
+    color: white;
+    padding: 10px 20px;
+    background-color: var(--primary-blue);
+    border: none;
+    border-radius: 8px;
+}
+
+.viewDetails:hover,
+.editDetails:hover{
+    cursor: pointer;
+}

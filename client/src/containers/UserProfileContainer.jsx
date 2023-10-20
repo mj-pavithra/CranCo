@@ -7,6 +7,9 @@ import '../css/UserProfileContainer.css'
 import UserVehicles from "../components/UserVehicles";
 import { Link } from "react-router-dom";
 import LinkToProfile from "../functions/LinkToProfile";
+import axios from "axios";
+import debounce from "lodash/debounce";
+import AddNewUpdate from "../components/AddNewUpdate";
 
 
     const userFriendsData = [
@@ -97,6 +100,58 @@ const UserProfileContainer = ({data,isOwner}) => {
         window.removeEventListener("scroll", handleScroll);
       };
     }, []);
+
+
+    const [postData, setPostData] = useState([]);
+    const mainContainerRef = useRef(null);
+    const [loading, setLoading] = useState(false);
+  
+    useEffect(() => {
+      const loadFeed = async () => {
+        try {
+          const response = await axios.get('http://localhost:8081/api/posts/feed');
+          console.log("Data received:", response.data);
+          setPostData(response.data);
+        } catch (error) {
+          console.error("Error receiving data:", error);
+        }
+      };
+  
+      loadFeed();
+    }, []);
+  
+    const loadMoreFeed = async () => {
+      if (loading) return; // Prevent multiple requests
+  
+      try {
+        setLoading(true);
+        const response = await axios.get('http://localhost:8081/api/posts/feed');
+        console.log("Additional data received:", response.data);
+        setPostData((prevData) => [...prevData, ...response.data]);
+      } catch (error) {
+        console.error("Error loading more feed:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+  
+    useEffect(() => {
+      if (mainContainerRef.current) {
+        const handleScroll = debounce(() => {
+          const container = mainContainerRef.current;
+          if (container.scrollTop + container.clientHeight >= container.scrollHeight) {
+            loadMoreFeed();
+          }
+        }, 2000); // Adjust the debounce delay as needed
+  
+        const container = mainContainerRef.current;
+        container.addEventListener("scroll", handleScroll);
+  
+        return () => {
+          container.removeEventListener("scroll", handleScroll);
+        };
+      }
+    }, [loadMoreFeed]);
   
     return (
         <>
@@ -146,19 +201,26 @@ const UserProfileContainer = ({data,isOwner}) => {
 
             </div>
             <div className="rightColumn">
-            
+            <div className="add-new-update">
+            <AddNewUpdate />
+          </div>
+            {postData.map((post, index) => (
                 <div className="rightColumnSubContainer">
-                    <Post isOwner="no"/>
+                <Post
+                key={index}
+                isOwner="no"
+                postId={post.postId}
+                username={post.username}
+                caption={post.caption}
+                imageLocations={post.imageLocations}
+                images={post.images}
+                date={post.date}
+                time={post.time}
+                id={post.id}
+              />
                 </div>
-                <div className="rightColumnSubContainer">
-                    <Post/>
-                </div>
-                <div className="rightColumnSubContainer">
-                    <Post isOwner="no"/>
-                </div>
-                <div className="rightColumnSubContainer">
-                    <Post isOwner="no"/>
-                </div>
+                ))}
+                {loading && <div>Loading more...</div>}
             </div>
         </div>
         </>

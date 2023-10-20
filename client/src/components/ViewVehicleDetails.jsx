@@ -18,7 +18,7 @@ const ViewVehicleDetails = ({image, vehicleName, ownerName, des}) => {
                     <p className="txt-08">{des}</p>
                 </div>
                 <div className="btnContainer">
-                    <Link to="/vehicles"><Btn buttonText="View Details" /></Link>
+                    <Link to="/vehicles"><button className="viewDetails">View Details</button></Link>
                 </div>
             </div>
         </>
