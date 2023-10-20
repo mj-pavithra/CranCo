@@ -1,19 +1,19 @@
 package com.Cranco.Cranco.User;
 
+import com.Cranco.Cranco.Post.PostRepository;
 import com.Cranco.Cranco.Notification.Notification;
 import jakarta.transaction.Transactional;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 @Transactional
 public class UserService {
-    @Autowired
-    private UserRepository userRepository;
+    private final PostRepository postRepository;
+    private final UserRepository userRepository;
 
-
-    public UserService(UserRepository userRepository) {
+    public UserService(UserRepository userRepository, PostRepository postRepository) {
         this.userRepository = userRepository;
+        this.postRepository = postRepository;
     }
 
     public UserDto createUser(CreateUserRequest request) {
@@ -40,7 +40,6 @@ public class UserService {
         return dto;
     }
 
-
     public User findUserByUsername(String username) {
         return userRepository.findByUsername(username);
     }
@@ -60,5 +59,4 @@ public class UserService {
     public User findUserById(Long userId) {
         return userRepository.findById(userId).orElse(null);
     }
-
 }

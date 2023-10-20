@@ -1,8 +1,46 @@
+import React, { useState } from "react";
 import { faAngleRight, faX } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Axios from "axios";
 import "../css/ReportReasonPopup.css";
 
-const ReportReasonPopup = () => {
+
+const ReportReasonPopup = ({ postId }) => {
+    const apiUrl = 'http://localhost:8081/api/complaints/'; // Change this to your API URL
+    
+    const [popupMessage, setPopupMessage] = useState('');
+    const [showPopup, setShowPopup] = useState(false);
+
+    const closePopup = () => {
+    setShowPopup(false);
+  };
+
+    const sendReport = (reason) => {
+      // Define the data you want to send in the request body
+      postId = 667; //get it when click 3 dots > report
+      const data = {
+        reason: reason,
+        postId: postId,
+      };
+  
+      Axios.post(apiUrl, data)
+        .then((response) => {
+          // Handle a successful response from the server
+          alert('Report submitted successfully');
+        //   setPopupMessage('Report submitted successfully');
+        //   setShowPopup(true);
+          //console.log('Report submitted successfully', response.data);
+          // You can also close the report popup or show a confirmation message here
+        })
+        .catch((error) => {
+          // Handle errors or validation errors
+          alert('Error submitting report');
+        //   setPopupMessage('Error submitting report');
+        //   setShowPopup(true);
+          //console.error('Error submitting report', error);
+        });
+    };
+
     return ( 
         <>
             <div className="popUpBackground">
@@ -21,7 +59,7 @@ const ReportReasonPopup = () => {
                         <div className="points">
                             <table>
                                 <tr>
-                                    <td className="left"><p>Nudity</p></td>
+                                    <td className="left"><p onClick={() => sendReport('Nudity')}>Nudity</p></td>
                                     <td className="right"><FontAwesomeIcon icon={faAngleRight}/></td>
                                 </tr>
                             </table>
@@ -29,7 +67,7 @@ const ReportReasonPopup = () => {
                         <div className="points">
                             <table>
                                 <tr>
-                                    <td className="left"><p>Violence</p></td>
+                                    <td className="left"><p onClick={() => sendReport('Violence')}>Violence</p></td>
                                     <td className="right"><FontAwesomeIcon icon={faAngleRight}/></td>
                                 </tr>
                             </table>
@@ -37,7 +75,7 @@ const ReportReasonPopup = () => {
                         <div className="points">
                             <table>
                                 <tr>
-                                    <td className="left"><p>Harassment</p></td>
+                                    <td className="left"><p onClick={() => sendReport('Harassment')}>Harassment</p></td>
                                     <td className="right"><FontAwesomeIcon icon={faAngleRight}/></td>
                                 </tr>
                             </table>
@@ -45,7 +83,7 @@ const ReportReasonPopup = () => {
                         <div className="points">
                             <table>
                                 <tr>
-                                    <td className="left"><p>Suicide or self-injury</p></td>
+                                    <td className="left"><p onClick={() => sendReport('Suicide or self-injury')}>Suicide or self-injury</p></td>
                                     <td className="right"><FontAwesomeIcon icon={faAngleRight}/></td>
                                 </tr>
                             </table>
@@ -53,7 +91,7 @@ const ReportReasonPopup = () => {
                         <div className="points">
                             <table>
                                 <tr>
-                                    <td className="left"><p>False information</p></td>
+                                    <td className="left"><p onClick={() => sendReport('False Information')}>False information</p></td>
                                     <td className="right"><FontAwesomeIcon icon={faAngleRight}/></td>
                                 </tr>
                             </table>
@@ -61,7 +99,7 @@ const ReportReasonPopup = () => {
                         <div className="points">
                             <table>
                                 <tr>
-                                    <td className="left"><p>Spam</p></td>
+                                    <td className="left"><p onClick={() => sendReport('Spam')}>Spam</p></td>
                                     <td className="right"><FontAwesomeIcon icon={faAngleRight}/></td>
                                 </tr>
                             </table>
@@ -69,7 +107,7 @@ const ReportReasonPopup = () => {
                         <div className="points">
                             <table>
                                 <tr>
-                                    <td className="left"><p>Unauthorised sales</p></td>
+                                    <td className="left"><p onClick={() => sendReport('Unauthorised sales')}>Unauthorised sales</p></td>
                                     <td className="right"><FontAwesomeIcon icon={faAngleRight}/></td>
                                 </tr>
                             </table>
@@ -77,7 +115,7 @@ const ReportReasonPopup = () => {
                         <div className="points">
                             <table>
                                 <tr>
-                                    <td className="left"><p>Something else</p></td>
+                                    <td className="left"><p onClick={() => sendReport('Something else')}>Something else</p></td>
                                     <td className="right"><FontAwesomeIcon icon={faAngleRight}/></td>
                                 </tr>
                             </table>
@@ -85,6 +123,20 @@ const ReportReasonPopup = () => {
                     </div>
                 </div>
             </div>
+            {/* Popup message
+            {showPopup && (
+                <div className="popup">
+                <div className="popup-content">
+                    <span className="close-popup" onClick={closePopup}>
+                    &times;
+                    </span>
+                    <p>{popupMessage}</p>
+                    <button className="ok-button" onClick={closePopup}>
+                    OK
+                    </button>
+                </div>
+                </div>
+            )} */}
         </>
      );
 }

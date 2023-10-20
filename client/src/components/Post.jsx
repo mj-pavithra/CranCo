@@ -1,30 +1,125 @@
 import React, { useRef, useEffect, useState } from "react";
 import "../css/Post.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEllipsis, faX, faHeart } from "@fortawesome/free-solid-svg-icons";
+import { faEllipsis, faX, faHeart } from "@fortawesome/free-solid-svg-icons"
 import {
-  faHeart as reg_heart,
+  faPaperPlane,
   faComment as reg_comment,
+  faHeart as reg_heart,
   faShareSquare as reg_share,
 } from "@fortawesome/free-regular-svg-icons";
-import Icon from "./Icon";
-import Carousel from "./Carousel";
-import Hr from "./Hr";
+import axios from "axios"; // Import Axios
 import { Link } from "react-router-dom";
 import LinkToProfile from "../functions/LinkToProfile";
+import Carousel from "./Carousel";
+import Hr from "./Hr";
+import Icon from "./Icon";
 import PostMore from "./PostMore";
 
-const Post = (isOwner) => {
-  const images = [
+const Post = ({
+  isOwner,
+  username,
+  caption,
+  imageLocations,
+  date,
+  images,
+  time,
+  id,
+}) => {
+  const [writeComment, setWriteComment] = useState(false);
+  const postUsername = username || "Default Username";
+  const captionText = caption || "Default caption text";
+  const postDate = date || "January 1, 2023";
+  const postTime = time || "12:00 AM";
+  const [Comment, setCommentText] = useState("");
+  const [contentChanged, setContentChanged] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+
+  
+  const commentUsername = username || "Default Username";
+  const commentText = caption || "Default caption text";
+  const commentDate = date || "January 1, 2023";
+  const commentTime = time || "12:00 AM";
+
+  function appendToLocalhost(arr) {
+    // Use the map() function to process each element in the array
+    const newArray = arr.map((element) => {
+      // Remove square brackets from the file name using a regular expression
+      const fileNameWithoutBrackets = element.replace(/[[\] ]/g, "");
+
+      // Append the base URL to the modified file name
+      const baseUrl = "http://localhost:8081/static/PostImages/";
+      return `${baseUrl}${fileNameWithoutBrackets}`;
+    });
+
+    return newArray;
+  }
+  const handleLike = async () => {
+    updateLiked(!liked);
+
+    console.log("Like action triggered", id);
+    // Prepare the data to send in the request
+    const requestData = {
+      userId: 43, // Replace with the actual user ID
+      liked: !liked, // Toggle the liked status
+      postID: id, // Replace with the actual post ID
+    };
+
+    try {
+      const response = await axios.put(
+        "http://localhost:8081/api/posts/liked", // Your backend endpoint
+        requestData
+      );
+
+      console.log("Like action response:", response.data);
+      // You can handle the response from the server here, if needed.
+    } catch (error) {
+      console.error("Error sending like action:", error);
+    }
+  };
+
+  const handleCommneting = async () => {
+    console.log("Comment action triggered", id);
+    // Prepare the data to send in the request
+    const requestData = {
+      userId: 43, // Replace with the actual user ID
+      comment: Comment, // Toggle the liked status
+      postID: id, // Replace with the actual post ID
+    };
+
+    try {
+      const response = await axios.post(
+        "http://localhost:8081/api/posts/writeComment", // Your backend endpoint
+        requestData
+      );
+
+      console.log("Comment action response:", response.data);
+      // You can handle the response from the server here, if needed.
+    } catch (error) {
+      console.error("Error sending comment action:", error);
+    }
+  };
+
+  imageLocations = appendToLocalhost(imageLocations);
+
+  const fallbackImages = [
     "/assets/car_img_1.jpg",
     "/assets/car_img_2.jpg",
     "/assets/car_img_3.jpg",
   ];
+  const postImages = imageLocations || fallbackImages;
 
   const [liked, updateLiked] = useState(false);
 
-  const handleLike = () => {
-    updateLiked(!liked);
+  const handleCommentClick = () => {
+    setWriteComment((writeComment) => !writeComment);
+  };
+  const handleCommentTextChange = (event) => {
+    setCommentText(event.target.value);
+    handleContentChange();
+  };
+  const handleContentChange = () => {
+    setContentChanged(true);
   };
 
   const [popUp, setPopup] = useState(false);
@@ -52,6 +147,31 @@ const Post = (isOwner) => {
     };
   }, []);
 
+  const [more, setMore] = useState(false);
+
+  const handleDotsClick = () => {
+    setMore((more) => !more);
+  };
+
+  const moreRef = useRef();
+
+  useEffect(() => {
+    const handleOutClick = (event) => {
+      if (
+        moreRef.current &&
+        !moreRef.current.contains(event.target)
+      ) {
+        setMore(false);
+      }
+    };
+
+    document.addEventListener("click", handleOutClick);
+
+    return () => {
+      document.addEventListener("click", handleOutClick);
+    };
+  }, []);
+
   return (
     <>
       <div className="post">
@@ -67,25 +187,24 @@ const Post = (isOwner) => {
             </Link>
             <div className="d-flex flex-column">
               <Link className="link-unstyled" to="/user">
-                <div className="fw-bold">
-                  {sessionStorage.getItem("username")
-                    ? sessionStorage.getItem("username")
-                    : "Sanduni Nimsara"}
-                </div>
+                <div className="fw-bold">{postUsername}</div>
               </Link>
-              <div className="post-time fw-light">just now</div>
+              <div className="post-time fw-light">
+                {postDate} {postTime}
+              </div>
+              <div className="post-time fw-light">{captionText}</div>
             </div>
           </div>
 
           <div className="post-header gap-1">
             <div className="popUp-main">
-              <div ref={popupRef} className='icon-back-div'>
+              <div ref={moreRef} className='icon-back-div'>
                 <FontAwesomeIcon
                   className={`moreIcon ${popUp ? "active" : ""}`}
                   icon={faEllipsis}
-                  onClick={() => handleMoreClick()}
+                  onClick={() => handleDotsClick()}
                 />
-                {popUp && (
+                {more && (
                   <div className="popUp-div">
                     <PostMore />
                   </div>
@@ -98,12 +217,11 @@ const Post = (isOwner) => {
           </div>
         </div>
 
-        {/* post cacpiton */}
         <div className="post-text post-padding pt-2 fw-semiBold"> </div>
 
         {/* image section */}
         <div className="post-image pt-2">
-          <Carousel images={images} />
+          <Carousel images={postImages} />
         </div>
 
         <div className="post-back pt-2">
@@ -143,7 +261,10 @@ const Post = (isOwner) => {
             <div className="text-medium">Like</div>
           </div>
 
-          <div className="col-4 post-action-div gap-2">
+          <div
+            className="col-4 post-action-div gap-2"
+            onClick={handleCommentClick}
+          >
             <FontAwesomeIcon className="post-action-icon" icon={reg_comment} />
             <div className="text-medium">Comment</div>
           </div>
@@ -152,6 +273,43 @@ const Post = (isOwner) => {
             <FontAwesomeIcon className="post-action-icon" icon={reg_share} />
             <div className="text-medium">Share</div>
           </div>
+        </div>
+        <div className="comment-section">
+          {writeComment && (
+            <div className="post-popup">
+              <div>
+                <div className="cage-title">
+                  <b>Add your thoughts</b>
+                </div>
+                <textarea
+                  className="cage-textarea"
+                  placeholder="your expressions will make or brake harts...!" // name should be passed.
+                  value={Comment}
+                  onChange={handleCommentTextChange}
+                />
+                <div className="popup-save-btn-division">
+                  <button
+                    onClick={handleCommneting}
+                    className={`create-post-btn-in-popup }`}
+                    disabled={isLoading || !contentChanged}
+                  >
+                    <FontAwesomeIcon icon={faPaperPlane} title="Post" />
+                  </button>
+                </div>
+              </div>
+              <div className="d-flex flex-column ">
+              <Link className="link-unstyled" to="/user">
+                <div className="fw-bold commentUsename" >{commentUsername}</div>
+              </Link>
+              <div className="post-time fw-light commentTime">
+                {commentDate} {commentTime}
+              </div>
+              <div className="post-time fw-light commentText">{commentText}</div>
+            </div>
+            </div>
+            
+
+          )}
         </div>
       </div>
     </>

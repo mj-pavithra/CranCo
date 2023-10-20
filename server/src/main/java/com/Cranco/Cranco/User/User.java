@@ -2,30 +2,25 @@ package com.Cranco.Cranco.User;
 
 //import com.fasterxml.jackson.databind.annotation.EnumNaming;
 
+import io.micrometer.core.instrument.binder.db.MetricsDSLContext;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-//import org.springframework.data.annotation.CreatedDate;
-//import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.neo4j.core.schema.GeneratedValue;
 import org.springframework.data.neo4j.core.schema.Id;
 import org.springframework.data.neo4j.core.schema.Node;
 import org.springframework.data.neo4j.core.schema.Property;
+import org.springframework.data.neo4j.repository.query.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-
-//import java.time.LocalDate;
+import java.util.*;
+import com.Cranco.Cranco.Notification.Notification;
+import org.springframework.data.neo4j.core.schema.*;
 import java.util.Collection;
 import java.util.List;
-import java.util.Set;
-import com.Cranco.Cranco.Notification.Notification;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
-import org.springframework.data.neo4j.core.schema.*;
-
-import java.time.LocalDate;
 import java.util.ArrayList;
 
 @Data
@@ -44,8 +39,27 @@ public class User implements UserDetails {
     @Property("email")
     private String email;
 
-    @Property("role")
+    @Query("match (u:USER) where id(u)=$userId match (p:POST)where id(p) = $postId create (u)-[r:LIKED]->(p) return r")
+    public void likesPost(@Param("userId") Long userId, @Param("postId") Long postId) {
 
+        String cypherQuery = "match (u:USER) where id(u)=$userId match (p:POST {id: $postId}) create (u)-[r:LIKED]->(p) return r";
+        System.out.println("like karana part eka nm wada malli");
+//        String cypherQuery = "MATCH (u:USER {id: $userId}), (p:POST {id: $postId}) CREATE (u)-[:LIKED]->(p)";
+        MetricsDSLContext neo4jTemplate = null;
+        neo4jTemplate.query(cypherQuery, Map.of("userId", userId, "postId", postId));
+    }
+    @Query("match (u:USER) where id(u)=$userId match (p:POST)where id(p) = $postId match (u)-[r:LIKED]->(p) delete r")
+    public void unlikes(@Param("userId") Long userId, @Param("postId") Long postId) {
+
+        String cypherQuery = "match (u:USER) where id(u)=$userId match (p:POST)where id(p) = $postId match (u)-[r:LIKED]->(p) delete r";
+//        String cypherQuery = "MERGE (u:USER {id: $userId})-[r:LIKED]->(p:POST {id: $postId}) DELETE r";
+        System.out.println("dislike ekath wada malli");
+        MetricsDSLContext neo4jTemplate = null;
+        neo4jTemplate.query(cypherQuery, Map.of("userId", userId, "postId", postId));
+    }
+
+
+    @Property("role")
     private Role role;
 //    @Property("mobile_number")
 //    private String mobileNumber;
@@ -128,6 +142,8 @@ public class User implements UserDetails {
         this.email = email;
     }
 
+    public void likePost(Long userID, Long postID) {
+    }
     @Relationship(type = "SENT_NOTIFICATION")
     private List<Notification> sentNotifications = new ArrayList<>();
 
@@ -149,5 +165,4 @@ public class User implements UserDetails {
     public void setReceivedNotifications(List<Notification> receivedNotifications) {
         this.receivedNotifications = receivedNotifications;
     }
-
 }

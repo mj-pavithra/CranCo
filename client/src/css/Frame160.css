@@ -1,0 +1,49 @@
+.Frame160 {
+    position: relative;
+    top: 100px;
+    margin: 0px 10px 0px 10px;
+    align-items: center;
+    border-radius: 10px;
+    background-color: #f0f0f0;
+    padding: 10px;
+  }
+  
+  .complaintListTableContainer {
+    margin: 20px;
+  }
+  
+  .tableTitle {
+    font-size: 24px;
+    margin: 0px 5px 0px 5px;
+  }
+  
+  .complaintListTable {
+    width: 100%;
+    border-collapse: collapse;
+    border: none; /* Remove border */
+  }
+  
+  .complaintListTable th,
+  .complaintListTable td {
+    border: none; /* Remove border */
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .complaintListTable th {
+    background-color: #f0f0f0;
+    font-weight: bold;
+  }
+  
+  .complaintListTable tr:nth-child(even) {
+    background-color: #f5f5f5;
+  }
+  
+  .complaintListTable tr:nth-child(odd) {
+    background-color: #e0e0e0; /* Different shade for odd rows */
+  }
+  
+  .complaintListTable tr:hover {
+    background-color: #e0e0e0;
+  } 
+  
