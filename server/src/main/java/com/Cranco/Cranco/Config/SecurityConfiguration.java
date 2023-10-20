@@ -29,15 +29,16 @@ public class SecurityConfiguration {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        System.out.println("configuration called!");
         http
                 .cors(Customizer.withDefaults())
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(req -> req
-                                .requestMatchers("/api/v1/auth/**").permitAll()
-//                        .requestMatchers("/api/users/**").permitAll()
-                                .anyRequest()
-                                .authenticated()
+                        .requestMatchers(
+                                "/api/v1/auth/**",
+                                "/api/resources/images/**")
+                        .permitAll()
+                        .anyRequest()
+                        .authenticated()
                 )
                 .sessionManagement(sess -> sess
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
@@ -47,6 +48,7 @@ public class SecurityConfiguration {
 
         return http.build();
     }
+
     @Bean
     CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
