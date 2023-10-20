@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import Post from "../components/Post";
 import MainContainer from "../containers/MainContainer.jsx";
-import axios from "axios";
+import axios from "../AxiosConfig";
 import debounce from "lodash/debounce";
 import AddNewUpdate from "../components/AddNewUpdate";
 
@@ -13,7 +13,7 @@ const HomePage = () => {
   useEffect(() => {
     const loadFeed = async () => {
       try {
-        const response = await axios.get('http://localhost:8081/api/posts/feed');
+        const response = await axios.get('/api/posts/feed');
         console.log("Data received:", response.data);
         setPostData(response.data);
       } catch (error) {
@@ -29,7 +29,7 @@ const HomePage = () => {
 
     try {
       setLoading(true);
-      const response = await axios.get('http://localhost:8081/api/posts/feed');
+      const response = await axios.get('/api/posts/feed');
       console.log("Additional data received:", response.data);
       setPostData((prevData) => [...prevData, ...response.data]);
     } catch (error) {

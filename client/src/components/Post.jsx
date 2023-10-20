@@ -48,7 +48,7 @@ const Post = ({
       const fileNameWithoutBrackets = element.replace(/[[\] ]/g, "");
 
       // Append the base URL to the modified file name
-      const baseUrl = "http://localhost:8081/static/PostImages/";
+      const baseUrl = "http://localhost:8081/src/main/resources/static/PostImages/";
       return `${baseUrl}${fileNameWithoutBrackets}`;
     });
 

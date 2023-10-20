@@ -39,6 +39,10 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             filterChain.doFilter(request, response);
             return;
         }
+        if(request.getServletPath().contains("/static/PostImages/")){
+            filterChain.doFilter(request, response);
+            return;
+        }
         if(authHeader==null){
             System.out.println("authHeader is null");
             filterChain.doFilter(request, response);

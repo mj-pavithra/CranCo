@@ -34,7 +34,7 @@ public class SecurityConfiguration {
                 .cors(Customizer.withDefaults())
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(req -> req
-                                .requestMatchers("/api/v1/auth/**").permitAll()
+                                .requestMatchers("/api/v1/auth/**","src/main/resources/static/PostImages/**").permitAll()
 //                        .requestMatchers("/api/users/**").permitAll()
                                 .anyRequest()
                                 .authenticated()
