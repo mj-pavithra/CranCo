@@ -38,7 +38,6 @@ public class AuthenticationController {
     public ResponseEntity<AuthenticationResponse> authenticate(
             @RequestBody AuthenticationRequest request
     ) {
-        System.out.println(request);
         return ResponseEntity.ok(service.authenticate(request));
     }
 
@@ -54,6 +53,21 @@ public class AuthenticationController {
             }
         }
         return new ResponseEntity<>("invalid token", HttpStatus.BAD_REQUEST);
+    }
+
+    @PostMapping("/change-password")
+    public ResponseEntity<?> changePassword(@RequestBody Map<String,String> requestPayload){
+        System.out.println("controller called");
+        String currentPassword = requestPayload.get("currentPassword");
+        String newPassword = requestPayload.get("newPassword");
+        String userEmail = requestPayload.get("email");
+
+        try {
+            service.changePassword(userEmail,currentPassword,newPassword);
+            return ResponseEntity.ok("Password changed successfully");
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
     }
 
 }

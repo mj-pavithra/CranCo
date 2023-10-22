@@ -107,6 +107,11 @@
             <artifactId>jooq-meta</artifactId>
             <version>3.16.3</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-mail</artifactId>
+        </dependency>
     </dependencies>
     <!--		<dependency>-->
     <!--			<groupId>org.neo4j</groupId>-->
