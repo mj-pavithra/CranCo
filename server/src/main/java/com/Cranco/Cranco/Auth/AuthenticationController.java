@@ -56,4 +56,10 @@ public class AuthenticationController {
         return new ResponseEntity<>("invalid token", HttpStatus.BAD_REQUEST);
     }
 
+    @GetMapping("/logout")
+    public String getLogout(){
+        System.out.println("logout called");
+        return "logged out";
+    }
+//todo was implementing a logout
 }
