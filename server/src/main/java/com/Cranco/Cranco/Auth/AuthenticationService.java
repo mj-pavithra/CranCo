@@ -11,7 +11,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
-import org.jooq.meta.derby.sys.Sys;
 import org.springframework.http.HttpHeaders;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -33,7 +32,7 @@ public class AuthenticationService {
     public AuthenticationResponse register(RegisterRequest request) {
 
         Optional<User> userByEmail = repository.findByEmail(request.getEmail());
-        if (!userByEmail.isEmpty()) {
+        if (userByEmail.isPresent()) {
             throw new IllegalStateException(("email taken"));
         }
         var user = User.builder().username(request.getUsername()).email(request.getEmail()).password(passwordEncoder.encode(request.getPassword())).role(Role.USER).build();
@@ -77,7 +76,7 @@ public class AuthenticationService {
     }
 
     private void revokeAllUserTokens(User user) {
-        var validUserTokens = tokenRepository.findAllValidTokenByUser(user.getUsername());
+//        var validUserTokens = tokenRepository.findAllValidTokenByUser(user.getUsername());
         tokenRepository.deleteAllTokensByUser_id(user.getEmail());
     }
 
@@ -92,13 +91,13 @@ public class AuthenticationService {
         userEmail = jwtService.extractUsername(refreshToken);
         if (userEmail != null) {
             var user = this.repository.findByEmail(userEmail).orElseThrow();
-            System.out.println(user); //todo: remove this
             if (jwtService.isTokenValid(refreshToken, user)) {
                 var accessToken = jwtService.generateToken(user);
                 revokeAllUserTokens(user);
                 saveUserToken(user, accessToken);
                 saveRefreshToken(user, refreshToken);
                 var authResponse = AuthenticationResponse.builder().token(accessToken).refreshToken(refreshToken).build();
+                response.setContentType("application/json");
                 new ObjectMapper().writeValue(response.getOutputStream(), authResponse);
             }
         }
