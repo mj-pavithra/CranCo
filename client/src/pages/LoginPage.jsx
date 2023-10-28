@@ -25,15 +25,29 @@ const LoginPage = () => {
       setErrMessege("");
       console.log(response.data);
 
-      sessionStorage.setItem("username", response.data);
-      Cookies.set("jwtToken", response.data.token);
-      console.log(Cookies.get("jwtToken"));
+      // save data from response as cookies
+      Cookies.set("token", response.data.access_token);
+      Cookies.set("refreshToken", response.data.refresh_token);
+      Cookies.set("user_id", response.data.user_id);
+      Cookies.set("user_email", response.data.user_email);
+      Cookies.set("user_name", response.data.user_name);
+
+      console.log(
+        "everythinsaved fine",
+        Cookies.get("token"),
+        Cookies.get("refreshToken"),
+        Cookies.get("user_id"),
+        Cookies.get("user_email"),
+        Cookies.get("user_name")
+      )
+      
+      // redirect to the homepage
       // window.location.href = "http://localhost:3000/homepage";
     } catch (error) {
       console.log(sessionStorage.getItem("username"));
       if (error.response && error.response.data) {
         setErrMessege(error.response.data);
-        console.log(errMessege.message);
+        console.log(errMessege.message, "this is the error");
       } else {
         setErrMessege("An error occurred.");
       }
