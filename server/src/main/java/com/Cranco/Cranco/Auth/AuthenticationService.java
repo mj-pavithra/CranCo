@@ -52,17 +52,25 @@ public class AuthenticationService {
     }
 
     public AuthenticationResponse authenticate(AuthenticationRequest request) {
-        System.out.println(request);
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword()));
         var user = repository.findByEmail(request.getUsername()).orElseThrow();
+        System.out.println(user);
 //    todo: problem in this line
+        String username = user.getRealUsername();;
         user.setUsername(user.getEmail());
         var jwtToken = jwtService.generateToken(user);
         var refreshToken = jwtService.generateRefreshToken(user);
         revokeAllUserTokens(user);
         saveUserToken(user, jwtToken);
         saveRefreshToken(user, refreshToken);
-        return AuthenticationResponse.builder().token(jwtToken).refreshToken(refreshToken).build();
+        return AuthenticationResponse
+                .builder().
+                token(jwtToken)
+                .refreshToken(refreshToken)
+                .userId(user.getId())
+                .email(user.getEmail())
+                .username(username)
+                .build();
     }
 
     private void saveUserToken(User user, String jwtToken) {
