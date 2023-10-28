@@ -9,6 +9,7 @@ import {
   faShareSquare as reg_share,
 } from "@fortawesome/free-regular-svg-icons";
 import axios from "axios"; // Import Axios
+import configuredAxios from "../AxiosConfig";
 import { Link } from "react-router-dom";
 import LinkToProfile from "../functions/LinkToProfile";
 import Carousel from "./Carousel";
@@ -25,6 +26,7 @@ const Post = ({
   images,
   time,
   id,
+  likeCount,
 }) => {
   const [writeComment, setWriteComment] = useState(false);
   const postUsername = username || "Default Username";
@@ -35,20 +37,21 @@ const Post = ({
   const [contentChanged, setContentChanged] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
-  
+
   const commentUsername = username || "Default Username";
   const commentText = caption || "Default caption text";
   const commentDate = date || "January 1, 2023";
   const commentTime = time || "12:00 AM";
 
   function appendToLocalhost(arr) {
+    console.log(arr)
     // Use the map() function to process each element in the array
     const newArray = arr.map((element) => {
       // Remove square brackets from the file name using a regular expression
       const fileNameWithoutBrackets = element.replace(/[[\] ]/g, "");
 
       // Append the base URL to the modified file name
-      const baseUrl = "http://localhost:8081/static/PostImages/";
+      const baseUrl = "http://localhost:8081/api/resources/images/";
       return `${baseUrl}${fileNameWithoutBrackets}`;
     });
 
@@ -66,8 +69,8 @@ const Post = ({
     };
 
     try {
-      const response = await axios.put(
-        "http://localhost:8081/api/posts/liked", // Your backend endpoint
+      const response = await configuredAxios.put(
+        "/api/posts/liked", // Your backend endpoint
         requestData
       );
 
@@ -88,8 +91,8 @@ const Post = ({
     };
 
     try {
-      const response = await axios.post(
-        "http://localhost:8081/api/posts/writeComment", // Your backend endpoint
+      const response = await configuredAxios.post(
+        "/api/posts/writeComment", // Your backend endpoint
         requestData
       );
 
@@ -226,16 +229,14 @@ const Post = ({
 
         <div className="post-back pt-2">
           <div
-            className={`post-header align-items-center gap-${
-              liked === true ? "2" : "1"
-            }`}
+            className={`post-header align-items-center gap-${liked === true ? "2" : "1"
+              }`}
           >
             <div className="post-heart-div">
               <FontAwesomeIcon className="post-heart-icon" icon={faHeart} />
             </div>
-            <span className="fw-light txt-09">{`${
-              liked === true ? "You and " : ""
-            } 13 ${liked === true ? " others" : ""}`}</span>
+            <span className="fw-light txt-09">{`${liked === true ? "You and " : ""
+              } ${likeCount} ${liked === true ? " others" : ""}`}</span>
           </div>
 
           <div className="post-header txt-09 gap-2">
@@ -298,16 +299,16 @@ const Post = ({
                 </div>
               </div>
               <div className="d-flex flex-column ">
-              <Link className="link-unstyled" to="/user">
-                <div className="fw-bold commentUsename" >{commentUsername}</div>
-              </Link>
-              <div className="post-time fw-light commentTime">
-                {commentDate} {commentTime}
+                <Link className="link-unstyled" to="/user">
+                  <div className="fw-bold commentUsename" >{commentUsername}</div>
+                </Link>
+                <div className="post-time fw-light commentTime">
+                  {commentDate} {commentTime}
+                </div>
+                <div className="post-time fw-light commentText">{commentText}</div>
               </div>
-              <div className="post-time fw-light commentText">{commentText}</div>
             </div>
-            </div>
-            
+
 
           )}
         </div>

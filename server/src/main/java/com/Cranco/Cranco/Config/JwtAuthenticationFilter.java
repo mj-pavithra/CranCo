@@ -1,5 +1,7 @@
 package com.Cranco.Cranco.Config;
 
+import com.Cranco.Cranco.Token.Token;
+import com.Cranco.Cranco.Token.TokenRepository;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -7,6 +9,8 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 import java.security.Security;
+import java.util.List;
+import java.util.Optional;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.lang.NonNull;
@@ -24,6 +28,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     private final JwtService jwtService;
     private final UserDetailsService userDetailsService;
+    private final TokenRepository tokenRepository;
 
     @Override
     protected void doFilterInternal(
@@ -31,28 +36,37 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             @NonNull HttpServletResponse response,
             @NonNull FilterChain filterChain
     ) throws ServletException, IOException {
-        System.out.println("jwtfilter called");
         final String authHeader = request.getHeader("Authorization");
         final String jwt;
         final String userEmail;
-        if (request.getServletPath().contains("/api/v1/auth")) {
-            filterChain.doFilter(request, response);
-            return;
-        }
+
         if(authHeader==null){
-            System.out.println("authHeader is null");
             filterChain.doFilter(request, response);
             return;
         }
         if (!authHeader.startsWith("Bearer ")) {
-            System.out.println("error with token");
             filterChain.doFilter(request, response);
             return;
         }
-        System.out.println(authHeader);
         jwt = authHeader.substring(7);
         userEmail = jwtService.extractUsername(jwt);
+
+        List<Token> refreshTokens = tokenRepository.findRefreshTokens(jwt);
+        System.out.println("refresh token status " + refreshTokens);
+        if(refreshTokens == null){
+            filterChain.doFilter(request, response);
+            return;
+        }
+
+        Optional<Token> tokenFromRepo = tokenRepository.findByToken(jwt);
+        if(tokenFromRepo.isEmpty()){
+            filterChain.doFilter(request, response);
+            return;
+        }
+
         if (userEmail != null && SecurityContextHolder.getContext().getAuthentication() == null) {
+
+
             UserDetails userDetails = this.userDetailsService.loadUserByUsername(userEmail);
             if (jwtService.isTokenValid(jwt, userDetails)) {
                 UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(

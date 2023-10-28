@@ -3,6 +3,7 @@ package com.Cranco.Cranco.User;
 import com.Cranco.Cranco.Post.PostRepository;
 import com.Cranco.Cranco.Notification.Notification;
 import jakarta.transaction.Transactional;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -59,4 +60,6 @@ public class UserService {
     public User findUserById(Long userId) {
         return userRepository.findById(userId).orElse(null);
     }
+
+
 }

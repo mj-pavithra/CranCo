@@ -12,9 +12,11 @@ const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errMessege, setErrMessege] = useState("");
+  const [loadStatus, setLoadStatus] = useState(false)
 
   const loginHandle = async () => {
     try {
+      setLoadStatus(true)
       const response = await axios.post(
         "http://localhost:8081/api/v1/auth/authenticate",
         {
@@ -22,26 +24,46 @@ const LoginPage = () => {
           password: password,
         }
       );
-      setErrMessege("");
+      setErrMessege("invalid username or password");
       console.log(response.data);
 
-      sessionStorage.setItem("username", response.data);
-      Cookies.set("jwtToken", response.data.token);
-      console.log(Cookies.get("jwtToken"));
-      // window.location.href = "http://localhost:3000/homepage";
+      // save data from response as cookies
+      Cookies.set("token", response.data.access_token);
+      Cookies.set("refreshToken", response.data.refresh_token);
+      Cookies.set("user_id", response.data.user_id);
+      Cookies.set("user_email", response.data.user_email);
+      Cookies.set("user_name", response.data.user_name);
+
+      console.log(
+        "everythinsaved fine",
+        Cookies.get("token"),
+        Cookies.get("refreshToken"),
+        Cookies.get("user_id"),
+        Cookies.get("user_email"),
+        Cookies.get("user_name")
+      )
+      setLoadStatus(false)
+
+      const redirectURL = Cookies.get("redirect")
+      if (redirectURL)
+        window.location.href = `http://localhost:3000${redirectURL}`;
+      else
+        window.location.href = "http://localhost:3000/homepage";
     } catch (error) {
       console.log(sessionStorage.getItem("username"));
       if (error.response && error.response.data) {
-        setErrMessege(error.response.data);
-        console.log(errMessege.message);
+        setErrMessege("Incorrect user name or password");
+        console.log(errMessege.message, "this is the error");
       } else {
         setErrMessege("An error occurred.");
       }
+      setLoadStatus(false)
     }
   };
 
   return (
     <LoginPageContainer>
+      {/* <div className="load-effect-login active"></div> */}
       <div className="layout-cont-4">
         <div className="layout-cont-3">
           <div className="section-1">
@@ -51,6 +73,10 @@ const LoginPage = () => {
           </div>
           <div className="layout-cont-2">
             <div className="layout-cont-1">
+              {loadStatus ? (<div className="d-flex justify-content-center">
+                <div className="loader-animation-login"></div>
+              </div>) : ""}
+
               {errMessege == "" ? (
                 ""
               ) : (

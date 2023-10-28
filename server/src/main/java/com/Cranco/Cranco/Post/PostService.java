@@ -1,5 +1,7 @@
 package com.Cranco.Cranco.Post;
 
+import com.Cranco.Cranco.Notification.Notification;
+import com.Cranco.Cranco.Notification.NotificationService;
 import com.Cranco.Cranco.User.User;
 import javax.persistence.EntityNotFoundException;
 
@@ -22,12 +24,7 @@ import java.util.stream.Collectors;
 public class PostService {
     private final PostRepository postRepository;
     private final UserRepository userRepository;
-
-//    @Autowired
-//    public PostService(PostRepository postRepository, UserRepository userRepository){
-//        this.postRepository = postRepository;
-//        this.userRepository = userRepository;
-//    }
+    private final NotificationService notificationService;
 
 
     public PostDto createPost(CreatePost request, List<MultipartFile> images) {
@@ -97,6 +94,7 @@ public class PostService {
         dto.setCaption(post.getCaption());
         dto.setLocation(post.getLocation());
         dto.setUsername(post.getUsername());
+        dto.setLikedCount(post.getLikedCount());
         dto.setDate(post.getDate());
         return dto;
     }
@@ -157,6 +155,7 @@ public class PostService {
 
     public ReactDto recordReactOnPost(React react) {
         if ("liked".equals(react.getLiked())) {
+//            notificationService.createNotification()
             createOrUpdateLikedRelationship(react.getUserID(), react.getPostID());
         } else if ("disliked".equals(react.getLiked())) {
             removeLikedRelationship(react.getUserID(), react.getPostID());
