@@ -12,9 +12,11 @@ const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errMessege, setErrMessege] = useState("");
+  const [loadStatus, setLoadStatus] = useState(false)
 
   const loginHandle = async () => {
     try {
+      setLoadStatus(true)
       const response = await axios.post(
         "http://localhost:8081/api/v1/auth/authenticate",
         {
@@ -22,7 +24,7 @@ const LoginPage = () => {
           password: password,
         }
       );
-      setErrMessege("");
+      setErrMessege("invalid username or password");
       console.log(response.data);
 
       // save data from response as cookies
@@ -40,22 +42,28 @@ const LoginPage = () => {
         Cookies.get("user_email"),
         Cookies.get("user_name")
       )
-      
-      // redirect to the homepage
-      // window.location.href = "http://localhost:3000/homepage";
+      setLoadStatus(false)
+
+      const redirectURL = Cookies.get("redirect")
+      if (redirectURL)
+        window.location.href = `http://localhost:3000${redirectURL}`;
+      else
+        window.location.href = "http://localhost:3000/homepage";
     } catch (error) {
       console.log(sessionStorage.getItem("username"));
       if (error.response && error.response.data) {
-        setErrMessege(error.response.data);
+        setErrMessege("Incorrect user name or password");
         console.log(errMessege.message, "this is the error");
       } else {
         setErrMessege("An error occurred.");
       }
+      setLoadStatus(false)
     }
   };
 
   return (
     <LoginPageContainer>
+      {/* <div className="load-effect-login active"></div> */}
       <div className="layout-cont-4">
         <div className="layout-cont-3">
           <div className="section-1">
@@ -65,6 +73,10 @@ const LoginPage = () => {
           </div>
           <div className="layout-cont-2">
             <div className="layout-cont-1">
+              {loadStatus ? (<div className="d-flex justify-content-center">
+                <div className="loader-animation-login"></div>
+              </div>) : ""}
+
               {errMessege == "" ? (
                 ""
               ) : (
