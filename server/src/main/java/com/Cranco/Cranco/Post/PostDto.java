@@ -4,7 +4,7 @@ import java.util.List;
 import java.time.LocalDateTime;
 
 public class PostDto {
-    private long postId;
+    private String postId;
     private String username;
     private String caption;
     private String location;
@@ -18,7 +18,7 @@ public class PostDto {
         return likeCount;
     }
 
-    public Long getId() {
+    public String getPostId() {
         return postId;
     }
 
@@ -49,7 +49,7 @@ public class PostDto {
         return userID;
     }
 
-    public void setId(Long postId) {
+    public void setPostId(String postId) {
         this.postId = postId;
     }
 

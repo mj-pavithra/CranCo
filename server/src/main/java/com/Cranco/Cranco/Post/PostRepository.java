@@ -11,7 +11,9 @@ import java.util.Optional;
 @Repository
 public interface PostRepository extends Neo4jRepository<Post, Long> {
     Optional<Post> findById(Long postId);
-
+    @Query("MATCH (n:POST {postId: $postId})\n" +
+            "DELETE n;")
+    void deleteById(@Param("postId") Long postId);
     @Query("MATCH (:POST {postId: $postId})<-[r:LIKED]-() RETURN COUNT(r) AS likedCount")
     int getLikedCount(@Param("postId") Long postId);
     

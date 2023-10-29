@@ -90,11 +90,12 @@ public class PostService {
 
     public PostDto mapToDto(Post post){
         PostDto dto = new PostDto();
-        dto.setId(post.getId());
+        dto.setPostId(String.valueOf(post.getId()));
         dto.setCaption(post.getCaption());
         dto.setLocation(post.getLocation());
         dto.setUsername(post.getUsername());
-        dto.getUserID(findUserByUsername(post.getUsername()));
+        dto.setUserID(findUserByUsername(post.getUsername()));
+        System.out.println("user iD list eka"+ findUserByUsername(post.getUsername()));
         dto.setLikedCount(post.getLikedCount());
         dto.setDate(post.getDate());
         return dto;
@@ -139,7 +140,7 @@ public class PostService {
         for (Post post : randomPosts) {
             int likedCount = postRepository.getLikedCount(post.getId());
             post.setLikedCount(likedCount);
-            System.out.println(post.getLikedCount());
+            System.out.println(post.getId());
             System.out.println("ME thama post eka thule thiyana euwa"+ post.getCaption());
         }
 
@@ -148,10 +149,11 @@ public class PostService {
 
     public PostDto mapToDtoWithImages(Post post) {
         PostDto dto = mapToDto(post);
-        System.out.println(post);
         // Retrieve image locations for the post and set them in the DTO
         List<String> imageLocations = Arrays.asList(post.getLocation().split(","));
         dto.setImageLocations(imageLocations);
+        dto.setUserID(findUserByUsername(post.getUsername()));
+        System.out.println(post.getId());
         return dto;
     }
 
@@ -198,5 +200,7 @@ public class PostService {
         user.unlikes(userID, postID);
         userRepository.save(user);
     }
+
+    private void writeComment()
 
 }

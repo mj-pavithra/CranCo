@@ -22,6 +22,7 @@ public class Post {
 
     @Property("location")
     private String location;
+    public Long postOwnerID;
     public int likedCount;
 
 
@@ -31,6 +32,10 @@ public class Post {
 
     public String getUsername() {
         return username;
+    }
+
+    public Long getPostOwnerID() {
+        return postOwnerID;
     }
 
     public String getCaption() {
@@ -58,6 +63,10 @@ public class Post {
         else {
             this.username = username;
         }
+    }
+
+    public void setPostOwnerID(Long postOwnerID) {
+        this.postOwnerID = postOwnerID;
     }
 
     public void setCaption(String caption) {

@@ -57,6 +57,9 @@ public class PostController {
     public ResponseEntity<List<PostDto>> getAllPosts() {
         try {
             List<PostDto> allPosts = postService.getAllPosts();
+            allPosts.forEach(post -> System.out.println("PostID: " + post.getPostId()));
+            allPosts.forEach(post-> System.out.println("PostID: " + post.getUsername()));
+
             return ResponseEntity.ok(allPosts);
         } catch (Exception e) {
             // Log the exception for debugging purposes.
@@ -65,13 +68,21 @@ public class PostController {
         }
     }
 
-    @DeleteMapping("/delete")
+    @GetMapping("/delete")
     public ResponseEntity<String> deletePost(@RequestBody Map<String, Long> requestBody) {
         Long postID = requestBody.get("postID");
-        // Call the service method to delete the post by postID
-        postService.deletePostById(postID);
-        return ResponseEntity.ok("Post deleted successfully");
+
+        try {
+            // Call the service method to delete the post by postID
+            postService.deletePostById(postID);
+            return ResponseEntity.ok("Post deleted successfully");
+        } catch (Exception e) {
+            // Log the exception for debugging purposes.
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to delete the post");
+        }
     }
+
 
     @PutMapping("/liked")
     public ResponseEntity<ReactDto> RecordLike(
@@ -88,16 +99,18 @@ public class PostController {
         return ResponseEntity.ok(react);
     }
 
-    @GetMapping("/writeComment")
+    @PostMapping ("/writeComment")
     public ResponseEntity<CommnetDto> WriteComment(
             @RequestParam("userId") Long userID,
             @RequestParam("comment") String comment,
             @RequestParam("postID") Long postID
     ) {
-        WriteCommnet commnet = new WriteCommnet();
-        commnet.setCommnetText(comment);
-        commnet.setPostID(postID);
-        commnet.setUserID(userID);
+        Commnet newCommnet = new Commnet();
+        newCommnet.setCommnetText(comment);
+        newCommnet.setPostID(postID);
+        newCommnet.setUserID(userID);
+
+        CommnetDto comment = postService.writeComment(newCommnet);
 
         return null;
     }

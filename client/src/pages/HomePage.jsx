@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import Post from "../components/Post";
 import MainContainer from "../containers/MainContainer.jsx";
-import axios from "axios";
 import configuredAxios from "../AxiosConfig";
 import debounce from "lodash/debounce";
 import AddNewUpdate from "../components/AddNewUpdate";
@@ -42,6 +41,9 @@ const HomePage = () => {
     }
   };
 
+  
+  
+
   useEffect(() => {
     if (mainContainerRef.current) {
       const handleScroll = debounce(() => {
@@ -63,7 +65,6 @@ const HomePage = () => {
   if (Cookies.get("user_name") === "" || Cookies.get("token") === "") {
     window.location.href = "http://localhost:3000/login";
   }
-
   return (
     <>
       <MainContainer ref={mainContainerRef}>
@@ -71,6 +72,7 @@ const HomePage = () => {
           <AddNewUpdate />
         </div>
         {postData.map((post, index) => (
+          
           <Post
             key={index}
             isOwner="no"
@@ -81,8 +83,8 @@ const HomePage = () => {
             images={post.images}
             date={post.date}
             time={post.time}
-            id={post.id}
             likeCount={post.likeCount}
+            postOwnerID={post.userID}
           />
         ))}
         {loading && <div>Loading more...</div>}

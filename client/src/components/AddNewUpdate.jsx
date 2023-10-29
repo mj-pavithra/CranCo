@@ -10,6 +10,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import PostVideoPopUpWindow from "./PostVideoPopUpWindow";
 import Cookies from "js-cookie";
+import configuredAxios from "../AxiosConfig";
 
 function AddNewUpdate() {
   const [buttonColor, setButtonColor] = useState("");
@@ -22,6 +23,7 @@ function AddNewUpdate() {
   const [images, setImages] = useState([]);
   const userId = Cookies.get("user_id");
   const username = Cookies.get("user_name");
+  
 
   const handleDataSubmit = async () => {
     setIsLoading(true);
@@ -41,7 +43,7 @@ function AddNewUpdate() {
       });
 
       try {
-        const response = await axios.post("http://localhost:8081/api/posts", postData, {
+        const response = await configuredAxios.post("/api/posts", postData, {
           headers: {
             "Content-Type": "multipart/form-data"
           },

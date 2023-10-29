@@ -1,5 +1,7 @@
 package com.Cranco.Cranco.Post;
 
+import lombok.Getter;
+
 import java.util.List;
 public class CreatePost {
     private String postId;
@@ -89,27 +91,13 @@ class Image {
     }
 }
 
+@Getter
 class React{
     private Long userID;
     private String Liked;
     private Long postID;
     private String PostOwner;
 
-
-    public Long getUserID() {
-        return userID;
-    }
-
-    public String getLiked() {
-        return Liked;
-    }
-
-    public Long getPostID() {
-        return postID;
-    }
-    public String getPostOwner() {
-        return PostOwner;
-    }
 
     public void setUserID(Long userID) {
         this.userID = userID;
@@ -129,7 +117,7 @@ class React{
     }
 }
 
-class WriteCommnet{
+class Commnet{
     private Long postID;
     private String commnetText;
     private Long userID;

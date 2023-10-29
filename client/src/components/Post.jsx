@@ -21,6 +21,8 @@ import Cookies from "js-cookie";
 const Post = ({
   isOwner,
   username,
+  postId,
+  postOwnerID,
   caption,
   imageLocations,
   date,
@@ -43,9 +45,9 @@ const Post = ({
   const commentText = caption || "Default caption text";
   const commentDate = date || "January 1, 2023";
   const commentTime = time || "12:00 AM";
-
+console.log("post id ",postId);
+console.log("post owner  ",username);
   function appendToLocalhost(arr) {
-    console.log(arr)
     // Use the map() function to process each element in the array
     const newArray = arr.map((element) => {
       // Remove square brackets from the file name using a regular expression
@@ -81,10 +83,6 @@ const Post = ({
       console.error("Error sending like action:", error);
     }
   };
-  console.log(Cookies.get("jwtToken"));
-  console.log(Cookies.get("user_id"));
-
-  
 
   const handleCommneting = async () => {
     console.log("Comment action triggered", id);
@@ -214,7 +212,7 @@ const Post = ({
                 />
                 {more && (
                   <div className="popUp-div">
-                    <PostMore />
+                    <PostMore postOwnerID={postOwnerID} postID ={postId}  />
                   </div>
                 )}
               </div>
