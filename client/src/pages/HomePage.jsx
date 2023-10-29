@@ -5,6 +5,7 @@ import axios from "axios";
 import configuredAxios from "../AxiosConfig";
 import debounce from "lodash/debounce";
 import AddNewUpdate from "../components/AddNewUpdate";
+import Cookies from "js-cookie";
 
 const HomePage = () => {
   const [postData, setPostData] = useState([]);
@@ -12,6 +13,7 @@ const HomePage = () => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    console.log("saved token is : ", Cookies.get("token"))
     const loadFeed = async () => {
       try {
         const response = await configuredAxios.get('/api/posts/feed');
@@ -58,7 +60,7 @@ const HomePage = () => {
     }
   }, [loadMoreFeed]);
 
-  if (sessionStorage.getItem("username") === "") {
+  if (Cookies.get("user_name") === "" || Cookies.get("token") === "") {
     window.location.href = "http://localhost:3000/login";
   }
 
