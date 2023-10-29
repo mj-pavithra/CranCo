@@ -38,6 +38,9 @@ public class User implements UserDetails {
     private String password;
     @Property("email")
     private String email;
+    @Property("profile_picture")
+    private String profile_picture;
+
 
     @Query("match (u:USER) where id(u)=$userId match (p:POST)where id(p) = $postId create (u)-[r:LIKED]->(p) return r")
     public void likesPost(@Param("userId") Long userId, @Param("postId") Long postId) {
@@ -111,6 +114,12 @@ public class User implements UserDetails {
     public String getUsername() {return email;}
 
     public String getRealUsername(){return username;}
+    public String getProfilePicture(){
+        return profile_picture;
+    }
+    public void setProfilePicture(String new_profile_picture){
+        this.profile_picture = new_profile_picture;
+    }
 
 //    public String getMobileNumber() {
 //        return mobileNumber;
@@ -166,5 +175,9 @@ public class User implements UserDetails {
 
     public void setReceivedNotifications(List<Notification> receivedNotifications) {
         this.receivedNotifications = receivedNotifications;
+    }
+
+    public boolean isPresent() {
+        return true;
     }
 }

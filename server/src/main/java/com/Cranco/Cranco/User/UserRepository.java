@@ -11,4 +11,5 @@ public interface UserRepository extends Neo4jRepository<User, Long> {
     @Query("MATCH (u:USER) WHERE u.email = $email RETURN u LIMIT 1")
     Optional<User> findByEmail(String email);
     User findByUsername(String username);
+
 }

@@ -5,6 +5,7 @@ import UserSidebar from "../components/UserSidebar";
 import RightColSubContainer from "../components/RightColSubContainer";
 import "../css/MainContainer.css";
 import PopupDivFull from "../components/PopupDivFull";
+import Cookies from "js-cookie";
 
 const MainContainer = (props) => {
   const [userData, setUserData] = useState({
@@ -25,7 +26,7 @@ const MainContainer = (props) => {
     setTimeout(() => {
       setUserData({
         image: "/assets/propic6.jpeg",
-        username: "Manoj Pavithra",
+        username: Cookies.get("user_name"),
       });
     }, 1000); // Delay of 1 second to simulate the API call
   };

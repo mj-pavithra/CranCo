@@ -45,7 +45,7 @@ public class PostDto {
         return date;
     }
 
-    public Long getUserID() {
+    public Long getUserID(Long userByUsername) {
         return userID;
     }
 

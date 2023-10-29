@@ -94,9 +94,16 @@ public class PostService {
         dto.setCaption(post.getCaption());
         dto.setLocation(post.getLocation());
         dto.setUsername(post.getUsername());
+        dto.getUserID(findUserByUsername(post.getUsername()));
         dto.setLikedCount(post.getLikedCount());
         dto.setDate(post.getDate());
         return dto;
+    }
+
+    public Long findUserByUsername(String username) {
+        User user = userRepository.findByUsername(username);
+        return user.getId();
+
     }
 
     public List<Post> getAllPostsSortedByPostId() {

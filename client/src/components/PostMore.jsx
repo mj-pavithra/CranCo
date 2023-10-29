@@ -5,7 +5,7 @@ import Icon from "./Icon";
 import { faBan } from "@fortawesome/free-solid-svg-icons";
 import ReportReasonPopUp from "./ReportReasonPopup";
 
-const PostMore = () => {
+const PostMore = (post_ownwer_ID) => {
 
   const [reasonContent, setReasonContent] = useState(false);
 

@@ -16,6 +16,7 @@ import Carousel from "./Carousel";
 import Hr from "./Hr";
 import Icon from "./Icon";
 import PostMore from "./PostMore";
+import Cookies from "js-cookie";
 
 const Post = ({
   isOwner,
@@ -63,7 +64,7 @@ const Post = ({
     console.log("Like action triggered", id);
     // Prepare the data to send in the request
     const requestData = {
-      userId: 43, // Replace with the actual user ID
+      userId: Cookies.get("user_id"), // Replace with the actual user ID
       liked: !liked, // Toggle the liked status
       postID: id, // Replace with the actual post ID
     };
@@ -80,12 +81,16 @@ const Post = ({
       console.error("Error sending like action:", error);
     }
   };
+  console.log(Cookies.get("jwtToken"));
+  console.log(Cookies.get("user_id"));
+
+  
 
   const handleCommneting = async () => {
     console.log("Comment action triggered", id);
     // Prepare the data to send in the request
     const requestData = {
-      userId: 43, // Replace with the actual user ID
+      userId: Cookies.get("user_id"), // Replace with the actual user ID
       comment: Comment, // Toggle the liked status
       postID: id, // Replace with the actual post ID
     };
