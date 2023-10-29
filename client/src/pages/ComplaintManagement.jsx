@@ -34,7 +34,7 @@ const DashboardMainContainer = () => {
   const fetchData = async () => {
     try {
       // Make a GET request to your API endpoint
-      const response = await axios.get('http://localhost:8081/api/v1/complaints/all');
+      const response = await axios.get('http://localhost:8081/api/v1/auth/complaints/all');
 
       // Assuming your API response contains the complaint data in an array
       const complaintData = response.data;

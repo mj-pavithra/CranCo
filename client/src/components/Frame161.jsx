@@ -5,7 +5,7 @@ import axios from 'axios';
 //edit post
 const handleEditPost = async (postId) => {
     try {
-      await axios.edit(`http://localhost:8081/api/v1/posts/${postId}`);
+      await axios.edit(`http://localhost:8081/api/v1/auth/posts/${postId}`);
         alert("Post Deleted");
         window.location.reload();
     } catch (error) {
