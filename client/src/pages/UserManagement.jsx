@@ -21,10 +21,9 @@ const tableHeader = {
   tableTitle: "User List",
   col1: "User ID",
   col2: "User Name",
-  col3: "Password",
-  col4: "Email",   
+  col3: "Email",
+  col4: "Role",   
   col5: "Status"
-  // col5: "Action"
 };
 
 const logo = "/assets/logo.png"; 

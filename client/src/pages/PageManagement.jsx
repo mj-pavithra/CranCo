@@ -20,10 +20,10 @@ const optionList = [
 const tableHeader = {
   tableTitle: "Page List",
   col1: "Profile ID",
-  col2: "User ID",
   col3: "Profile Name",
   col4: "Vehicle Type",   
-  col5: "Vehicle Model"
+  col5: "Vehicle Model",
+  col6: "Vehical Reg No"
   // col5: "Action"
 };
 

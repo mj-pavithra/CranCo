@@ -22,9 +22,9 @@ const tableHeader = {
   //col1: "Post ID",
   col1: "User Name",
   col2: "Caption",
-  col3: "Location",
-  col4: "Post Id",
-  col5: "Action"
+  // col3: "Location",
+  col3: "Post Id",
+  col4: "Action"
 };
 
 const logo = "/assets/logo.png";
@@ -36,7 +36,7 @@ const DashboardMainContainer = () => {
   const fetchData = async () => {
     try {
       // Make a GET request to your API endpoint
-      const response = await axios.get('http://localhost:8081/api/v1/posts/all');
+      const response = await axios.get('http://localhost:8081/api/v1/auth/posts/all');
 
       // Assuming your API response contains the complaint data in an array
       const postData = response.data;

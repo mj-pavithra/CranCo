@@ -20,10 +20,10 @@ const Frame162 = ({ pageList , tableHeader } ) => {
                 {pageList.map((page, index) => (
                 <tr key={index}>
                     <td>{page.vehicleProfileId}</td>
-                    <td>{page.userId}</td>
                     <td>{page.vehicleProfileName}</td>
                     <td>{page.vehicleType}</td>
                     <td>{page.vehicleModel}</td>
+                    <td>{page.vehicleRegNo}</td>
                     {/* <td>
                         <button onClick={() => confirmDeletePost(complaint.reportId)}>Delete</button>
                     </td> */}

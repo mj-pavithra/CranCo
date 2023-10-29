@@ -13,18 +13,16 @@ const Frame159 = ({ userList , tableHeader } ) => {
                 <th>{tableHeader.col3}</th>
                 <th>{tableHeader.col4}</th>
                 <th>{tableHeader.col5}</th>
-                <th>{tableHeader.col6}</th>
                 </tr>
             </thead>
             <tbody>
                 {userList.map((user, index) => (
                 <tr key={index}>
+                    <td>{user.userId}</td>
                     <td>{user.username}</td>
-                    <td>{user.active ? "Yes" : "No"}</td>
-                    <td>{user.pinStatus}</td>
-                    <td>{user.lastSeen}</td>
+                    <td>{user.email}</td>
                     <td>{user.role}</td>
-                    <td>{user.action}</td>
+                    <td>{user.active ? "Yes" : "No"}</td>
                 </tr>
                 ))}
             </tbody>
