@@ -102,7 +102,12 @@ public class PostService {
 
     public Long findUserByUsername(String username) {
         User user = userRepository.findByUsername(username);
-        return user.getId();
+        if (user != null) {
+            return user.getId();
+        } else {
+            // Handle the case where the user is not found
+            return null; // or throw an exception, or return a default value
+        }
 
     }
 
