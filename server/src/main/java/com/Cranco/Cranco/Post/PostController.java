@@ -19,7 +19,7 @@ import java.util.Map;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:3000")
-@RequestMapping("/api/posts")
+@RequestMapping("/api/v1/auth/posts")
 @AllArgsConstructor
 public class PostController {
     private final PostService postService;

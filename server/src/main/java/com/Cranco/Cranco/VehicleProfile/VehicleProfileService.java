@@ -38,5 +38,8 @@ public class VehicleProfileService {
         return vehicleProfileRepository.save(vehicleProfile);
     }
 
+    public List<VehicleProfile> getAllVehiceProfilesSortedByvehicleProfileId() {
+        return vehicleProfileRepository.findAllByOrderByVehicleProfileIdASC();
+    }
 }
 

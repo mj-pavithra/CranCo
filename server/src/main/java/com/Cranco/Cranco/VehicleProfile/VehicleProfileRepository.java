@@ -1,6 +1,7 @@
 package com.Cranco.Cranco.VehicleProfile;
 
 import org.springframework.data.neo4j.repository.Neo4jRepository;
+import org.springframework.data.neo4j.repository.query.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -21,5 +22,12 @@ public interface VehicleProfileRepository extends Neo4jRepository<VehicleProfile
 
     // Find vehicle profiles by multiple criteria
     List<VehicleProfile> findByVehicleTypeAndVehicleManufacturer(String vehicleType, String vehicleManufacturer);
+
+    //@Query("MATCH (c:VEHICLEPROFILE)\n" + "RETURN c;")
+    @Query("MATCH (VehicleProfile:vehicleProfile)\n" +
+            "RETURN vehicleProfile.vehicleProfileId AS vehicleProfileId," +
+            "vehicleProfile.vehicleProfileName AS vehicleProfileName, " + "vehicleProfile.vehicleType AS vehicleType," +
+            " vehicleProfile.vehicleModel AS vehicleModel,  vehicleProfile.vehicleRegNo AS vehicleRegNo")
+    List<VehicleProfile> findAllByOrderByVehicleProfileIdASC();
 }
 
