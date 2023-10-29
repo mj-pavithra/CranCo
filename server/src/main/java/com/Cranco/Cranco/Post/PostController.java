@@ -77,11 +77,13 @@ public class PostController {
     public ResponseEntity<ReactDto> RecordLike(
             @RequestParam("userID") Long userID,
             @RequestParam("liked") String liked,
-            @RequestParam("postID") Long postID) {
+            @RequestParam("postID") Long postID,
+            @RequestParam("PostOwner")String postOwner) {
         React newReact = new React();
         newReact.setLiked(liked);
         newReact.setUserID(userID);
         newReact.setPostID(postID);
+        newReact.setPostOwner(postOwner);
         ReactDto react = postService.recordReactOnPost(newReact);
         return ResponseEntity.ok(react);
     }

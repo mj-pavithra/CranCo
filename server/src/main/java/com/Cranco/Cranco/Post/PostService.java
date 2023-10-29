@@ -168,7 +168,7 @@ public class PostService {
     public ReactDto recordReactOnPost(React react) {
         if ("liked".equals(react.getLiked())) {
 //            notificationService.createNotification()
-            createOrUpdateLikedRelationship(react.getUserID(), react.getPostID());
+            createOrUpdateLikedRelationship(react.getUserID(), react.getPostID(), react.getPostOwner() );
         } else if ("disliked".equals(react.getLiked())) {
             removeLikedRelationship(react.getUserID(), react.getPostID());
         }
@@ -176,10 +176,18 @@ public class PostService {
         return new ReactDto(react.getUserID(), react.getLiked(), react.getPostID());
     }
 
-    public void createOrUpdateLikedRelationship(Long userID, Long postID) {
+    public void createOrUpdateLikedRelationship(Long userID, Long postID, String receverUsername) {
         User user = userRepository.findById(userID)
                 .orElseThrow(() -> new EntityNotFoundException("User not found with ID: " + userID));
         System.out.println("like in post service wada");
+        User recever = userRepository.findByUsername(receverUsername);
+
+        Optional <User> senderOP = userRepository.findById(userID);
+
+        User sender = senderOP.orElse(new User());
+
+        String details = "" ;
+        notificationService.createNotification(sender, recever, details);
         user.likesPost(userID, postID);
         userRepository.save(user);
     }

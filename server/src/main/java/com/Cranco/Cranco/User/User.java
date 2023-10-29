@@ -180,4 +180,9 @@ public class User implements UserDetails {
     public boolean isPresent() {
         return true;
     }
+
+    public User orElseThrow(Object o) {
+        return null;
+    }
+
 }

@@ -93,6 +93,7 @@ class React{
     private Long userID;
     private String Liked;
     private Long postID;
+    private String PostOwner;
 
 
     public Long getUserID() {
@@ -106,6 +107,9 @@ class React{
     public Long getPostID() {
         return postID;
     }
+    public String getPostOwner() {
+        return PostOwner;
+    }
 
     public void setUserID(Long userID) {
         this.userID = userID;
@@ -117,6 +121,11 @@ class React{
 
     public void setPostID(Long postID) {
         this.postID = postID;
+    }
+
+
+    public void setPostOwner(String postOwner) {
+        PostOwner = postOwner;
     }
 }
 
