@@ -13,6 +13,7 @@ public class PostDto {
     private Long userID;
     private LocalDateTime date;
     private int likeCount;
+    private int commentCount;
 
     public int getLikeCount() {
         return likeCount;
@@ -49,6 +50,10 @@ public class PostDto {
         return userID;
     }
 
+    public int getCommentCount() {
+        return commentCount;
+    }
+
     public void setPostId(String postId) {
         this.postId = postId;
     }
@@ -83,6 +88,10 @@ public class PostDto {
 
     public void setLikedCount(int likeCount) {
         this.likeCount = likeCount;
+    }
+
+    public void setCommentCount(int commentCount) {
+        this.commentCount = commentCount;
     }
 }
 

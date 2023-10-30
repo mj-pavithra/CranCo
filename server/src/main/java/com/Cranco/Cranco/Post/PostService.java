@@ -89,11 +89,14 @@ public class PostService {
     }
 
     public PostDto mapToDto(Post post){
+
+        int commentCount = postRepository.getCommentCount(post.getId());
         PostDto dto = new PostDto();
         dto.setPostId(String.valueOf(post.getId()));
         dto.setCaption(post.getCaption());
         dto.setLocation(post.getLocation());
         dto.setUsername(post.getUsername());
+        dto.setCommentCount(commentCount);
         dto.setUserID(findUserByUsername(post.getUsername()));
         System.out.println("user iD list eka"+ findUserByUsername(post.getUsername()));
         dto.setLikedCount(post.getLikedCount());
@@ -140,6 +143,7 @@ public class PostService {
         for (Post post : randomPosts) {
             int likedCount = postRepository.getLikedCount(post.getId());
             post.setLikedCount(likedCount);
+
             System.out.println(post.getId());
             System.out.println("ME thama post eka thule thiyana euwa"+ post.getCaption());
         }
@@ -201,6 +205,14 @@ public class PostService {
         userRepository.save(user);
     }
 
-    private void writeComment()
+    public CommnetDto writeComment( Commnet newComment){
+        Long postId = newComment.getPostID();
+        Long userID = newComment.getUserID();
+        String commentText = newComment.getCommnetText();
+
+        postRepository.createCommnet( postId, userID, commentText );
+        return null;
+
+    }
 
 }

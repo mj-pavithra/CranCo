@@ -84,6 +84,7 @@ const HomePage = () => {
             date={post.date}
             time={post.time}
             likeCount={post.likeCount}
+            commentCount={post.commentCount}
             postOwnerID={post.userID}
           />
         ))}

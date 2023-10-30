@@ -5,6 +5,13 @@ import com.Cranco.Cranco.Notification.Notification;
 import jakarta.transaction.Transactional;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.Objects;
+import java.util.UUID;
 
 @Service
 @Transactional
@@ -61,5 +68,49 @@ public class UserService {
         return userRepository.findById(userId).orElseThrow(null);
     }
 
+    private Long generateUniquePostId() {
+        return UUID.randomUUID().getMostSignificantBits() & Long.MAX_VALUE;
+    }
+
+    private String getExtensionFromFileName(String fileName) {
+        int dotIndex = fileName.lastIndexOf(".");
+        if (dotIndex > 0) {
+            return fileName.substring(dotIndex + 1);
+        }
+        return "";
+    }
+
+    private void saveImage(String fileName, MultipartFile image) {
+        try {
+            // Define the directory where you want to save the images
+            String uploadDirectory = "src/main/resources/static/CoverPhotos/";
+
+            File directory = new File(uploadDirectory);
+            if (!directory.exists()) {
+                directory.mkdirs();
+            }
+
+            // Create the file in the directory
+            File file = new File(directory, fileName);
+
+            // Save the image
+            try (FileOutputStream fos = new FileOutputStream(file)) {
+                fos.write(image.getBytes());
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public String updateCoverphoto(MultipartFile coverPhoto, Long userID){
+        long uniquePostId = generateUniquePostId() % 100000; // Ensure the ID is 5 digits
+
+        String imageFileName = uniquePostId + "." + getExtensionFromFileName(Objects.requireNonNull(coverPhoto.getOriginalFilename()));
+        saveImage(imageFileName, coverPhoto);
+        User user = findUserById(userID);
+        user.setCoverPhoto(imageFileName);
+        userRepository.save(user);
+        return "success fully updated";
+    }
 
 }

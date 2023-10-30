@@ -127,13 +127,14 @@ class Commnet{
         return postID;
     }
 
-    public String getCommnetText(String comment) {
+    public String getCommnetText() {
         return commnetText;
     }
 
     public Long getUserID() {
         return userID;
     }
+
 
     public void setPostID(Long postID) {
         this.postID = postID;
@@ -145,5 +146,8 @@ class Commnet{
 
     public void setUserID(Long userID) {
         this.userID = userID;
+    }
+
+    public void setPostOwnerID(Long postOwnerID) {
     }
 }

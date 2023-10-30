@@ -40,7 +40,8 @@ public class User implements UserDetails {
     private String email;
     @Property("profile_picture")
     private String profile_picture;
-
+    @Property("coverPhoto")
+    private String coverPhoto;
 
     @Query("match (u:USER) where id(u)=$userId match (p:POST)where id(p) = $postId create (u)-[r:LIKED]->(p) return r")
     public void likesPost(@Param("userId") Long userId, @Param("postId") Long postId) {
@@ -114,14 +115,24 @@ public class User implements UserDetails {
     public String getUsername() {return email;}
 
     public String getRealUsername(){return username;}
-    public String getProfilePicture(){
+    public String getprofile_picture(){
         return profile_picture;
     }
-    public void setProfilePicture(String new_profile_picture){
-        this.profile_picture = new_profile_picture;
+
+    public String getCoverPhoto() {
+        return coverPhoto;
     }
 
-//    public String getMobileNumber() {
+    public void setprofile_picture(String proPic){
+        this.profile_picture = proPic;
+    }
+
+
+
+    public void setCoverPhoto(String coverPhoto) {
+        this.coverPhoto = coverPhoto;
+    }
+    //    public String getMobileNumber() {
 //        return mobileNumber;
 //    }
 //

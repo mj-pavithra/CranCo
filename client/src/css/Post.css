@@ -111,7 +111,7 @@
 }
 
 .commentContentBackground{
-    width: 100%;
+    width: 90%;
     height: 100%;
     background-color: aqua;
     left: 0px;
@@ -163,4 +163,31 @@
     position: absolute;
     right: 15px;
     top: 15px;
+}
+
+.commentSection2{
+  margin: 10px 10px;
+  width:  calc(100% - 10px);
+}
+
+.cage-textarea2 {
+  padding: 5px;
+  width: calc(100% - 20px);
+  background-color: aliceblue;
+  border-radius: 5px;
+  text-size-adjust: 10px;
+  background-origin: none;
+}
+
+
+.create-comment-btn-in-popup{
+  background: none;
+  border-radius: 50%;
+  border-style: none;
+  width: 50px;
+  height: 50px;
+  font-size: 25px;
+  color: var(--text-2);
+  align-items: right;
+  opacity: 40%;
 }

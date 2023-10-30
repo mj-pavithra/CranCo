@@ -58,7 +58,7 @@ public class PostController {
         try {
             List<PostDto> allPosts = postService.getAllPosts();
             allPosts.forEach(post -> System.out.println("PostID: " + post.getPostId()));
-            allPosts.forEach(post-> System.out.println("PostID: " + post.getUsername()));
+            allPosts.forEach(post-> System.out.println("PostID: " + post.getCommentCount()));
 
             return ResponseEntity.ok(allPosts);
         } catch (Exception e) {
@@ -103,14 +103,16 @@ public class PostController {
     public ResponseEntity<CommnetDto> WriteComment(
             @RequestParam("userId") Long userID,
             @RequestParam("comment") String comment,
-            @RequestParam("postID") Long postID
+            @RequestParam("postID") Long postID,
+            @RequestParam("postOwnerID") Long postOwnerID
     ) {
         Commnet newCommnet = new Commnet();
+        newCommnet.setPostOwnerID(postOwnerID);
         newCommnet.setCommnetText(comment);
         newCommnet.setPostID(postID);
         newCommnet.setUserID(userID);
 
-        CommnetDto comment = postService.writeComment(newCommnet);
+        CommnetDto commentReturn = postService.writeComment(newCommnet);
 
         return null;
     }

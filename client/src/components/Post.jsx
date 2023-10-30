@@ -30,6 +30,7 @@ const Post = ({
   time,
   id,
   likeCount,
+  commentCount,
 }) => {
   const [writeComment, setWriteComment] = useState(false);
   const postUsername = username || "Default Username";
@@ -40,13 +41,16 @@ const Post = ({
   const [contentChanged, setContentChanged] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
+  const [submissionStatus, setSubmissionStatus] = useState(''); // 'success', 'error', or ''
+
 
   const commentUsername = username || "Default Username";
   const commentText = caption || "Default caption text";
   const commentDate = date || "January 1, 2023";
   const commentTime = time || "12:00 AM";
-console.log("post id ",postId);
-console.log("post owner  ",username);
+
+  console.log("post id ",postId);
+  console.log("post owner  ",username);
   function appendToLocalhost(arr) {
     // Use the map() function to process each element in the array
     const newArray = arr.map((element) => {
@@ -100,9 +104,13 @@ console.log("post owner  ",username);
       );
 
       console.log("Comment action response:", response.data);
+      setWriteComment(false);
+      setSubmissionStatus('success');
       // You can handle the response from the server here, if needed.
     } catch (error) {
       console.error("Error sending comment action:", error);
+      setWriteComment(true);
+      setSubmissionStatus('error');
     }
   };
 
@@ -244,7 +252,7 @@ console.log("post owner  ",username);
 
           <div className="post-header txt-09 gap-2">
             <div className="">
-              <span>5</span> comments
+              <span>{commentCount}</span> comments
             </div>
           </div>
         </div>
@@ -278,15 +286,15 @@ console.log("post owner  ",username);
             <div className="text-medium">Share</div>
           </div>
         </div>
-        <div className="comment-section">
+        <div className="commentSection2">
           {writeComment && (
             <div className="post-popup">
-              <div>
+              <div className="commentSection2">
                 <div className="cage-title">
                   <b>Add your thoughts</b>
                 </div>
                 <textarea
-                  className="cage-textarea"
+                  className={`cage-textarea2 ${submissionStatus === 'success' ? 'success-background' : submissionStatus === 'error' ? 'error-background' : ''}`}
                   placeholder="your expressions will make or brake harts...!" // name should be passed.
                   value={Comment}
                   onChange={handleCommentTextChange}
@@ -301,7 +309,7 @@ console.log("post owner  ",username);
                   </button>
                 </div>
               </div>
-              <div className="d-flex flex-column ">
+              {/* <div className="d-flex flex-column ">
                 <Link className="link-unstyled" to="/user">
                   <div className="fw-bold commentUsename" >{commentUsername}</div>
                 </Link>
@@ -309,7 +317,7 @@ console.log("post owner  ",username);
                   {commentDate} {commentTime}
                 </div>
                 <div className="post-time fw-light commentText">{commentText}</div>
-              </div>
+              </div> */}
             </div>
 
 

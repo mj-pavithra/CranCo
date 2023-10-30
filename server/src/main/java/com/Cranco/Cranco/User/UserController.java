@@ -2,8 +2,10 @@ package com.Cranco.Cranco.User;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @CrossOrigin
@@ -37,6 +39,14 @@ public class UserController {
             return ResponseEntity.notFound().build();
         }
     }
+    @PostMapping(value = "/uploadCoverPhoto", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public ResponseEntity<String> updateCoverphoto(@RequestPart("coverPhoto") MultipartFile coverPhoto,
+                                                   @RequestPart("userId") Long userId) {
+        String result = userService.updateCoverphoto(coverPhoto, userId);
+        return ResponseEntity.ok(result);
+    }
+
+
 
     @GetMapping("/validate-token")
     public ResponseEntity<String> validateToken(){
