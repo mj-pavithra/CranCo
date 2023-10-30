@@ -19,11 +19,11 @@ const optionList = [
 
 const tableHeader = {
   tableTitle: "User List",
-  col1: "User ID",
-  col2: "User Name",
-  col3: "Email",
-  col4: "Role",   
-  col5: "Status"
+  // col1: "User ID",
+  col1: "User Name",
+  col2: "Email",
+  col3: "Role",   
+  col4: "Status"
 };
 
 const logo = "/assets/logo.png"; 
@@ -38,9 +38,9 @@ const DashboardMainContainer = () => {
       const response = await axios.get('http://localhost:8081/api/v1/auth/users/all')
 
       const userData = response.data;
-
+      console.log(response.data);
       const sortedList = userData.sort((a, b) => a.userId - b.userId);
-
+      console.log(sortedList);
       setuserListData(sortedList);
     } catch (error) {
       console.error('Error fetching data:', error);

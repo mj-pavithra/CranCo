@@ -12,13 +12,13 @@ const Frame159 = ({ userList , tableHeader } ) => {
                 <th>{tableHeader.col2}</th>
                 <th>{tableHeader.col3}</th>
                 <th>{tableHeader.col4}</th>
-                <th>{tableHeader.col5}</th>
+                {/* <th>{tableHeader.col5}</th> */}
                 </tr>
             </thead>
             <tbody>
                 {userList.map((user, index) => (
                 <tr key={index}>
-                    <td>{user.userId}</td>
+                    {/* <td>{user.userId}</td> */}
                     <td>{user.username}</td>
                     <td>{user.email}</td>
                     <td>{user.role}</td>
