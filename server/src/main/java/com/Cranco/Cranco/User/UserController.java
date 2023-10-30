@@ -41,12 +41,21 @@ public class UserController {
     }
     @PostMapping(value = "/uploadCoverPhoto", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<String> updateCoverphoto(@RequestPart("coverPhoto") MultipartFile coverPhoto,
-                                                   @RequestPart("userId") Long userId) {
+                                                   @RequestPart("userId") String userIdString) {
+        Long userId = Long.parseLong(userIdString);
         String result = userService.updateCoverphoto(coverPhoto, userId);
+        System.out.println("coverphoto recived");
         return ResponseEntity.ok(result);
     }
 
-
+    @PostMapping(value = "/uploadProPic", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public ResponseEntity<String> updateProPic(@RequestPart("proPic") MultipartFile coverPhoto,
+                                                   @RequestPart("userId") String userIdString) {
+        Long userId = Long.parseLong(userIdString);
+        String result = userService.updateCoverphoto(coverPhoto, userId);
+        System.out.println("proPic recived");
+        return ResponseEntity.ok(result);
+    }
 
     @GetMapping("/validate-token")
     public ResponseEntity<String> validateToken(){
