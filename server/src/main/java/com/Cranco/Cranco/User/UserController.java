@@ -55,4 +55,14 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
+
+    @GetMapping("/count")
+    public long getUserCount() {
+        return userService.getUserCount();
+    }
+
+//    @GetMapping("/count")
+//    public long countUsersByUserId(@RequestParam String userId) {
+//        return userService.countUsersByUserId(userId);
+//    }
 }

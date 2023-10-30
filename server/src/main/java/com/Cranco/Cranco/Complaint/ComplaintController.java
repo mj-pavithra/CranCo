@@ -66,4 +66,14 @@ public class ComplaintController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
+
+    @GetMapping("/count")
+    public long getComplaintsCount() {
+        return complaintService.getComplaintCount();
+    }
+
+//    @GetMapping("/count")
+//    public long countComplaintsByreportId(@RequestParam String reportId) {
+//        return complaintService.countComplaintsByreportId(reportId);
+//    }
 }

@@ -24,10 +24,11 @@ public interface VehicleProfileRepository extends Neo4jRepository<VehicleProfile
     List<VehicleProfile> findByVehicleTypeAndVehicleManufacturer(String vehicleType, String vehicleManufacturer);
 
     //@Query("MATCH (c:VEHICLEPROFILE)\n" + "RETURN c;")
-    @Query("MATCH (VehicleProfile:vehicleProfile)\n" +
-            "RETURN vehicleProfile.vehicleProfileId AS vehicleProfileId," +
-            "vehicleProfile.vehicleProfileName AS vehicleProfileName, " + "vehicleProfile.vehicleType AS vehicleType," +
-            " vehicleProfile.vehicleModel AS vehicleModel,  vehicleProfile.vehicleRegNo AS vehicleRegNo")
+    @Query("MATCH (vehicleprofile:VEHICLEPROFILE) RETURN vehicleprofile.vehicleProfileName AS vehicleProfileName,vehicleprofile.vehicleType AS vehicleType,vehicleprofile.vehicleModel AS vehicleModel,  vehicleprofile.vehicleRegNo AS vehicleRegNo")
+//    @Query("MATCH (c:VEHICLEPROFILE) RETURN c;")
     List<VehicleProfile> findAllByOrderByVehicleProfileIdASC();
+
+    @Query("MATCH (v:VEHICLEPROFILE) RETURN count(v) as VehicleProfileCount")
+    long getVehicleProfileCount();
 }
 

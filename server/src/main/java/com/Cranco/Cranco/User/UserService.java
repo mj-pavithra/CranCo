@@ -67,4 +67,12 @@ public class UserService {
     public List<User> getAllUsersSortedByuserId() {
         return userRepository.findAllByOrderByUserIdASC();
     }
+
+    public long getUserCount() {
+        return userRepository.getUserCount();
+    }
+
+//    public long countUsersByUserId(String userId) {
+//        return userRepository.countUsersByUserId(userId);
+//    }
 }

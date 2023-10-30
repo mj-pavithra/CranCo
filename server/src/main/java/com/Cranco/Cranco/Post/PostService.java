@@ -179,4 +179,8 @@ public class PostService {
         userRepository.save(user);
     }
 
+    public long getPostCount() {
+        return postRepository.getPostCount();
+    }
+
 }

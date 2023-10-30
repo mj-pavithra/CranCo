@@ -41,5 +41,9 @@ public class VehicleProfileService {
     public List<VehicleProfile> getAllVehiceProfilesSortedByvehicleProfileId() {
         return vehicleProfileRepository.findAllByOrderByVehicleProfileIdASC();
     }
+
+    public long getVehicleProfileCount() {
+        return vehicleProfileRepository.getVehicleProfileCount();
+    }
 }
 

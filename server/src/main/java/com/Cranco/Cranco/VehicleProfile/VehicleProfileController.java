@@ -68,4 +68,9 @@ public class VehicleProfileController {
         this.vehicleProfileService.deleteVehicleProfile(vehicleProfileId);
         return ResponseEntity.noContent().build();
     }
+
+    @GetMapping("/count")
+    public long getVehicleProfileCount() {
+        return vehicleProfileService.getVehicleProfileCount();
+    }
 }
