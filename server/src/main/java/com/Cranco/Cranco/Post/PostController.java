@@ -32,10 +32,11 @@ public class PostController {
     @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<PostDto> createPost(
             @RequestParam("caption") String caption,
-            @RequestParam("userId") Long userId,
+            @RequestParam("userId") String userIdString,
             @RequestParam("username") String username,
 
             @RequestParam(value = "images", required = false) List<MultipartFile> images) {
+        Long userId = Long.parseLong(userIdString);
         if (images != null) {
             System.out.println("Received images:");
             for (MultipartFile image : images) {
@@ -58,7 +59,8 @@ public class PostController {
         try {
             List<PostDto> allPosts = postService.getAllPosts();
             allPosts.forEach(post -> System.out.println("PostID: " + post.getPostId()));
-            allPosts.forEach(post-> System.out.println("PostID: " + post.getCommentCount()));
+            allPosts.forEach(post-> System.out.println("Comment count: " + post.getCommentCount()));
+            allPosts.forEach(post-> System.out.println("Like count: " + post.getLikeCount()));
 
             return ResponseEntity.ok(allPosts);
         } catch (Exception e) {
@@ -68,44 +70,45 @@ public class PostController {
         }
     }
 
-    @GetMapping("/delete")
-    public ResponseEntity<String> deletePost(@RequestBody Map<String, Long> requestBody) {
-        Long postID = requestBody.get("postID");
-
+    @DeleteMapping("/delete/{postID}")
+    public ResponseEntity<String> deleteAPost(@PathVariable("postID") Long postID) {
+        System.out.println("deleting post: " + postID);
         try {
-            // Call the service method to delete the post by postID
             postService.deletePostById(postID);
             return ResponseEntity.ok("Post deleted successfully");
         } catch (Exception e) {
-            // Log the exception for debugging purposes.
             e.printStackTrace();
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to delete the post");
         }
     }
 
 
+
     @PutMapping("/liked")
     public ResponseEntity<ReactDto> RecordLike(
-            @RequestParam("userID") Long userID,
+            @RequestParam("userID") String userIdString,
             @RequestParam("liked") String liked,
-            @RequestParam("postID") Long postID,
-            @RequestParam("PostOwner")String postOwner) {
+            @RequestParam("postID") String postIDString){
+        Long userID = Long.parseLong(userIdString);
+        Long postID = Long.parseLong(postIDString);
+
         React newReact = new React();
         newReact.setLiked(liked);
         newReact.setUserID(userID);
         newReact.setPostID(postID);
-        newReact.setPostOwner(postOwner);
         ReactDto react = postService.recordReactOnPost(newReact);
         return ResponseEntity.ok(react);
     }
 
     @PostMapping ("/writeComment")
     public ResponseEntity<CommnetDto> WriteComment(
-            @RequestParam("userId") Long userID,
+            @RequestParam("userId") String userIdString,
             @RequestParam("comment") String comment,
-            @RequestParam("postID") Long postID,
+            @RequestParam("postID") String postIDString,
             @RequestParam("postOwnerID") Long postOwnerID
     ) {
+        Long userID = Long.parseLong(userIdString);
+        Long postID = Long.parseLong(postIDString);
         Commnet newCommnet = new Commnet();
         newCommnet.setPostOwnerID(postOwnerID);
         newCommnet.setCommnetText(comment);

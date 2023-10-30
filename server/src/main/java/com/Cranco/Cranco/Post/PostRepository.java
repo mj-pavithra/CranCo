@@ -12,8 +12,9 @@ import java.util.Optional;
 public interface PostRepository extends Neo4jRepository<Post, Long> {
     Optional<Post> findById(Long postId);
     @Query("MATCH (n:POST {postId: $postId})\n" +
-            "DELETE n;")
+            "DETACH DELETE n;")
     void deleteById(@Param("postId") Long postId);
+
     @Query("MATCH (:POST {postId: $postId})<-[r:LIKED]-() RETURN COUNT(r) AS likedCount")
     int getLikedCount(@Param("postId") Long postId);
 
@@ -27,5 +28,9 @@ public interface PostRepository extends Neo4jRepository<Post, Long> {
             "CREATE (c)-[:gotcomment]->(p)\n" +
             "CREATE (u)-[:commented]->(c)")
     void createCommnet(@Param("postId") Long postId, @Param("id") Long userID, @Param("commentIext") String commentText);
+
+    @Query("MATCH (p:POST {postId: $postID})\n" +
+            "RETURN p.username\n")
+    String getPostOwner(@Param("postID") Long postID);
 }
 

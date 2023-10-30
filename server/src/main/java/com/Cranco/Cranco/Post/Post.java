@@ -22,6 +22,8 @@ public class Post {
 
     @Property("location")
     private String location;
+    @Property("visibility")
+    private String visibility;
     public Long postOwnerID;
     public int likedCount;
 
@@ -53,6 +55,10 @@ public class Post {
         return likedCount;
     }
 
+    public String getVisibility() {
+        return visibility;
+    }
+
     public void setId(Long postId) {
         this.postId = postId;
     }
@@ -80,6 +86,10 @@ public class Post {
 
     public void setDate(LocalDateTime date) {
         this.date = date;
+    }
+
+    public void setVisibility(String visibility) {
+        this.visibility = visibility;
     }
 
     public void setLikedCount(int likedCount) {

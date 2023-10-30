@@ -1,13 +1,11 @@
 package com.Cranco.Cranco.Post;
 
-import com.Cranco.Cranco.Notification.Notification;
 import com.Cranco.Cranco.Notification.NotificationService;
 import com.Cranco.Cranco.User.User;
 import javax.persistence.EntityNotFoundException;
 
 import com.Cranco.Cranco.User.UserRepository;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 //import org.springframework.data.neo4j.core.
@@ -173,8 +171,7 @@ public class PostService {
 
     public ReactDto recordReactOnPost(React react) {
         if ("liked".equals(react.getLiked())) {
-//            notificationService.createNotification()
-            createOrUpdateLikedRelationship(react.getUserID(), react.getPostID(), react.getPostOwner() );
+            createOrUpdateLikedRelationship(react.getUserID(), react.getPostID() );
         } else if ("disliked".equals(react.getLiked())) {
             removeLikedRelationship(react.getUserID(), react.getPostID());
         }
@@ -182,18 +179,20 @@ public class PostService {
         return new ReactDto(react.getUserID(), react.getLiked(), react.getPostID());
     }
 
-    public void createOrUpdateLikedRelationship(Long userID, Long postID, String receverUsername) {
+    public void createOrUpdateLikedRelationship(Long userID, Long postID ){
         User user = userRepository.findById(userID)
                 .orElseThrow(() -> new EntityNotFoundException("User not found with ID: " + userID));
         System.out.println("like in post service wada");
-        User recever = userRepository.findByUsername(receverUsername);
+         String receiverUsername = postRepository.getPostOwner(postID);
+
+        User receiver = userRepository.findByUsername(receiverUsername);
 
         Optional <User> senderOP = userRepository.findById(userID);
 
         User sender = senderOP.orElse(new User());
 
-        String details = "" ;
-        notificationService.createNotification(sender, recever, details);
+        String details = " liked " ;
+        notificationService.createNotification(sender, receiver, details);
         user.likesPost(userID, postID);
         userRepository.save(user);
     }

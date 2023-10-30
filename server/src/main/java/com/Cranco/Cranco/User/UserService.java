@@ -107,10 +107,22 @@ public class UserService {
 
         String imageFileName = uniquePostId + "." + getExtensionFromFileName(Objects.requireNonNull(coverPhoto.getOriginalFilename()));
         saveImage(imageFileName, coverPhoto);
-        User user = findUserById(userID);
-        user.setCoverPhoto(imageFileName);
-        userRepository.save(user);
-        return "success fully updated";
+
+        userRepository.updateCoverPhoto(userID, imageFileName);
+        return ": CP success fully updated";
     }
+
+
+
+    public String updatePropic(MultipartFile proPic, Long userID){
+        long uniquePostId = generateUniquePostId() % 100000; // Ensure the ID is 5 digits
+
+        String imageFileName = uniquePostId + "." + getExtensionFromFileName(Objects.requireNonNull(proPic.getOriginalFilename()));
+        saveImage(imageFileName, proPic);
+
+        userRepository.updateProPic(userID, imageFileName);
+        return ": PP success fully updated";
+    }
+
 
 }

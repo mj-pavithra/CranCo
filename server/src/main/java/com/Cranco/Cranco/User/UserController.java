@@ -44,16 +44,16 @@ public class UserController {
                                                    @RequestPart("userId") String userIdString) {
         Long userId = Long.parseLong(userIdString);
         String result = userService.updateCoverphoto(coverPhoto, userId);
-        System.out.println("coverphoto recived");
+        System.out.println(result);
         return ResponseEntity.ok(result);
     }
 
     @PostMapping(value = "/uploadProPic", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public ResponseEntity<String> updateProPic(@RequestPart("proPic") MultipartFile coverPhoto,
+    public ResponseEntity<String> updateProPic(@RequestPart("proPic") MultipartFile proPic,
                                                    @RequestPart("userId") String userIdString) {
         Long userId = Long.parseLong(userIdString);
-        String result = userService.updateCoverphoto(coverPhoto, userId);
-        System.out.println("proPic recived");
+        String result = userService.updatePropic(proPic, userId);
+        System.out.println(result);
         return ResponseEntity.ok(result);
     }
 

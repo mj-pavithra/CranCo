@@ -14,6 +14,7 @@ public class PostDto {
     private LocalDateTime date;
     private int likeCount;
     private int commentCount;
+    private String visibility;
 
     public int getLikeCount() {
         return likeCount;
@@ -46,6 +47,9 @@ public class PostDto {
         return date;
     }
 
+    public String getVisibility() {
+        return visibility;
+    }
     public Long getUserID(Long userByUsername) {
         return userID;
     }
@@ -72,6 +76,9 @@ public class PostDto {
 
     public void setImageLocations(List<String> imageLocations) {
         this.imageLocations = imageLocations; // Add this setter method for image locations
+    }
+    public void setVisibility(String visibility) {
+        this.visibility = visibility;
     }
 
 //    public void setImages(List<byte[]> images) { // Modify this setter method for images

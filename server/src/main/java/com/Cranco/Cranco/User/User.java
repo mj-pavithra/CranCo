@@ -115,7 +115,7 @@ public class User implements UserDetails {
     public String getUsername() {return email;}
 
     public String getRealUsername(){return username;}
-    public String getprofile_picture(){
+    public String getProfilePicture(){
         return profile_picture;
     }
 
@@ -123,7 +123,7 @@ public class User implements UserDetails {
         return coverPhoto;
     }
 
-    public void setprofile_picture(String proPic){
+    public void setProfilePicture(String proPic){
         this.profile_picture = proPic;
     }
 
