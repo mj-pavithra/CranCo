@@ -6,14 +6,14 @@ import DashboardGrid from "../components/DashboardGrid";
 import { Link } from "react-router-dom";
 
 const optionList = [
-  { img1: "/assets/dashboard icon.png", text1: "Dashboard"},
-  { img1: "/assets/user icon.png", text1: <Link to="/admin/usermanagement">Users</Link>},
-  { img1: "/assets/post icon.png", text1: <Link to="/admin/postmanagement">Posts</Link>},
-  { img1: "/assets/page icon.png", text1: <Link to="/admin/pagemanagement">Pages</Link>},
-  { img1: "/assets/complaint icon.png", text1: <Link to="/admin/complaintmanagement">Complaints</Link>},
-  { img1: "/assets/anlytics icon.png", text1: "Analytics" },
-  { img1: "/assets/user feedback icon.png", text1: "User Feedback" },
-  { img1: "/assets/settings icon.png", text1: "Settings" }, 
+  { img1: "/assets/dashboard icon.png", text1: <span style={{ color: "blue" }}>Dashboard</span>},
+  { img1: "/assets/user icon.png", text1: <Link to="/admin/usermanagement" style={{ color: "black", textDecoration: "none" }}>Users</Link>},
+  { img1: "/assets/post icon.png", text1: <Link to="/admin/postmanagement" style={{ color: "black", textDecoration: "none" }}>Posts</Link>},
+  { img1: "/assets/page icon.png", text1: <Link to="/admin/pagemanagement" style={{ color: "black", textDecoration: "none" }}>Pages</Link>},
+  { img1: "/assets/complaint icon.png", text1: <Link to="/admin/complaintmanagement" style={{ color: "black", textDecoration: "none" }}>Complaints</Link>,},
+  // { img1: "/assets/anlytics icon.png", text1: "Analytics" },
+  // { img1: "/assets/user feedback icon.png", text1: "User Feedback" },
+  // { img1: "/assets/settings icon.png", text1: "Settings" }, 
 ];
 
 const logo = "/assets/logo.png";

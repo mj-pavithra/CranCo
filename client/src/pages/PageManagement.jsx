@@ -9,14 +9,14 @@ import Frame162 from "../components/Frame162";
 import { Link } from "react-router-dom";
 
 const optionList = [
-  { img1: "/assets/dashboard icon.png", text1: <Link to="/admin/dashboard">Dashboard</Link>},
-  { img1: "/assets/user icon.png", text1: <Link to="/admin/usermanagement">Users</Link>},
-  { img1: "/assets/post icon.png", text1: <Link to="/admin/postmanagement">Posts</Link>},
-  { img1: "/assets/page icon.png", text1: "Pages"},
-  { img1: "/assets/complaint icon.png", text1: <Link to="/admin/complaintmanagement">Complaints</Link>},
-  { img1: "/assets/anlytics icon.png", text1: "Analytics"},
-  { img1: "/assets/user feedback icon.png", text1: "User Feedback"},
-  { img1: "/assets/settings icon.png", text1: "Settings" },
+  { img1: "/assets/dashboard icon.png", text1: <Link to="/admin/dashboard" style={{ color: "black", textDecoration: "none" }}>Dashboard</Link>},
+  { img1: "/assets/user icon.png", text1: <Link to="/admin/usermanagement" style={{ color: "black", textDecoration: "none" }}>Users</Link>},
+  { img1: "/assets/post icon.png", text1: <Link to="/admin/postmanagement" style={{ color: "black", textDecoration: "none" }}>Posts</Link>},
+  { img1: "/assets/page icon.png", text1: <span style={{ color: "blue" }}>Pages</span>},
+  { img1: "/assets/complaint icon.png", text1: <Link to="/admin/complaintmanagement" style={{ color: "black", textDecoration: "none" }}>Complaints</Link>,},
+  // { img1: "/assets/anlytics icon.png", text1: "Analytics"},
+  // { img1: "/assets/user feedback icon.png", text1: "User Feedback"},
+  // { img1: "/assets/settings icon.png", text1: "Settings" },
 ];
 
 const tableHeader = {
@@ -38,6 +38,7 @@ const DashboardMainContainer = () => {
     try {
       // Make a GET request to your API endpoint
       const response = await AxiosConfig.get('/api/v1/auth/vehicle-profiles/all')
+      //const response = await axios.get('http://localhost:8081/api/v1/auth/vehicle-profiles/all');
 
       const pageData = response.data;
 

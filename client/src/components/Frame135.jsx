@@ -26,9 +26,9 @@ const Frame135 = ({ img1, optionList }) => {
             </div>
             <div className="BottomFrame135">
                 {optionList.map((option, index) => (
-                    <Link to={option.linkto}>
+                    // <Link to={option.linkto}>
                     <Frame135Option key={index} OptionIcon={option.img1} OptionTxt={option.text1} />
-                </Link>
+                // {/* </Link> */}
                 ))}
                     
             </div>
