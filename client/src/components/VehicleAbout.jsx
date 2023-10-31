@@ -24,14 +24,16 @@ function VehicleAbout({
   const dummyMf_year = "2019";
   const dummyTransmission = "7-Speed S tronic";
   const dummyFuel_type = "Premium";
-  const dummyMileage = "28,000,010 km";
+  const dummyMileage = "28,000,015 km";
   const dummyVehicleDescription =
     "My car is sexy. Melbourne white colour. Interior is nice. I enjoy changing the ambiance light to the colour of my choise.";
   return (
     <div className="vehicle-about">
       <div className="vehicle-profile-name">
         <p>{vehiclProfileName || dummyVehicleProfileName}</p>
-        {/* <button className="edit-btn">Edit</button> */}
+        <button className="edit-btn">Edit</button>
+        
+        <button className="lost-btn ">Lost vehicle !</button>
       </div>
       <div className="about-info-container">
         <div className="about-info">

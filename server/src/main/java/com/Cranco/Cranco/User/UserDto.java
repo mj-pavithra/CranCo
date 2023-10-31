@@ -10,6 +10,8 @@ public class UserDto {
     private String username;
     private String password;
     private String email;
+    private String coverPhoto;
+    private String profilePicture;
 
     public Long getId() {
         return id;
@@ -27,6 +29,14 @@ public class UserDto {
         return email;
     }
 
+    public String getCoverPhoto() {
+        return coverPhoto;
+    }
+
+    public String getProfilePicture() {
+        return profilePicture;
+    }
+
     public void setId(Long id) {
         this.id = id;
     }
@@ -41,5 +51,13 @@ public class UserDto {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public void setCoverPhoto(String coverPhoto) {
+        this.coverPhoto = coverPhoto;
+    }
+
+    public void setProfilePicture(String profilePicture) {
+        this.profilePicture = profilePicture;
     }
 }

@@ -9,6 +9,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
 import React, { useState } from "react";
 import PostVideoPopUpWindow from "./PostVideoPopUpWindow";
+import Cookies from "js-cookie";
+import configuredAxios from "../AxiosConfig";
 
 function AddNewUpdate() {
   const [buttonColor, setButtonColor] = useState("");
@@ -19,7 +21,9 @@ function AddNewUpdate() {
   const [uploadVideo, setUploadVideo] = useState(false);
   const [caption, setPostText] = useState("");
   const [images, setImages] = useState([]);
-  const userId = 123;
+  const userId = Cookies.get("user_id");
+  const username = Cookies.get("user_name");
+  
 
   const handleDataSubmit = async () => {
     setIsLoading(true);
@@ -27,7 +31,9 @@ function AddNewUpdate() {
     const postData = new FormData();
     postData.append("caption", caption);
     postData.append("userId", userId); 
-    postData.append("username", "Uberlage Achchi..");
+    postData.append("username", username);
+    postData.append("visibility", "public");
+    postData.append("type", "regular");
 
     if (Array.isArray(images) && images.length > 0) {
       images.forEach((image, index) => {
@@ -39,7 +45,7 @@ function AddNewUpdate() {
       });
 
       try {
-        const response = await axios.post("http://localhost:8081/api/posts", postData, {
+        const response = await configuredAxios.post("/api/posts", postData, {
           headers: {
             "Content-Type": "multipart/form-data"
           },
@@ -164,7 +170,7 @@ function AddNewUpdate() {
               </div>
               <textarea
                 className="cage-textarea"
-                placeholder="Any updates Kaveesha?" // name should be passed.
+                placeholder={`Any updates ${username}?`} 
                 value={caption}
                 onChange={handlePostTextChange}
                 style={{ backgroundColor: {setButtonColor} }}
@@ -199,11 +205,11 @@ function AddNewUpdate() {
             </div>
           </div>
         )}
-        {uploadVideo && (
+        {/* {uploadVideo && (
           <div className="post-popup">
             <PostVideoPopUpWindow onSubmit={handleDataSubmit} />
           </div>
-        )}
+        )} */}
       </div>
       <hr
         style={{

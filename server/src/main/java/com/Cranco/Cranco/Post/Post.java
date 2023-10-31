@@ -22,6 +22,12 @@ public class Post {
 
     @Property("location")
     private String location;
+    @Property("visibility")
+    private String visibility;
+
+    @Property("type")
+    private String type;
+    public Long postOwnerID;
     public int likedCount;
 
 
@@ -31,6 +37,10 @@ public class Post {
 
     public String getUsername() {
         return username;
+    }
+
+    public Long getPostOwnerID() {
+        return postOwnerID;
     }
 
     public String getCaption() {
@@ -48,6 +58,14 @@ public class Post {
         return likedCount;
     }
 
+    public String getVisibility() {
+        return visibility;
+    }
+
+    public String getType() {
+        return type;
+    }
+
     public void setId(Long postId) {
         this.postId = postId;
     }
@@ -58,6 +76,10 @@ public class Post {
         else {
             this.username = username;
         }
+    }
+
+    public void setPostOwnerID(Long postOwnerID) {
+        this.postOwnerID = postOwnerID;
     }
 
     public void setCaption(String caption) {
@@ -71,6 +93,24 @@ public class Post {
 
     public void setDate(LocalDateTime date) {
         this.date = date;
+    }
+
+    public void setVisibility(String visibility) {
+        if(visibility==null){
+            this.visibility ="public";
+        }
+        else {
+            this.visibility = visibility;
+        }
+    }
+
+    public void setType(String type) {
+        if(type==null){
+            this.type ="general";
+        }
+        else {
+            this.type = type;
+        }
     }
 
     public void setLikedCount(int likedCount) {

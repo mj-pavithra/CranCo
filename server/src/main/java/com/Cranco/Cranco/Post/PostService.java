@@ -1,13 +1,11 @@
 package com.Cranco.Cranco.Post;
 
-import com.Cranco.Cranco.Notification.Notification;
 import com.Cranco.Cranco.Notification.NotificationService;
 import com.Cranco.Cranco.User.User;
 import javax.persistence.EntityNotFoundException;
 
 import com.Cranco.Cranco.User.UserRepository;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 //import org.springframework.data.neo4j.core.
@@ -31,6 +29,8 @@ public class PostService {
         Post newPost = new Post();
         newPost.setUsername(request.getUsername());
         newPost.setCaption(request.getCaption());
+        newPost.setType(request.getType());
+        newPost.setVisibility(request.getVisibility());
 
         long uniquePostId = generateUniquePostId();
         List<String> imageLocations = new ArrayList<>();
@@ -53,8 +53,6 @@ public class PostService {
         Post savePost = postRepository.save(newPost);
         PostDto postDto = mapToDto(savePost);
         postDto.setImageLocations(imageLocations);
-
-
 
         return postDto;
     }
@@ -89,14 +87,30 @@ public class PostService {
     }
 
     public PostDto mapToDto(Post post){
+
+        int commentCount = postRepository.getCommentCount(post.getId());
         PostDto dto = new PostDto();
-        dto.setId(post.getId());
+        dto.setPostId(String.valueOf(post.getId()));
         dto.setCaption(post.getCaption());
         dto.setLocation(post.getLocation());
         dto.setUsername(post.getUsername());
+        dto.setCommentCount(commentCount);
+        dto.setUserID(findUserByUsername(post.getUsername()));
+        System.out.println("user iD list eka"+ findUserByUsername(post.getUsername()));
         dto.setLikedCount(post.getLikedCount());
         dto.setDate(post.getDate());
         return dto;
+    }
+
+    public Long findUserByUsername(String username) {
+        User user = userRepository.findByUsername(username);
+        if (user != null) {
+            return user.getId();
+        } else {
+            // Handle the case where the user is not found
+            return null; // or throw an exception, or return a default value
+        }
+
     }
 
     public List<Post> getAllPostsSortedByPostId() {
@@ -127,7 +141,8 @@ public class PostService {
         for (Post post : randomPosts) {
             int likedCount = postRepository.getLikedCount(post.getId());
             post.setLikedCount(likedCount);
-            System.out.println(post.getLikedCount());
+
+            System.out.println(post.getId());
             System.out.println("ME thama post eka thule thiyana euwa"+ post.getCaption());
         }
 
@@ -136,10 +151,11 @@ public class PostService {
 
     public PostDto mapToDtoWithImages(Post post) {
         PostDto dto = mapToDto(post);
-        System.out.println(post);
         // Retrieve image locations for the post and set them in the DTO
         List<String> imageLocations = Arrays.asList(post.getLocation().split(","));
         dto.setImageLocations(imageLocations);
+        dto.setUserID(findUserByUsername(post.getUsername()));
+        System.out.println(post.getId());
         return dto;
     }
 
@@ -154,9 +170,9 @@ public class PostService {
 
 
     public ReactDto recordReactOnPost(React react) {
+        Long userId = userRepository.getUserIdByEmail(react.getEmail());
         if ("liked".equals(react.getLiked())) {
-//            notificationService.createNotification()
-            createOrUpdateLikedRelationship(react.getUserID(), react.getPostID());
+            createOrUpdateLikedRelationship(userId, react.getPostID() );
         } else if ("disliked".equals(react.getLiked())) {
             removeLikedRelationship(react.getUserID(), react.getPostID());
         }
@@ -164,10 +180,20 @@ public class PostService {
         return new ReactDto(react.getUserID(), react.getLiked(), react.getPostID());
     }
 
-    public void createOrUpdateLikedRelationship(Long userID, Long postID) {
+    public void createOrUpdateLikedRelationship(Long userID, Long postID ){
         User user = userRepository.findById(userID)
                 .orElseThrow(() -> new EntityNotFoundException("User not found with ID: " + userID));
         System.out.println("like in post service wada");
+         String receiverUsername = postRepository.getPostOwner(postID);
+
+        User receiver = userRepository.findByUsername(receiverUsername);
+
+        Optional <User> senderOP = userRepository.findById(userID);
+
+        User sender = senderOP.orElse(new User());
+
+        String details = " liked " ;
+        notificationService.createNotification(sender, receiver, details);
         user.likesPost(userID, postID);
         userRepository.save(user);
     }
@@ -177,6 +203,16 @@ public class PostService {
         System.out.println("dislike in post service wada");
         user.unlikes(userID, postID);
         userRepository.save(user);
+    }
+
+    public CommnetDto writeComment( Commnet newComment){
+        Long postId = newComment.getPostID();
+        Long userID = newComment.getUserID();
+        String commentText = newComment.getCommnetText();
+
+        postRepository.createCommnet( postId, userID, commentText );
+        return null;
+
     }
 
     public long getPostCount() {

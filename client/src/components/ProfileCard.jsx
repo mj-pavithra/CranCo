@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import "../css/ProfileCards.css";
 import { Link } from "react-router-dom";
 import UpdateCoverPhoto from "./UpdateCoverPhoto";
+import UpdateProPic from "./UpdateProPic";
 
 
 const ProfileCard = ({ coverPhoto, profilePhoto, editDP, profileName, likedPage1, likedPage2, likedPage3, likedPageCount, RalionshipState, addFriend , isOwner }) => {
@@ -16,11 +17,16 @@ const ProfileCard = ({ coverPhoto, profilePhoto, editDP, profileName, likedPage1
     };
 
     const [coverPhotoUploaderVisible, setCoverPhotoUploaderVisible] = useState(false);
+    
 
     const handleCoverPhotoUploader = () => {
         setCoverPhotoUploaderVisible(!coverPhotoUploaderVisible);
     }
-    
+    const [proPicUploaderVisible, setProPicUploaderVisible] = useState(false);
+
+    const handleProPicUploader = () => {
+        setProPicUploaderVisible(!proPicUploaderVisible);
+    }
   
     return (
    <div className="profileCard">
@@ -39,7 +45,16 @@ const ProfileCard = ({ coverPhoto, profilePhoto, editDP, profileName, likedPage1
        </div>
     <div className="profileCardmiddle">
         <img className="profilePhoto" src={onError(profilePhoto)}/>
-        {isOwner || <img className="editDP" alt="Error" src={onError(editDP)}/>}
+        {isOwner || 
+            (<div>
+                <img onClick={handleProPicUploader} className="editDP" alt="Error" src={onError(editDP)}/>
+                {proPicUploaderVisible && (
+                    <div className="updateProPic">
+                        <UpdateProPic />
+                    </div>
+                )}
+            </div>
+        )}
     </div>
     <div className="profileCardbottom">
         <h1 className="profileName">{profileName} </h1>
