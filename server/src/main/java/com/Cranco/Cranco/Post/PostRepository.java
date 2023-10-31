@@ -22,6 +22,9 @@ public interface PostRepository extends Neo4jRepository<Post, Long> {
     @Query("MATCH (p:POST) RETURN count(p) as PostCount")
     long getPostCount();
 
+    @Query("MATCH (post:POST) WHERE post.postId CONTAINS $postId RETURN post")
+    List<Post> searchPosts(long postId);
+
 //    List<Post> searchPosts(String caption);
 }
 

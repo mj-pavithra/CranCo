@@ -183,6 +183,10 @@ public class PostService {
         return postRepository.getPostCount();
     }
 
+    public List<Post> searchPosts(long postId) {
+        return postRepository.searchPosts(postId);
+    }
+
 //    public List<Post> searchPosts(String caption) {
 //        return postRepository.searchPosts(caption);
 //    }

@@ -72,6 +72,16 @@ public class ComplaintController {
         return complaintService.getComplaintCount();
     }
 
+    @GetMapping("/search/{reason}")
+    public ResponseEntity<List<Complaint>> searchComplaints(@PathVariable long reason) {
+        try {
+            List<Complaint> complaintList = complaintService.searchComplaints(reason);
+            return ResponseEntity.ok(complaintList);
+        } catch (Exception ex) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
 //    @GetMapping("/search/{reason}")
 //    public List<Complaint> searchComplaints(@PathVariable String reason) {
 //        return complaintService.searchComplaints(reason);

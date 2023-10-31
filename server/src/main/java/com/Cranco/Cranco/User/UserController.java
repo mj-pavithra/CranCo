@@ -61,6 +61,16 @@ public class UserController {
         return userService.getUserCount();
     }
 
+    @GetMapping("/search/{username}")
+    public ResponseEntity<List<User>> searchUsers(@PathVariable long username) {
+        try {
+            List<User> userList = userService.searchUsers(username);
+            return ResponseEntity.ok(userList);
+        } catch (Exception ex) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
 //    @GetMapping("/search/{username")
 //    public ResponseEntity<List<User>> searchUsers(@PathVariable String username) {
 //        try {

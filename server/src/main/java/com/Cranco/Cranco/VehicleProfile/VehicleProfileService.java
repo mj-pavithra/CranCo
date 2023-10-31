@@ -46,6 +46,10 @@ public class VehicleProfileService {
         return vehicleProfileRepository.getVehicleProfileCount();
     }
 
+    public List<VehicleProfile> searchVehicleProfiles(long vehicleProfileName) {
+        return vehicleProfileRepository.searchVehicleProfiles(vehicleProfileName);
+    }
+
 //    public List<VehicleProfile> searchVehicleProfiles(String vehicleProfileName) {
 //        return vehicleProfileRepository.searchVehicleProfiles(vehicleProfileName);
 //    }
