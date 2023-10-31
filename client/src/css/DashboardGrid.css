@@ -12,16 +12,18 @@
     background-color: #ccc;
     padding: 20px;
     text-align: center;
-    font-size: 18px;
+    font-size: 20px;
     border-radius: 5px;
   }
   
   .row2 {
     grid-column: span 2;
+    height: 100px;
   }
   
   .row3 {
     grid-column: span 4;
+    height: 230px;
   }
   /* Add a class to your custom styles for the Link */
 .link-unstyled {
