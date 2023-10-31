@@ -3,8 +3,10 @@ package com.Cranco.Cranco.User;
 import com.Cranco.Cranco.Post.Post;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -39,6 +41,23 @@ public class UserController {
         } else {
             return ResponseEntity.notFound().build();
         }
+    }
+    @PostMapping(value = "/uploadCoverPhoto", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public ResponseEntity<String> updateCoverphoto(@RequestPart("coverPhoto") MultipartFile coverPhoto,
+                                                   @RequestPart("userId") String userIdString) {
+        Long userId = Long.parseLong(userIdString);
+        String result = userService.updateCoverphoto(coverPhoto, userId);
+        System.out.println(result);
+        return ResponseEntity.ok(result);
+    }
+
+    @PostMapping(value = "/uploadProPic", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public ResponseEntity<String> updateProPic(@RequestPart("proPic") MultipartFile proPic,
+                                                   @RequestPart("userId") String userIdString) {
+        Long userId = Long.parseLong(userIdString);
+        String result = userService.updatePropic(proPic, userId);
+        System.out.println(result);
+        return ResponseEntity.ok(result);
     }
 
     @GetMapping("/validate-token")

@@ -1,5 +1,7 @@
 package com.Cranco.Cranco.Post;
 
+import lombok.Getter;
+
 import java.util.List;
 public class CreatePost {
     private String postId;
@@ -9,6 +11,10 @@ public class CreatePost {
     private String username;
     private List<String> imageURL ;
     public int likedCount;
+    private String type;
+    private String visibility;
+
+
 
     public String getPostId() {
         return postId;
@@ -36,6 +42,14 @@ public class CreatePost {
     public String getCaption() {
         return caption;
     }
+    public String getVisibility() {
+        return visibility;
+    }
+
+    public String getType() {
+        return type;
+    }
+
 
     public void setCaption(String caption) {
         this.caption = caption;
@@ -55,6 +69,13 @@ public class CreatePost {
 
     public void setImageURL(List<String> imageURL) {
         this.imageURL = imageURL;
+    }
+    public void setVisibility(String visibility) {
+        this.visibility = visibility;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }
 
@@ -89,22 +110,30 @@ class Image {
     }
 }
 
+@Getter
 class React{
     private Long userID;
     private String Liked;
     private Long postID;
+    private String PostOwner;
+    private String email;
+    private String postType;
+    private String visibility;
 
-
-    public Long getUserID() {
-        return userID;
+    public String getEmail() {
+        return email;
     }
 
-    public String getLiked() {
-        return Liked;
+    public void setPostType(String postType) {
+        this.postType = postType;
     }
 
-    public Long getPostID() {
-        return postID;
+    public void setVisibility(String visibility) {
+        this.visibility = visibility;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public void setUserID(Long userID) {
@@ -118,9 +147,15 @@ class React{
     public void setPostID(Long postID) {
         this.postID = postID;
     }
+
+
+    public void setPostOwner(String postOwner) {
+        PostOwner = postOwner;
+    }
+
 }
 
-class WriteCommnet{
+class Commnet{
     private Long postID;
     private String commnetText;
     private Long userID;
@@ -130,13 +165,14 @@ class WriteCommnet{
         return postID;
     }
 
-    public String getCommnetText(String comment) {
+    public String getCommnetText() {
         return commnetText;
     }
 
     public Long getUserID() {
         return userID;
     }
+
 
     public void setPostID(Long postID) {
         this.postID = postID;
@@ -148,5 +184,8 @@ class WriteCommnet{
 
     public void setUserID(Long userID) {
         this.userID = userID;
+    }
+
+    public void setPostOwnerID(Long postOwnerID) {
     }
 }

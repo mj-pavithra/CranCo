@@ -16,17 +16,22 @@ import Carousel from "./Carousel";
 import Hr from "./Hr";
 import Icon from "./Icon";
 import PostMore from "./PostMore";
+import Cookies from "js-cookie";
 
 const Post = ({
   isOwner,
   username,
+  postId,
+  postOwnerID,
   caption,
   imageLocations,
   date,
   images,
   time,
-  id,
   likeCount,
+  commentCount,
+  onDeletePost,
+  type,
 }) => {
   const [writeComment, setWriteComment] = useState(false);
   const postUsername = username || "Default Username";
@@ -36,6 +41,12 @@ const Post = ({
   const [Comment, setCommentText] = useState("");
   const [contentChanged, setContentChanged] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const postlikeCount = likeCount || 0;
+  const postCommentCount = commentCount || 0;
+  const postID = postId || 0;
+  const postType = type || "regular";
+
+  const [submissionStatus, setSubmissionStatus] = useState(''); // 'success', 'error', or ''
 
 
   const commentUsername = username || "Default Username";
@@ -43,8 +54,11 @@ const Post = ({
   const commentDate = date || "January 1, 2023";
   const commentTime = time || "12:00 AM";
 
+
+  console.log("post ID ",postID);
+  console.log("post owner  ", postOwnerID);
+  console.log(" likecount",postlikeCount);
   function appendToLocalhost(arr) {
-    console.log(arr)
     // Use the map() function to process each element in the array
     const newArray = arr.map((element) => {
       // Remove square brackets from the file name using a regular expression
@@ -60,12 +74,13 @@ const Post = ({
   const handleLike = async () => {
     updateLiked(!liked);
 
-    console.log("Like action triggered", id);
+    console.log("Like action triggered", postID);
+    console.log("Like action triggered", Cookies.get("user_id"));
     // Prepare the data to send in the request
     const requestData = {
-      userId: 43, // Replace with the actual user ID
+      userEmail: Cookies.get("user_email"), // Replace with the actual user ID
       liked: !liked, // Toggle the liked status
-      postID: id, // Replace with the actual post ID
+      postID: postID, // Replace with the actual post ID
     };
 
     try {
@@ -74,7 +89,6 @@ const Post = ({
         requestData
       );
 
-      console.log("Like action response:", response.data);
       // You can handle the response from the server here, if needed.
     } catch (error) {
       console.error("Error sending like action:", error);
@@ -82,12 +96,12 @@ const Post = ({
   };
 
   const handleCommneting = async () => {
-    console.log("Comment action triggered", id);
+    console.log("Comment action triggered", postID);
     // Prepare the data to send in the request
     const requestData = {
-      userId: 43, // Replace with the actual user ID
+      userId: Cookies.get("user_id"), // Replace with the actual user ID
       comment: Comment, // Toggle the liked status
-      postID: id, // Replace with the actual post ID
+      postID: postID, // Replace with the actual post ID
     };
 
     try {
@@ -97,9 +111,13 @@ const Post = ({
       );
 
       console.log("Comment action response:", response.data);
+      setWriteComment(false);
+      setSubmissionStatus('success');
       // You can handle the response from the server here, if needed.
     } catch (error) {
       console.error("Error sending comment action:", error);
+      setWriteComment(true);
+      setSubmissionStatus('error');
     }
   };
 
@@ -177,7 +195,7 @@ const Post = ({
 
   return (
     <>
-      <div className="post">
+      <div className={`post ${postType === "lost" ? 'lost-post' : ''}`}>
         {/* top section */}
         <div className="post-back">
           <div className="post-header gap-3">
@@ -209,7 +227,7 @@ const Post = ({
                 />
                 {more && (
                   <div className="popUp-div">
-                    <PostMore />
+                    <PostMore postUsername={postUsername} postID ={postID} onDeletePost ={onDeletePost} />
                   </div>
                 )}
               </div>
@@ -235,13 +253,14 @@ const Post = ({
             <div className="post-heart-div">
               <FontAwesomeIcon className="post-heart-icon" icon={faHeart} />
             </div>
-            <span className="fw-light txt-09">{`${liked === true ? "You and " : ""
-              } ${likeCount} ${liked === true ? " others" : ""}`}</span>
+            <span className="fw-light txt-09">  {`${liked === true ? "You and " : ""} ${postlikeCount?.toString() ?? "0"} ${liked === true ? " others" : ""}`}
+  
+              </span>
           </div>
 
           <div className="post-header txt-09 gap-2">
             <div className="">
-              <span>5</span> comments
+              <span>{postCommentCount}</span> comments
             </div>
           </div>
         </div>
@@ -275,15 +294,15 @@ const Post = ({
             <div className="text-medium">Share</div>
           </div>
         </div>
-        <div className="comment-section">
+        <div className="commentSection2">
           {writeComment && (
             <div className="post-popup">
-              <div>
+              <div className="commentSection2">
                 <div className="cage-title">
                   <b>Add your thoughts</b>
                 </div>
                 <textarea
-                  className="cage-textarea"
+                  className={`cage-textarea2 ${submissionStatus === 'success' ? 'success-background' : submissionStatus === 'error' ? 'error-background' : ''}`}
                   placeholder="your expressions will make or brake harts...!" // name should be passed.
                   value={Comment}
                   onChange={handleCommentTextChange}
@@ -298,7 +317,7 @@ const Post = ({
                   </button>
                 </div>
               </div>
-              <div className="d-flex flex-column ">
+              {/* <div className="d-flex flex-column ">
                 <Link className="link-unstyled" to="/user">
                   <div className="fw-bold commentUsename" >{commentUsername}</div>
                 </Link>
@@ -306,7 +325,7 @@ const Post = ({
                   {commentDate} {commentTime}
                 </div>
                 <div className="post-time fw-light commentText">{commentText}</div>
-              </div>
+              </div> */}
             </div>
 
 

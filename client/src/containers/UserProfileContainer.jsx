@@ -10,6 +10,7 @@ import LinkToProfile from "../functions/LinkToProfile";
 import axios from "axios";
 import debounce from "lodash/debounce";
 import AddNewUpdate from "../components/AddNewUpdate";
+import configuredAxios from "../AxiosConfig";
 
 
     const userFriendsData = [
@@ -109,7 +110,7 @@ const UserProfileContainer = ({data,isOwner}) => {
     useEffect(() => {
       const loadFeed = async () => {
         try {
-          const response = await axios.get('http://localhost:8081/api/posts/feed');
+          const response = await configuredAxios.get('/api/posts/feed');
           console.log("Data received:", response.data);
           setPostData(response.data);
         } catch (error) {
@@ -125,7 +126,7 @@ const UserProfileContainer = ({data,isOwner}) => {
   
       try {
         setLoading(true);
-        const response = await axios.get('http://localhost:8081/api/posts/feed');
+        const response = await configuredAxios.get('/api/posts/feed');
         console.log("Additional data received:", response.data);
         setPostData((prevData) => [...prevData, ...response.data]);
       } catch (error) {
