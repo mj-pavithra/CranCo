@@ -9,6 +9,17 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 function UserSidebar({ image, username }) {
+  document.addEventListener("DOMContentLoaded", function () {
+    // Get a reference to the button element by its id
+    const modelASoulButton = document.getElementById("modelASoulButton");
+
+    // Add a click event listener to the button
+    modelASoulButton.addEventListener("click", function () {
+      // Navigate to the provided link
+      window.location.href = "https://amayawedamulla.itch.io/cranco";
+    });
+  });
+
   return (
     <div className="side-bar">
       <Link className="link-unstyled" to="/myprofile">
@@ -42,9 +53,14 @@ function UserSidebar({ image, username }) {
         <br />
         <br />
         <br />
-        {/* <button className="model-a-soul">
-          <b>Model a Soul</b>
-        </button> */}
+        <button id="modelASoulButton" className="model-a-soul">
+          <a
+            className="modelasoul"
+            href="https://amayawedamulla.itch.io/cranco"
+          >
+            <b>Model a Soul</b>
+          </a>
+        </button>
       </div>
     </div>
   );
