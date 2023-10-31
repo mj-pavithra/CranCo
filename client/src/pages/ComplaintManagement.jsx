@@ -6,17 +6,18 @@ import AdminDashboardHeader from "../components/AdminDashboardHeader";
 import "../css/DashboardMainContainer.css";
 import AdminSearchBar from "../components/AdminSearchBar";
 import Frame160 from "../components/Frame160"; 
+import { Link } from "react-router-dom"; 
 //import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const optionList = [
-  { img1: "/assets/dashboard icon.png", text1: "Dashboard"},
-  { img1: "/assets/user icon.png", text1: "Users"},
-  { img1: "/assets/complaint icon.png", text1: "Complaints",},
-  { img1: "/assets/anlytics icon.png", text1: "Analytics" },
-  { img1: "/assets/post icon.png", text1: "Posts",},
-  { img1: "/assets/page icon.png", text1: "Pages",},
-  { img1: "/assets/user feedback icon.png", text1: "User Feedback" },
-  { img1: "/assets/settings icon.png", text1: "Settings" },
+  { img1: "/assets/dashboard icon.png", text1: <Link to="/admin/dashboard">Dashboard</Link>},
+  { img1: "/assets/user icon.png", text1: <Link to="/admin/usermanagement">Users</Link>},
+  { img1: "/assets/post icon.png", text1: <Link to="/admin/postmanagement">Posts</Link>},
+  { img1: "/assets/page icon.png", text1: <Link to="/admin/pagemanagement">Pages</Link>},
+  { img1: "/assets/complaint icon.png", text1: <Link to="/complaints" style={{ color: "black", textDecoration: "none" }}>Complaints</Link>,},
+  // { img1: "/assets/anlytics icon.png", text1: "Analytics" },
+  // { img1: "/assets/user feedback icon.png", text1: "User Feedback" },
+  // { img1: "/assets/settings icon.png", text1: "Settings" },
 ];
 
 const tableHeader = {
