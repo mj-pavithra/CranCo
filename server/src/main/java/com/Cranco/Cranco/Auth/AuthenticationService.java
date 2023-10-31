@@ -38,7 +38,14 @@ public class AuthenticationService {
         var user = User.builder().username(request.getUsername()).email(request.getEmail()).password(passwordEncoder.encode(request.getPassword())).role(Role.USER).build();
         repository.save(user);
         var jwtToken = jwtService.generateToken(user);
-        return AuthenticationResponse.builder().token(jwtToken).build();
+        return AuthenticationResponse
+                .builder()
+                .token(jwtToken)
+                .refreshToken((jwtToken))
+                .username(user.getRealUsername())
+                .userId(user.getId())
+                .email(user.getEmail())
+                .build();
     }
 
     public void changePassword(String userEmail, String currentPassword, String newPassword) throws Exception {

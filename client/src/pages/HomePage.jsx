@@ -12,14 +12,14 @@ const HomePage = () => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    console.log("saved token is : ", Cookies.get("token"))
-    
+    console.log("saved token is : ", Cookies.get("token"));
+
     const loadFeed = async () => {
       try {
-        const response = await configuredAxios.get('/api/posts/feed');
-        console.log("like count is : ", postData.likeCount );
+        const response = await configuredAxios.get("/api/posts/feed");
+        console.log("like count is : ", postData.likeCount);
         console.log("Data received:", response.data);
-        
+
         setPostData(response.data);
       } catch (error) {
         console.error("Error receiving data:", error);
@@ -29,13 +29,13 @@ const HomePage = () => {
     loadFeed();
   }, []);
 
-console.log("post data is : ", postData);
+  console.log("post data is : ", postData);
   const loadMoreFeed = async () => {
     if (loading) return; // Prevent multiple requests
 
     try {
       setLoading(true);
-      const response = await configuredAxios.get('/api/posts/feed');
+      const response = await configuredAxios.get("/api/posts/feed");
       console.log("Additional data received:", response.data);
       setPostData((prevData) => [...prevData, ...response.data]);
     } catch (error) {
@@ -45,19 +45,28 @@ console.log("post data is : ", postData);
     }
   };
 
-  
   const handleDeletePost = (postID) => {
     // Implement the logic to update the posts array without the deleted post
-    setPostData((prevPosts) => prevPosts.filter((post) => post.postID !== postID));
+    setPostData((prevPosts) =>
+      prevPosts.filter((post) => post.postID !== postID)
+    );
   };
-  
-  
 
   useEffect(() => {
+    if (Cookies.get("user_name") === "" || Cookies.get("token") === "") {
+      window.location.href = "http://localhost:3000/login";
+      console.log("token or username is null");
+      console.log("username", Cookies.get("user_name"));
+      console.log("token", Cookies.get("token"));
+    }
+
     if (mainContainerRef.current) {
       const handleScroll = debounce(() => {
         const container = mainContainerRef.current;
-        if (container.scrollTop + container.clientHeight >= container.scrollHeight) {
+        if (
+          container.scrollTop + container.clientHeight >=
+          container.scrollHeight
+        ) {
           loadMoreFeed();
         }
       }, 2000); // Adjust the debounce delay as needed
@@ -71,11 +80,6 @@ console.log("post data is : ", postData);
     }
   }, [loadMoreFeed]);
 
-
-  if (Cookies.get("user_name") === "" || Cookies.get("token") === "") {
-    window.location.href = "http://localhost:3000/login";
-  }
-
   return (
     <>
       <MainContainer ref={mainContainerRef}>
@@ -83,7 +87,6 @@ console.log("post data is : ", postData);
           <AddNewUpdate />
         </div>
         {postData.map((post, index) => (
-          
           <Post
             key={index}
             isOwner="no"
