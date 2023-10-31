@@ -19,7 +19,7 @@ import java.util.Map;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:3000")
-@RequestMapping("/api/posts")
+@RequestMapping("/api/v1/auth/posts")
 @AllArgsConstructor
 public class PostController {
     private final PostService postService;
@@ -153,4 +153,14 @@ public class PostController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
+
+    @GetMapping("/count")
+    public long getPostCount() {
+        return postService.getPostCount();
+    }
+
+//    @GetMapping("/search/{caption}")
+//    public List<Post> searchPosts(@PathVariable String caption) {
+//        return postService.searchPosts(caption);
+//    }
 }

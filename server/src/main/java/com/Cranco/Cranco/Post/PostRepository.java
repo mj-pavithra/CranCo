@@ -32,5 +32,9 @@ public interface PostRepository extends Neo4jRepository<Post, Long> {
     @Query("MATCH (p:POST {postId: $postID})\n" +
             "RETURN p.username\n")
     String getPostOwner(@Param("postID") Long postID);
+
+    @Query("MATCH (p:POST) RETURN count(p) as PostCount")
+    long getPostCount();
+
 }
 

@@ -215,4 +215,8 @@ public class PostService {
 
     }
 
+    public long getPostCount() {
+        return postRepository.getPostCount();
+    }
+
 }

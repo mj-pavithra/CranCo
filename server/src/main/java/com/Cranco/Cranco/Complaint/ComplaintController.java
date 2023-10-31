@@ -10,7 +10,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/api/v1/complaints")
+@RequestMapping("/api/v1/auth/complaints")
 public class ComplaintController {
 
     private final ComplaintService complaintService;
@@ -66,4 +66,19 @@ public class ComplaintController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
+
+    @GetMapping("/count")
+    public long getComplaintsCount() {
+        return complaintService.getComplaintCount();
+    }
+
+//    @GetMapping("/search/{reason}")
+//    public List<Complaint> searchComplaints(@PathVariable String reason) {
+//        return complaintService.searchComplaints(reason);
+//    }
+
+    //    @GetMapping("/count")
+    //    public long countComplaintsByreportId(@RequestParam String reportId) {
+    //        return complaintService.countComplaintsByreportId(reportId);
+    //    }
 }

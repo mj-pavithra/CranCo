@@ -1,5 +1,6 @@
 package com.Cranco.Cranco.User;
 
+import com.Cranco.Cranco.Post.Post;
 import com.Cranco.Cranco.Post.PostRepository;
 import com.Cranco.Cranco.Notification.Notification;
 import jakarta.transaction.Transactional;
@@ -12,6 +13,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Objects;
 import java.util.UUID;
+
+import java.util.List;
 
 @Service
 @Transactional
@@ -124,5 +127,19 @@ public class UserService {
         return ": PP success fully updated";
     }
 
+    public List<User> getAllUsersSortedByuserId() {
+        return userRepository.findAllByOrderByUserIdASC();
+    }
 
+    public long getUserCount() {
+        return userRepository.getUserCount();
+    }
+
+//    public List<User> searchUsers(String username) {
+//        return userRepository.searchUsers(username);
+//    }
+
+//    public long countUsersByUserId(String userId) {
+//        return userRepository.countUsersByUserId(userId);
+//    }
 }

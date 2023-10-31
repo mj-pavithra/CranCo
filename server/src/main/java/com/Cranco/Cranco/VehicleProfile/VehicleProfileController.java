@@ -1,5 +1,7 @@
 package com.Cranco.Cranco.VehicleProfile;
 
+import com.Cranco.Cranco.User.User;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -7,7 +9,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/api/v1/vehicle-profiles")
+@RequestMapping("/api/v1/auth/vehicle-profiles")
 public class VehicleProfileController {
     private final VehicleProfileService vehicleProfileService;
 
@@ -38,6 +40,16 @@ public class VehicleProfileController {
         return ResponseEntity.ok(vehicleProfiles);
     }
 
+    @GetMapping("/all")
+    public ResponseEntity<List<VehicleProfile>> getAllVehicleProfilesSortedByvehicleProfileId() {
+        try {
+            List<VehicleProfile> vehicleProfilesList = vehicleProfileService.getAllVehiceProfilesSortedByvehicleProfileId();
+            return ResponseEntity.ok(vehicleProfilesList);
+        } catch (Exception ex) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
     @PutMapping("/{vehicleProfileId}")
     public ResponseEntity<VehicleProfile> updateVehicleProfile(
             @PathVariable Long vehicleProfileId,
@@ -64,5 +76,14 @@ public class VehicleProfileController {
 //            @RequestParam
 //    ){
 //        return "success";
+
+    @GetMapping("/count")
+    public long getVehicleProfileCount() {
+        return vehicleProfileService.getVehicleProfileCount();
+    }
+
+//    @GetMapping("/search/{vehicleProfileName}")
+//    public List<VehicleProfile> searchVehicleProfiles(@PathVariable String vehicleProfileName) {
+//        return vehicleProfileService.searchVehicleProfiles(vehicleProfileName);
 //    }
 }

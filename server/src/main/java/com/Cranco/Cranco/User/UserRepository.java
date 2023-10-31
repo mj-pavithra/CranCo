@@ -5,6 +5,7 @@ import org.springframework.data.neo4j.repository.query.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 
 @Repository
@@ -23,4 +24,15 @@ public interface UserRepository extends Neo4jRepository<User, Long> {
     @Query("MATCH (u:USER {id:@userID}) SET n.profile_picture = $profile_picture ")
     Optional<User> updateProPic(@Param("userID") Long userID, @Param("profile_picture") String proPic);
 
+    //@Query("MATCH (c:USER)\n" + "RETURN c;")
+    @Query("MATCH (user:USER) RETURN user.username AS username, user.email AS email, user.role AS role")
+    List<User> findAllByOrderByUserIdASC();
+
+    @Query("MATCH (u:USER) RETURN count(u) as UserCount")
+    long getUserCount();
+
+//    List<User> searchUsers(String );
+
+//    @Query("MATCH (u:User) WHERE u.userId = $userId RETURN count(u)")
+//    long countUsersByUserId(@Param("userId") String userId);
 }

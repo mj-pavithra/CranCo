@@ -6,7 +6,7 @@ import "../css/ReportReasonPopup.css";
 
 
 const ReportReasonPopup = ({ postId }) => {
-    const apiUrl = 'http://localhost:8081/api/complaints/'; // Change this to your API URL
+    const apiUrl = 'http://localhost:8081/api/v1/auth/complaints/'; // API URL
     
     const [popupMessage, setPopupMessage] = useState('');
     const [showPopup, setShowPopup] = useState(false);

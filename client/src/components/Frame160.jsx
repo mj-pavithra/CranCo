@@ -5,7 +5,7 @@ import axios from 'axios';
 //delete report record
 const handleDeletePost = async (reportId) => {
     try {
-      await axios.delete(`http://localhost:8081/api/v1/complaints/${reportId}`);
+      await axios.delete(`http://localhost:8081/api/v1/auth/complaints/${reportId}`);
         alert("Post Deleted");
         window.location.reload();
     } catch (error) {
