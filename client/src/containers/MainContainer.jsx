@@ -13,12 +13,12 @@ const MainContainer = (props) => {
     username: "",
   });
   const pagesData = [
-    { name: "Page 1", imgUrl: "/assets/audir8.jpeg", linkto: "/vehiclespageownersview" },
-    { name: "Page 2", imgUrl: "/assets/audir8.jpeg", linkto: "/vehiclespageownersview" },
-    { name: "Page 3", imgUrl: "/assets/audir8.jpeg", linkto: "/vehiclespageownersview" },
-    { name: "Page 4", imgUrl: "/assets/audir8.jpeg", linkto: "/vehiclespageownersview" },
-    { name: "Page 5", imgUrl: "/assets/audir8.jpeg", linkto: "/vehiclespageownersview" },
-    { name: "Page 6", imgUrl: "/assets/audir8.jpeg", linkto: "/vehiclespageownersview" },
+    { name: "Black Panther", imgUrl: "/assets/audir8.jpeg", linkto: "/vehiclespageownersview" },
+    { name: "Dam Rajini", imgUrl: "/assets/bus4.jpeg", linkto: "/vehiclespageownersview" },
+    { name: "Doge Viper", imgUrl: "/assets/coverphoto.jpeg", linkto: "/vehiclespageownersview" },
+    { name: "Bently GT", imgUrl: "/assets/car_img_3.jpg", linkto: "/vehiclespageownersview" },
+    { name: "AMG GT", imgUrl: "/assets/car_img_8.jpeg", linkto: "/vehiclespageownersview" },
+    { name: "Page 6", imgUrl: "/assets/coverphoto.jpeg", linkto: "/vehiclespageownersview" },
   ];
 
   const fetchUserData = () => {
