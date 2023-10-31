@@ -159,6 +159,16 @@ public class PostController {
         return postService.getPostCount();
     }
 
+    @GetMapping("/search/{postId}")
+    public ResponseEntity<List<Post>> searchPosts(@PathVariable long postId) {
+        try {
+            List<Post> postList = postService.searchPosts(postId);
+            return ResponseEntity.ok(postList);
+        } catch (Exception ex) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
 //    @GetMapping("/search/{caption}")
 //    public List<Post> searchPosts(@PathVariable String caption) {
 //        return postService.searchPosts(caption);

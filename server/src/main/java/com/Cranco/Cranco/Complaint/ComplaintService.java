@@ -38,6 +38,10 @@ public class ComplaintService {
         return complaintRepository.getComplaintCount();
     }
 
+    public List<Complaint> searchComplaints(long reason) {
+        return complaintRepository.searchComplaints(reason);
+    }
+
 //    public List<Complaint> searchComplaints(String search) {
 //        return complaintRepository.searchComplaints(search);
 //    }

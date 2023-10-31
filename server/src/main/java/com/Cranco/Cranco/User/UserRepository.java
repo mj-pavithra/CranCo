@@ -25,11 +25,14 @@ public interface UserRepository extends Neo4jRepository<User, Long> {
     Optional<User> updateProPic(@Param("userID") Long userID, @Param("profile_picture") String proPic);
 
     //@Query("MATCH (c:USER)\n" + "RETURN c;")
-    @Query("MATCH (user:USER) RETURN user.username AS username, user.email AS email, user.role AS role")
+    @Query("MATCH (user:USER) RETURN user")
     List<User> findAllByOrderByUserIdASC();
 
     @Query("MATCH (u:USER) RETURN count(u) as UserCount")
     long getUserCount();
+
+    @Query("MATCH (user:USER) WHERE user.username CONTAINS $username RETURN user")
+    List<User> searchUsers(long username);
 
 //    List<User> searchUsers(String );
 

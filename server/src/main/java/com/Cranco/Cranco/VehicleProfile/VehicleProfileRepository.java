@@ -31,6 +31,9 @@ public interface VehicleProfileRepository extends Neo4jRepository<VehicleProfile
     @Query("MATCH (v:VEHICLEPROFILE) RETURN count(v) as VehicleProfileCount")
     long getVehicleProfileCount();
 
+    @Query("MATCH (vehicleprofile:VEHICLEPROFILE) WHERE vehicleprofile.vehicleProfileName CONTAINS $vehcileProfileName RETURN vehicleprofile")
+    List<VehicleProfile> searchVehicleProfiles(long vehicleProfileName);
+
 //    List<VehicleProfile> searchVehicleProfiles(String );
 }
 

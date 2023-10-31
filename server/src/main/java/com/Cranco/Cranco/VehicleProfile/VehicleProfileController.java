@@ -82,6 +82,16 @@ public class VehicleProfileController {
         return vehicleProfileService.getVehicleProfileCount();
     }
 
+    @GetMapping("/search/{vehicleProfileName}")
+    public ResponseEntity<List<VehicleProfile>> searchVehicleProfiles(@PathVariable long vehicleProfileName) {
+        try {
+            List<VehicleProfile> vehicleProfileList = vehicleProfileService.searchVehicleProfiles(vehicleProfileName);
+            return ResponseEntity.ok(vehicleProfileList);
+        } catch (Exception ex) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
 //    @GetMapping("/search/{vehicleProfileName}")
 //    public List<VehicleProfile> searchVehicleProfiles(@PathVariable String vehicleProfileName) {
 //        return vehicleProfileService.searchVehicleProfiles(vehicleProfileName);
