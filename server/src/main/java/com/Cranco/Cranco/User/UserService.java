@@ -4,6 +4,7 @@ import com.Cranco.Cranco.Post.Post;
 import com.Cranco.Cranco.Post.PostRepository;
 import com.Cranco.Cranco.Notification.Notification;
 import jakarta.transaction.Transactional;
+import org.neo4j.cypherdsl.core.Use;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -253,6 +254,42 @@ public class UserService {
         }
 
         userRepository.followUser(userEmail, receiver.getEmail());
-        return new ResponseEntity<>("Follow request sent", HttpStatus.OK);
+        return new ResponseEntity<>("Followed successfully", HttpStatus.OK);
+    }
+
+    public ResponseEntity<String> unfollowUser(String receiverCredential) {
+        String userEmail = getLoggedUserEmail();
+        Optional<User> senderOpt = userRepository.findByEmail(userEmail);
+        if (senderOpt.isEmpty()) {
+            return new ResponseEntity<>("Sender no found", HttpStatus.BAD_REQUEST);
+        }
+
+        User receiver = findUser(receiverCredential);
+        if (receiver == null) {
+            return new ResponseEntity<>("Receiver no found", HttpStatus.BAD_REQUEST);
+        }
+
+        userRepository.unFollowUser(userEmail, receiver.getEmail());
+        return new ResponseEntity<>("unfollow done", HttpStatus.OK);
+    }
+
+    public List<User> getFollowings(){
+        String userEmail = getLoggedUserEmail();
+        Optional<User> senderOpt = userRepository.findByEmail(userEmail);
+        if (senderOpt.isEmpty()) {
+            return null;
+        }
+
+        return userRepository.getFollowings(userEmail);
+    }
+
+    public List<User> getFollowers(){
+        String userEmail = getLoggedUserEmail();
+        Optional<User> senderOpt = userRepository.findByEmail(userEmail);
+        if (senderOpt.isEmpty()) {
+            return null;
+        }
+
+        return userRepository.getFollowers(userEmail);
     }
 }

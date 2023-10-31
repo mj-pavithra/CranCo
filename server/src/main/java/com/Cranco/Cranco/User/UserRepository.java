@@ -12,6 +12,7 @@ import java.util.Optional;
 public interface UserRepository extends Neo4jRepository<User, Long> {
     @Query("MATCH (u:USER) WHERE u.email = $email RETURN u LIMIT 1")
     Optional<User> findByEmail(String email);
+
     User findByUsername(String username);
 
     Optional<User> findById(Long userID);
@@ -21,6 +22,7 @@ public interface UserRepository extends Neo4jRepository<User, Long> {
 
     @Query("MATCH (u:USER {id:@userID}) SET n.coverPhoto = $coverPhoto ")
     Optional<User> updateCoverPhoto(@Param("userID") Long userID, @Param("coverPhoto") String coverPhoto);
+
     @Query("MATCH (u:USER {id:@userID}) SET n.profile_picture = $profile_picture ")
     Optional<User> updateProPic(@Param("userID") Long userID, @Param("profile_picture") String proPic);
 
@@ -52,14 +54,12 @@ public interface UserRepository extends Neo4jRepository<User, Long> {
     @Query("MATCH (u1:USER {email: $email1})-[req:FRIEND]->( {email: $email2}) DELETE req")
     void unfriendUser(String email1, String email2);
 
-//todo
-    @Query("")
-List<String> getFollowings();
 
+    @Query("MATCH (n:USER {email: $email})-[:FOLLOW]->(p:USER) return p")
+    List<User> getFollowings(String email);
 
-//    todo
-    @Query("")
-    List<String> getFollowers();
+    @Query("MATCH (p:user)-[:FOLLOW]->(n:USER {email: $email}) return p")
+    List<User> getFollowers(String email);
 
     @Query("match (p:USER {email: $senderEmail}) match (d:USER {email: $receiverEmail}) merge (p)-[:FOLLOW]->(d)")
     void followUser(String userEmail, String email);
