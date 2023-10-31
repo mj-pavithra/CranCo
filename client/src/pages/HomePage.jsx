@@ -2,9 +2,9 @@ import React, { useState, useEffect, useRef } from "react";
 import Post from "../components/Post";
 import MainContainer from "../containers/MainContainer.jsx";
 import configuredAxios from "../AxiosConfig";
+import Cookies from "js-cookie";
 import debounce from "lodash/debounce";
 import AddNewUpdate from "../components/AddNewUpdate";
-import Cookies from "js-cookie";
 
 const HomePage = () => {
   const [postData, setPostData] = useState([]);
@@ -13,10 +13,13 @@ const HomePage = () => {
 
   useEffect(() => {
     console.log("saved token is : ", Cookies.get("token"))
+    
     const loadFeed = async () => {
       try {
         const response = await configuredAxios.get('/api/posts/feed');
+        console.log("like count is : ", postData.likeCount );
         console.log("Data received:", response.data);
+        
         setPostData(response.data);
       } catch (error) {
         console.error("Error receiving data:", error);
@@ -26,6 +29,7 @@ const HomePage = () => {
     loadFeed();
   }, []);
 
+console.log("post data is : ", postData);
   const loadMoreFeed = async () => {
     if (loading) return; // Prevent multiple requests
 
@@ -41,6 +45,11 @@ const HomePage = () => {
     }
   };
 
+  
+  const handleDeletePost = (postID) => {
+    // Implement the logic to update the posts array without the deleted post
+    setPostData((prevPosts) => prevPosts.filter((post) => post.postID !== postID));
+  };
   
   
 
@@ -62,9 +71,11 @@ const HomePage = () => {
     }
   }, [loadMoreFeed]);
 
+
   if (Cookies.get("user_name") === "" || Cookies.get("token") === "") {
     window.location.href = "http://localhost:3000/login";
   }
+
   return (
     <>
       <MainContainer ref={mainContainerRef}>
@@ -86,6 +97,8 @@ const HomePage = () => {
             likeCount={post.likeCount}
             commentCount={post.commentCount}
             postOwnerID={post.userID}
+            onDeletePost={handleDeletePost}
+            type={post.type}
           />
         ))}
         {loading && <div>Loading more...</div>}

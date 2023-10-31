@@ -34,6 +34,9 @@ public class PostController {
             @RequestParam("caption") String caption,
             @RequestParam("userId") String userIdString,
             @RequestParam("username") String username,
+            @RequestParam(value = "type", required = false) String postType,
+            @RequestParam(value = "visibility",required = false) String visibility,
+
 
             @RequestParam(value = "images", required = false) List<MultipartFile> images) {
         Long userId = Long.parseLong(userIdString);
@@ -46,6 +49,8 @@ public class PostController {
             System.out.println("No images received.");
         }
         CreatePost newPost = new CreatePost();
+        newPost.setType(postType);
+        newPost.setVisibility(visibility);
         newPost.setCaption(caption);
         newPost.setUserId(userId);
         newPost.setUsername(username);
@@ -86,15 +91,14 @@ public class PostController {
 
     @PutMapping("/liked")
     public ResponseEntity<ReactDto> RecordLike(
-            @RequestParam("userID") String userIdString,
             @RequestParam("liked") String liked,
+            @RequestParam("userEmail") String userEmail,
             @RequestParam("postID") String postIDString){
-        Long userID = Long.parseLong(userIdString);
         Long postID = Long.parseLong(postIDString);
 
         React newReact = new React();
         newReact.setLiked(liked);
-        newReact.setUserID(userID);
+        newReact.setEmail(userEmail);
         newReact.setPostID(postID);
         ReactDto react = postService.recordReactOnPost(newReact);
         return ResponseEntity.ok(react);

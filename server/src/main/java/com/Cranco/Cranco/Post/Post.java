@@ -24,6 +24,9 @@ public class Post {
     private String location;
     @Property("visibility")
     private String visibility;
+
+    @Property("type")
+    private String type;
     public Long postOwnerID;
     public int likedCount;
 
@@ -59,6 +62,10 @@ public class Post {
         return visibility;
     }
 
+    public String getType() {
+        return type;
+    }
+
     public void setId(Long postId) {
         this.postId = postId;
     }
@@ -89,7 +96,21 @@ public class Post {
     }
 
     public void setVisibility(String visibility) {
-        this.visibility = visibility;
+        if(visibility==null){
+            this.visibility ="public";
+        }
+        else {
+            this.visibility = visibility;
+        }
+    }
+
+    public void setType(String type) {
+        if(type==null){
+            this.type ="general";
+        }
+        else {
+            this.type = type;
+        }
     }
 
     public void setLikedCount(int likedCount) {

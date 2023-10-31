@@ -34,6 +34,11 @@
   user-select: none;
 }
 
+.lost-post {
+  background-color: #CD1818;
+}
+
+
 .post-padding {
   padding: 0px var(--inside-padding-lr);
 }

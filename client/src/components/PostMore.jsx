@@ -5,23 +5,28 @@ import configuredAxios from "../AxiosConfig";
 import "../css/PostMore.css";
 import Icon from "./Icon";
 import ReportReasonPopUp from "./ReportReasonPopup";
+import Cookies from "js-cookie";
 
 
 
 
-const PostMore = (post_ownwer_ID, postID) => {
+const PostMore = ({postUsername, postID, onDeletePost}) => {
+
+  const user_name = Cookies.get("user_name");
+  console.log("deleting post owner is  : ", postUsername);
+  console.log("Current user id is  : ", user_name);
 
   const deletePost = async () => {
     console.log("deleting post  : ", postID);
     try {
-      const response = await configuredAxios.get(`/api/posts/delete`, {
-        data: { postID: postID },
-      });
+      const response = await configuredAxios.delete(`/api/posts/delete/${postID}`);
       console.log("Data sent successfully:", response.data);
+      onDeletePost(postID);
     } catch (error) {
       console.error("Error sending data:", error);
     }
   };
+  
 
   const [reasonContent, setReasonContent] = useState(false);
 
@@ -51,13 +56,13 @@ const PostMore = (post_ownwer_ID, postID) => {
         <Icon icon={faSquareMinus}/>
         <p>Hide post</p>
       </div>
-      {/* {post_ownwer_ID === postID && ( */}
-        <div className="savePost color-red"
-        onClick={deletePost}>
-          <Icon icon={faTrashCan} />
-          <p>Delete post</p>
-        </div>
-      {/* )} */}
+      {postUsername === user_name && (
+  <div className="savePost color-red">
+    <Icon icon={faTrashCan} />
+    <p>Delete post</p>
+  </div>
+)}
+
 
     </div>
     </>

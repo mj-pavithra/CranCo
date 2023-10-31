@@ -15,6 +15,9 @@ public interface UserRepository extends Neo4jRepository<User, Long> {
 
     Optional<User> findById(Long userID);
 
+    @Query("MATCH (u:USER) WHERE u.email = $email RETURN u.id")
+    Long getUserIdByEmail(@Param("email") String email);
+
     @Query("MATCH (u:USER {id:@userID}) SET n.coverPhoto = $coverPhoto ")
     Optional<User> updateCoverPhoto(@Param("userID") Long userID, @Param("coverPhoto") String coverPhoto);
     @Query("MATCH (u:USER {id:@userID}) SET n.profile_picture = $profile_picture ")

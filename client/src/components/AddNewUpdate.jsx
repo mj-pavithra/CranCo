@@ -32,6 +32,8 @@ function AddNewUpdate() {
     postData.append("caption", caption);
     postData.append("userId", userId); 
     postData.append("username", username);
+    postData.append("visibility", "public");
+    postData.append("type", "regular");
 
     if (Array.isArray(images) && images.length > 0) {
       images.forEach((image, index) => {
@@ -203,11 +205,11 @@ function AddNewUpdate() {
             </div>
           </div>
         )}
-        {uploadVideo && (
+        {/* {uploadVideo && (
           <div className="post-popup">
             <PostVideoPopUpWindow onSubmit={handleDataSubmit} />
           </div>
-        )}
+        )} */}
       </div>
       <hr
         style={{

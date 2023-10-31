@@ -56,4 +56,13 @@ public class VehicleProfileController {
         this.vehicleProfileService.deleteVehicleProfile(vehicleProfileId);
         return ResponseEntity.noContent().build();
     }
+
+//    @PostMapping("/lost/{vehicleProfileId}")
+//    public String Lostvehicle(
+//            @PathVariable Long vehicleProfileId,
+//            @RequestParam String postText,
+//            @RequestParam
+//    ){
+//        return "success";
+//    }
 }

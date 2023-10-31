@@ -29,6 +29,8 @@ public class PostService {
         Post newPost = new Post();
         newPost.setUsername(request.getUsername());
         newPost.setCaption(request.getCaption());
+        newPost.setType(request.getType());
+        newPost.setVisibility(request.getVisibility());
 
         long uniquePostId = generateUniquePostId();
         List<String> imageLocations = new ArrayList<>();
@@ -51,8 +53,6 @@ public class PostService {
         Post savePost = postRepository.save(newPost);
         PostDto postDto = mapToDto(savePost);
         postDto.setImageLocations(imageLocations);
-
-
 
         return postDto;
     }
@@ -170,8 +170,9 @@ public class PostService {
 
 
     public ReactDto recordReactOnPost(React react) {
+        Long userId = userRepository.getUserIdByEmail(react.getEmail());
         if ("liked".equals(react.getLiked())) {
-            createOrUpdateLikedRelationship(react.getUserID(), react.getPostID() );
+            createOrUpdateLikedRelationship(userId, react.getPostID() );
         } else if ("disliked".equals(react.getLiked())) {
             removeLikedRelationship(react.getUserID(), react.getPostID());
         }

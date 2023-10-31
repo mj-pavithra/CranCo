@@ -15,6 +15,7 @@ public class PostDto {
     private int likeCount;
     private int commentCount;
     private String visibility;
+    private String type;
 
     public int getLikeCount() {
         return likeCount;
@@ -45,6 +46,10 @@ public class PostDto {
 
     public LocalDateTime getDate() {
         return date;
+    }
+
+    public String getType() {
+        return type;
     }
 
     public String getVisibility() {
@@ -81,6 +86,9 @@ public class PostDto {
         this.visibility = visibility;
     }
 
+    public void setType(String type) {
+        this.type = type;
+    }
 //    public void setImages(List<byte[]> images) { // Modify this setter method for images
 //        this.images = images;
 //    }

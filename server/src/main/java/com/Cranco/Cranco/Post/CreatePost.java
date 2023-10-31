@@ -11,6 +11,10 @@ public class CreatePost {
     private String username;
     private List<String> imageURL ;
     public int likedCount;
+    private String type;
+    private String visibility;
+
+
 
     public String getPostId() {
         return postId;
@@ -38,6 +42,14 @@ public class CreatePost {
     public String getCaption() {
         return caption;
     }
+    public String getVisibility() {
+        return visibility;
+    }
+
+    public String getType() {
+        return type;
+    }
+
 
     public void setCaption(String caption) {
         this.caption = caption;
@@ -57,6 +69,13 @@ public class CreatePost {
 
     public void setImageURL(List<String> imageURL) {
         this.imageURL = imageURL;
+    }
+    public void setVisibility(String visibility) {
+        this.visibility = visibility;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }
 
@@ -97,7 +116,25 @@ class React{
     private String Liked;
     private Long postID;
     private String PostOwner;
+    private String email;
+    private String postType;
+    private String visibility;
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setPostType(String postType) {
+        this.postType = postType;
+    }
+
+    public void setVisibility(String visibility) {
+        this.visibility = visibility;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
     public void setUserID(Long userID) {
         this.userID = userID;
@@ -115,6 +152,7 @@ class React{
     public void setPostOwner(String postOwner) {
         PostOwner = postOwner;
     }
+
 }
 
 class Commnet{
