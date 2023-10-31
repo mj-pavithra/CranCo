@@ -5,7 +5,7 @@ import axios from 'axios';
 //edit post
 const handleEditPost = async (postId) => {
     try {
-      await axios.edit(`http://localhost:8081/api/v1/posts/${postId}`);
+      await axios.edit(`http://localhost:8081/api/v1/auth/posts/${postId}`);
         alert("Post Deleted");
         window.location.reload();
     } catch (error) {
@@ -54,7 +54,7 @@ const Frame161 = ({ postList , tableHeader } ) => {
                 <th>{tableHeader.col2}</th>
                 <th>{tableHeader.col3}</th>
                 <th>{tableHeader.col4}</th>
-                <th>{tableHeader.col5}</th>
+                {/* <th>{tableHeader.col5}</th> */}
                 {/* <th>{tableHeader.col6}</th> */}
                 </tr>
             </thead>
@@ -63,10 +63,10 @@ const Frame161 = ({ postList , tableHeader } ) => {
                 <tr key={index}>
                     <td>{post.username}</td>
                     <td>{post.caption}</td>
-                    <td>{post.location}</td>
+                    {/* <td>{post.location}</td> */}
                     <td>{post.id}</td>
                     <td>
-                        <button onClick={() => confirmEditPost(post.postId)}>Edit Post</button>
+                        {/* //<button onClick={() => confirmEditPost(post.postId)}>Edit Post</button> */}
                         <button onClick={() => confirmDeletePost(post.postId)}>Delete Post</button>
                     </td>
                 </tr>

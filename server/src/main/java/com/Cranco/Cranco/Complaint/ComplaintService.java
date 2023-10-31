@@ -33,5 +33,17 @@ public class ComplaintService {
     public void deleteComplaint(Long reportId) {
         complaintRepository.deleteById(reportId);
     }
+
+    public long getComplaintCount() {
+        return complaintRepository.getComplaintCount();
+    }
+
+//    public List<Complaint> searchComplaints(String search) {
+//        return complaintRepository.searchComplaints(search);
+//    }
+
+//    public long countComplaintsByreportId(String reportId) {
+//        return complaintRepository.countComplaintsByreportId(reportId);
+//    }
 }
 

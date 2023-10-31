@@ -15,7 +15,13 @@ public interface PostRepository extends Neo4jRepository<Post, Long> {
     @Query("MATCH (:POST {postId: $postId})<-[r:LIKED]-() RETURN COUNT(r) AS likedCount")
     int getLikedCount(@Param("postId") Long postId);
     
-    @Query("MATCH (c:POST)\n" + "RETURN c;")
+    //@Query("MATCH (c:POST)\n" + "RETURN c;")
+    @Query("MATCH (post:POST) RETURN post.username AS username, post.caption AS caption, post.postId AS postId")
     List<Post> findAllByOrderByPostIdASC();
+
+    @Query("MATCH (p:POST) RETURN count(p) as PostCount")
+    long getPostCount();
+
+//    List<Post> searchPosts(String caption);
 }
 

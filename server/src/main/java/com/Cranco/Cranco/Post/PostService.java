@@ -179,4 +179,11 @@ public class PostService {
         userRepository.save(user);
     }
 
+    public long getPostCount() {
+        return postRepository.getPostCount();
+    }
+
+//    public List<Post> searchPosts(String caption) {
+//        return postRepository.searchPosts(caption);
+//    }
 }

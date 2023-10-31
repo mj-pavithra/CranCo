@@ -1,10 +1,13 @@
 package com.Cranco.Cranco.User;
 
+import com.Cranco.Cranco.Post.Post;
 import com.Cranco.Cranco.Post.PostRepository;
 import com.Cranco.Cranco.Notification.Notification;
 import jakarta.transaction.Transactional;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 @Transactional
@@ -61,5 +64,19 @@ public class UserService {
         return userRepository.findById(userId).orElse(null);
     }
 
+    public List<User> getAllUsersSortedByuserId() {
+        return userRepository.findAllByOrderByUserIdASC();
+    }
 
+    public long getUserCount() {
+        return userRepository.getUserCount();
+    }
+
+//    public List<User> searchUsers(String username) {
+//        return userRepository.searchUsers(username);
+//    }
+
+//    public long countUsersByUserId(String userId) {
+//        return userRepository.countUsersByUserId(userId);
+//    }
 }
