@@ -134,4 +134,9 @@ public class PostController {
     public long getPostCount() {
         return postService.getPostCount();
     }
+
+//    @GetMapping("/search/{caption}")
+//    public List<Post> searchPosts(@PathVariable String caption) {
+//        return postService.searchPosts(caption);
+//    }
 }

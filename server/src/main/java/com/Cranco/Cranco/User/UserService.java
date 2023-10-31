@@ -72,6 +72,10 @@ public class UserService {
         return userRepository.getUserCount();
     }
 
+//    public List<User> searchUsers(String username) {
+//        return userRepository.searchUsers(username);
+//    }
+
 //    public long countUsersByUserId(String userId) {
 //        return userRepository.countUsersByUserId(userId);
 //    }

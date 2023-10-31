@@ -21,6 +21,8 @@ public interface UserRepository extends Neo4jRepository<User, Long> {
     @Query("MATCH (u:USER) RETURN count(u) as UserCount")
     long getUserCount();
 
+//    List<User> searchUsers(String );
+
 //    @Query("MATCH (u:User) WHERE u.userId = $userId RETURN count(u)")
 //    long countUsersByUserId(@Param("userId") String userId);
 }

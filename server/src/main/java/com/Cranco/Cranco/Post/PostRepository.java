@@ -21,5 +21,7 @@ public interface PostRepository extends Neo4jRepository<Post, Long> {
 
     @Query("MATCH (p:POST) RETURN count(p) as PostCount")
     long getPostCount();
+
+//    List<Post> searchPosts(String caption);
 }
 

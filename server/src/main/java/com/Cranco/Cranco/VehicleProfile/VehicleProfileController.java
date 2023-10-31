@@ -73,4 +73,9 @@ public class VehicleProfileController {
     public long getVehicleProfileCount() {
         return vehicleProfileService.getVehicleProfileCount();
     }
+
+//    @GetMapping("/search/{vehicleProfileName}")
+//    public List<VehicleProfile> searchVehicleProfiles(@PathVariable String vehicleProfileName) {
+//        return vehicleProfileService.searchVehicleProfiles(vehicleProfileName);
+//    }
 }

@@ -17,6 +17,8 @@ public interface ComplaintRepository extends Neo4jRepository<Complaint, Long> {
     @Query("MATCH (c:Report) RETURN count(c) as ComplaintCount")
     long getComplaintCount();
 
+//    List<Complaint> searchComplaints(String search);
+
 //    @Query("MATCH (c:Report) WHERE c.reportId = $reportId RETURN count(c)")
 //    long countComplaintsByreportId(String reportId);
 }

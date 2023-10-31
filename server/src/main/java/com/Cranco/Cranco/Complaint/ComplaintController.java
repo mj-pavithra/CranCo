@@ -72,8 +72,13 @@ public class ComplaintController {
         return complaintService.getComplaintCount();
     }
 
-//    @GetMapping("/count")
-//    public long countComplaintsByreportId(@RequestParam String reportId) {
-//        return complaintService.countComplaintsByreportId(reportId);
+//    @GetMapping("/search/{reason}")
+//    public List<Complaint> searchComplaints(@PathVariable String reason) {
+//        return complaintService.searchComplaints(reason);
 //    }
+
+    //    @GetMapping("/count")
+    //    public long countComplaintsByreportId(@RequestParam String reportId) {
+    //        return complaintService.countComplaintsByreportId(reportId);
+    //    }
 }
