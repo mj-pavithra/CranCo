@@ -1,24 +1,26 @@
 import React, { useEffect, useState } from "react";
 import axios from 'axios';
+import AxiosConfig from '../AxiosConfig';
 import Frame135 from "../components/Frame135";
 import AdminDashboardHeader from "../components/AdminDashboardHeader";
 import "../css/DashboardMainContainer.css";
 import AdminSearchBar from "../components/AdminSearchBar";
-import Frame160 from "../components/Frame160";
+import Frame160 from "../components/Frame160"; 
+//import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const optionList = [
-  { img1: "/assets/home icon.png", text1: "Dashboard" },
-  { img1: "/assets/home icon.png", text1: "Users" },
-  { img1: "/assets/home icon.png", text1: "Content" },
-  { img1: "/assets/home icon.png", text1: "Analytics" },
-  { img1: "/assets/home icon.png", text1: "Posts" },
-  { img1: "/assets/home icon.png", text1: "Pages" },
-  { img1: "/assets/home icon.png", text1: "User Feedback" },
-  { img1: "/assets/home icon.png", text1: "Settings" },
+  { img1: "/assets/dashboard icon.png", text1: "Dashboard"},
+  { img1: "/assets/user icon.png", text1: "Users"},
+  { img1: "/assets/complaint icon.png", text1: "Complaints",},
+  { img1: "/assets/anlytics icon.png", text1: "Analytics" },
+  { img1: "/assets/post icon.png", text1: "Posts",},
+  { img1: "/assets/page icon.png", text1: "Pages",},
+  { img1: "/assets/user feedback icon.png", text1: "User Feedback" },
+  { img1: "/assets/settings icon.png", text1: "Settings" },
 ];
 
 const tableHeader = {
-  tableTitle: "Complaint List",
+  tableTitle: "Total Complaints Made For Posts",
   col1: "Report ID",
   col2: "Post ID",
   col3: "Reason",
@@ -34,7 +36,7 @@ const DashboardMainContainer = () => {
   const fetchData = async () => {
     try {
       // Make a GET request to your API endpoint
-      const response = await axios.get('http://localhost:8081/api/v1/auth/complaints/all');
+      const response = await AxiosConfig.get('/api/v1/auth/complaints/all');
 
       // Assuming your API response contains the complaint data in an array
       const complaintData = response.data;
