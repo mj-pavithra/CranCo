@@ -12,7 +12,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/api/v1/auth/users")
+@RequestMapping("/api/v1/users")
 public class UserController {
     private final UserService userService;
 
@@ -104,4 +104,9 @@ public class UserController {
 //    public long countUsersByUserId(@RequestParam String userId) {
 //        return userService.countUsersByUserId(userId);
 //    }
+
+    @GetMapping("/temp")
+    public ResponseEntity<String> temp(){
+        return userService.sendFriendRequest("pasan@email.com");
+    }
 }

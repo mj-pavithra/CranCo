@@ -4,7 +4,9 @@ import com.Cranco.Cranco.Post.Post;
 import com.Cranco.Cranco.Post.PostRepository;
 import com.Cranco.Cranco.Notification.Notification;
 import jakarta.transaction.Transactional;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -12,6 +14,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.UUID;
 
 import java.util.List;
@@ -146,4 +149,41 @@ public class UserService {
 //    public long countUsersByUserId(String userId) {
 //        return userRepository.countUsersByUserId(userId);
 //    }
+
+    public User findUser(String credential){
+        Optional<User> user = userRepository.findByEmail(credential);
+        if(user.isPresent()){
+            return user.get();
+        }else{
+            Long userId;
+            try {
+                userId = Long.parseLong(credential);
+            } catch (NumberFormatException e) {
+                return null;
+            }
+
+            Optional<User> user2 = userRepository.findById(userId);
+            if(user2.isPresent()){
+                return user2.get();
+            }
+            else{
+                return null;
+            }
+        }
+    }
+    public ResponseEntity<String> sendFriendRequest(String receiverCredential){
+        String userEmail = SecurityContextHolder.getContext().getAuthentication().getName();
+        Optional<User> senderOpt = userRepository.findByEmail(userEmail);
+        if(senderOpt.isEmpty()){
+            return new ResponseEntity<>("Sender no found",HttpStatus.BAD_REQUEST);
+        }
+
+        User receiver = findUser(receiverCredential);
+        if(receiver==null){
+            return new ResponseEntity<>("Receiver no found",HttpStatus.BAD_REQUEST);
+        }
+
+        userRepository.createFriendReq(userEmail,receiver.getEmail());
+        return new ResponseEntity<>("request sent", HttpStatus.OK);
+    }
 }

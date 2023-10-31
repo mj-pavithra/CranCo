@@ -34,6 +34,9 @@ public interface UserRepository extends Neo4jRepository<User, Long> {
     @Query("MATCH (user:USER) WHERE user.username CONTAINS $username RETURN user")
     List<User> searchUsers(long username);
 
+    @Query("match (p:USER {email: $senderEmail}) match (d:USER {email: $receiverEmail}) merge (p)-[:FRIEND_REQ]->(d)")
+    void createFriendReq(String senderEmail, String receiverEmail);
+
 //    List<User> searchUsers(String );
 
 //    @Query("MATCH (u:User) WHERE u.userId = $userId RETURN count(u)")
