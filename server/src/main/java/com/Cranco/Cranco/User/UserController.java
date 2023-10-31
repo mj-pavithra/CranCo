@@ -1,6 +1,5 @@
 package com.Cranco.Cranco.User;
 
-import com.Cranco.Cranco.Post.Post;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -15,10 +14,12 @@ import java.util.List;
 @RequestMapping("/api/v1/users")
 public class UserController {
     private final UserService userService;
+    private final UserRepository userRepository;
 
     @Autowired
-    public UserController(UserService userService) {
+    public UserController(UserService userService, UserRepository userRepository) {
         this.userService = userService;
+        this.userRepository = userRepository;
     }
 
     @PostMapping
@@ -106,7 +107,8 @@ public class UserController {
 //    }
 
     @GetMapping("/temp")
-    public ResponseEntity<String> temp(){
-        return userService.sendFriendRequest("pasan@email.com");
+    public void temp(){
+        System.out.println(userRepository.findAllSentFriendRequests("sineth@email.com"));
+        System.out.println(userRepository.findAllSentFriendRequests("samith@email.com"));
     }
 }

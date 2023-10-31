@@ -108,7 +108,7 @@ public class UserService {
         }
     }
 
-    public String updateCoverphoto(MultipartFile coverPhoto, Long userID){
+    public String updateCoverphoto(MultipartFile coverPhoto, Long userID) {
         long uniquePostId = generateUniquePostId() % 100000; // Ensure the ID is 5 digits
 
         String imageFileName = uniquePostId + "." + getExtensionFromFileName(Objects.requireNonNull(coverPhoto.getOriginalFilename()));
@@ -119,8 +119,7 @@ public class UserService {
     }
 
 
-
-    public String updatePropic(MultipartFile proPic, Long userID){
+    public String updatePropic(MultipartFile proPic, Long userID) {
         long uniquePostId = generateUniquePostId() % 100000; // Ensure the ID is 5 digits
 
         String imageFileName = uniquePostId + "." + getExtensionFromFileName(Objects.requireNonNull(proPic.getOriginalFilename()));
@@ -150,11 +149,11 @@ public class UserService {
 //        return userRepository.countUsersByUserId(userId);
 //    }
 
-    public User findUser(String credential){
+    public User findUser(String credential) {
         Optional<User> user = userRepository.findByEmail(credential);
-        if(user.isPresent()){
+        if (user.isPresent()) {
             return user.get();
-        }else{
+        } else {
             Long userId;
             try {
                 userId = Long.parseLong(credential);
@@ -163,27 +162,97 @@ public class UserService {
             }
 
             Optional<User> user2 = userRepository.findById(userId);
-            if(user2.isPresent()){
+            if (user2.isPresent()) {
                 return user2.get();
-            }
-            else{
+            } else {
                 return null;
             }
         }
     }
-    public ResponseEntity<String> sendFriendRequest(String receiverCredential){
-        String userEmail = SecurityContextHolder.getContext().getAuthentication().getName();
+
+    public String getLoggedUserEmail() {
+        return SecurityContextHolder.getContext().getAuthentication().getName();
+    }
+
+    public ResponseEntity<String> sendFriendRequest(String receiverCredential) {
+        String userEmail = getLoggedUserEmail();
         Optional<User> senderOpt = userRepository.findByEmail(userEmail);
-        if(senderOpt.isEmpty()){
-            return new ResponseEntity<>("Sender no found",HttpStatus.BAD_REQUEST);
+        if (senderOpt.isEmpty()) {
+            return new ResponseEntity<>("Sender no found", HttpStatus.BAD_REQUEST);
         }
 
         User receiver = findUser(receiverCredential);
-        if(receiver==null){
-            return new ResponseEntity<>("Receiver no found",HttpStatus.BAD_REQUEST);
+        if (receiver == null) {
+            return new ResponseEntity<>("Receiver no found", HttpStatus.BAD_REQUEST);
         }
 
-        userRepository.createFriendReq(userEmail,receiver.getEmail());
-        return new ResponseEntity<>("request sent", HttpStatus.OK);
+        userRepository.createFriendReq(userEmail, receiver.getEmail());
+        return new ResponseEntity<>("Friend request sent", HttpStatus.OK);
+    }
+
+    public ResponseEntity<String> acceptFriendRequest(String requestSenderCredential) {
+        String userEmail = getLoggedUserEmail();
+        Optional<User> accepterOpt = userRepository.findByEmail(userEmail);
+        if (accepterOpt.isEmpty()) {
+            return new ResponseEntity<>("Acceptor no found", HttpStatus.BAD_REQUEST);
+        }
+        User acceptor = accepterOpt.get();
+
+        User requestSender = findUser(requestSenderCredential);
+        if (requestSender == null) {
+            return new ResponseEntity<>("Request sender no found", HttpStatus.BAD_REQUEST);
+        }
+
+        List<String> requestSenders = userRepository.findAllReceivedFriendRequests(userEmail);
+        if (!requestSenders.contains(requestSender.getEmail())) {
+            return new ResponseEntity<>("Request already accepted", HttpStatus.BAD_REQUEST);
+        }
+
+        userRepository.createFriendReq(requestSender.getEmail(), userEmail);
+        return new ResponseEntity<>("Friend request accepted", HttpStatus.OK);
+    }
+
+    public ResponseEntity<String> unfriendUser(String email) {
+        String userEmail = getLoggedUserEmail();
+        Optional<User> user = userRepository.findByEmail(userEmail);
+        if (user.isEmpty()) {
+            return new ResponseEntity<>("User not found", HttpStatus.BAD_REQUEST);
+        }
+        User user1 = user.get();
+
+        User user2 = findUser(email);
+        if (user2 == null) {
+            return new ResponseEntity<>("User no found", HttpStatus.BAD_REQUEST);
+        }
+
+        List<String> friendList1 = userRepository.findFriendsMono(user1.getEmail());
+        if (friendList1.contains(user2.getEmail())) {
+            userRepository.unfriendUser(user1.getEmail(), user2.getEmail());
+            return new ResponseEntity<>("Unfriend successfully", HttpStatus.OK);
+        }
+
+        List<String> friendList2 = userRepository.findFriendsMono(user2.getEmail());
+        if (friendList2.contains(user1.getEmail())) {
+            userRepository.unfriendUser(user2.getEmail(), user1.getEmail());
+            return new ResponseEntity<>("Unfriend successfully", HttpStatus.OK);
+        }
+
+        return new ResponseEntity<>("Internal server error", HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    public ResponseEntity<String> followUser(String receiverCredential) {
+        String userEmail = getLoggedUserEmail();
+        Optional<User> senderOpt = userRepository.findByEmail(userEmail);
+        if (senderOpt.isEmpty()) {
+            return new ResponseEntity<>("Sender no found", HttpStatus.BAD_REQUEST);
+        }
+
+        User receiver = findUser(receiverCredential);
+        if (receiver == null) {
+            return new ResponseEntity<>("Receiver no found", HttpStatus.BAD_REQUEST);
+        }
+
+        userRepository.followUser(userEmail, receiver.getEmail());
+        return new ResponseEntity<>("Follow request sent", HttpStatus.OK);
     }
 }

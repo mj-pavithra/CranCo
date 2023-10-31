@@ -31,14 +31,39 @@ public interface UserRepository extends Neo4jRepository<User, Long> {
     @Query("MATCH (u:USER) RETURN count(u) as UserCount")
     long getUserCount();
 
-    @Query("MATCH (user:USER) WHERE user.username CONTAINS $username RETURN user")
+    @Query("MATCH (user:USER) WHERE user.username CONTAINS $username RETURN user LIMIT 1")
     List<User> searchUsers(long username);
 
     @Query("match (p:USER {email: $senderEmail}) match (d:USER {email: $receiverEmail}) merge (p)-[:FRIEND_REQ]->(d)")
     void createFriendReq(String senderEmail, String receiverEmail);
 
-//    List<User> searchUsers(String );
+    @Query("MATCH (s:USER)-[:FRIEND_REQ]->(u:USER {email : $userEmail}) return s.email")
+    List<String> findAllReceivedFriendRequests(String userEmail);
 
-//    @Query("MATCH (u:User) WHERE u.userId = $userId RETURN count(u)")
-//    long countUsersByUserId(@Param("userId") String userId);
+    @Query("MATCH (u:USER {email : $userEmail})-[:FRIEND_REQ]->(s:USER) return s.email")
+    List<String> findAllSentFriendRequests(String userEmail);
+
+    @Query("MATCH (sender:USER {email: $requestSenderEmail})-[req:FRIEND_REQ]->(receiver:USER {email: $acceptorEmail}) DELETE req CREATE (sender)-[:FRIEND]->(receiver)")
+    void acceptFriendRequest(String requestSenderEmail, String acceptorEmail);
+
+    @Query("MATCH (u:USER {email: $email})-[:FRIEND]->(o:USER) return o.email")
+    List<String> findFriendsMono(String email);
+
+    @Query("MATCH (u1:USER {email: $email1})-[req:FRIEND]->( {email: $email2}) DELETE req")
+    void unfriendUser(String email1, String email2);
+
+//todo
+    @Query("")
+List<String> getFollowings();
+
+
+//    todo
+    @Query("")
+    List<String> getFollowers();
+
+    @Query("match (p:USER {email: $senderEmail}) match (d:USER {email: $receiverEmail}) merge (p)-[:FOLLOW]->(d)")
+    void followUser(String userEmail, String email);
+
+    @Query("MATCH (u1:USER {email: $email1})-[req:FOLLOW]->( {email: $email2}) DELETE req")
+    void unFollowUser(String email1, String email2);
 }
