@@ -1,12 +1,8 @@
 import React, { useState } from "react";
-// import InputField from "../components/InputField";
-// import LoginInput from "../components/LoginInput";
 import "../css/AddNewPage.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCloudArrowUp } from "@fortawesome/free-solid-svg-icons";
-// import NavigationBar from "../components/NavigationBar";
-// import MainContainer from "../containers/MainContainer";
-import axios from "axios";
+import axios from "../AxiosConfig";
 
 const AddNewPage = () => {
   const [currentStep, setCurrentStep] = useState(1);
@@ -210,7 +206,7 @@ const AddNewPage = () => {
 
   return (
     <div className="AddNewPageContainer">
-      <div className="adn-title">SIGN UP FOR YOUR SOUL ACCOUNT</div>
+      <div className="adn-title">Add Your Soul</div>
       <p className="adn-subTitle">
         Fill all required fields to go to the next step
       </p>
