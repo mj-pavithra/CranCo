@@ -43,4 +43,3 @@ public interface PostRepository extends Neo4jRepository<Post, Long> {
 
 //    List<Post> searchPosts(String caption);
 }
-
