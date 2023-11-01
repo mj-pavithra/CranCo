@@ -20,6 +20,7 @@ import MerchantOwnerView from "./pages/MerchantOwnerView";
 import UserProfile from "./pages/UserProfile";
 import VehiclesPageOwnersView from "./pages/VehiclesPageOwnersView";
 import AdminDashboard from "./pages/AdminDashboard";
+import NewAdmindb from "./pages/NewAdmindb";
 
 // import ProgressBar from "./components/ProgressBar";
 
@@ -62,6 +63,7 @@ const App = () => {
             path="/allphotos"
             // element={<OwnersVehicleProfileAllPhotos />}
           />
+          <Route path="/newadmin/newadmindb" element={<NewAdmindb />} />
           <Route
             path="/vehiclespageownersview"
             element={<VehiclesPageOwnersView />}
