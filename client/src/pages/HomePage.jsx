@@ -15,8 +15,9 @@ const HomePage = () => {
     console.log("saved token is : ", Cookies.get("token"));
 
     const loadFeed = async () => {
+      console.log("loading feed");
       try {
-        const response = await configuredAxios.get("/api/posts/feed");
+        const response = await configuredAxios.get("/api/v1/auth/posts/feed");
         console.log("like count is : ", postData.likeCount);
         console.log("Data received:", response.data);
 

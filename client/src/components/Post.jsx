@@ -85,7 +85,7 @@ const Post = ({
 
     try {
       const response = await configuredAxios.put(
-        "/api/posts/liked", // Your backend endpoint
+        "/api/v1/auth/posts/liked", // Your backend endpoint
         requestData
       );
 
@@ -106,7 +106,7 @@ const Post = ({
 
     try {
       const response = await configuredAxios.post(
-        "/api/posts/writeComment", // Your backend endpoint
+        "/api/v1/auth/posts/writeComment", // Your backend endpoint
         requestData
       );
 

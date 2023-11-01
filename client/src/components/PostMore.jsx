@@ -19,7 +19,7 @@ const PostMore = ({postUsername, postID, onDeletePost}) => {
   const deletePost = async () => {
     console.log("deleting post  : ", postID);
     try {
-      const response = await configuredAxios.delete(`/api/posts/delete/${postID}`);
+      const response = await configuredAxios.delete(`/api/v1/auth/posts/delete/${postID}`);
       console.log("Data sent successfully:", response.data);
       onDeletePost(postID);
     } catch (error) {
