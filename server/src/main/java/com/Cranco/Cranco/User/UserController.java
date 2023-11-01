@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -105,10 +106,22 @@ public class UserController {
         return userService.acceptFriendRequest(userEmail);
     }
 
+    @PostMapping("/rejectFriendRequest")
+    public ResponseEntity<String> rejectFriendRequest(@RequestBody Map<String,String> payLoad){
+        String userEmail = payLoad.get("user_email");
+        return userService.rejectFriendRequest(userEmail);
+    }
+
     @PostMapping("/unfriendUser")
     public ResponseEntity<String> unfriendUser(@RequestBody Map<String,String> payLoad){
         String userEmail = payLoad.get("user_email");
         return userService.unfriendUser(userEmail);
+    }
+
+    @PostMapping("/cancelFriendReq")
+    public ResponseEntity<String> cancelFriendRequest(@RequestBody Map<String,String> payLoad){
+        String userEmail = payLoad.get("user_email");
+        return userService.cancelFriendRequest(userEmail);
     }
 
     @PostMapping("/follow")
@@ -123,9 +136,34 @@ public class UserController {
         return userService.unfollowUser(userEmail);
     }
 
-    @GetMapping("/all/friends")
-    public ResponseEntity<List<User>> getAllFriends(){
-        List<User> friends = userService.getFriends();
+    @GetMapping("/allFriends")
+    public ResponseEntity<List<SecuredUserDto>> getAllFriends(){
+        List<SecuredUserDto> friends = userService.getFriends();
         return new ResponseEntity<>(friends,HttpStatus.OK);
     }
+
+    @GetMapping("/friendRequests")
+    public ResponseEntity<List<SecuredUserDto>> getAllFriendRequests(){
+        List<SecuredUserDto> friends = userService.getAllFriendRequests();
+        return new ResponseEntity<>(friends,HttpStatus.OK);
+    }
+
+    @GetMapping("/allFollowers")
+    public ResponseEntity<List<SecuredUserDto>> getAllFollowers(){
+        List<SecuredUserDto> friends = userService.getFollowers();
+        return new ResponseEntity<>(friends,HttpStatus.OK);
+    }
+
+    @GetMapping("/allFollowings")
+    public ResponseEntity<List<SecuredUserDto>> getAllFollowings(){
+        List<SecuredUserDto> friends = userService.getFollowings();
+        return new ResponseEntity<>(friends,HttpStatus.OK);
+    }
+
+    @GetMapping("/sentRequests")
+    public ResponseEntity<List<SecuredUserDto>> getAllSentFriendRequests(){
+        List<SecuredUserDto> friends = userService.getAllSentFriendRequests();
+        return new ResponseEntity<>(friends,HttpStatus.OK);
+    }
+
 }

@@ -39,10 +39,13 @@ public interface UserRepository extends Neo4jRepository<User, Long> {
     @Query("match (p:USER {email: $senderEmail}) match (d:USER {email: $receiverEmail}) merge (p)-[:FRIEND_REQ]->(d)")
     void createFriendReq(String senderEmail, String receiverEmail);
 
+    @Query("match (p:USER {email: $senderEmail})-[r:FRIEND_REQ]->(d:USER {email: $receiverEmail}) DELETE r")
+    void cancelFriendReq(String senderEmail, String receiverEmail);
+
     @Query("MATCH (s:USER)-[:FRIEND_REQ]->(u:USER {email : $userEmail}) return s.email")
     List<String> findAllReceivedFriendRequests(String userEmail);
 
-    @Query("MATCH (s:USER)-[:FRIEND_REQ]->(u:USER {email : $userEmail}) return s.email, s.user_name, s.id")
+    @Query("MATCH (s:USER)-[:FRIEND_REQ]->(u:USER {email : $userEmail}) return s")
     List<User> getAllFriendRequests(String userEmail);
 
     @Query("MATCH (u:USER {email : $userEmail})-[:FRIEND_REQ]->(s:USER) return s.email")
@@ -72,4 +75,11 @@ public interface UserRepository extends Neo4jRepository<User, Long> {
 
     @Query("MATCH (u1:USER {email: $email1})-[req:FOLLOW]->( {email: $email2}) DELETE req")
     void unFollowUser(String email1, String email2);
+
+    @Query("MATCH (u:USER {email : $userEmail})-[:FRIEND_REQ]->(s:USER) return s")
+    List<User> getAllSentFriendRequests(String userEmail);
+
+
+    @Query("MATCH (u:USER {email: $requestSender})-[r:FRIEND_REQ]->(t:USER {email: $userEmail}) DELETE r")
+    void rejectFriendRequest(String requestSender, String userEmail);
 }

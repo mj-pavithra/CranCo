@@ -4,7 +4,6 @@ import com.Cranco.Cranco.Post.Post;
 import com.Cranco.Cranco.Post.PostRepository;
 import com.Cranco.Cranco.Notification.Notification;
 import jakarta.transaction.Transactional;
-import lombok.var;
 import org.jooq.meta.derby.sys.Sys;
 import org.neo4j.cypherdsl.core.Use;
 import org.springframework.http.HttpStatus;
@@ -16,11 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.UUID;
-
-import java.util.List;
+import java.util.*;
 
 @Service
 @Transactional
@@ -199,6 +194,23 @@ public class UserService {
         return new ResponseEntity<>("Friend request sent", HttpStatus.OK);
     }
 
+    public ResponseEntity<String> cancelFriendRequest(String receiverCredential) {
+        String userEmail = getLoggedUserEmail();
+        Optional<User> senderOpt = userRepository.findByEmail(userEmail);
+        if (senderOpt.isEmpty()) {
+            return new ResponseEntity<>("Sender no found", HttpStatus.BAD_REQUEST);
+        }
+
+        System.out.println(receiverCredential);
+        User receiver = findUser(receiverCredential);
+        if (receiver == null) {
+            return new ResponseEntity<>("Receiver no found", HttpStatus.BAD_REQUEST);
+        }
+
+        userRepository.cancelFriendReq(userEmail, receiver.getEmail());
+        return new ResponseEntity<>("Friend request removed", HttpStatus.OK);
+    }
+
     public ResponseEntity<String> acceptFriendRequest(String requestSenderCredential) {
         String userEmail = getLoggedUserEmail();
         Optional<User> accepterOpt = userRepository.findByEmail(userEmail);
@@ -220,10 +232,6 @@ public class UserService {
 
         userRepository.acceptFriendRequest(requestSender.getEmail(), userEmail);
         return new ResponseEntity<>("Friend request accepted", HttpStatus.OK);
-    }
-
-    public List<User> getAllFriendRequsts() {
-        return userRepository.getAllFriendRequests(getLoggedUserEmail());
     }
 
     public ResponseEntity<String> unfriendUser(String email) {
@@ -252,6 +260,15 @@ public class UserService {
         }
 
         return new ResponseEntity<>("Internal server error", HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    public List<SecuredUserDto> getAllFriendRequests() {
+        List<User> friendRequestsUser = userRepository.getAllFriendRequests(getLoggedUserEmail());
+        List<SecuredUserDto> requstList = new ArrayList<>();
+        friendRequestsUser.forEach(request -> {
+            requstList.add(mapToSecuredDto(request));
+        });
+        return requstList;
     }
 
     public ResponseEntity<String> followUser(String receiverCredential) {
@@ -286,37 +303,70 @@ public class UserService {
         return new ResponseEntity<>("unfollow done", HttpStatus.OK);
     }
 
-    public List<User> getFollowings() {
+    public List<SecuredUserDto> getFollowings() {
         String userEmail = getLoggedUserEmail();
         Optional<User> senderOpt = userRepository.findByEmail(userEmail);
         if (senderOpt.isEmpty()) {
             return null;
         }
 
-        return userRepository.getFollowings(userEmail);
-    }
-
-    public List<User> getFollowers() {
-        String userEmail = getLoggedUserEmail();
-        Optional<User> senderOpt = userRepository.findByEmail(userEmail);
-        if (senderOpt.isEmpty()) {
-            return null;
-        }
-
-        return userRepository.getFollowers(userEmail);
-    }
-
-    public List<User> getFriends() {
-        List<User> friendList = userRepository.getAllFriendsAsUsers(getLoggedUserEmail());
-        List<SecuredUserDto> dtoList = [];
-        friendList.forEach(friend -> {
-            var userDto = SecuredUserDto
-                    .builder()
-                    .id()
-                    .email()
-                    .username()
-                    .build();
-            dtoList.add(userDto);
+        List<User> followingUserList = userRepository.getFollowings(userEmail);
+        List<SecuredUserDto> followings = new ArrayList<>();
+        followingUserList.forEach(followingUser -> {
+            followings.add(mapToSecuredDto(followingUser));
         });
+
+        return followings;
+    }
+
+    public List<SecuredUserDto> getFollowers() {
+        String userEmail = getLoggedUserEmail();
+        List<User> followersUser = userRepository.getFollowers(userEmail);
+
+        List<SecuredUserDto> followers = new ArrayList<>();
+        followersUser.forEach(followerUser -> {
+            followers.add(mapToSecuredDto(followerUser));
+        });
+
+        return followers;
+    }
+
+    public List<SecuredUserDto> getFriends() {
+        List<User> friendList = userRepository.getAllFriendsAsUsers(getLoggedUserEmail());
+        List<SecuredUserDto> dtoList = new ArrayList<>();
+        friendList.forEach(friend -> {
+            dtoList.add(mapToSecuredDto(friend));
+        });
+        return dtoList;
+    }
+
+    public SecuredUserDto mapToSecuredDto(User user) {
+        return SecuredUserDto
+                .builder()
+                .id(user.getId())
+                .email(user.getEmail())
+                .username(user.getUsername())
+                .build();
+    }
+
+    public List<SecuredUserDto> getAllSentFriendRequests() {
+        List<User> friendRequestsUser = userRepository.getAllSentFriendRequests(getLoggedUserEmail());
+        List<SecuredUserDto> requstList = new ArrayList<>();
+        friendRequestsUser.forEach(request -> {
+            requstList.add(mapToSecuredDto(request));
+        });
+        return requstList;
+    }
+
+    public ResponseEntity<String> rejectFriendRequest(String requestSenderCredential) {
+        String userEmail = getLoggedUserEmail();
+
+        User requestSender = findUser(requestSenderCredential);
+        if (requestSender == null) {
+            return new ResponseEntity<>("Request sender no found", HttpStatus.BAD_REQUEST);
+        }
+
+        userRepository.rejectFriendRequest(requestSender.getEmail(), userEmail);
+        return new ResponseEntity<>("Friend request rejected", HttpStatus.OK);
     }
 }
