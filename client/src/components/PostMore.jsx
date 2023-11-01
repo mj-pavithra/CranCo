@@ -57,7 +57,7 @@ const PostMore = ({postUsername, postID, onDeletePost}) => {
         <p>Hide post</p>
       </div>
       {postUsername === user_name && (
-  <div className="savePost color-red">
+  <div className="savePost color-red" onClick={deletePost}>
     <Icon icon={faTrashCan} />
     <p>Delete post</p>
   </div>
