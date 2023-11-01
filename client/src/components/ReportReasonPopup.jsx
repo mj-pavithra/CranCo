@@ -17,7 +17,9 @@ const ReportReasonPopup = ({ postId }) => {
 
     const sendReport = (reason) => {
       // Define the data you want to send in the request body
-      postId = 4717979026205133000; //get it when click 3 dots > report
+      postId = 3275872407435627000;
+      // 4544167633102850600    6452938087952368000
+      //get it when click 3 dots > report
       //<ReportReasonPopup postId={postId} />
       const data = {
         reason: reason,
