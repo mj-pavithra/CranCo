@@ -12,28 +12,12 @@ import java.util.List;
 public class ComplaintService {
 
     private final ComplaintRepository complaintRepository;
-    //private final PostRepository postRepository;
 
     @Autowired
     public ComplaintService(ComplaintRepository complaintRepository) {
         this.complaintRepository = complaintRepository;
-        //this.postRepository = postRepository;
     }
 
-//    public Complaint complaintPost(ComplaintDTO complaintDTO) {
-//        Complaint complaint = new Complaint();
-//        complaint.setReason(complaintDTO.getReason());
-//
-//        // Retrieve the related Post based on post ID
-//        Post post = postRepository.findById(complaintDTO.getPostId()).orElse(null);
-//        if (postId != null) {
-//            complaint.setPostId(post.getId()); // Set postId from the related Post
-//            return complaintRepository.save(complaint);
-//        } else {
-//            // Handle the case where the Post with the given ID is not found
-//            throw new ChangeSetPersister.NotFoundException("Post not found for ID: " + complaintDTO.getPostId());
-//        }
-//    }
     public Complaint complaintPost(ComplaintDTO complaintDTO){
         Complaint complaint = new Complaint();
         complaint.setPostId(complaintDTO.getPostId());

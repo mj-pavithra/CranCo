@@ -24,14 +24,15 @@ public interface VehicleProfileRepository extends Neo4jRepository<VehicleProfile
     List<VehicleProfile> findByVehicleTypeAndVehicleManufacturer(String vehicleType, String vehicleManufacturer);
 
     //@Query("MATCH (c:VEHICLEPROFILE)\n" + "RETURN c;")
-    @Query("MATCH (vehicleprofile:VEHICLEPROFILE) RETURN vehicleprofile.vehicleProfileName AS vehicleProfileName,vehicleprofile.vehicleType AS vehicleType,vehicleprofile.vehicleModel AS vehicleModel,  vehicleprofile.vehicleRegNo AS vehicleRegNo")
-//    @Query("MATCH (c:VEHICLEPROFILE) RETURN c;")
+    //@Query("MATCH (vehicleprofile:VEHICLEPROFILE) RETURN vehicleprofile.vehicleProfileName AS vehicleProfileName,vehicleprofile.vehicleType AS vehicleType,vehicleprofile.vehicleModel AS vehicleModel,  vehicleprofile.vehicleRegNo AS vehicleRegNo")
+    @Query("MATCH (c:VEHICLEPROFILE) RETURN c;")
     List<VehicleProfile> findAllByOrderByVehicleProfileIdASC();
 
     @Query("MATCH (v:VEHICLEPROFILE) RETURN count(v) as VehicleProfileCount")
     long getVehicleProfileCount();
 
-    @Query("MATCH (vehicleprofile:VEHICLEPROFILE) WHERE vehicleprofile.vehicleProfileName CONTAINS $vehcileProfileName RETURN vehicleprofile")
+    //@Query("MATCH (vehicleprofile:VEHICLEPROFILE) WHERE vehicleprofile.vehicleProfileName CONTAINS $vehcileProfileName RETURN vehicleprofile")
+    @Query("MATCH (vehicleprofile:VEHICLEPROFILE) RETURN vehicleprofile")
     List<VehicleProfile> searchVehicleProfiles(long vehicleProfileName);
 
 //    List<VehicleProfile> searchVehicleProfiles(String );

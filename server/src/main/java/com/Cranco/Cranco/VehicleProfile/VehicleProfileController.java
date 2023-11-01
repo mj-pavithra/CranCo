@@ -64,9 +64,9 @@ public class VehicleProfileController {
     }
 
     @DeleteMapping("/{vehicleProfileId}")
-    public ResponseEntity<Void> deleteVehicleProfile(@PathVariable Long vehicleProfileId) {
+    public ResponseEntity<VehicleProfile> deleteVehicleProfile(@PathVariable Long vehicleProfileId) {
         this.vehicleProfileService.deleteVehicleProfile(vehicleProfileId);
-        return ResponseEntity.noContent().build();
+        return ResponseEntity.ok().build();
     }
 
     @GetMapping("/count")

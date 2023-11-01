@@ -74,15 +74,15 @@ public class PostController {
 //        return ResponseEntity.ok("Post deleted successfully");
 //    }
 
-    @DeleteMapping("/{postID}")
-    public ResponseEntity<Complaint> deletePost(@PathVariable long postId) {
-        try {
-            postService.deletePost(postId);
-            return ResponseEntity.ok().build();
-        } catch (Exception ex) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-        }
-    }
+//    @DeleteMapping("/{postId}")
+//    public ResponseEntity<Post> deletePost(@PathVariable long postId) {
+//        try {
+//            postService.deletePost(postId);
+//            return ResponseEntity.ok().build();
+//        } catch (Exception ex) {
+//            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+//        }
+//    }
 
     @PutMapping("/liked")
     public ResponseEntity<ReactDto> RecordLike(
@@ -130,16 +130,6 @@ public class PostController {
 //            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 //        }
 //    }
-
-    @DeleteMapping("{postId}")
-    public ResponseEntity<Post> deletePost(@PathVariable Long postId) {
-        try {
-            postService.deletePost(postId);
-            return ResponseEntity.ok().build();
-        } catch (Exception ex) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-        }
-    }
 
     @GetMapping("/count")
     public long getPostCount() {
