@@ -45,7 +45,7 @@ function AddNewUpdate() {
       });
 
       try {
-        const response = await configuredAxios.post("/api/posts", postData, {
+        const response = await configuredAxios.post("/api/v1/auth/posts", postData, {
           headers: {
             "Content-Type": "multipart/form-data"
           },

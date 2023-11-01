@@ -86,7 +86,7 @@ public class UserService {
     private void saveImage(String fileName, MultipartFile image) {
         try {
             // Define the directory where you want to save the images
-            String uploadDirectory = "src/main/resources/static/CoverPhotos/";
+            String uploadDirectory = "src/main/resources/static/PostImages/";
 
             File directory = new File(uploadDirectory);
             if (!directory.exists()) {
@@ -105,26 +105,53 @@ public class UserService {
         }
     }
 
-    public String updateCoverphoto(MultipartFile coverPhoto, Long userID){
+    public String getCoverPhoto (String email){
+        return userRepository.getCoverPhoto(email);
+    }
+    public String getProPic (String email){
+        return userRepository.getProPic(email);
+    }
+
+    public String updateCoverphoto(MultipartFile coverPhoto, String email){
         long uniquePostId = generateUniquePostId() % 100000; // Ensure the ID is 5 digits
 
         String imageFileName = uniquePostId + "." + getExtensionFromFileName(Objects.requireNonNull(coverPhoto.getOriginalFilename()));
         saveImage(imageFileName, coverPhoto);
 
-        userRepository.updateCoverPhoto(userID, imageFileName);
-        return ": CP success fully updated";
+        System.out.println(imageFileName);
+        System.out.println("email" + email);
+
+        String returnValue = userRepository.updateCoverPhoto(email, imageFileName);
+        if(Objects.equals(returnValue, email)){
+            System.out.println("email" + email);
+            System.out.println("returnValue" + returnValue);
+            return ": CP success fully updated";
+        }
+        else {
+
+            return ": CP upload failed ";
+        }
     }
 
 
-
-    public String updatePropic(MultipartFile proPic, Long userID){
+    public String updatePropic(MultipartFile proPic, String email){
         long uniquePostId = generateUniquePostId() % 100000; // Ensure the ID is 5 digits
 
         String imageFileName = uniquePostId + "." + getExtensionFromFileName(Objects.requireNonNull(proPic.getOriginalFilename()));
         saveImage(imageFileName, proPic);
 
-        userRepository.updateProPic(userID, imageFileName);
-        return ": PP success fully updated";
+        System.out.println(imageFileName);
+
+        String returnValue = userRepository.updateProPic(email, imageFileName);
+        if(Objects.equals(returnValue, email)){
+            System.out.println("email" + email);
+            System.out.println("returnValue" + returnValue);
+            return ": PP success fully updated";
+        }
+        else {
+            return returnValue;
+        }
+
     }
 
     public List<User> getAllUsersSortedByuserId() {

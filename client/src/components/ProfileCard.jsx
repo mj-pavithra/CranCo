@@ -3,10 +3,64 @@ import "../css/ProfileCards.css";
 import { Link } from "react-router-dom";
 import UpdateCoverPhoto from "./UpdateCoverPhoto";
 import UpdateProPic from "./UpdateProPic";
+import Cookies from "js-cookie";
+import configuredAxios from "../AxiosConfig";
+import { useEffect } from "react";
 
 
-const ProfileCard = ({ coverPhoto, profilePhoto, editDP, profileName, likedPage1, likedPage2, likedPage3, likedPageCount, RalionshipState, addFriend , isOwner }) => {
+const ProfileCard = ({ coverPhoto,profilePhoto,  editDP, profileName, likedPage1, likedPage2, likedPage3, likedPageCount, RalionshipState, addFriend , isOwner }) => {
     
+    const [coverPhotoPrepared, setCoverPhotoPrepared] = useState("");
+    const [proPicPrepared, setproPicPrepared] = useState("");
+
+const getCoverPhoto = async () => {
+  const email = Cookies.get("user_email");
+  const getCoverPhoto = await configuredAxios.get(`/api/v1/auth/users/getCoverPhoto?email=${email}`);
+  console.log(getCoverPhoto.data); 
+  const coverPhotoDy = getCoverPhoto.data;
+
+  function appendToLocalhost(coverPhotoDy) {
+    // Use the map() function to process each element in the array
+    // Remove square brackets from the file name using a regular expression
+    const fileNameWithoutBrackets = coverPhotoDy.replace(/[[\] ]/g, "");
+
+    // Append the base URL to the modified file name
+    const baseUrl = "http://localhost:8081/api/resources/images/";
+    return `${baseUrl}${fileNameWithoutBrackets}`;
+  }
+
+  const preparedCoverPhoto = appendToLocalhost(coverPhotoDy);
+  setCoverPhotoPrepared(preparedCoverPhoto); // Update state with the prepared cover photo
+  console.log(preparedCoverPhoto);
+};
+
+useEffect(() => {
+  getCoverPhoto(); // Call the function when the component mounts
+}, []); // Empty dependency array to mimic componentDidMount behavior
+
+const getProPic = async () => {
+    const email = Cookies.get("user_name");
+    const getProPic = await configuredAxios.get(`/api/v1/auth/users/getProPic?email=${email}`);
+    console.log(getProPic.data);
+    const proPicDy = getProPic.data;
+    function appendToLocalhost(proPicDy) {
+        
+        const fileNameWithoutBrackets = proPicDy.replace(/[[\] ]/g, "");
+    
+        // Append the base URL to the modified file name
+        const baseUrl = "http://localhost:8081/api/resources/images/";
+        return `${baseUrl}${fileNameWithoutBrackets}`;
+      }
+      const preparedProPic = appendToLocalhost(proPicDy);
+        setproPicPrepared(preparedProPic); // Update state with the prepared cover photo
+        console.log(preparedProPic);
+
+    };
+
+    
+useEffect(() => {
+    getProPic(); // Call the function when the component mounts
+  }, []); 
 
     const onError = (originalImg) => {
         const altImg = "/assets/alt-image.jpeg";
@@ -31,7 +85,7 @@ const ProfileCard = ({ coverPhoto, profilePhoto, editDP, profileName, likedPage1
     return (
    <div className="profileCard">
        <div className="profileCardtop">
-           <img className="coverPhoto" alt="Error" src={onError(coverPhoto)} />
+           <img className="coverPhoto" alt="Error" src={onError(coverPhotoPrepared)} />
            {isOwner || (
                <div>
                    <button onClick={handleCoverPhotoUploader} className="editcp">Update cover photo</button>
@@ -44,7 +98,7 @@ const ProfileCard = ({ coverPhoto, profilePhoto, editDP, profileName, likedPage1
            )}
        </div>
     <div className="profileCardmiddle">
-        <img className="profilePhoto" src={onError(profilePhoto)}/>
+        <img className="profilePhoto" src={onError(proPicPrepared)}/>
         {isOwner || 
             (<div>
                 <img onClick={handleProPicUploader} className="editDP" alt="Error" src={onError(editDP)}/>

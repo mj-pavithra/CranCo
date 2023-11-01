@@ -45,6 +45,8 @@ const Post = ({
   const postCommentCount = commentCount || 0;
   const postID = postId || 0;
   const postType = type || "regular";
+  const disappear = false;
+  const [proPicPrepared, setproPicPrepared] = useState("");
 
   const [submissionStatus, setSubmissionStatus] = useState(''); // 'success', 'error', or ''
 
@@ -56,7 +58,7 @@ const Post = ({
 
 
   console.log("post ID ",postID);
-  console.log("post owner  ", postOwnerID);
+  console.log("post owner  ", postUsername);
   console.log(" likecount",postlikeCount);
   function appendToLocalhost(arr) {
     // Use the map() function to process each element in the array
@@ -71,6 +73,31 @@ const Post = ({
 
     return newArray;
   }
+
+  const getProPic = async () => {
+    const getProPic = await configuredAxios.get(`/api/v1/auth/users/getProPic?email=${postUsername}`);
+    console.log(getProPic.data);
+    const proPicDy = getProPic.data;
+    function appendToLocalhost(proPicDy) {
+        
+        const fileNameWithoutBrackets = proPicDy.replace(/[[\] ]/g, "");
+    
+        // Append the base URL to the modified file name
+        const baseUrl = "http://localhost:8081/api/resources/images/";
+        return `${baseUrl}${fileNameWithoutBrackets}`;
+      }
+      const preparedProPic = appendToLocalhost(proPicDy);
+        setproPicPrepared(preparedProPic); // Update state with the prepared cover photo
+        console.log(preparedProPic);
+
+    };
+
+    
+useEffect(() => {
+    getProPic(); // Call the function when the component mounts
+  }, []); 
+
+
   const handleLike = async () => {
     updateLiked(!liked);
 
@@ -94,6 +121,32 @@ const Post = ({
       console.error("Error sending like action:", error);
     }
   };
+
+  const getPostOwnerPropic = async () => {
+    const requestData = {
+    postOwnerID : postOwnerID
+    }
+    try {
+      const response = await configuredAxios.get(
+        "/api/v1/auth/users/getProPic",// Your backend endpoint
+        requestData
+      );
+      console.log("Data received:", response.data);
+      } catch (error) {
+      console.error("Error sending like action:", error);
+    }
+  }
+
+  
+  const onError = (originalImg) => {
+    const altImg = "/assets/alt-image.jpeg";
+  if (originalImg === null || originalImg === "") {
+    return altImg;
+  }
+  return originalImg;
+};
+
+
 
   const handleCommneting = async () => {
     console.log("Comment action triggered", postID);
@@ -202,7 +255,7 @@ const Post = ({
             <Link className="link-unstyled" to={LinkToProfile(isOwner)}>
               <img
                 className="post-user-image"
-                src="/assets/profile.jpg"
+                src={proPicPrepared}
                 alt=""
               />
             </Link>

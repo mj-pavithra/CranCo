@@ -19,10 +19,16 @@ public interface UserRepository extends Neo4jRepository<User, Long> {
     @Query("MATCH (u:USER) WHERE u.email = $email RETURN u.id")
     Long getUserIdByEmail(@Param("email") String email);
 
-    @Query("MATCH (u:USER {id:@userID}) SET n.coverPhoto = $coverPhoto ")
-    Optional<User> updateCoverPhoto(@Param("userID") Long userID, @Param("coverPhoto") String coverPhoto);
-    @Query("MATCH (u:USER {id:@userID}) SET n.profile_picture = $profile_picture ")
-    Optional<User> updateProPic(@Param("userID") Long userID, @Param("profile_picture") String proPic);
+    @Query("MATCH (u:USER {email: $email}) SET u.coverPhoto = $coverPhoto RETURN u.email")
+    String updateCoverPhoto(@Param("email") String email, @Param("coverPhoto") String coverPhoto);
+
+
+    @Query("MATCH (u:USER {email:$email}) RETURN u.coverPhoto  ")
+    String getCoverPhoto(@Param("email") String userID);
+    @Query("MATCH (u:USER {email: $email}) SET u.profile_picture = $profile_picture RETURN u.email")
+    String updateProPic(@Param("email") String email, @Param("profile_picture") String profile_picture);
+    @Query("MATCH (u:USER {user_name:$email}) RETURN u.profile_picture  ")
+    String getProPic(@Param("email") String userID);
 
     //@Query("MATCH (c:USER)\n" + "RETURN c;")
     @Query("MATCH (user:USER) RETURN user")
