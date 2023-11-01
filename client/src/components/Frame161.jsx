@@ -1,11 +1,12 @@
 import React from "react";
 import "../css/Frame161.css";
 import axios from 'axios';
+import AxiosConfig from "../AxiosConfig";
 
 //edit post
 const handleEditPost = async (postId) => {
     try {
-      await axios.edit(`http://localhost:8081/api/v1/auth/posts/${postId}`);
+      await AxiosConfig.edit(`/api/v1/auth/posts/delete/${postId}`);
         alert("Post Deleted");
         window.location.reload();
     } catch (error) {
@@ -25,7 +26,7 @@ const confirmEditPost = (postId) => {
 //delete post
 const handleDeletePost = async (postId) => {
     try {
-      await axios.delete(`http://localhost:8081/api/v1/posts/${postId}`);
+      await AxiosConfig.delete(`/api/v1/posts/${postId}`);
         alert("Post Deleted");
         window.location.reload();
     } catch (error) {
@@ -36,7 +37,7 @@ const handleDeletePost = async (postId) => {
 
 //confirm before delete post
 const confirmDeletePost = (postId) => {
-    const shouldDelete = window.confirm("Are you sure you want to delete this post?");
+    const shouldDelete = window.confirm("Are you sure you want to remove this post?");
     if (shouldDelete) {
       handleDeletePost(postId);
     }
@@ -67,7 +68,7 @@ const Frame161 = ({ postList , tableHeader } ) => {
                     <td>{post.id}</td>
                     <td>
                         {/* //<button onClick={() => confirmEditPost(post.postId)}>Edit Post</button> */}
-                        <button onClick={() => confirmDeletePost(post.postId)}>Delete Post</button>
+                        <button onClick={() => confirmDeletePost(post.postId)}>Remove Post</button>
                     </td>
                 </tr>
                 ))}

@@ -67,7 +67,8 @@ const DashboardGrid = ({ img1, text1 }) => {
         <AdminPendingTask
           img1="/assets/task icon.png"
           text1="Pending Tasks For Admin"
-          tasks={[
+          tasks={[ 
+            "No Peding Tasks For Now From Admin"
             // "Complete project report",
             // "Review client feedback",
             // "Submit expense report",

@@ -11,7 +11,7 @@ const Frame159 = ({ userList , tableHeader } ) => {
                 <th>{tableHeader.col1}</th>
                 <th>{tableHeader.col2}</th>
                 <th>{tableHeader.col3}</th>
-                <th>{tableHeader.col4}</th>
+                {/* <th>{tableHeader.col4}</th> */}
                 {/* <th>{tableHeader.col5}</th> */}
                 </tr>
             </thead>
@@ -22,7 +22,7 @@ const Frame159 = ({ userList , tableHeader } ) => {
                     <td>{user.username}</td>
                     <td>{user.email}</td>
                     <td>{user.role}</td>
-                    <td>{user.active ? "Yes" : "No"}</td>
+                    {/* <td>{user.active ? "Yes" : "No"}</td> */}
                 </tr>
                 ))}
             </tbody>

@@ -26,7 +26,7 @@ const tableHeader = {
   col1: "User Name",
   col2: "Email",
   col3: "Role",   
-  col4: "Status"
+  //col4: "Status"
 };
 
 const logo = "/assets/logo.png"; 
