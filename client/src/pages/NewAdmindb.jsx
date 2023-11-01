@@ -1,13 +1,12 @@
-import React from "react";
-import DashboardMainContainer from "../containers/DashboardMainContainer";
 import "../css/AdminDashboard.css";
+import DashboardMainContainer from "./UserManagement";
 
-const NewAdmin = () => {
+const NewAdmindb = () => {
   return (
-    <div className="FullPage">
+    <div>
       <DashboardMainContainer />
     </div>
   );
 };
 
-export default NewAdmin;
+export default NewAdmindb;

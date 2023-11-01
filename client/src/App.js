@@ -63,7 +63,7 @@ const App = () => {
             path="/allphotos"
             // element={<OwnersVehicleProfileAllPhotos />}
           />
-          <Route path="/newadmin/newadmindb" element={<NewAdmindb />} />
+          <Route path="/newadmindb" element={<NewAdmindb />} />
           <Route
             path="/vehiclespageownersview"
             element={<VehiclesPageOwnersView />}
