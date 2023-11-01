@@ -16,7 +16,7 @@ function AddSoul() {
   useEffect(() => {
     // Fetch the existing vehicle data using an API request
     axios
-      .get("/api/v1/vehicle-profiles/37") // Id shoul be dynamically passed
+      .post("/api/v1/vehicle-profiles/37") // Id shoul be dynamically passed
       .then((response) => {
         const existingVehicleData = response.data;
         setVehicleData({
@@ -98,7 +98,7 @@ function AddSoul() {
               : null}
           </div>
           <br />
-          <div className="divtoflex">
+          {/* <div className="divtoflex">
             <label for="pp" className="name-pp">
               Profile Picture
             </label>
@@ -112,7 +112,7 @@ function AddSoul() {
             {error && vehicleData.vehicleProfileImage.length === 0
               ? validationMsg
               : null}
-          </div>
+          </div> */}
         </div>
         <br />
         <br />

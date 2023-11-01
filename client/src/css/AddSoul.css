@@ -2,14 +2,18 @@
   background-color: var(--background-blue);
   width: 100%;
   height: 100%;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 50px;
 }
 
 .addsouldata {
-  margin: 0 auto;
+  margin-top: 2%;
   width: 40%;
   height: auto;
   background-color: var(--cage-background);
   padding: 10px;
+  border-radius: 10px;
 }
 
 .divtoflex {
@@ -46,4 +50,8 @@
 
 .topici {
   margin: 0 auto;
+}
+
+.delete-announcement {
+  color: red;
 }
