@@ -106,7 +106,7 @@ useEffect(() => {
     // Prepare the data to send in the request
     const requestData = {
       userEmail: Cookies.get("user_email"), // Replace with the actual user ID
-      liked: !liked, // Toggle the liked status
+      liked: "liked", // Toggle the liked status
       postID: postID, // Replace with the actual post ID
     };
 
@@ -145,7 +145,7 @@ useEffect(() => {
   }
   return originalImg;
 };
-
+console.log(proPicPrepared)
 
 
   const handleCommneting = async () => {
@@ -246,6 +246,8 @@ useEffect(() => {
     };
   }, []);
 
+  
+
   return (
     <>
       <div className={`post ${postType === "lost" ? 'lost-post' : ''}`}>
@@ -255,7 +257,7 @@ useEffect(() => {
             <Link className="link-unstyled" to={LinkToProfile(isOwner)}>
               <img
                 className="post-user-image"
-                src={proPicPrepared}
+                src={onError(proPicPrepared)}
                 alt=""
               />
             </Link>
@@ -295,7 +297,9 @@ useEffect(() => {
 
         {/* image section */}
         <div className="post-image pt-2">
-          <Carousel images={postImages} />
+        {postImages && postImages.length > 0 && (
+        <Carousel images={postImages} />
+      )}
         </div>
 
         <div className="post-back pt-2">

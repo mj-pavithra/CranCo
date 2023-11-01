@@ -12,7 +12,7 @@ import PostVideoPopUpWindow from "./PostVideoPopUpWindow";
 import Cookies from "js-cookie";
 import configuredAxios from "../AxiosConfig";
 
-function AddNewUpdate() {
+function AddNewUpdate({visibility, type}) {
   const [buttonColor, setButtonColor] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [contentChanged, setContentChanged] = useState(false);
@@ -32,8 +32,8 @@ function AddNewUpdate() {
     postData.append("caption", caption);
     postData.append("userId", userId); 
     postData.append("username", username);
-    postData.append("visibility", "public");
-    postData.append("type", "regular");
+    postData.append("visibility", visibility);
+    postData.append("type", type);
 
     if (Array.isArray(images) && images.length > 0) {
       images.forEach((image, index) => {
