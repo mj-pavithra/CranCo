@@ -1,18 +1,21 @@
-import React, { useState, useEffect } from "react"; // Import useEffect once
-import "../components/NavigationBar";
-import "../css/VehiclesPage.css";
-import Post from "../components/Post";
-import PhotoboothVehicleOwner from "../components/PhotoboothVehicleOwner";
-import MainContainer from "../containers/MainContainer";
-import VehicleAboutOwnersView from "../components/VehicleAboutOwnersView";
-import AddNewUpdate from "../components/AddNewUpdate";
-import VehiclePageNavbar from "../components/VehiclePageNavbar";
-import configuredAxios from "../AxiosConfig";
 import Cookies from "js-cookie";
+import React, { useEffect, useState } from "react"; // Import useEffect once
+import configuredAxios from "../AxiosConfig";
+import AddLostVehicle from "../components/AddLostVehicle";
+import AddNewUpdate from "../components/AddNewUpdate";
+import "../components/NavigationBar";
+import PhotoboothVehicleOwner from "../components/PhotoboothVehicleOwner";
+import Post from "../components/Post";
+import VehicleAboutOwnersView from "../components/VehicleAboutOwnersView";
+import VehiclePageNavbar from "../components/VehiclePageNavbar";
+import MainContainer from "../containers/MainContainer";
+import "../css/VehiclesPage.css";
+
 
 const VehiclesPageOwnersView = () => {
   const [postData, setPostData] = useState([]); // Define a state variable to hold the data
 
+  const [changePost, setChangePost] = useState(false);
   useEffect(() => {
     console.log("saved token is : ", Cookies.get("token"));
 
@@ -39,6 +42,12 @@ const VehiclesPageOwnersView = () => {
       prevPosts.filter((post) => post.postID !== postID)
     );
   };
+
+  const [divsVisible, setDivsVisible] = useState(false);
+
+  const toggleDivsVisibility = () => {
+    setDivsVisible(!divsVisible);
+  };  
 
 
   const fetchVehicleAbouts = () => {
@@ -70,6 +79,8 @@ const VehiclesPageOwnersView = () => {
       </div>
       <div className="add-new-update">
         <AddNewUpdate visibility="public" type = "vehicle update" />
+        <AddLostVehicle visibility="public" type="lost" onClick={toggleDivsVisibility} />
+        
       </div>
       <div className="Posts">
       {postData.map((post, index) => (

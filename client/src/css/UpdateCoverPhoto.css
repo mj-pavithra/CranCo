@@ -7,6 +7,10 @@
     left: 0px;
     background-color: rgba(0,0,0,0.6);
 }
+.uploadPhotoContainer.success {
+    border: 2px solid green;
+}
+
 
 .uploadPhotoContent{
     width: 600px;

@@ -60,6 +60,26 @@ const Post = ({
   console.log("post ID ",postID);
   console.log("post owner  ", postUsername);
   console.log(" likecount",postlikeCount);
+
+  const formatDate = (inputDate) => {
+    const date = new Date(inputDate);
+    
+    const year = date.getFullYear();
+    const month = (date.getMonth() + 1).toString().padStart(2, '0');
+    const day = date.getDate().toString().padStart(2, '0');
+    const hours = date.getHours() % 12 || 12;
+    const minutes = date.getMinutes().toString().padStart(2, '0');
+    const ampm = date.getHours() >= 12 ? 'p.m.' : 'a.m.';
+  
+    const formattedDate = `${year} ${month} ${day} ${hours}.${minutes} ${ampm}`;
+  
+    return formattedDate;
+  };
+
+  // {postTime}
+  const formattedDate = formatDate(postDate);
+console.log(formattedDate);
+
   function appendToLocalhost(arr) {
     // Use the map() function to process each element in the array
     const newArray = arr.map((element) => {
@@ -266,7 +286,7 @@ console.log(proPicPrepared)
                 <div className="fw-bold">{postUsername}</div>
               </Link>
               <div className="post-time fw-light">
-                {postDate} {postTime}
+                {formattedDate}
               </div>
               <div className="post-time fw-light">{captionText}</div>
             </div>
