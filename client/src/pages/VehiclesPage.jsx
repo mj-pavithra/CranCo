@@ -67,6 +67,7 @@ const VehiclesPage = () => {
       <div className="vehicle-about">
         <VehiclesAbout />
       </div>
+      
       <div className="Posts">
       {postData.map((post, index) => (
           <Post

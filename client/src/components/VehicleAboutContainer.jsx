@@ -3,7 +3,7 @@ import VehiclesAbout from "../components/VehicleAbout";
 function VehicleAboutContainer() {
   return (
     <div>
-      <VehiclesAbout />
+      <VehiclesAbout mileage="5000"/>
     </div>
   );
 }

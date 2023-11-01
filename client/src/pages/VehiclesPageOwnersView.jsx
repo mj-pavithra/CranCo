@@ -6,18 +6,24 @@ import PhotoboothVehicleOwner from "../components/PhotoboothVehicleOwner";
 import MainContainer from "../containers/MainContainer";
 import VehicleAboutOwnersView from "../components/VehicleAboutOwnersView";
 import AddNewUpdate from "../components/AddNewUpdate";
-import axios from "axios";
 import VehiclePageNavbar from "../components/VehiclePageNavbar";
+import configuredAxios from "../AxiosConfig";
+import Cookies from "js-cookie";
 
 const VehiclesPageOwnersView = () => {
   const [postData, setPostData] = useState([]); // Define a state variable to hold the data
 
   useEffect(() => {
+    console.log("saved token is : ", Cookies.get("token"));
+
     const loadFeed = async () => {
+      console.log("loading feed");
       try {
-        const response = await axios.get('http://localhost:8081/api/posts/feed');
+        const response = await configuredAxios.get("/api/v1/auth/posts/feed");
+        console.log("like count is : ", postData.likeCount);
         console.log("Data received:", response.data);
-        setPostData(response.data); // Set the received data in the state
+
+        setPostData(response.data);
       } catch (error) {
         console.error("Error receiving data:", error);
       }
@@ -25,6 +31,15 @@ const VehiclesPageOwnersView = () => {
 
     loadFeed();
   }, []);
+
+  
+  const handleDeletePost = (postID) => {
+    // Implement the logic to update the posts array without the deleted post
+    setPostData((prevPosts) =>
+      prevPosts.filter((post) => post.postID !== postID)
+    );
+  };
+
 
   const fetchVehicleAbouts = () => {
     // backend to fetch vehicle abouts
@@ -54,21 +69,27 @@ const VehiclesPageOwnersView = () => {
         <VehicleAboutOwnersView />
       </div>
       <div className="add-new-update">
-        <AddNewUpdate />
+        <AddNewUpdate visibility="public" type = "vehicle update" />
       </div>
       <div className="Posts">
       {postData.map((post, index) => (
-        <Post
-          key={index}
-          isOwner="no"
-          username={post.username}
-          caption={post.caption}
-          imageLocations={post.imageLocations}
-          images={post.images}
-          date={post.date}
-          time={post.time}
-        />
-      ))}
+          <Post
+            key={index}
+            isOwner="no"
+            postId={post.postId}
+            username={post.username}
+            caption={post.caption}
+            imageLocations={post.imageLocations}
+            images={post.images}
+            date={post.date}
+            time={post.time}
+            likeCount={post.likeCount}
+            commentCount={post.commentCount}
+            postOwnerID={post.userID}
+            onDeletePost={handleDeletePost}
+            type={post.type}
+          />
+        ))}
       </div>
     </MainContainer>
   );
