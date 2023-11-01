@@ -4,6 +4,8 @@ import com.Cranco.Cranco.Post.Post;
 import com.Cranco.Cranco.Post.PostRepository;
 import com.Cranco.Cranco.Notification.Notification;
 import jakarta.transaction.Transactional;
+import lombok.var;
+import org.jooq.meta.derby.sys.Sys;
 import org.neo4j.cypherdsl.core.Use;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -187,6 +189,12 @@ public class UserService {
             return new ResponseEntity<>("Receiver no found", HttpStatus.BAD_REQUEST);
         }
 
+        List<String> receivedRequests = userRepository.findAllReceivedFriendRequests(userEmail);
+        System.out.println(receivedRequests);
+        if (receivedRequests.contains(receiver.getEmail())) {
+            return new ResponseEntity<>("Request already sent", HttpStatus.BAD_REQUEST);
+        }
+
         userRepository.createFriendReq(userEmail, receiver.getEmail());
         return new ResponseEntity<>("Friend request sent", HttpStatus.OK);
     }
@@ -205,15 +213,16 @@ public class UserService {
         }
 
         List<String> requestSenders = userRepository.findAllReceivedFriendRequests(userEmail);
+        System.out.println("the list" + requestSenders);
         if (!requestSenders.contains(requestSender.getEmail())) {
             return new ResponseEntity<>("Request already accepted", HttpStatus.BAD_REQUEST);
         }
 
-        userRepository.createFriendReq(requestSender.getEmail(), userEmail);
+        userRepository.acceptFriendRequest(requestSender.getEmail(), userEmail);
         return new ResponseEntity<>("Friend request accepted", HttpStatus.OK);
     }
 
-    public List<User> getAllFriendRequsts(){
+    public List<User> getAllFriendRequsts() {
         return userRepository.getAllFriendRequests(getLoggedUserEmail());
     }
 
@@ -277,7 +286,7 @@ public class UserService {
         return new ResponseEntity<>("unfollow done", HttpStatus.OK);
     }
 
-    public List<User> getFollowings(){
+    public List<User> getFollowings() {
         String userEmail = getLoggedUserEmail();
         Optional<User> senderOpt = userRepository.findByEmail(userEmail);
         if (senderOpt.isEmpty()) {
@@ -287,7 +296,7 @@ public class UserService {
         return userRepository.getFollowings(userEmail);
     }
 
-    public List<User> getFollowers(){
+    public List<User> getFollowers() {
         String userEmail = getLoggedUserEmail();
         Optional<User> senderOpt = userRepository.findByEmail(userEmail);
         if (senderOpt.isEmpty()) {
@@ -295,5 +304,19 @@ public class UserService {
         }
 
         return userRepository.getFollowers(userEmail);
+    }
+
+    public List<User> getFriends() {
+        List<User> friendList = userRepository.getAllFriendsAsUsers(getLoggedUserEmail());
+        List<SecuredUserDto> dtoList = [];
+        friendList.forEach(friend -> {
+            var userDto = SecuredUserDto
+                    .builder()
+                    .id()
+                    .email()
+                    .username()
+                    .build();
+            dtoList.add(userDto);
+        });
     }
 }

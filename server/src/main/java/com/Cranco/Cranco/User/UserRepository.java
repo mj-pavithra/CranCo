@@ -54,6 +54,9 @@ public interface UserRepository extends Neo4jRepository<User, Long> {
     @Query("MATCH (u:USER {email: $email})-[:FRIEND]->(o:USER) return o.email")
     List<String> findFriendsMono(String email);
 
+    @Query("match (u:USER {email: $userEmail})-[:FRIEND_REQ]->(p:USER) match (u)<-[:FRIEND_REQ]-(q:USER) with collect(p) + collect(q) as nodez UNWIND nodez as c return distinct c")
+    List<User> getAllFriendsAsUsers(String userEmail);
+
     @Query("MATCH (u1:USER {email: $email1})-[req:FRIEND]->( {email: $email2}) DELETE req")
     void unfriendUser(String email1, String email2);
 
@@ -65,7 +68,7 @@ public interface UserRepository extends Neo4jRepository<User, Long> {
     List<User> getFollowers(String email);
 
     @Query("match (p:USER {email: $senderEmail}) match (d:USER {email: $receiverEmail}) merge (p)-[:FOLLOW]->(d)")
-    void followUser(String userEmail, String email);
+    void followUser(String senderEmail, String receiverEmail);
 
     @Query("MATCH (u1:USER {email: $email1})-[req:FOLLOW]->( {email: $email2}) DELETE req")
     void unFollowUser(String email1, String email2);
