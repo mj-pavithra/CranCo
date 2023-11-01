@@ -4,6 +4,8 @@ public class ReactDto{
     private String liked;
     private Long postID;
     private int likesCount;
+    private String PostOwnser;
+
     public ReactDto(Long userID, String liked, Long postID) {
         this.userID = userID;
         this.liked = liked;
@@ -25,6 +27,10 @@ public class ReactDto{
         return likesCount;
     }
 
+    public String getPostOwnser() {
+        return PostOwnser;
+    }
+
     public void setUserID(Long userID) {
         this.userID = userID;
     }
@@ -40,4 +46,5 @@ public class ReactDto{
     public void setLikesCount(int likesCount) {
         this.likesCount = likesCount;
     }
+
 }

@@ -4,7 +4,7 @@ import java.util.List;
 import java.time.LocalDateTime;
 
 public class PostDto {
-    private long postId;
+    private String postId;
     private String username;
     private String caption;
     private String location;
@@ -13,12 +13,15 @@ public class PostDto {
     private Long userID;
     private LocalDateTime date;
     private int likeCount;
+    private int commentCount;
+    private String visibility;
+    private String type;
 
     public int getLikeCount() {
         return likeCount;
     }
 
-    public Long getId() {
+    public String getPostId() {
         return postId;
     }
 
@@ -45,11 +48,22 @@ public class PostDto {
         return date;
     }
 
-    public Long getUserID() {
+    public String getType() {
+        return type;
+    }
+
+    public String getVisibility() {
+        return visibility;
+    }
+    public Long getUserID(Long userByUsername) {
         return userID;
     }
 
-    public void setId(Long postId) {
+    public int getCommentCount() {
+        return commentCount;
+    }
+
+    public void setPostId(String postId) {
         this.postId = postId;
     }
 
@@ -68,7 +82,13 @@ public class PostDto {
     public void setImageLocations(List<String> imageLocations) {
         this.imageLocations = imageLocations; // Add this setter method for image locations
     }
+    public void setVisibility(String visibility) {
+        this.visibility = visibility;
+    }
 
+    public void setType(String type) {
+        this.type = type;
+    }
 //    public void setImages(List<byte[]> images) { // Modify this setter method for images
 //        this.images = images;
 //    }
@@ -83,6 +103,10 @@ public class PostDto {
 
     public void setLikedCount(int likeCount) {
         this.likeCount = likeCount;
+    }
+
+    public void setCommentCount(int commentCount) {
+        this.commentCount = commentCount;
     }
 }
 

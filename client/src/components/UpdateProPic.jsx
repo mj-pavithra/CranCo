@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import configuredAxios from "../AxiosConfig";
 import Cookies from "js-cookie";
 
-const UpdateCoverPhoto = () => {
+const UpdateProPic = () => {
 
     const [imgPreview, setImgPreview] = useState("");
 
@@ -16,10 +16,10 @@ const UpdateCoverPhoto = () => {
                 const imageInput = document.querySelector('input[type="file"]');
                 const file = imageInput.files[0];
     
-                formData.append("coverPhoto", file);
+                formData.append("proPic", file);
                 formData.append("userId", Cookies.get("user_id"));
     
-                const response = await configuredAxios.post("/api/users/uploadCoverPhoto", formData, {
+                const response = await configuredAxios.post("/api/users/uploadProPic", formData, {
                     headers: {
                         "Content-Type": "multipart/form-data"
                     },
@@ -91,4 +91,4 @@ const UpdateCoverPhoto = () => {
     );
 }
 
-export default UpdateCoverPhoto;
+export default UpdateProPic;

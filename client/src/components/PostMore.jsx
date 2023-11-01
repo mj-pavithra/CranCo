@@ -1,11 +1,32 @@
+import { faBookmark, faSquareMinus, faTrashCan } from "@fortawesome/free-regular-svg-icons";
+import { faBan } from "@fortawesome/free-solid-svg-icons";
 import React, { useState } from "react";
-import {faBookmark, faSquareMinus, faTrashCan} from "@fortawesome/free-regular-svg-icons";
+import configuredAxios from "../AxiosConfig";
 import "../css/PostMore.css";
 import Icon from "./Icon";
-import { faBan } from "@fortawesome/free-solid-svg-icons";
 import ReportReasonPopUp from "./ReportReasonPopup";
+import Cookies from "js-cookie";
 
-const PostMore = () => {
+
+
+
+const PostMore = ({postUsername, postID, onDeletePost}) => {
+
+  const user_name = Cookies.get("user_name");
+  console.log("deleting post owner is  : ", postUsername);
+  console.log("Current user id is  : ", user_name);
+
+  const deletePost = async () => {
+    console.log("deleting post  : ", postID);
+    try {
+      const response = await configuredAxios.delete(`/api/posts/delete/${postID}`);
+      console.log("Data sent successfully:", response.data);
+      onDeletePost(postID);
+    } catch (error) {
+      console.error("Error sending data:", error);
+    }
+  };
+  
 
   const [reasonContent, setReasonContent] = useState(false);
 
@@ -35,10 +56,14 @@ const PostMore = () => {
         <Icon icon={faSquareMinus}/>
         <p>Hide post</p>
       </div>
-      <div className="savePost color-red">
-        <Icon icon={faTrashCan}/>
-        <p>Delete post</p>
-      </div>
+      {postUsername === user_name && (
+  <div className="savePost color-red">
+    <Icon icon={faTrashCan} />
+    <p>Delete post</p>
+  </div>
+)}
+
+
     </div>
     </>
    );

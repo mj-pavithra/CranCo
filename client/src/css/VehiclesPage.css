@@ -78,7 +78,16 @@
   background-color: var(--stroke);
   color: var(--text-1);
 }
-
+.lost-btn {
+  left: 50px;
+  font-size: 16px;
+  height: fit-content;
+  width: 100px;
+  border-style: none;
+  border-radius: 5px;
+  background-color: var(--stroke);
+  color: var(--text-1);
+}
 .Posts {
   margin-top: var(--top-margin);
 }
@@ -190,9 +199,9 @@
   height: auto;
   background-color: var(--cage-background);
   padding-top: 0;
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-bottom: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
   border-style: none;
   border-radius: 10px;
 }
@@ -201,8 +210,8 @@
   color: var(--text-1);
   font-weight: 400;
   font-size: 17px;
-  padding-top: 25px;
-  padding-bottom: 25px;
+  padding-top: 15px;
+  padding-bottom: 15px;
 }
 
 .buttons {

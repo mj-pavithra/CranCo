@@ -69,6 +69,14 @@ public class VehicleProfileController {
         return ResponseEntity.ok().build();
     }
 
+//    @PostMapping("/lost/{vehicleProfileId}")
+//    public String Lostvehicle(
+//            @PathVariable Long vehicleProfileId,
+//            @RequestParam String postText,
+//            @RequestParam
+//    ){
+//        return "success";
+
     @GetMapping("/count")
     public long getVehicleProfileCount() {
         return vehicleProfileService.getVehicleProfileCount();
