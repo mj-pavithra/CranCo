@@ -17,9 +17,9 @@ const UpdateCoverPhoto = () => {
                 const file = imageInput.files[0];
     
                 formData.append("coverPhoto", file);
-                formData.append("userId", Cookies.get("user_id"));
+                formData.append("email", Cookies.get("user_email"));
     
-                const response = await configuredAxios.post("/api/users/uploadCoverPhoto", formData, {
+                const response = await configuredAxios.post("/api/v1/auth/users/uploadCoverPhoto", formData, {
                     headers: {
                         "Content-Type": "multipart/form-data"
                     },

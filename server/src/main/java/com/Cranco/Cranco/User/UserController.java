@@ -1,6 +1,6 @@
 package com.Cranco.Cranco.User;
 
-import org.neo4j.cypherdsl.core.Use;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -48,18 +48,26 @@ public class UserController {
     }
     @PostMapping(value = "/uploadCoverPhoto", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<String> updateCoverphoto(@RequestPart("coverPhoto") MultipartFile coverPhoto,
-                                                   @RequestPart("userId") String userIdString) {
-        Long userId = Long.parseLong(userIdString);
-        String result = userService.updateCoverphoto(coverPhoto, userId);
+                                                   @RequestPart("email") String email) {
+        String result = userService.updateCoverphoto(coverPhoto, email);
         System.out.println(result);
         return ResponseEntity.ok(result);
     }
 
+    @GetMapping("/getCoverPhoto")
+    public String getCoverPhoto(@RequestParam("email") String email){
+        return userService.getCoverPhoto(email);
+    }
+
+    @GetMapping("/getProPic")
+    public String getgetProPic(@RequestParam("email") String email){
+        return userService.getProPic(email);
+    }
+
     @PostMapping(value = "/uploadProPic", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<String> updateProPic(@RequestPart("proPic") MultipartFile proPic,
-                                                   @RequestPart("userId") String userIdString) {
-        Long userId = Long.parseLong(userIdString);
-        String result = userService.updatePropic(proPic, userId);
+                                                   @RequestPart("email") String email) {
+        String result = userService.updatePropic(proPic, email);
         System.out.println(result);
         return ResponseEntity.ok(result);
     }

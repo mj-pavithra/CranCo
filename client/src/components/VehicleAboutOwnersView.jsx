@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import "../css/VehiclesPage.css";
+import AddLostVehicle from "./AddLostVehicle";
 
 function VehicleAboutOwnersView({
   brand,
@@ -34,12 +35,15 @@ function VehicleAboutOwnersView({
     <div className="vehicle-about">
       <div className="vehicle-profile-name">
         <p>{vehiclProfileName || dummyVehicleProfileName}</p>
+        
         <button
           className="edit-btn"
           onClick={() => navigate("/VehicleAboutEdit")}
         >
           Edit
         </button>
+        
+        <button className="lost-btn ">Lost vehicle !</button>
       </div>
       <div className="about-info-container">
         <div className="about-info">
@@ -87,6 +91,7 @@ function VehicleAboutOwnersView({
         <b>Description:</b> {vehicleDescription || dummyVehicleDescription}
       </div>
     </div>
+    
   );
 }
 
