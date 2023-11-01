@@ -10,7 +10,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/api/v1/auth/users")
+@RequestMapping("/api/v1/users")
 public class UserController {
     private final UserService userService;
 
