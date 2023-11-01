@@ -42,6 +42,9 @@ public interface UserRepository extends Neo4jRepository<User, Long> {
     @Query("MATCH (s:USER)-[:FRIEND_REQ]->(u:USER {email : $userEmail}) return s.email")
     List<String> findAllReceivedFriendRequests(String userEmail);
 
+    @Query("MATCH (s:USER)-[:FRIEND_REQ]->(u:USER {email : $userEmail}) return s.email, s.user_name, s.id")
+    List<User> getAllFriendRequests(String userEmail);
+
     @Query("MATCH (u:USER {email : $userEmail})-[:FRIEND_REQ]->(s:USER) return s.email")
     List<String> findAllSentFriendRequests(String userEmail);
 

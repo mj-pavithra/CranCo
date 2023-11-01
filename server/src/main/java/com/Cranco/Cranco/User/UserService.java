@@ -213,6 +213,10 @@ public class UserService {
         return new ResponseEntity<>("Friend request accepted", HttpStatus.OK);
     }
 
+    public List<User> getAllFriendRequsts(){
+        return userRepository.getAllFriendRequests(getLoggedUserEmail());
+    }
+
     public ResponseEntity<String> unfriendUser(String email) {
         String userEmail = getLoggedUserEmail();
         Optional<User> user = userRepository.findByEmail(userEmail);
