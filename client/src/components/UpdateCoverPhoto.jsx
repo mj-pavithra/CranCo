@@ -6,6 +6,9 @@ import Cookies from "js-cookie";
 const UpdateCoverPhoto = () => {
 
     const [imgPreview, setImgPreview] = useState("");
+    const handleCancelBtn = () => {
+        setIsOpen(false);
+    };
 
     const uploadImage = async () => {
         // Ensure that imgPreview is defined and not an empty string
@@ -26,6 +29,7 @@ const UpdateCoverPhoto = () => {
                 });
     
                 console.log("Data sent successfully:", response.data);
+                setIsOpen(false);
             } catch (error) {
                 console.error("Error sending data:", error);
             }
@@ -53,9 +57,6 @@ const UpdateCoverPhoto = () => {
     // for cnacel btn
     const [isOpen, setIsOpen] = useState(true);
 
-    const handleCancelBtn = () => {
-        setIsOpen(false);
-    };
 
     return (
         isOpen && (

@@ -6,6 +6,12 @@ import Cookies from "js-cookie";
 const UpdateProPic = () => {
 
     const [imgPreview, setImgPreview] = useState("");
+    const [isOpen, setIsOpen] = useState(true);
+
+    const handleCancelBtn = () => {
+        setIsOpen(false);
+    };
+
 
     const uploadImage = async () => {
         // Ensure that imgPreview is defined and not an empty string
@@ -26,6 +32,7 @@ const UpdateProPic = () => {
                 });
     
                 console.log("Data sent successfully:", response.data);
+                setIsOpen(false);
             } catch (error) {
                 console.error("Error sending data:", error);
             }
@@ -51,12 +58,6 @@ const UpdateProPic = () => {
     }
 
     // for cnacel btn
-    const [isOpen, setIsOpen] = useState(true);
-
-    const handleCancelBtn = () => {
-        setIsOpen(false);
-    };
-
     return (
         isOpen && (
             <div className="uploadPhotoContainer">

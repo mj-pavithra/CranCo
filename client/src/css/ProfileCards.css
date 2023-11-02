@@ -27,18 +27,18 @@
   background-color: var(--transparent-white);
   cursor: pointer;
 }
-.editcp{
+.editcp {
   position: absolute;
   right: 50px;
   top: calc(30% + 35px);
   width: 150px;
   height: 36px;
   flex-shrink: 0;
-  background-color: #2060ad;
-  background: transparent ;
+  background-color: rgba(141, 162, 187, 0.5); /* 50% transparency */
   color: #000;
   z-index: 100;
 }
+
 .profileCardmiddle {
   position: absolute;
   top: 110px;
@@ -68,6 +68,7 @@
   top: 124px;
   margin: 15px;
   border-radius: 40%;
+  background-color: rgba(141, 162, 187, 0.5); /* 50% transparency */
   fill: rgba(0, 5, 23, 0.5);
 }
 
