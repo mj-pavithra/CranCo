@@ -96,6 +96,7 @@ public class PostService {
         dto.setLocation(post.getLocation());
         dto.setUsername(post.getUsername());
         dto.setType(post.getType());
+        System.out.println(post.getType());
         dto.setCommentCount(0);
         dto.setUserID(userRepository.findUserIByUsername(post.getUsername()));
         System.out.println("user iD list eka"+ userRepository.findUserIByUsername(post.getUsername()));
