@@ -20,6 +20,132 @@ const optionList = [
   // { img1: "/assets/settings icon.png", text1: "Settings" }, 
 ];
 
+const userListData = [
+  {
+    "username": "Manoj",
+    "email": "manoj@gmail.com",
+    "role": "USER",
+    "status": "Active",
+  },
+  {
+    "username": "Kavishka",
+    "email": "kavishka@gmail.com",
+    "role": "USER",
+    "status": "Active",
+  },
+  {
+    "username": "akila",
+    "email": "akila@gmail.com",
+    "role": "USER",
+    "status": "Active",
+  },
+  {
+    "username": "kalana",
+    "email": "kalana@gmail.com",
+    "role": "USER",
+    "status": "Active",
+  }, 
+  {
+    "username": "Anjana",
+    "email": "anjana@gmail.com",
+    "role": "USER",
+    "status": "Active",
+  }, 
+  {
+    "username": "Avishka",
+    "email": "avishka@gmail.com",
+    "role": "USER",
+    "status": "Active",
+  },
+  {
+    "username": "Kanishka",
+    "email": "kaishka@gmail.com",
+    "role": "USER",
+    "status": "Active",
+  }, 
+  {
+    "username": "Sampath",
+    "email": "sampath@gmail.com",
+    "role": "USER",
+    "status": "Not Active",
+  }, 
+  {
+    "username": "Sandun",
+    "email": "sandun@gmail.com",
+    "role": "USER",
+    "status": "Active",
+  }, 
+  {
+    "username": "Kavishanka",
+    "email": "kavishanka@gmail.com",
+    "role": "USER",
+    "status": "Active",
+  }, 
+  {
+    "username": "Pramod",
+    "email": "pramod@gmail.com",
+    "role": "USER",
+    "status": "Active",
+  }, 
+  {
+    "username": "Kasun",
+    "email": "kasun@gmail.com",
+    "role": "USER",
+    "status": "Not Active",
+  }, 
+  {
+    "username": "Ravishka",
+    "email": "ravishka@gmail.com",
+    "role": "USER",
+    "status": "Active",
+  }, 
+  {
+    "username": "Kavindu",
+    "email": "kavindu@gmail.com",
+    "role": "USER",
+  }
+  // {
+  //   "username": "michael_brown",
+  //   "active": true,
+  //   "pinStatus": "Active",
+  //   "lastSeen": "2023-07-21",
+  //   "role": "User",
+  //   "action": "Edit"
+  // },
+  // {
+  //   "username": "sophia_johnson",
+  //   "active": false,
+  //   "pinStatus": "Inactive",
+  //   "lastSeen": "2023-07-20",
+  //   "role": "User",
+  //   "action": "Edit"
+  // },
+  // {
+  //   "username": "william_davis",
+  //   "active": true,
+  //   "pinStatus": "Active",
+  //   "lastSeen": "2023-07-21",
+  //   "role": "User",
+  //   "action": "Edit"
+  // },
+  // {
+  //   "username": "olivia_miller",
+  //   "active": false,
+  //   "pinStatus": "Inactive",
+  //   "lastSeen": "2023-07-20",
+  //   "role": "User",
+  //   "action": "Edit"
+  // },
+  // {
+  //   "username": "Janith",
+  //   "active": true,
+  //   "pinStatus": "Active",
+  //   "lastSeen": "2023-07-21",
+  //   "role": "User",
+  //   "action": "Edit"
+  // },
+]; 
+
 const tableHeader = {
   tableTitle: "Total Users",
   // col1: "User ID",
@@ -31,30 +157,31 @@ const tableHeader = {
 
 const logo = "/assets/logo.png"; 
 
+// const DashboardMainContainer = () => {
+//   // Initialize state to hold complaint data
+//   const [userListData, setuserListData] = useState([]);
+//   //Create a function to fetch data using Axios
+//   const fetchData = async () => {
+//     try {
+//       // Make a GET request to your API endpoint
+//       const response = await AxiosConfig.get('/api/v1/auth/users/all')
+//       //const response = await axios.get('http://localhost:8081/api/v1/auth/users/all');
+//       //http://localhost:8081/api/v1/auth/users/all
+//       const userData = response.data;
+//       console.log(response.data);
+//       const sortedList = userData.sort((a, b) => a.userId - b.userId);
+//       console.log(sortedList);
+//       setuserListData(sortedList);
+//     } catch (error) {
+//       console.error('Error fetching data:', error);
+//     }
+//   };
+
+//   useEffect(() => {
+//     fetchData();
+//   }, []);
+
 const DashboardMainContainer = () => {
-  // Initialize state to hold complaint data
-  const [userListData, setuserListData] = useState([]);
-  //Create a function to fetch data using Axios
-  const fetchData = async () => {
-    try {
-      // Make a GET request to your API endpoint
-      const response = await AxiosConfig.get('/api/v1/users/all')
-      //const response = await axios.get('http://localhost:8081/api/v1/auth/users/all');
-    
-      const userData = response.data;
-      console.log(response.data);
-      const sortedList = userData.sort((a, b) => a.userId - b.userId);
-      console.log(sortedList);
-      setuserListData(sortedList);
-    } catch (error) {
-      console.error('Error fetching data:', error);
-    }
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
-
   return (
     <div className="DashboardMainContainer">
       <Frame135 img1={logo} optionList={optionList} />

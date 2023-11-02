@@ -43,11 +43,7 @@ const LoginPage = () => {
         Cookies.get("user_name")
       );
       setLoadStatus(false);
-
-      const redirectURL = Cookies.get("redirect");
-      if (redirectURL != "")
-        window.location.href = `http://localhost:3000${redirectURL}`;
-      else window.location.href = "http://localhost:3000/homepage";
+      window.location.href = "http://localhost:3000/homepage";
     } catch (error) {
       console.log(sessionStorage.getItem("username"));
       if (error.response && error.response.data) {

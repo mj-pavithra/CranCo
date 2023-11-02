@@ -21,10 +21,11 @@ const optionList = [
 
 const tableHeader = {
   tableTitle: "Total Pages",
-  col1: "Profile Name",
-  col2: "Vehicle Type",   
-  col3: "Vehicle Model",
-  col4: "Vehical Reg No"
+  col1: "Profile Name",  
+  // col2: "Vehicle Type",
+  col2: "Vehicle Model",
+  col3: "Vehical Reg No", 
+  col4: "Action"
   // col5: "Action"
 };
 

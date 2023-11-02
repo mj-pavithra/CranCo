@@ -1,7 +1,7 @@
 .DashboardMainContainer{
     min-height: 100vh;
     position: relative;
-    display: flex   ;
+    display: flex;
 }
 
 .Dashboard{
@@ -11,4 +11,5 @@
     flex-direction: column;
     width: calc(100vw - 282.75px);
     height: 100vh;
+    overflow: scroll;
 }

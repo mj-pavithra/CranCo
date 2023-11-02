@@ -15,8 +15,9 @@ const HomePage = () => {
     console.log("saved token is : ", Cookies.get("token"));
 
     const loadFeed = async () => {
+      console.log("loading feed");
       try {
-        const response = await configuredAxios.get("/api/posts/feed");
+        const response = await configuredAxios.get("/api/v1/auth/posts/feed");
         console.log("like count is : ", postData.likeCount);
         console.log("Data received:", response.data);
 
@@ -30,20 +31,7 @@ const HomePage = () => {
   }, []);
 
   console.log("post data is : ", postData);
-  const loadMoreFeed = async () => {
-    if (loading) return; // Prevent multiple requests
 
-    try {
-      setLoading(true);
-      const response = await configuredAxios.get("/api/posts/feed");
-      console.log("Additional data received:", response.data);
-      setPostData((prevData) => [...prevData, ...response.data]);
-    } catch (error) {
-      console.error("Error loading more feed:", error);
-    } finally {
-      setLoading(false);
-    }
-  };
 
   const handleDeletePost = (postID) => {
     // Implement the logic to update the posts array without the deleted post
@@ -67,7 +55,7 @@ const HomePage = () => {
           container.scrollTop + container.clientHeight >=
           container.scrollHeight
         ) {
-          loadMoreFeed();
+          // loadMoreFeed();
         }
       }, 2000); // Adjust the debounce delay as needed
 
@@ -78,13 +66,13 @@ const HomePage = () => {
         container.removeEventListener("scroll", handleScroll);
       };
     }
-  }, [loadMoreFeed]);
+  }, );
 
   return (
     <>
       <MainContainer ref={mainContainerRef}>
         <div className="add-new-update">
-          <AddNewUpdate />
+          <AddNewUpdate visibility="public" type = "regular" />
         </div>
         {postData.map((post, index) => (
           <Post

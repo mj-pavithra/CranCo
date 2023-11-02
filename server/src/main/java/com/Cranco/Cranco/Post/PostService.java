@@ -71,7 +71,7 @@ public class PostService {
 
             File directory = new File(uploadDirectory);
             if (!directory.exists()) {
-                directory.mkdirs();
+                    directory.mkdirs();
             }
 
             // Create the file in the directory
@@ -88,13 +88,14 @@ public class PostService {
 
     public PostDto mapToDto(Post post){
 
-        int commentCount = postRepository.getCommentCount(post.getId());
+//        int commentCount = postRepository.getCommentCount(post.getId());
+
         PostDto dto = new PostDto();
         dto.setPostId(String.valueOf(post.getId()));
         dto.setCaption(post.getCaption());
         dto.setLocation(post.getLocation());
         dto.setUsername(post.getUsername());
-        dto.setCommentCount(commentCount);
+        dto.setCommentCount(0);
         dto.setUserID(findUserByUsername(post.getUsername()));
         System.out.println("user iD list eka"+ findUserByUsername(post.getUsername()));
         dto.setLikedCount(post.getLikedCount());
@@ -122,42 +123,55 @@ public class PostService {
         post.setCaption(post.getCaption());
         postRepository.save(post);
     }
-    public void deletePost(Long postId) {
-        postRepository.deleteById(postId);
-    }
+
     private Long generateUniquePostId() {
         return UUID.randomUUID().getMostSignificantBits() & Long.MAX_VALUE;
     }
-    
-
-
 
     public List<PostDto> getAllPosts() {
         List<Post> posts = postRepository.findAll();
-
+        System.out.println("This line is working");
         Collections.shuffle(posts);
 
         List<Post> randomPosts = posts.stream().limit(10).toList();
         for (Post post : randomPosts) {
-            int likedCount = postRepository.getLikedCount(post.getId());
-            post.setLikedCount(likedCount);
+//            int likedCount = postRepository.getLikedCount(post.getId());
+//            post.setLikedCount(likedCount);
 
             System.out.println(post.getId());
-            System.out.println("ME thama post eka thule thiyana euwa"+ post.getCaption());
+            System.out.println("ME thama post eka thule thiyana euwa "+ post.getCaption());
         }
 
         return randomPosts.stream().map(this::mapToDtoWithImages).collect(Collectors.toList());
     }
 
-    public PostDto mapToDtoWithImages(Post post) {
-        PostDto dto = mapToDto(post);
-        // Retrieve image locations for the post and set them in the DTO
-        List<String> imageLocations = Arrays.asList(post.getLocation().split(","));
+//    public PostDto mapToDtoWithImages(Post post) {
+//        PostDto dto = mapToDto(post);
+//        // Retrieve image locations for the post and set them in the DTO
+//        List<String> imageLocations = Arrays.asList(post.getLocation().split(","));
+//        dto.setImageLocations(imageLocations);
+//        dto.setUserID(findUserByUsername(post.getUsername()));
+//        System.out.println("map DTO with image is working "+ post.getId());
+//        return dto;
+//    }
+public PostDto mapToDtoWithImages(Post post) {
+    PostDto dto = mapToDto(post);
+
+    // Retrieve image locations for the post and set them in the DTO
+    String location = post.getLocation();
+    if (location != null) {
+        List<String> imageLocations = Arrays.asList(location.split(","));
         dto.setImageLocations(imageLocations);
-        dto.setUserID(findUserByUsername(post.getUsername()));
-        System.out.println(post.getId());
-        return dto;
+    } else {
+        // Handle the null case, e.g., provide an empty list or log a warning
+        dto.setImageLocations(Collections.emptyList());
+        System.out.println("Location is null for post ID: " + post.getId());
     }
+
+    dto.setUserID(findUserByUsername(post.getUsername()));
+    System.out.println("map DTO with image is working " + post.getId());
+    return dto;
+}
 
     public void deletePostById(Long postID) {
         // Check if the post exists
@@ -168,6 +182,9 @@ public class PostService {
         }
     }
 
+//    public void deletePost(Long postId) {
+//        postRepository.deleteById(postId);
+//    }
 
     public ReactDto recordReactOnPost(React react) {
         Long userId = userRepository.getUserIdByEmail(react.getEmail());

@@ -17,9 +17,9 @@ const UpdateProPic = () => {
                 const file = imageInput.files[0];
     
                 formData.append("proPic", file);
-                formData.append("userId", Cookies.get("user_id"));
+                formData.append("email", Cookies.get("user_email"));
     
-                const response = await configuredAxios.post("/api/users/uploadProPic", formData, {
+                const response = await configuredAxios.post("/api/v1/auth/users/uploadProPic", formData, {
                     headers: {
                         "Content-Type": "multipart/form-data"
                     },

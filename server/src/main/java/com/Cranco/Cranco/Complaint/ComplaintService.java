@@ -1,6 +1,9 @@
 package com.Cranco.Cranco.Complaint;
 
+import com.Cranco.Cranco.Post.Post;
+import com.Cranco.Cranco.Post.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

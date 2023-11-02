@@ -11,6 +11,7 @@ import axios from "axios";
 import debounce from "lodash/debounce";
 import AddNewUpdate from "../components/AddNewUpdate";
 import configuredAxios from "../AxiosConfig";
+import Cookies from "js-cookie";
 
 
     const userFriendsData = [
@@ -108,10 +109,15 @@ const UserProfileContainer = ({data,isOwner}) => {
     const [loading, setLoading] = useState(false);
   
     useEffect(() => {
+      console.log("saved token is : ", Cookies.get("token"));
+  
       const loadFeed = async () => {
+        console.log("loading feed");
         try {
-          const response = await configuredAxios.get('/api/posts/feed');
+          const response = await configuredAxios.get("/api/v1/auth/posts/feed");
+          console.log("like count is : ", postData.likeCount);
           console.log("Data received:", response.data);
+  
           setPostData(response.data);
         } catch (error) {
           console.error("Error receiving data:", error);
@@ -135,7 +141,12 @@ const UserProfileContainer = ({data,isOwner}) => {
         setLoading(false);
       }
     };
-  
+    const handleDeletePost = (postID) => {
+      // Implement the logic to update the posts array without the deleted post
+      setPostData((prevPosts) =>
+        prevPosts.filter((post) => post.postID !== postID)
+      );
+    };
     useEffect(() => {
       if (mainContainerRef.current) {
         const handleScroll = debounce(() => {
@@ -205,22 +216,28 @@ const UserProfileContainer = ({data,isOwner}) => {
             <div className="add-new-update">
             <AddNewUpdate />
           </div>
-            {postData.map((post, index) => (
+            
                 <div className="rightColumnSubContainer">
-                <Post
-                key={index}
-                isOwner="no"
-                postId={post.postId}
-                username={post.username}
-                caption={post.caption}
-                imageLocations={post.imageLocations}
-                images={post.images}
-                date={post.date}
-                time={post.time}
-                id={post.id}
-              />
+                {postData.map((post, index) => (
+                    <Post
+                      key={index}
+                      isOwner="no"
+                      postId={post.postId}
+                      username={post.username}
+                      caption={post.caption}
+                      imageLocations={post.imageLocations}
+                      images={post.images}
+                      date={post.date}
+                      time={post.time}
+                      likeCount={post.likeCount}
+                      commentCount={post.commentCount}
+                      postOwnerID={post.userID}
+                      onDeletePost={handleDeletePost}
+                      type={post.type}
+                    />
+                  ))}
+                  {loading && <div>Loading more...</div>}   
                 </div>
-                ))}
                 {loading && <div>Loading more...</div>}
             </div>
         </div>

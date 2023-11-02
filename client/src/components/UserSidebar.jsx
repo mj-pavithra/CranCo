@@ -7,6 +7,10 @@ import {
   faCar,
   faShop,
 } from "@fortawesome/free-solid-svg-icons";
+import Cookies from "js-cookie";
+import configuredAxios from "../AxiosConfig";
+import { useEffect } from "react";
+import React, {useState} from "react";
 
 function UserSidebar({ image, username }) {
   document.addEventListener("DOMContentLoaded", function () {
@@ -24,7 +28,7 @@ function UserSidebar({ image, username }) {
     <div className="side-bar">
       <Link className="link-unstyled" to="/myprofile">
         <div className="user-cage">
-          <img src={image} alt="User Avatar" />
+          <img src={onError(proPicPrepared)} alt="User Avatar" />
           <p>
             {sessionStorage.getItem("username")
               ? sessionStorage.getItem("username")
