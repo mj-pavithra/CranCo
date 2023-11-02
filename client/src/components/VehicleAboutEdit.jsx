@@ -232,8 +232,12 @@ function VehicleAboutEdit() {
           />
           {error && vehicleTireType.length === 0 ? validationMsg : null}
           <br />
-          <button className="edit-vehicle-about">Cancel</button>
-          <button className="edit-vehicle-about">Submit</button>
+          <button type="reset" className="edit-vehicle-about">
+            Cancel
+          </button>
+          <button type="submit" className="edit-vehicle-about">
+            Submit
+          </button>
         </div>
       </form>
     </div>

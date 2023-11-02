@@ -19,7 +19,7 @@ function VehicleAboutEditPage() {
   useEffect(() => {
     // Fetch the existing vehicle data using an API request
     axios
-      .get("/api/v1/vehicle-profiles/37") // Id shoul be dynamically passed
+      .get("/api/v1/vehicle-profile/37") // Id shoul be dynamically passed
       .then((response) => {
         const existingVehicleData = response.data;
         setVehicleData({
@@ -57,7 +57,7 @@ function VehicleAboutEditPage() {
 
       // Send the updated data to the server
       axios
-        .put(`/api/v1/vehicle-profiles/37`, vehicleData) // Id should be dynamically passed
+        .put(`/api/v1/vehicle-profile/37`, vehicleData) // Id should be dynamically passed
         .then((response) => {
           console.log("Vehicle data updated successfully:", response.data);
         })

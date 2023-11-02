@@ -170,6 +170,7 @@ li input {
   border-radius: 5px;
   background-color: var(--cage-background);
   color: #fff;
+  background-color: var(--cage-background);
 }
 
 .btnHolder {

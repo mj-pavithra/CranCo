@@ -8,7 +8,7 @@ import { faShop } from "@fortawesome/free-solid-svg-icons";
 import { faBell, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import Icon from "./Icon";
 import PopupDivFull from "./PopupDivFull";
-import ToggleButton from "../components/ToggleButton";
+// import ToggleButton from "../components/ToggleButton";
 import { Link } from "react-router-dom";
 
 function NavigationBar() {
@@ -94,9 +94,9 @@ function NavigationBar() {
                   <FontAwesomeIcon className="navbar-icon" icon={faShop} />
                 </div>
               </Link>
-              <div>
+              {/* <div>
                 <ToggleButton />
-              </div>
+              </div> */}
             </div>
 
             {/* last div */}
@@ -118,7 +118,7 @@ function NavigationBar() {
                   </div>
                 )}
               </div>
-              <ToggleButton />
+              {/* <ToggleButton /> */}
               <div className="color-white" onClick={logoutHandle}>
                 Log out
               </div>
