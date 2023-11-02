@@ -50,6 +50,7 @@ public class PostController {
         }
         CreatePost newPost = new CreatePost();
         newPost.setType(postType);
+        System.out.println("post type in controller"+ postType);
         newPost.setVisibility(visibility);
         newPost.setCaption(caption);
         newPost.setUserId(userId);

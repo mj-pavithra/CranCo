@@ -10,7 +10,7 @@ import {
   import Cookies from "js-cookie";
   import configuredAxios from "../AxiosConfig";
   
-  function AddLostVehicle(visibility, type) {
+  function AddLostVehicle({visibility, type}) {
     const [buttonColor, setButtonColor] = useState("");
     const [isLoading, setIsLoading] = useState(false);
     const [contentChanged, setContentChanged] = useState(false);
@@ -21,6 +21,8 @@ import {
     const [images, setImages] = useState([]);
     const userId = Cookies.get("user_id");
     const username = Cookies.get("user_name");
+    const postType = type;
+    const postVisibility = visibility;
     
   
     const handleDataSubmit = async () => {
@@ -30,8 +32,9 @@ import {
       postData.append("caption", caption);
       postData.append("userId", userId); 
       postData.append("username", username);
-      postData.append("visibility", visibility);
-      postData.append("type", type);
+      postData.append("visibility", postVisibility);
+      postData.append("type", postType);
+      console.log(postData);
   
       if (Array.isArray(images) && images.length > 0) {
         images.forEach((image, index) => {

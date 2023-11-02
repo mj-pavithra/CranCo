@@ -66,7 +66,7 @@ public class UserController {
 
     @PostMapping(value = "/uploadProPic", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<String> updateProPic(@RequestPart("proPic") MultipartFile proPic,
-                                                   @RequestPart("email") String email) {
+                                               @RequestPart("email") String email) {
         String result = userService.updatePropic(proPic, email);
         System.out.println(result);
         return ResponseEntity.ok(result);
@@ -100,7 +100,7 @@ public class UserController {
         } catch (Exception ex) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
-    }
+    } 
 
     @PostMapping("/sendFriendRequest")
     public ResponseEntity<String> sendFriendRequest(@RequestBody Map<String,String> payLoad){

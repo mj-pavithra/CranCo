@@ -14,6 +14,8 @@ public interface UserRepository extends Neo4jRepository<User, Long> {
     Optional<User> findByEmail(String email);
 
     User findByUsername(String username);
+    @Query("MATCH (u:USER) WHERE u.user_name = $user_name RETURN u.id")
+    Long findUserIByUsername(@Param("user_name") String username);
 
     Optional<User> findById(Long userID);
 
