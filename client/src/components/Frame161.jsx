@@ -32,7 +32,7 @@ const Frame161 = ({ postList, tableHeader }) => {
                         <th>{tableHeader.col1}</th>
                         <th>{tableHeader.col2}</th>
                         <th>{tableHeader.col3}</th>
-                        <th>{tableHeader.col4}</th>
+                        {/* <th>{tableHeader.col4}</th> */}
                     </tr>
                 </thead>
                 <tbody>
@@ -41,7 +41,7 @@ const Frame161 = ({ postList, tableHeader }) => {
                             <td>{post.username}</td>
                             <td>{post.caption}</td>
                             <td>{post.id}</td>
-                            <td>
+                            {/* <td>
                                 <button
                                     onClick={() => confirmRemovePost(post.id)} // Use the correct post ID
                                     style={{
@@ -55,7 +55,7 @@ const Frame161 = ({ postList, tableHeader }) => {
                                 >
                                     Remove Post
                                 </button>
-                            </td>
+                            </td> */}
                         </tr>
                     ))}
                 </tbody>

@@ -26,7 +26,7 @@ const tableHeader = {
   col2: "Caption",
   // col3: "Location",
   col3: "Post Id",
-  col4: "Action"
+  // col4: "Action"
 };
 
 const logo = "/assets/logo.png";
