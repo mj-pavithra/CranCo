@@ -30,8 +30,8 @@ import {
       postData.append("caption", caption);
       postData.append("userId", userId); 
       postData.append("username", username);
-      postData.append("visibility", "public");
-      postData.append("type", "lost");
+      postData.append("visibility", visibility);
+      postData.append("type", type);
   
       if (Array.isArray(images) && images.length > 0) {
         images.forEach((image, index) => {
@@ -55,14 +55,13 @@ import {
           setButtonColor("green");
           console.log("Button color changed to green");
   
-          // Clear user inputs after 3 seconds
           setTimeout(() => {
             setButtonColor("");
             setIsLoading(false);
             setPostText(""); // Clear the text area
             setImages([]);   // Clear the images
             setWritePost(false); // Hide the text area and show image area
-          }, 3000);
+          }, 500);
         } catch (error) {
           console.error("Error sending data:", error);
   
@@ -125,7 +124,7 @@ import {
     };
   
     return (
-      <div className="add-new-update-cage">
+      <div className="add-new-update-cage" style={{ backgroundColor: 'red' }}>
         <div className="cage-title">
           <b>Publish New Update</b>
         </div>

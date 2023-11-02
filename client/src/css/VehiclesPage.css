@@ -79,6 +79,8 @@
   color: var(--text-1);
 }
 .lost-btn {
+  left: 650px;
+  position: relative;
   font-size: 16px;
   height: fit-content;
   width: 110px;

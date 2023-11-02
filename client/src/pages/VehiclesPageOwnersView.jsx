@@ -15,6 +15,10 @@ import "../css/VehiclesPage.css";
 const VehiclesPageOwnersView = () => {
   const [postData, setPostData] = useState([]); // Define a state variable to hold the data
 
+  const [divsVisible, setDivsVisible] = useState(false);
+
+
+
   const [changePost, setChangePost] = useState(false);
   useEffect(() => {
     console.log("saved token is : ", Cookies.get("token"));
@@ -35,6 +39,8 @@ const VehiclesPageOwnersView = () => {
     loadFeed();
   }, []);
 
+  const [showAddNewUpdate, setShowAddNewUpdate] = useState(true);
+  const [showAddLostVehicle, setShowAddLostVehicle] = useState(true);
   
   const handleDeletePost = (postID) => {
     // Implement the logic to update the posts array without the deleted post
@@ -43,11 +49,10 @@ const VehiclesPageOwnersView = () => {
     );
   };
 
-  const [divsVisible, setDivsVisible] = useState(false);
-
   const toggleDivsVisibility = () => {
-    setDivsVisible(!divsVisible);
-  };  
+    setShowAddNewUpdate(!showAddNewUpdate);
+    setShowAddLostVehicle(!showAddLostVehicle);
+  };
 
 
   const fetchVehicleAbouts = () => {
@@ -78,9 +83,19 @@ const VehiclesPageOwnersView = () => {
         <VehicleAboutOwnersView />
       </div>
       <div className="add-new-update">
-        <AddNewUpdate visibility="public" type = "vehicle update" />
-        <AddLostVehicle visibility="public" type="lost" onClick={toggleDivsVisibility} />
         
+      <button className="lost-btn" onClick={toggleDivsVisibility} >
+        Lost vehicle!
+      </button>
+      <VehicleAboutOwnersView />
+      <div className="add-new-update">
+        {showAddNewUpdate && <AddNewUpdate type="vehicle update" visibility="public" onClick={toggleDivsVisibility} />}
+      </div>
+      <div className="add-lost-vehicle" >
+        {!showAddLostVehicle && (
+          <AddLostVehicle type="lost" visibility="public" onClick={toggleDivsVisibility} />
+        )}
+      </div>
       </div>
       <div className="Posts">
       {postData.map((post, index) => (

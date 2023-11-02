@@ -56,15 +56,13 @@ function AddNewUpdate({visibility, type}) {
         // Change the button color to green on success
         setButtonColor("green");
         console.log("Button color changed to green");
-
-        // Clear user inputs after 3 seconds
         setTimeout(() => {
           setButtonColor("");
           setIsLoading(false);
           setPostText(""); // Clear the text area
           setImages([]);   // Clear the images
           setWritePost(false); // Hide the text area and show image area
-        }, 3000);
+        }, 500);
       } catch (error) {
         console.error("Error sending data:", error);
 

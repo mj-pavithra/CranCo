@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import "../css/VehiclesPage.css";
-import AddLostVehicle from "./AddLostVehicle";
+import { toggleDivsVisibility } from '../pages/VehiclesPageOwnersView';
+
 
 function VehicleAboutOwnersView({
   brand,
@@ -15,6 +16,7 @@ function VehicleAboutOwnersView({
   mileage,
   vehicleDescription,
   vehiclProfileName,
+  toggleDivsVisibility ,
 }) {
   const navigate = useNavigate();
 
@@ -31,7 +33,7 @@ function VehicleAboutOwnersView({
   const dummyMileage = "28,000,010 km";
   const dummyVehicleDescription =
     "My car is sexy. Melbourne white colour. Interior is nice. I enjoy changing the ambiance light to the colour of my choise.";
-  return (
+  return   (
     <div className="vehicle-about">
       <div className="vehicle-profile-name">
         <p>{vehiclProfileName || dummyVehicleProfileName}</p>
@@ -42,8 +44,6 @@ function VehicleAboutOwnersView({
         >
           Edit
         </button>
-        
-        <button className="lost-btn ">Lost vehicle !</button>
       </div>
       <div className="about-info-container">
         <div className="about-info">
