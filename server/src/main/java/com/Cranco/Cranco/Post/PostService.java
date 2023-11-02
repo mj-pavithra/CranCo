@@ -154,14 +154,14 @@ public class PostService {
         return dto;
     }
 
-//    public void deletePostById(Long postID) {
-//        // Check if the post exists
-//        if (postRepository.existsById(postID)) {
-//            postRepository.deleteById(postID);
-//        } else {
-//            throw new EntityNotFoundException("Post not found with ID: " + postID);
-//        }
-//    }
+    public void deletePostById(Long postID) {
+        // Check if the post exists
+        if (postRepository.existsById(postID)) {
+            postRepository.deleteById(postID);
+        } else {
+            throw new EntityNotFoundException("Post not found with ID: " + postID);
+        }
+    }
 
 //    public void deletePost(Long postId) {
 //        postRepository.deleteById(postId);

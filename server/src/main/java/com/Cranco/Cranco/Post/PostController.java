@@ -93,6 +93,7 @@ public class PostController {
 //            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 //        }
 //    }
+
     @DeleteMapping("/delete/{postID}")
     public ResponseEntity<String> deleteAPost(@PathVariable("postID") Long postID) {
         System.out.println("deleting post: " + postID);
@@ -104,8 +105,6 @@ public class PostController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to delete the post");
         }
     }
-
-
 
     @PutMapping("/liked")
     public ResponseEntity<ReactDto> RecordLike(
