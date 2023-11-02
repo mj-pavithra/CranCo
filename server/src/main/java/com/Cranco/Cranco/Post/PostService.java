@@ -95,9 +95,10 @@ public class PostService {
         dto.setCaption(post.getCaption());
         dto.setLocation(post.getLocation());
         dto.setUsername(post.getUsername());
+        dto.setType(post.getType());
         dto.setCommentCount(0);
-        dto.setUserID(findUserByUsername(post.getUsername()));
-        System.out.println("user iD list eka"+ findUserByUsername(post.getUsername()));
+        dto.setUserID(userRepository.findUserIByUsername(post.getUsername()));
+        System.out.println("user iD list eka"+ userRepository.findUserIByUsername(post.getUsername()));
         dto.setLikedCount(post.getLikedCount());
         dto.setDate(post.getDate());
         return dto;
@@ -173,7 +174,7 @@ public PostDto mapToDtoWithImages(Post post) {
         System.out.println("Location is null for post ID: " + post.getId());
     }
 
-    dto.setUserID(findUserByUsername(post.getUsername()));
+    dto.setUserID(userRepository.findUserIByUsername(post.getUsername()));
     System.out.println("map DTO with image is working " + post.getId());
     return dto;
 }

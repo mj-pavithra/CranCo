@@ -109,6 +109,7 @@ public class UserService {
         return userRepository.getCoverPhoto(email);
     }
     public String getProPic (String email){
+        System.out.println( email);
         return userRepository.getProPic(email);
     }
 
