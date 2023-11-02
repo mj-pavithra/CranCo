@@ -22,7 +22,7 @@ const Frame159 = ({ userList , tableHeader } ) => {
                     <td>{user.username}</td>
                     <td>{user.email}</td>
                     <td>{user.role}</td>
-                    <td>{user.active ? "Yes" : "No"}</td>
+                    <td>{user.status ? "Active" : "Not"}</td>
                 </tr>
                 ))}
             </tbody>

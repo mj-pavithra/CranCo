@@ -1,5 +1,6 @@
 package com.Cranco.Cranco.Post;
 
+import com.Cranco.Cranco.Complaint.Complaint;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -74,6 +75,23 @@ public class PostController {
         }
     }
 
+//    @DeleteMapping("/delete/{postID}")
+//    public ResponseEntity<String> deletePost(@RequestBody Map<String, Long> requestBody) {
+//        Long postID = requestBody.get("postID");
+//        // Call the service method to delete the post by postID
+//        postService.deletePostById(postID);
+//        return ResponseEntity.ok("Post deleted successfully");
+//    }
+
+//    @DeleteMapping("/{postId}")
+//    public ResponseEntity<Post> deletePost(@PathVariable long postId) {
+//        try {
+//            postService.deletePost(postId);
+//            return ResponseEntity.ok().build();
+//        } catch (Exception ex) {
+//            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+//        }
+//    }
     @DeleteMapping("/delete/{postID}")
     public ResponseEntity<String> deleteAPost(@PathVariable("postID") Long postID) {
         System.out.println("deleting post: " + postID);
@@ -142,16 +160,6 @@ public class PostController {
 //            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 //        }
 //    }
-
-    @DeleteMapping("{postId}")
-    public ResponseEntity<Post> deletePost(@PathVariable Long postId) {
-        try {
-            postService.deletePost(postId);
-            return ResponseEntity.ok().build();
-        } catch (Exception ex) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-        }
-    }
 
     @GetMapping("/count")
     public long getPostCount() {

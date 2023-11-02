@@ -28,7 +28,7 @@ public interface UserRepository extends Neo4jRepository<User, Long> {
     String getProPic(@Param("email") String userID);
 
     //@Query("MATCH (c:USER)\n" + "RETURN c;")
-    @Query("MATCH (user:USER) RETURN user")
+    @Query("MATCH (user:USER) RETURN user.username, user.email, user.role")
     List<User> findAllByOrderByUserIdASC();
 
     @Query("MATCH (u:USER) RETURN count(u) as UserCount")

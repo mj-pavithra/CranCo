@@ -1,24 +1,25 @@
 import React from "react";
 import "../css/Frame160.css";
 import axios from 'axios';
+import AxiosConfig from "../AxiosConfig";
 
 //delete report record
-const handleDeletePost = async (reportId) => {
+const handleDeleteComplaint = async (reportId) => {
     try {
-      await axios.delete(`http://localhost:8081/api/v1/auth/complaints/${reportId}`);
-        alert("Post Deleted");
+      await AxiosConfig.delete(`/api/v1/auth/complaints/${reportId}`);
+        alert("Complaint Deleted");
         window.location.reload();
     } catch (error) {
-      console.error('Error deleting post:', error);
-      alert("Error deleting post");
+      console.error('Error Deleting Complaint:', error);
+      alert("Error deleting Complaint");
     }
 };
 
 //confirm before delete report record
-const confirmDeletePost = (reportId) => {
-    const shouldDelete = window.confirm("Are you sure you want to delete this post?");
+const confirmDeleteComplaint = (reportId) => {
+    const shouldDelete = window.confirm("Are you sure you want to delete this Complaint?");
     if (shouldDelete) {
-      handleDeletePost(reportId);
+      handleDeleteComplaint(reportId);
     }
   };
   
@@ -43,8 +44,23 @@ const Frame160 = ({ complaintList , tableHeader } ) => {
                     <td>{complaint.reportId}</td>
                     <td>{complaint.postId}</td>
                     <td>{complaint.reason}</td>
-                    <td>
-                        <button onClick={() => confirmDeletePost(complaint.reportId)}>Delete</button>
+                    {/* <td>
+                        <button onClick={() => confirmDeleteComplaint(complaint.reportId)} style={{ borderRadius: '5px' }}>Delete Complaint</button>
+                    </td> */}
+                    <td> 
+                    <button
+                        onClick={() => confirmDeleteComplaint(complaint.reportId)}
+                        style={{
+                        borderRadius: '5px',
+                        backgroundColor: 'transparent', // Set the initial background color
+                        transition: 'background-color 0.3s', // Add a smooth transition
+                        cursor: 'pointer', // Change the cursor to a pointer on hover
+                        }}
+                        onMouseEnter={(e) => (e.target.style.backgroundColor = 'lightblue')} // Change the background color on hover
+                        onMouseLeave={(e) => (e.target.style.backgroundColor = 'blue')} // Reset the background color on mouse leave
+                    >
+                    Remove Complaint
+                    </button>
                     </td>
                 </tr>
                 ))}
