@@ -23,7 +23,13 @@ function UserSidebar({ image, username }) {
       window.location.href = "https://amayawedamulla.itch.io/cranco";
     });
   });
-
+  const onError = (originalImg) => {
+    const altImg = "/assets/alt-image.jpeg";
+  if (originalImg === null || originalImg === "") {
+    return altImg;
+  }
+  return originalImg;
+};
   return (
     <div className="side-bar">
       <Link className="link-unstyled" to="/myprofile">
