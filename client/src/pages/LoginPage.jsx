@@ -79,7 +79,7 @@ const LoginPage = () => {
               {errMessege == "" ? (
                 ""
               ) : (
-                <div class="alert alert-danger" role="alert">
+                <div className="alert alert-danger" role="alert">
                   {errMessege.message}
                 </div>
               )}

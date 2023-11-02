@@ -20,6 +20,7 @@ import MerchantOwnerView from "./pages/MerchantOwnerView";
 import UserProfile from "./pages/UserProfile";
 import VehiclesPageOwnersView from "./pages/VehiclesPageOwnersView";
 import AdminDashboard from "./pages/AdminDashboard";
+import NewAdmindb from "./pages/NewAdmindb";
 
 // import ProgressBar from "./components/ProgressBar";
 
@@ -34,6 +35,7 @@ import AddNewPage from "./pages/AddNewPage";
 import DataCollection from "./pages/DataCollection";
 import VehicleProfileSettings from "./pages/VehicleProfileSettings";
 import TestingAxios from "./pages/TestingAxios";
+import AddSoul from "./pages/AddSoul";
 
 const App = () => {
   return (
@@ -56,10 +58,12 @@ const App = () => {
           <Route path="/vehicles" element={<VehiclesPage />} />
           <Route path="/allvehiclephotos" element={<AllVehiclePhotos />} />
           <Route path="/addnewpage" element={<AddNewPage />} />
+          <Route path="/addsoul" element={<AddSoul />} />
           <Route
             path="/allphotos"
-          // element={<OwnersVehicleProfileAllPhotos />}
+            // element={<OwnersVehicleProfileAllPhotos />}
           />
+          <Route path="/newadmindb" element={<NewAdmindb />} />
           <Route
             path="/vehiclespageownersview"
             element={<VehiclesPageOwnersView />}
@@ -91,7 +95,10 @@ const App = () => {
           <Route path="/admin/usermanagement" element={<UserManagement />} />
           <Route path="/admin/pagemanagement" element={<PageManagement />} />
           <Route path="/admin/postmanagement" element={<PostManagement />} />
-          <Route path="/admin/complaintmanagement" element={<ComplaintManagement />} />
+          <Route
+            path="/admin/complaintmanagement"
+            element={<ComplaintManagement />}
+          />
           <Route path="*" element={<Error404 />} />
         </Route>
       </Routes>

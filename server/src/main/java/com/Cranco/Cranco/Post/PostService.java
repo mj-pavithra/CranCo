@@ -125,15 +125,10 @@ public class PostService {
         post.setCaption(post.getCaption());
         postRepository.save(post);
     }
-    public void deletePost(Long postId) {
-        postRepository.deleteById(postId);
-    }
+
     private Long generateUniquePostId() {
         return UUID.randomUUID().getMostSignificantBits() & Long.MAX_VALUE;
     }
-    
-
-
 
     public List<PostDto> getAllPosts() {
         List<Post> posts = postRepository.findAll();
@@ -189,6 +184,9 @@ public PostDto mapToDtoWithImages(Post post) {
         }
     }
 
+//    public void deletePost(Long postId) {
+//        postRepository.deleteById(postId);
+//    }
 
     public ReactDto recordReactOnPost(React react) {
         Long userId = userRepository.getUserIdByEmail(react.getEmail());

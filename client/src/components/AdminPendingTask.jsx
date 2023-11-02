@@ -4,7 +4,7 @@ import "../css/AdminPendingTask.css";
 const AdminPendingTask = ({ img1, text1, tasks }) => {
   return (
     <div className="pendingTaskContainer">
-      <p className="topic">Pending</p>
+      <p className="topic">Pending Tasks For Admin</p>
       <div className="TaskList">
         {tasks.map((task, index) => (
           <p className="TaskItem" key={index}>

@@ -11,6 +11,8 @@ function VehicleProfileSettings() {
   const [profileImage, setProfileImage] = useState("");
   const [profileName, setProfileName] = useState("");
 
+  const [deleteCom, setDeleteCom] = useState("");
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -19,8 +21,10 @@ function VehicleProfileSettings() {
   }, [vehicleProfileId]);
 
   // Function to handle form submission
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
     // object requestData with the data to be sent
+    e.preventDefault();
+
     const requestData = {
       profileImage: profileImage,
       profileName: profileName,
@@ -58,7 +62,7 @@ function VehicleProfileSettings() {
 
   return (
     <MainContainer>
-      <div className="vp-settings-submit" onSubmit={handleSubmit}>
+      <form className="vp-settings-submit" onSubmit={handleSubmit}>
         <h5 className="vp-setting-title">General Settings</h5>
         <div className="vpsettings-update-field">
           <label className="vpsettings-label">Change Soul Profile Image</label>
@@ -96,9 +100,9 @@ function VehicleProfileSettings() {
             Save
           </button>
         </div>
-      </div>
+      </form>
       <br />
-      <div className="vp-settings-submit">
+      <form className="vp-settings-submit">
         <h5 className="vp-setting-title">Delete Soul Profile</h5>
         <p className="vp-setting-delete-statement">
           Deleting your soul profile will remove all your soul information from
@@ -109,13 +113,20 @@ function VehicleProfileSettings() {
             To confirm this, type "DELETE"
           </label>
           <div className="delete-it">
-            <input className="delete-cage"></input>
+            <input
+              className="delete-cage"
+              onChange={(e) => setDeleteCom(e.target.value)}
+              value={deleteCom}
+            ></input>
+            <label classname="delete-announcement">
+              Cannot perform the request.
+            </label>
             <button type="submit" onSubmit={handleSubmit}>
               Delete
             </button>
           </div>
         </div>
-      </div>
+      </form>
       <button className="vp-settings-back-btn" onClick={handleBackClick}>
         Back
       </button>

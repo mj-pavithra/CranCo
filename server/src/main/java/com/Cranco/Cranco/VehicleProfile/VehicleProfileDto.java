@@ -11,8 +11,8 @@ import lombok.Setter;
 @AllArgsConstructor
 public class VehicleProfileDto {
     private long vehicleProfileId;
-    private long userId;
-    private String vehicleProfileName;
+//    private long userId;
+//    private String vehicleProfileName;
     private String vehicleType;
     private String vehicleModel;
     private String vehicleManufacturer;
@@ -45,13 +45,13 @@ public class VehicleProfileDto {
         return vehicleProfileId;
     }
 
-    public long getUserId() {
-        return userId;
-    }
+//    public long getUserId() {
+//        return userId;
+//    }
 
-    public String getVehicleProfileName() {
-        return vehicleProfileName;
-    }
+//    public String getVehicleProfileName() {
+//        return vehicleProfileName;
+//    }
 
     public String getVehicleType() {
         return vehicleType;
@@ -165,13 +165,13 @@ public class VehicleProfileDto {
         this.vehicleProfileId = vehicleProfileId;
     }
 
-    public void setUserId(long userId) {
-        this.userId = userId;
-    }
+//    public void setUserId(long userId) {
+//        this.userId = userId;
+//    }
 
-    public void setVehicleProfileName(String vehicleProfileName) {
-        this.vehicleProfileName = vehicleProfileName;
-    }
+//    public void setVehicleProfileName(String vehicleProfileName) {
+//        this.vehicleProfileName = vehicleProfileName;
+//    }
 
     public void setVehicleType(String vehicleType) {
         this.vehicleType = vehicleType;

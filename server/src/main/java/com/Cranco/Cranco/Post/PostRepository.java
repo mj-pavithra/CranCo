@@ -39,5 +39,7 @@ public interface PostRepository extends Neo4jRepository<Post, Long> {
     @Query("MATCH (post:POST) WHERE post.postId CONTAINS $postId RETURN post")
     List<Post> searchPosts(long postId);
 
+    //void deletePost(long postId);
+
 //    List<Post> searchPosts(String caption);
 }
