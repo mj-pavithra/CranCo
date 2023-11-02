@@ -214,7 +214,7 @@ const UserProfileContainer = ({data,isOwner}) => {
             </div>
             <div className="rightColumn">
             <div className="add-new-update">
-            <AddNewUpdate />
+            <AddNewUpdate visibility="private" type ="regular" />
           </div>
             
                 <div className="rightColumnSubContainer">
