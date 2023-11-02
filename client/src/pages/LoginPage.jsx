@@ -12,11 +12,11 @@ const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errMessege, setErrMessege] = useState("");
-  const [loadStatus, setLoadStatus] = useState(false)
+  const [loadStatus, setLoadStatus] = useState(false);
 
   const loginHandle = async () => {
     try {
-      setLoadStatus(true)
+      setLoadStatus(true);
       const response = await axios.post(
         "http://localhost:8081/api/v1/auth/authenticate",
         {
@@ -41,14 +41,9 @@ const LoginPage = () => {
         Cookies.get("user_id"),
         Cookies.get("user_email"),
         Cookies.get("user_name")
-      )
-      setLoadStatus(false)
-
-      const redirectURL = Cookies.get("redirect")
-      if (redirectURL)
-        window.location.href = `http://localhost:3000${redirectURL}`;
-      else
-        window.location.href = "http://localhost:3000/homepage";
+      );
+      setLoadStatus(false);
+      window.location.href = "http://localhost:3000/homepage";
     } catch (error) {
       console.log(sessionStorage.getItem("username"));
       if (error.response && error.response.data) {
@@ -57,7 +52,7 @@ const LoginPage = () => {
       } else {
         setErrMessege("An error occurred.");
       }
-      setLoadStatus(false)
+      setLoadStatus(false);
     }
   };
 
@@ -73,9 +68,13 @@ const LoginPage = () => {
           </div>
           <div className="layout-cont-2">
             <div className="layout-cont-1">
-              {loadStatus ? (<div className="d-flex justify-content-center">
-                <div className="loader-animation-login"></div>
-              </div>) : ""}
+              {loadStatus ? (
+                <div className="d-flex justify-content-center">
+                  <div className="loader-animation-login"></div>
+                </div>
+              ) : (
+                ""
+              )}
 
               {errMessege == "" ? (
                 ""
